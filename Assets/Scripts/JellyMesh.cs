@@ -10,7 +10,7 @@ public class JellyMesh : MonoBehaviour
     public float damping = 0.75f;
 
     private Mesh OriginalMesh, MeshClone;
-    private MeshRenderer renderer;
+    private Renderer renderer;
     private JellyVertex[] jv;
     private Vector3[] vertexArray;
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class JellyMesh : MonoBehaviour
         OriginalMesh = GetComponent<MeshFilter>().sharedMesh;
         MeshClone = Instantiate(OriginalMesh);
         GetComponent<MeshFilter>().sharedMesh = MeshClone;
-        renderer = GetComponent<MeshRenderer>();
+        renderer = GetComponent<Renderer>();
         jv = new JellyVertex[MeshClone.vertices.Length];
         for (int i = 0; i < MeshClone.vertices.Length; i++)
         {
@@ -35,7 +35,8 @@ public class JellyMesh : MonoBehaviour
         for (int i = 0; i < jv.Length; i++)
         {
             Vector3 target = transform.TransformPoint(vertexArray[jv[i].ID]);
-            float intensity = (1 - (renderer.bounds.max.y - target.y) / renderer.bounds.size.y) * Intensity;
+            var bounds = renderer.bounds;
+            float intensity = (1 - (bounds.max.y - target.y) / bounds.size.y) * Intensity;
             jv[i].Shake(target, Mass, stiffness, damping);
             target = transform.InverseTransformPoint(jv[i].Position);
             vertexArray[jv[i].ID] = Vector3.Lerp(vertexArray[jv[i].ID], target, intensity);
