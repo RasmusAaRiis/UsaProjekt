@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,13 +12,18 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private Transform target;
 
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundMask;
 
+    [Range(0f, 1f)][SerializeField] private float rotationStrength;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;
+    [SerializeField] private bool stabilize;
+
+    [SerializeField] private bool onGround;
+    private Quaternion startRot;
     
 
     private float timer;
@@ -29,12 +35,12 @@ public class EnemyMovement : MonoBehaviour
 
         var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
         if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
+        
+        startRot = Quaternion.identity;
     }
 
     private void Update()
     {
-        Vector3 stabilizer = new Vector3();
-        
         
         
         var tarIsMissing = !ReferenceEquals(target, null) && (!target);
@@ -64,11 +70,33 @@ public class EnemyMovement : MonoBehaviour
                 }
             
                 rb.AddForce(force * 5);
+                
+                if (stabilize)
+                {
+                    
+                }
+                
+                force = Vector3.zero;
                 timer = 0;
             }
         }
+
+        if (!onGround && stabilize)
+        {
+            Quaternion newRot = Quaternion.Lerp(this.transform.rotation, startRot, rotationStrength);
+            rb.MoveRotation(newRot);
+        }
     }
 
+    private void OnCollisionStay(Collision collisionInfo)
+    {
+        onGround = collisionInfo.gameObject.layer == LayerMask.NameToLayer("Ground");
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        onGround = false;
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -83,9 +111,16 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.DrawRay(position, direction);
             Gizmos.color = Color.green;
             Gizmos.DrawRay(position, -transform.up);
+            Gizmos.DrawRay(position, transform.up);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(position, -transform.right);
+            //Gizmos.DrawRay(position, transform.right);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(position, -transform.forward);
+            Gizmos.DrawRay(position, transform.forward);
         }
         Gizmos.color = Color.white;
-        //Gizmos.DrawRay(position, Vector3.down);
-        Gizmos.DrawRay(position, Vector3.left);
+        Gizmos.DrawRay(position, Vector3.down);
+        //Gizmos.DrawRay(position, Vector3.left);
     }
 }
