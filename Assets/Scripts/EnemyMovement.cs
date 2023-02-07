@@ -11,20 +11,37 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private Transform target;
 
+    [SerializeField] private Transform groundCheck;
+
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;
+    
 
     private float timer;
-    
+
+    private void Start()
+    {
+        var tarIsMissing = !ReferenceEquals(target, null) && !target;
+        if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+
+        var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
+        if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
+    }
 
     private void Update()
     {
-        if (chaseTarget)
+        Vector3 stabilizer = new Vector3();
+        
+        
+        
+        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
+        
+        if (chaseTarget && !tarIsMissing)
         {
-            Vector3 direction = target.position - this.transform.position;
+            Vector3 direction = target!.position - this.transform.position;
         
             direction.x = Mathf.Clamp(direction.x, -5f, 5f);
             direction.y = Mathf.Clamp(direction.y, -5f, 5f);
@@ -53,10 +70,23 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Vector3 direction = target.position - this.transform.position;
-        //Debug.Log(direction);
-        Gizmos.DrawRay(transform.position, direction);
+        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
+
+        var position = transform.position;
+        
+        if (!tarIsMissing)
+        {
+            Vector3 direction = target!.position - position;
+            //Debug.Log(direction);
+            Gizmos.DrawRay(position, direction);
+            Gizmos.color = Color.red;
+            print(-target.up);
+            Gizmos.DrawRay(position, -transform.up);
+        }
+        Gizmos.color = Color.white;
+        //Gizmos.DrawRay(position, Vector3.down);
+        Gizmos.DrawRay(position, Vector3.left);
     }
 }
