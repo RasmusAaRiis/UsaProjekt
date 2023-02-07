@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
         
         if (timer >= 1)
         {
+            rb.velocity = Vector3.zero;
             rb.AddForce(force * 5);
             timer = 0;
         }
