@@ -131,7 +131,7 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        heldObject.GetComponent<Collider>().enabled = false;
+        //heldObject.GetComponent<Collider>().enabled = false;
     }
 
     void ThrowObject()
