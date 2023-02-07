@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Management.Instrumentation;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool chaseTarget;
     [SerializeField] private bool stabilize;
 
-    [SerializeField] private bool onGround;
+    private bool onGround;
     
     private Quaternion startRot;
     private float timer;
@@ -35,7 +36,8 @@ public class EnemyMovement : MonoBehaviour
         var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
         if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
         
-        startRot = Quaternion.identity;
+        startRot = transform.rotation;
+        print(startRot);
     }
 
     private void Update()
@@ -69,12 +71,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             
                 rb.AddForce(force * 5);
-                
-                if (stabilize)
-                {
-                    
-                }
-                
+
                 force = Vector3.zero;
                 timer = 0;
             }
@@ -82,7 +79,10 @@ public class EnemyMovement : MonoBehaviour
 
         if (!onGround && stabilize)
         {
-            Quaternion newRot = Quaternion.Lerp(this.transform.rotation, startRot, rotationStrength);
+            Vector3 direction = target!.position - this.transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Quaternion newRot = Quaternion.Lerp(this.transform.rotation, lookRotation, rotationStrength);
+            Quaternion newLookRot = Quaternion.Lerp(newRot, lookRotation, rotationStrength);
             rb.MoveRotation(newRot);
         }
     }

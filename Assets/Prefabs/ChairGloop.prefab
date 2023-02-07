@@ -695,9 +695,8 @@ MonoBehaviour:
   speed: 4
   jumpStrenght: 60
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
-  onGround: 0
 --- !u!1 &512982695749447484
 GameObject:
   m_ObjectHideFlags: 0
