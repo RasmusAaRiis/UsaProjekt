@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpForce: 6
   rb: {fileID: 3742513071235349056}
 --- !u!54 &3742513071235349056
 Rigidbody:
