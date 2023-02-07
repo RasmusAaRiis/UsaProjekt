@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 57591f9524e58f2468ab65ad851d4c96
+guid: 27df29d4fe2f3fc4eaae89a6eeea5abf
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Trim
+    second: {fileID: 2100000, guid: 2c03378c010ea9d4aaa9d4368aafe247, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Wall
+    second: {fileID: 2100000, guid: ca3ee9b2d1851054b8ca9b5287a17b24, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

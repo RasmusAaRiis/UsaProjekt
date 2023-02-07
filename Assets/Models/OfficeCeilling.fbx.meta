@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: bda52c8b88d7827418311d81a97b02a6
+guid: a8498b4e41f0bd84bb2e5fde8f1cd6e8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Ceilling
+    second: {fileID: 2100000, guid: 6b6944c5b6b339c40bd9ac73861e5f7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Ceilling Metal
+    second: {fileID: 2100000, guid: 20f078bbcd9c8644f891450e3f852714, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
