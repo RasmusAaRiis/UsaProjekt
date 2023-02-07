@@ -16,7 +16,7 @@ public class CharacterController : MonoBehaviour {
     public float jumpForce = 10;
     bool isGrounded = true;
 
-    Transform throwable;
+    Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
@@ -56,9 +56,18 @@ public class CharacterController : MonoBehaviour {
         }
         #endregion
 
+        if(heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (!heldObject.CompareTag("Weapon"))
+            {
+                return;
+            }
+
+            heldObject.GetComponent<Weapon>().Attack();
+        }
 
         //Kast throwable item
-        if (throwable != null && Input.GetKeyDown(KeyCode.Mouse1))
+        if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse1))
         {
             ThrowObject();
             return;
@@ -67,14 +76,14 @@ public class CharacterController : MonoBehaviour {
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
         if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4) &&
-           throwable == null)
+           heldObject == null)
         {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
             //Bare ikke pild
             if (lookedAtObject != hit.transform.gameObject)
             {
-                if (hit.transform.CompareTag("Throwable"))
+                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Weapon"))
                 {
                     SetObjectOutline(0);
                 }
@@ -82,15 +91,14 @@ public class CharacterController : MonoBehaviour {
 
             lookedAtObject = hit.transform.gameObject;
 
-            if (!hit.transform.CompareTag("Throwable"))
+            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Weapon"))
             {
-                //Objektet spilleren kigger på er IKKE throwable
+                //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
-                //lookedAtObject = null;
                 return;
             }
 
-            //Objektet spilleren kigger på ER throwable
+            //Objektet spilleren kigger på ER throwable eller weapon
             SetObjectOutline(lookedAtObject, 10);
 
             if (!Input.GetKeyDown(KeyCode.Mouse1))
@@ -118,27 +126,28 @@ public class CharacterController : MonoBehaviour {
 
     void PickupObject(Transform objectToPickup)
     {
-        throwable = objectToPickup;
-        throwable.position = Hand.position;
-        throwable.parent = Hand;
-        throwable.GetComponent<Rigidbody>().isKinematic = true;
-        throwable.GetComponent<Collider>().enabled = false;
+        heldObject = objectToPickup;
+        heldObject.position = Hand.position;
+        heldObject.parent = Hand;
+        heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+        heldObject.GetComponent<Collider>().enabled = false;
     }
 
     void ThrowObject()
     {
-        if(throwable == null)
+        if(heldObject == null)
         {
             Debug.LogWarning("Cant throw object, since object is null");
             return;
         }
 
-        throwable.position = Hand.position;
-        throwable.parent = null;
-        throwable.GetComponent<Rigidbody>().isKinematic = false;
-        throwable.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
-        throwable.GetComponent<Collider>().enabled = true;
-        throwable = null;
+        heldObject.position = Hand.position;
+        heldObject.parent = null;
+        heldObject.GetComponent<Rigidbody>().isKinematic = false;
+        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
+        heldObject.GetComponent<Collider>().enabled = true;
+        heldObject = null;
     }
 
     void SetObjectOutline(GameObject Object, float width)
