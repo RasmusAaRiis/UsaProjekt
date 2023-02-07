@@ -3,6 +3,9 @@ using UnityEditor;
 
 public class ROSP : MonoBehaviour
 {
+    //
+    //ROSP = Random Object Spawn Position || ROSP* = det samme, men med mulighed for at være en dør
+    //
     public GameObject[] ROSP_Objects;
     private Object doorObject;
     private Vector3 ROSP_Position;
