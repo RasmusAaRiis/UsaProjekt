@@ -81,8 +81,7 @@ public class EnemyMovement : MonoBehaviour
             Vector3 direction = target!.position - position;
             //Debug.Log(direction);
             Gizmos.DrawRay(position, direction);
-            Gizmos.color = Color.red;
-            print(-target.up);
+            Gizmos.color = Color.green;
             Gizmos.DrawRay(position, -transform.up);
         }
         Gizmos.color = Color.white;
