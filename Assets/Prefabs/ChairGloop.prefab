@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 512982694741687107}
   - component: {fileID: 512982694741687106}
   - component: {fileID: 512982694741687105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChairGloop (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 512982694844328821}
   - component: {fileID: 512982694844328820}
   - component: {fileID: 512982694844328827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 512982694961065994}
   - component: {fileID: 512982694961065993}
   - component: {fileID: 512982694961065992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 512982695030064057}
   - component: {fileID: 512982695030064056}
   - component: {fileID: 512982695030064063}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 512982695252637514}
   - component: {fileID: 512982695252637513}
   - component: {fileID: 512982695252637512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 512982695311383886}
   - component: {fileID: 512982695311383885}
   - component: {fileID: 512982695311383884}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChairGloop (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 512982695482339206}
   - component: {fileID: 512982695482339205}
   - component: {fileID: 512982695482339207}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChairGloop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512982695482339204}
-  m_LocalRotation: {x: -0.010916662, y: -0, z: -0, w: 0.99994045}
+  m_LocalRotation: {x: -0.01091685, y: 0, z: 0, w: 0.99994045}
   m_LocalPosition: {x: 2.22, y: 2.5, z: -3.09}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
@@ -691,7 +691,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  rotationStrength: 0.06
+  rotationStrength: 0.1
   speed: 4
   jumpStrenght: 60
   resetVel: 0
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 512982695749447480}
   - component: {fileID: 512982695749447487}
   - component: {fileID: 512982695749447486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChairGloop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 512982696725559204}
   - component: {fileID: 512982696725559211}
   - component: {fileID: 512982696725559210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 512982696766257473}
   - component: {fileID: 512982696766257472}
   - component: {fileID: 512982696766257479}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

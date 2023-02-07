@@ -1407,6 +1407,67 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &1430790230
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.176
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475028, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611376688808475029, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 512982695482339204, guid: 31480021817c5bd4e92c8c6bded53f36, type: 3}
+    - target: {fileID: 8611376688808475035, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
+      propertyPath: m_Name
+      value: Stapler
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 28bfd8849b679214eb9315005a3e21a5, type: 3}
 --- !u!1 &1499766059
 GameObject:
   m_ObjectHideFlags: 0

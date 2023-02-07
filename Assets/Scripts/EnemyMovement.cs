@@ -23,9 +23,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool stabilize;
 
     [SerializeField] private bool onGround;
-    private Quaternion startRot;
     
-
+    private Quaternion startRot;
     private float timer;
 
     private void Start()
