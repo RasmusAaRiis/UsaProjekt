@@ -25,7 +25,7 @@ public class Outline : MonoBehaviour {
   }
 
   public Mode OutlineMode {
-    get { return outlineMode; }
+    get => outlineMode;
     set {
       outlineMode = value;
       needsUpdate = true;
@@ -33,7 +33,7 @@ public class Outline : MonoBehaviour {
   }
 
   public Color OutlineColor {
-    get { return outlineColor; }
+    get => outlineColor;
     set {
       outlineColor = value;
       needsUpdate = true;
@@ -41,7 +41,7 @@ public class Outline : MonoBehaviour {
   }
 
   public float OutlineWidth {
-    get { return outlineWidth; }
+    get => outlineWidth;
     set {
       outlineWidth = value;
       needsUpdate = true;
