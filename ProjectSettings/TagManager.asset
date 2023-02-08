@@ -5,15 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Throwable
+  - Weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Weapon
   - 
   - 
   - 

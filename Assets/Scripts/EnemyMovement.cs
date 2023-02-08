@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Management.Instrumentation;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,20 +13,42 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private Transform target;
 
+    [SerializeField] private LayerMask groundMask;
+
+    [Range(0f, 1f)][SerializeField] private float rotationStrength;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;
+    [SerializeField] private bool stabilize;
 
-    private float timer;
+    private bool onGround;
     
+    private Quaternion startRot;
+    private float timer;
+
+    private void Start()
+    {
+        var tarIsMissing = !ReferenceEquals(target, null) && !target;
+        if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+
+        var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
+        if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
+        
+        startRot = transform.rotation;
+        print(startRot);
+    }
 
     private void Update()
     {
-        if (chaseTarget)
+        
+        
+        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
+        
+        if (chaseTarget && !tarIsMissing)
         {
-            Vector3 direction = target.position - this.transform.position;
+            Vector3 direction = target!.position - this.transform.position;
         
             direction.x = Mathf.Clamp(direction.x, -5f, 5f);
             direction.y = Mathf.Clamp(direction.y, -5f, 5f);
@@ -47,16 +71,55 @@ public class EnemyMovement : MonoBehaviour
                 }
             
                 rb.AddForce(force * 5);
+
+                force = Vector3.zero;
                 timer = 0;
             }
         }
+
+        if (!onGround && stabilize)
+        {
+            Vector3 direction = target!.position - this.transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Quaternion newRot = Quaternion.Lerp(this.transform.rotation, lookRotation, rotationStrength);
+            Quaternion newLookRot = Quaternion.Lerp(newRot, lookRotation, rotationStrength);
+            rb.MoveRotation(newRot);
+        }
     }
 
-
-    private void OnDrawGizmos()
+    private void OnCollisionStay(Collision collisionInfo)
     {
-        Vector3 direction = target.position - this.transform.position;
-        //Debug.Log(direction);
-        Gizmos.DrawRay(transform.position, direction);
+        onGround = collisionInfo.gameObject.layer == LayerMask.NameToLayer("Ground");
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        onGround = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
+
+        var position = transform.position;
+        
+        if (!tarIsMissing)
+        {
+            Vector3 direction = target!.position - position;
+            //Debug.Log(direction);
+            Gizmos.DrawRay(position, direction);
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(position, -transform.up);
+            Gizmos.DrawRay(position, transform.up);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(position, -transform.right);
+            //Gizmos.DrawRay(position, transform.right);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(position, -transform.forward);
+            Gizmos.DrawRay(position, transform.forward);
+        }
+        Gizmos.color = Color.white;
+        Gizmos.DrawRay(position, Vector3.down);
+        //Gizmos.DrawRay(position, Vector3.left);
     }
 }
