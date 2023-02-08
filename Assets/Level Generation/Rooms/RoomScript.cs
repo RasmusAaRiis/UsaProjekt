@@ -1,35 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class RoomScript : MonoBehaviour
 {
     [HideInInspector] public float width; // The middle is centered, so xWidth 12 = boundry from -6 to 6
     [HideInInspector] public float height; // The same as above
 
-    [HideInInspector] public Door northDoor;
-    [HideInInspector] public Door southDoor;
-    [HideInInspector] public Door eastDoor;
-    [HideInInspector] public Door westDoor;
+    public bool lastSpawnUpValue;
+    public bool spawnUpValue;
+
+    private Transform doorParent;
+
+    public Door northDoor;
+    public Door southDoor;
+    public Door eastDoor;
+    public Door westDoor;
 
     private void Awake()
     {
-        if (GameObject.Find("North Door"))
+        if (transform.Find("Doors"))
         {
-            northDoor = GameObject.Find("North Door").GetComponent<Door>();
+            doorParent = transform.Find("Doors");
+
+            if (doorParent.Find("North Door"))
+            {
+                northDoor = doorParent.Find("North Door").GetComponent<Door>();
+            }
+            if (doorParent.Find("South Door"))
+            {
+                southDoor = doorParent.Find("South Door").GetComponent<Door>();
+            }
+            if (doorParent.Find("East Door"))
+            {
+                eastDoor = doorParent.Find("East Door").GetComponent<Door>();
+            }
+            if (doorParent.Find("West Door"))
+            {
+                westDoor = doorParent.Find("West Door").GetComponent<Door>();
+            }
         }
-        if (GameObject.Find("South Door"))
-        {
-            southDoor = GameObject.Find("South Door").GetComponent<Door>();
-        }
-        if (GameObject.Find("East Door"))
-        {
-            eastDoor = GameObject.Find("East Door").GetComponent<Door>();
-        }
-        if (GameObject.Find("West Door"))
-        {
-            westDoor = GameObject.Find("West Door").GetComponent<Door>();
-        }   
 
         Vector3 bound = GetBounds(gameObject);
 
@@ -53,5 +64,14 @@ public class RoomScript : MonoBehaviour
         for (var i = 1; i < renderers.Length; ++i)
             bounds.Encapsulate(renderers[i].bounds);
         return bounds;
+    }
+
+    public void DestroyDoor(Door doorToDestroy)
+    {
+        Object wall = Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Models/OfficeWall.fbx", typeof(Object)), doorToDestroy.transform.position, doorToDestroy.transform.rotation);
+        GameObject wallGameObject = (GameObject)wall;
+        wallGameObject.transform.SetParent(doorToDestroy.transform.parent);
+
+        Destroy(doorToDestroy.gameObject);
     }
 }
