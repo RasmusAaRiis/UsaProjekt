@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!114 &-8835570111791196322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +278,8 @@ MonoBehaviour:
   codecChannels:
     Value: []
     HasValue: 0
+=======
+>>>>>>> Stashed changes
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,9 +330,10 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131601
-  HideSetupWizard: 1
+  HideSetupWizard: 0
   LastEventReferenceScanVersion: 131601
   Platforms:
+<<<<<<< Updated upstream
   - {fileID: -8626748677761898523}
   - {fileID: -8835570111791196322}
   - {fileID: 7470185996703199784}
@@ -811,3 +815,17 @@ MonoBehaviour:
   codecChannels:
     Value: []
     HasValue: 0
+=======
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
+>>>>>>> Stashed changes
