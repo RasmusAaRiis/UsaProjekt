@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     [Range(0f, 1f)][SerializeField] private float rotationStrength;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
+    [SerializeField] private float targetLookOffset;
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;
@@ -85,10 +86,9 @@ public class EnemyMovement : MonoBehaviour
 
         if (!onGround && stabilize)
         {
-            Vector3 direction = target!.position - this.transform.position;
+            Vector3 direction = new Vector3(target!.position.x, target!.position.y + targetLookOffset, target!.position.z) - this.transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             Quaternion newRot = Quaternion.Lerp(this.transform.rotation, lookRotation, rotationStrength);
-            Quaternion newLookRot = Quaternion.Lerp(newRot, lookRotation, rotationStrength);
             rb.MoveRotation(newRot);
         }
     }
