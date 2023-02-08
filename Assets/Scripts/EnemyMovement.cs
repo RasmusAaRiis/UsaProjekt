@@ -9,11 +9,13 @@ using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private bool debugMode = false;
+    
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private Transform target;
-
-    [SerializeField] private LayerMask groundMask;
+    
+    [SerializeField] private float health = 100;
 
     [Range(0f, 1f)][SerializeField] private float rotationStrength;
     [SerializeField] private float speed = 1;
@@ -42,7 +44,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        
+        if (health <= 0f)
+        {
+            chaseTarget = false;
+            stabilize = false;
+        }
         
         var tarIsMissing = !ReferenceEquals(target, null) && (!target);
         
@@ -97,29 +103,38 @@ public class EnemyMovement : MonoBehaviour
         onGround = false;
     }
 
+    public void TakeDamage(float value)
+    {
+        health -= value;
+    }
+
     private void OnDrawGizmosSelected()
     {
-        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
-
-        var position = transform.position;
-        
-        if (!tarIsMissing)
+        if (debugMode)
         {
-            Vector3 direction = target!.position - position;
-            //Debug.Log(direction);
-            Gizmos.DrawRay(position, direction);
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(position, -transform.up);
-            Gizmos.DrawRay(position, transform.up);
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(position, -transform.right);
-            //Gizmos.DrawRay(position, transform.right);
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(position, -transform.forward);
-            Gizmos.DrawRay(position, transform.forward);
+            var tarIsMissing = !ReferenceEquals(target, null) && (!target);
+
+            var position = transform.position;
+        
+            if (!tarIsMissing)
+            {
+                Vector3 direction = target!.position - position;
+                //Debug.Log(direction);
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawRay(position, direction);
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay(position, -transform.up);
+                Gizmos.DrawRay(position, transform.up);
+                Gizmos.color = Color.red;
+                Gizmos.DrawRay(position, -transform.right);
+                //Gizmos.DrawRay(position, transform.right);
+                Gizmos.color = Color.blue;
+                Gizmos.DrawRay(position, -transform.forward);
+                Gizmos.DrawRay(position, transform.forward);
+            }
+            Gizmos.color = Color.white;
+            Gizmos.DrawRay(position, Vector3.down);
+            //Gizmos.DrawRay(position, Vector3.left);
         }
-        Gizmos.color = Color.white;
-        Gizmos.DrawRay(position, Vector3.down);
-        //Gizmos.DrawRay(position, Vector3.left);
     }
 }
