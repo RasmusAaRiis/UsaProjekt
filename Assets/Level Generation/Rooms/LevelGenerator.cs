@@ -33,11 +33,16 @@ public class LevelGenerator : MonoBehaviour
         firstRoomScript.transform.position += moveAmount;
         currentRooms.Add(firstRoomObject);
 
+        firstRoomScript.spawnUpValue = true;
+
         lastRoomObject = firstRoomObject;
         lastRoomScript = firstRoomScript;
 
         SpawnRoom();
     }
+
+    GameObject newRoomObject;
+    RoomScript newRoomScript;
 
     void SpawnRoom()
     {
@@ -49,6 +54,7 @@ public class LevelGenerator : MonoBehaviour
             Vector3 moveAmount = new Vector3(0, 0, lastRoomScript.height / 2);
             moveAmount += new Vector3(0, 0, finalRoomScript.height / 2);
             finalRoomScript.transform.position += moveAmount;
+            finalRoomScript.spawnUpValue = true;
             if (finalRoomScript.GetBoundsRaw(finalRoomObject).Intersects(lastRoomScript.GetBoundsRaw(lastRoomObject)))
             {
                 Destroy(finalRoomScript.gameObject);
@@ -56,14 +62,17 @@ public class LevelGenerator : MonoBehaviour
                 return;
             }
             currentRooms.Add(finalRoomObject);
+
+            RemoveExcessDoors();
+
             return;
         }
 
         lastSpawnUp = spawnUp;
         spawnUp = (Random.value > 0.5f);
 
-        GameObject newRoomObject = rooms[Random.Range(2, rooms.Length)];
-        RoomScript newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
+        newRoomObject = rooms[Random.Range(2, rooms.Length)];
+        newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
 
         if (lastRoomScript.westDoor && lastRoomScript.eastDoor && spawnUp && lastSpawnUp)
         {
@@ -112,9 +121,17 @@ public class LevelGenerator : MonoBehaviour
             return;
         }
 
+        newRoomScript.spawnUpValue = spawnUp;
+        newRoomScript.lastSpawnUpValue = lastRoomScript.spawnUpValue;
+
         currentRooms.Add(lastRoomObject);
         lastRoomObject = newRoomObject;
         lastRoomScript = newRoomScript;
         SpawnRoom();
+    }
+
+    void RemoveExcessDoors()
+    {
+
     }
 }

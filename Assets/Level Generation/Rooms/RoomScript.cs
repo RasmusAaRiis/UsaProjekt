@@ -7,6 +7,9 @@ public class RoomScript : MonoBehaviour
     [HideInInspector] public float width; // The middle is centered, so xWidth 12 = boundry from -6 to 6
     [HideInInspector] public float height; // The same as above
 
+    public bool lastSpawnUpValue;
+    public bool spawnUpValue;
+
     [HideInInspector] public Door northDoor;
     [HideInInspector] public Door southDoor;
     [HideInInspector] public Door eastDoor;
