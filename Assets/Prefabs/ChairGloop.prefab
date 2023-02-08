@@ -686,16 +686,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe06ef26f6eef6499b6cc5f28b0fe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugMode: 0
   rb: {fileID: 512982695482339205}
   target: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
+  health: 100
   rotationStrength: 0.1
   speed: 4
   jumpStrenght: 60
   resetVel: 0
-  chaseTarget: 0
+  chaseTarget: 1
   stabilize: 1
 --- !u!1 &512982695749447484
 GameObject:
