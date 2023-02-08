@@ -50,7 +50,7 @@ public class LevelGenerator : MonoBehaviour
         GameObject newObj = Instantiate(newRoom.roomPrefab, Vector3.zero, Quaternion.identity);
         newObj.name = "Room - " + index;
         index++;
-
+        /*
         //Sets the new entrance of the room
         newRoom.SetEntranceFromChildren();
 
@@ -64,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
 
         //Adds the room to the current list
         currentRooms.Add(newRoom);
-
+        */
         //Recursive loop until the level is complete
         CreateNewRoom();
     }
