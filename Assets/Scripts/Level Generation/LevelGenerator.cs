@@ -26,7 +26,6 @@ public class LevelGenerator : MonoBehaviour
         Room elevator = allRooms[0];
         player = Instantiate(playerPrefab, elevator.roomPrefab.transform.position + Vector3.up, Quaternion.identity);
         Instantiate(elevator.roomPrefab, Vector3.zero, Quaternion.identity);
-        elevator.exitDoor = elevator.get
         currentRooms.Add(elevator);
         CreateNewRoom();
     }
