@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class Stapler : Weapon
 {
+    public int ammo = 10;
     public GameObject Projectile;
 
     public override void Attack()
     {
-        //base.Attack();
+        if (cooldown || ammo <= 0)
+        {
+            return;
+        }
 
-        GameObject proj_m = Instantiate(Projectile, transform.position + transform.forward * 0.3f, Quaternion.identity);
-        proj_m.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+        StartCoroutine(Cooldown());
+        
+        ammo--;
+
+        Animator animator = transform.parent.GetComponent<Animator>();
+        animator.SetTrigger("Shoot");
+
+        GameObject proj_m = Instantiate(Projectile, transform.position + transform.forward * 0.3f, Quaternion.LookRotation(transform.forward));
+        proj_m.GetComponent<Rigidbody>().velocity = transform.forward * attackSpeed;
+        Projectile proj = proj_m.GetComponent<Projectile>();
+        proj.origin = this;
+        proj.Activate();
+        Destroy(proj_m, 5);
     }
 }
