@@ -13,8 +13,10 @@ public class CharacterController : MonoBehaviour {
 
     public float speed = 10.0f;
     public float dashForce = 13f;
+    public float dashCooldown = 0.1f;
     public float jumpForce = 10;
     bool isGrounded = true;
+    bool dashing = false;
 
     Transform heldObject;
     GameObject lookedAtObject;
@@ -40,10 +42,9 @@ public class CharacterController : MonoBehaviour {
         rb.MovePosition(rb.position + transform.forward * translation + straffe * transform.right);
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
         {
-            rb.velocity += transform.forward * Input.GetAxis("Vertical") * dashForce;
-            rb.velocity += transform.right * Input.GetAxis("Horizontal") * dashForce;
+            StartCoroutine(DashTimer());
         }
 
         //Står playeren på jorden?
@@ -130,6 +131,19 @@ public class CharacterController : MonoBehaviour {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    IEnumerator DashTimer()
+    {
+        dashing = true;
+        Vector3 originalVelocity = rb.velocity;
+        originalVelocity.y = 0;
+        rb.velocity = transform.forward * Input.GetAxis("Vertical") * dashForce;
+        rb.velocity += transform.right * Input.GetAxis("Horizontal") * dashForce;
+        yield return new WaitForSeconds(0.1f);
+        rb.velocity = originalVelocity;
+        yield return new WaitForSeconds(dashCooldown - 0.1f);
+        dashing = false;
     }
 
     void PickupObject(Transform objectToPickup)
