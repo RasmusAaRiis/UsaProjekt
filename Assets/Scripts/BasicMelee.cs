@@ -6,9 +6,7 @@ public class BasicMelee : Weapon
 {
     Animator animator;
     Vector3 originalPosition;
-    bool cooldown = false;
-
-    bool attacking = false;
+    
     public override void Attack()
     {
         if (cooldown)
@@ -16,12 +14,12 @@ public class BasicMelee : Weapon
             return;
         }
 
-        if(!attacking)
+        StartCoroutine(Cooldown());
+
+        if (!attacking)
         {
             attacking = true;
         }
-
-        StartCoroutine(Cooldown());
 
         originalPosition = transform.localPosition;
         animator = transform.parent.GetComponent<Animator>();
@@ -49,21 +47,13 @@ public class BasicMelee : Weapon
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!attacking)
+
+        if (!Damage(collision, false))
         {
             return;
         }
-        Rigidbody rb;
-        if(collision.transform.TryGetComponent<Rigidbody>(out rb))
-        {
-            rb.AddForce(transform.forward * knockback, ForceMode.Impulse);
-        }
-    }
 
-    IEnumerator Cooldown()
-    {
-        cooldown = true;
-        yield return new WaitForSeconds(attackCooldown);
-        cooldown = false;
+        transform.localPosition = originalPosition;
+        i = 0;
     }
 }
