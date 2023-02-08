@@ -12,7 +12,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour {
 
     public float speed = 10.0f;
-    public float sprintSpeed = 13f;
+    public float dashForce = 13f;
     public float jumpForce = 10;
     bool isGrounded = true;
 
@@ -35,9 +35,16 @@ public class CharacterController : MonoBehaviour {
     void Update () {
         #region Basic Controls
         //Basic movements
-        translation = Input.GetAxis("Vertical") * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : speed) * Time.deltaTime;
-        straffe = Input.GetAxis("Horizontal") * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : speed) * Time.deltaTime;
+        translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        straffe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         rb.MovePosition(rb.position + transform.forward * translation + straffe * transform.right);
+
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.velocity += transform.forward * Input.GetAxis("Vertical") * dashForce;
+            rb.velocity += transform.right * Input.GetAxis("Horizontal") * dashForce;
+        }
 
         //Står playeren på jorden?
         //Laver en sphere under spilleren og checker hvis den collider med mere end playeren selv
@@ -56,14 +63,14 @@ public class CharacterController : MonoBehaviour {
         }
         #endregion
 
-        if(heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
+        #region Throwable/weapon logic
+        if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!heldObject.CompareTag("Weapon"))
+            Weapon weapon_m;
+            if(heldObject.TryGetComponent<Weapon>(out weapon_m))
             {
-                return;
+                weapon_m.Attack();
             }
-
-            heldObject.GetComponent<Weapon>().Attack();
         }
 
         //Kast throwable item
@@ -116,6 +123,7 @@ public class CharacterController : MonoBehaviour {
             if(lookedAtObject) { SetObjectOutline(0); }
             lookedAtObject = null;
         }
+        #endregion
 
         //Lav om på et tidspunkt btw
         if (Input.GetKeyDown(KeyCode.Escape)) {
