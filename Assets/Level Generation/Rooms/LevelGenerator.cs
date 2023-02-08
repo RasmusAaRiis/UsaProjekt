@@ -5,7 +5,8 @@ public class LevelGenerator : MonoBehaviour
 {
     public int maxLevelLength;
     public GameObject[] rooms;
-    public List<RoomScript> currentRooms;
+    public List<GameObject> currentRooms;
+
 
     bool spawnUp = true;
     bool lastSpawnUp = true;
@@ -21,7 +22,7 @@ public class LevelGenerator : MonoBehaviour
     {
         GameObject elevatorRoomObject = Instantiate(rooms[0], Vector3.zero, Quaternion.identity);
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
-        currentRooms.Add(elevatorRoomScript);
+        currentRooms.Add(elevatorRoomObject);
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
@@ -30,16 +31,13 @@ public class LevelGenerator : MonoBehaviour
         Vector3 moveAmount = new Vector3(0, 0, elevatorRoomScript.height / 2);
         moveAmount += new Vector3(0, 0, firstRoomScript.height / 2);
         firstRoomScript.transform.position += moveAmount;
-        currentRooms.Add(elevatorRoomScript);
+        currentRooms.Add(firstRoomObject);
 
         lastRoomObject = firstRoomObject;
         lastRoomScript = firstRoomScript;
 
         SpawnRoom();
     }
-
-    GameObject newRoomObject;
-    RoomScript newRoomScript;
 
     void SpawnRoom()
     {
@@ -57,24 +55,40 @@ public class LevelGenerator : MonoBehaviour
                 SpawnRoom();
                 return;
             }
-            currentRooms.Add(finalRoomScript);
-
-            RemoveExcessDoors();
-
+            currentRooms.Add(finalRoomObject);
             return;
-        }
-
-        if (newRoomScript)
-        {
-            newRoomScript.lastSpawnUpValue = lastSpawnUp;
-            newRoomScript.spawnUpValue = spawnUp;
         }
 
         lastSpawnUp = spawnUp;
         spawnUp = (Random.value > 0.5f);
 
-        newRoomObject = rooms[Random.Range(2, rooms.Length)];
-        newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
+        GameObject newRoomObject = rooms[Random.Range(2, rooms.Length)];
+        RoomScript newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
+
+        if (lastRoomScript.westDoor && lastRoomScript.eastDoor && spawnUp && lastSpawnUp)
+        {
+            lastRoomScript.westDoor.DestroyDoor();
+            lastRoomScript.eastDoor.DestroyDoor();
+        }
+        else if (lastRoomScript.westDoor && lastRoomScript.northDoor && spawnUp && !lastSpawnUp)
+        {
+            lastRoomScript.northDoor.DestroyDoor();
+            lastRoomScript.westDoor.DestroyDoor();
+        }
+        else if (lastRoomScript.southDoor && lastRoomScript.eastDoor && !spawnUp && lastSpawnUp)
+        {
+            lastRoomScript.southDoor.DestroyDoor();
+            lastRoomScript.eastDoor.DestroyDoor();
+        }
+        else if (lastRoomScript.northDoor && lastRoomScript.southDoor && !spawnUp && !lastSpawnUp)
+        {
+            lastRoomScript.northDoor.DestroyDoor();
+            lastRoomScript.southDoor.DestroyDoor();
+        }
+        else
+        {
+            Debug.Log("ERROR");
+        }
 
         if (spawnUp)
         {
@@ -98,61 +112,9 @@ public class LevelGenerator : MonoBehaviour
             return;
         }
 
-        currentRooms.Add(lastRoomScript);
+        currentRooms.Add(lastRoomObject);
         lastRoomObject = newRoomObject;
         lastRoomScript = newRoomScript;
-
         SpawnRoom();
-    }
-
-    void RemoveExcessDoors()
-    {
-        for (int i = 1; i < currentRooms.Count - 1; i++)
-        {
-            if (currentRooms[i + 1].lastSpawnUpValue && currentRooms[i + 1].spawnUpValue)
-            {
-                if (currentRooms[i].eastDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].eastDoor);
-                }
-                if (currentRooms[i].westDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].westDoor);
-                }
-            }
-            else if (!currentRooms[i + 1].lastSpawnUpValue && currentRooms[i + 1].spawnUpValue)
-            {
-                if (currentRooms[i].eastDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].eastDoor);
-                }
-                if (currentRooms[i].southDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].southDoor);
-                }
-            }
-            else if (currentRooms[i + 1].lastSpawnUpValue && !currentRooms[i + 1].spawnUpValue)
-            {
-                if (currentRooms[i].northDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].northDoor);
-                }
-                if (currentRooms[i].westDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].westDoor);
-                }
-            }
-            else if (!currentRooms[i + 1].lastSpawnUpValue && !currentRooms[i + 1].spawnUpValue)
-            {
-                if (currentRooms[i].northDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].northDoor);
-                }
-                if (currentRooms[i].southDoor)
-                {
-                    currentRooms[i].DestroyDoor(currentRooms[i].southDoor);
-                }
-            }
-        }
     }
 }

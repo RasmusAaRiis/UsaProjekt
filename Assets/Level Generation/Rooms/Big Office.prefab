@@ -1535,8 +1535,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  lastSpawnUpValue: 0
-  spawnUpValue: 0
   northDoor: {fileID: 0}
   southDoor: {fileID: 0}
   eastDoor: {fileID: 0}
@@ -4237,7 +4235,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
-      value: South Door
+      value: North Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4250,23 +4248,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
   m_PrefabInstance: {fileID: 8240123198489162313}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9123067671060664088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
-  m_PrefabInstance: {fileID: 8240123198489162313}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9014041865800979629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9123067671060664088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb29f98ae4edb044be9d5b4ed3c8a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8240123198489980938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7500,7 +7481,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
-      value: West Door
+      value: East Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7513,23 +7494,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
   m_PrefabInstance: {fileID: 8240123199037109739}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9123067670667905210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
-  m_PrefabInstance: {fileID: 8240123199037109739}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2968292404773532608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9123067670667905210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb29f98ae4edb044be9d5b4ed3c8a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8240123199038688953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7785,7 +7749,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
-      value: North Door
+      value: South Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7798,23 +7762,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
   m_PrefabInstance: {fileID: 8240123199087742641}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9123067670719738848 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
-  m_PrefabInstance: {fileID: 8240123199087742641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4987432731637766508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9123067670719738848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb29f98ae4edb044be9d5b4ed3c8a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8240123199103392464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8862,7 +8809,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
-      value: East Door
+      value: West Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8875,23 +8822,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
   m_PrefabInstance: {fileID: 8240123199209963136}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9123067669767013329 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
-  m_PrefabInstance: {fileID: 8240123199209963136}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6529549473415863072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9123067669767013329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb29f98ae4edb044be9d5b4ed3c8a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8240123199214461800
 PrefabInstance:
   m_ObjectHideFlags: 0
