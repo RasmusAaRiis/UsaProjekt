@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public enum Direction
 {
@@ -17,4 +18,13 @@ public class Door : MonoBehaviour
     // ...
     // ...
     // ...
+
+    public void DestroyDoor()
+    {
+        Object wall = Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Models/OfficeWall.fbx", typeof(Object)), transform.position, transform.rotation);
+        GameObject wallGameObject = (GameObject)wall;
+        wallGameObject.transform.SetParent(transform.parent);
+
+        Destroy(gameObject);
+    }
 }
