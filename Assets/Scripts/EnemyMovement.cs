@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
     [SerializeField] private float targetLookOffset;
-    [SerializeField] private Vector2 jumpCooldown;
+    [SerializeField] private Vector2 jumpCooldown = new Vector2(0.8f, 1f);
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;

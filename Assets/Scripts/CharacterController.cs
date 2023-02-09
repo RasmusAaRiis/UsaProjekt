@@ -161,7 +161,7 @@ public class CharacterController : MonoBehaviour {
         EnemyMovement em;
         if(collision.transform.TryGetComponent<EnemyMovement>(out em))
         {
-            if (!canTakeDamage)
+            if (!canTakeDamage || em.health <= 0)
             {
                 return;
             }
