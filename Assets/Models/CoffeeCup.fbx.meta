@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/CoffeeCup.fbx.meta
 guid: 138d326714ee8d94d8c41ea1eff82ec3
+========
+guid: 1edaed43fb42b0e4ea48850d62f867d8
+>>>>>>>> 068fa026afdff1f5d88a583406f55b0dbda4630d:Assets/Models/Can.fbx.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -32,7 +36,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

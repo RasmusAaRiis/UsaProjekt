@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 30d2cc79b936a6b4aa5e45a5b5bf0f00
+<<<<<<<< HEAD:Assets/Models/CoffeeCup.fbx.meta
+guid: e63be78dc3a30d047a91770de9e210f5
+========
+guid: 1edaed43fb42b0e4ea48850d62f867d8
+>>>>>>>> 068fa026afdff1f5d88a583406f55b0dbda4630d:Assets/Models/Can.fbx.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
