@@ -14,9 +14,27 @@ public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool attacking = false;
 
+    private void Start()
+    {
+        transform.tag = "Throwable";
+    }
+
     virtual public void Attack()
     {
 
+    }
+
+    public void Throw()
+    {
+        attacking = true;
+    }
+
+    public virtual void OnCollisionEnter(Collision collision)
+    {
+        if(!attacking)
+        {
+            return;
+        }
     }
 
     public bool Damage(Collision collision, bool ceiling)
