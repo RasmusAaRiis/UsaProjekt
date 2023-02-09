@@ -564,6 +564,7 @@ MonoBehaviour:
   dashForce: 20
   dashCooldown: 1
   jumpForce: 6
+  throwForce: 1
   rb: {fileID: 3742513071235349056}
   Hand: {fileID: 534402982}
 --- !u!54 &3742513071235349056
