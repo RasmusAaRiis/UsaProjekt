@@ -4,10 +4,12 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] GameObject doorPrefab;
 
     public int maxLevelLength;
     public GameObject[] rooms;
     public List<GameObject> currentRooms;
+    public List<GameObject> doors;
 
 
     bool spawnUp = true;
@@ -112,6 +114,14 @@ public class LevelGenerator : MonoBehaviour
         SpawnRoom();
     }
 
+    void SpawnDoor(Transform doorScript)
+    {
+        Vector3 rot = doorScript.rotation.eulerAngles + doorPrefab.transform.rotation.eulerAngles;
+
+        GameObject newDoor = Instantiate(doorPrefab, doorScript.position, Quaternion.Euler(rot));
+        doors.Add(newDoor);
+    }
+
     void RemoveExcessDoors()
     {
         for (int i = 2; i < currentRooms.Count - 1; i++)
@@ -120,6 +130,11 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().southDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().southDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().eastDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().eastDoor);
@@ -131,6 +146,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().southDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().southDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().northDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().northDoor);
@@ -142,6 +162,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().westDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);
@@ -153,6 +178,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().westDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);

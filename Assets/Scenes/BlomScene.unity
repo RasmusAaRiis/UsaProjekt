@@ -487,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+  doorPrefab: {fileID: 200305001620900287, guid: 7a487b74334cdfe4e88fb920024233b5, type: 3}
   maxLevelLength: 25
   rooms:
   - {fileID: 899355537060424665, guid: 770fcc03360715949a40800705a263ec, type: 3}
@@ -496,3 +497,4 @@ MonoBehaviour:
   - {fileID: 5950456558371173657, guid: 100b8d9a1d61beb4ba918d8b2c476b75, type: 3}
   - {fileID: 8641902567909072546, guid: 961ebeffa3690db498b039f26e31ab70, type: 3}
   currentRooms: []
+  doors: []
