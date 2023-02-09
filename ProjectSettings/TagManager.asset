@@ -8,6 +8,7 @@ TagManager:
   - Throwable
   - Weapon
   - Door
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
