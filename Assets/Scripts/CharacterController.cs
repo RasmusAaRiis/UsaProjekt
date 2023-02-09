@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CharacterController : MonoBehaviour {
 
@@ -18,8 +19,10 @@ public class CharacterController : MonoBehaviour {
     public float jumpForce = 10;
     bool isGrounded = true;
     bool dashing = false;
+    bool canTakeDamage = true;
 
     [Header("Stats")]
+    public int Health = 5;
     public float throwForce = 1f;
 
     Transform heldObject;
@@ -27,6 +30,7 @@ public class CharacterController : MonoBehaviour {
     Outline selectionOutline = new Outline();
 
     [Space]
+    public TextMeshProUGUI healthText;
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -69,6 +73,8 @@ public class CharacterController : MonoBehaviour {
         }
         #endregion
 
+        healthText.text = Health.ToString();
+
         #region Throwable/weapon logic
         if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -88,8 +94,7 @@ public class CharacterController : MonoBehaviour {
 
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
-        if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4) &&
-           heldObject == null)
+        if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
         {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
@@ -105,10 +110,15 @@ public class CharacterController : MonoBehaviour {
 
             lookedAtObject = hit.transform.gameObject;
 
-            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Door"))
+            if (!lookedAtObject.CompareTag("Throwable") && !lookedAtObject.CompareTag("Door"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
+                return;
+            }
+
+            if(lookedAtObject.transform == heldObject)
+            {
                 return;
             }
 
@@ -144,6 +154,29 @@ public class CharacterController : MonoBehaviour {
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        EnemyMovement em;
+        if(collision.transform.TryGetComponent<EnemyMovement>(out em))
+        {
+            if (!canTakeDamage)
+            {
+                return;
+            }
+            
+            Health--;
+            Health = Mathf.Max(Health, 0);
+            StartCoroutine(TakeDamageCooldown());
+        }
+    }
+
+    IEnumerator TakeDamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(1);
+        canTakeDamage = true;
     }
 
     IEnumerator DashTimer()
