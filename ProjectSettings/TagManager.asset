@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Throwable
   - Weapon
+  - Door
   layers:
   - Default
   - TransparentFX

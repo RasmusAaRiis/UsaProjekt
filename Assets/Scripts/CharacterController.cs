@@ -94,9 +94,10 @@ public class CharacterController : MonoBehaviour {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
             //Bare ikke pild
+            //Jeg pillede💀
             if (lookedAtObject != hit.transform.gameObject)
             {
-                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Weapon"))
+                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Door"))
                 {
                     SetObjectOutline(0);
                 }
@@ -104,7 +105,7 @@ public class CharacterController : MonoBehaviour {
 
             lookedAtObject = hit.transform.gameObject;
 
-            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Weapon"))
+            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Door"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
@@ -114,14 +115,17 @@ public class CharacterController : MonoBehaviour {
             //Objektet spilleren kigger på ER throwable eller weapon
             SetObjectOutline(lookedAtObject, 10);
 
-            if (!Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Throwable"))
             {
-                return;
+                //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
+                //Denne kode får spilleren til at samle objektet op
+                PickupObject(hit.transform);
             }
 
-            //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
-            //Denne kode får spilleren til at samle objektet op
-            PickupObject(hit.transform);
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
+            {
+                lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+            }
 
         } else
         {
