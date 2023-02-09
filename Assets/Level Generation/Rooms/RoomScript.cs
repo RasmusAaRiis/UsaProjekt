@@ -54,15 +54,6 @@ public class RoomScript : MonoBehaviour
         return bounds.extents * 2;
     }
 
-    public Bounds GetBoundsRaw(GameObject obj)
-    {
-        var renderers = obj.GetComponentsInChildren<Renderer>();
-        Bounds bounds = renderers[0].bounds;
-        for (var i = 1; i < renderers.Length; ++i)
-            bounds.Encapsulate(renderers[i].bounds);
-        return bounds;
-    }
-
     public void DestroyDoor(Door doorToDestroy)
     {
         Object wall = Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Models/OfficeWall.fbx", typeof(Object)), doorToDestroy.transform.position, doorToDestroy.transform.rotation);
