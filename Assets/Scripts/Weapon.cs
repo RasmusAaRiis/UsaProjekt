@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour
     public bool cooldown = false;
     [HideInInspector]
     public bool attacking = false;
+    [HideInInspector]
+    public bool throwing = false;
 
     private void Start()
     {
@@ -24,30 +26,35 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void Throw()
+    float throwForce = 1;
+    public void Throw(float throwForce)
     {
-        attacking = true;
+        this.throwForce = throwForce;
+        throwing = true;
     }
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        if(!attacking)
+        if(!throwing)
         {
+            throwForce = 1;
             return;
         }
+
+        Damage(collision, false);
+        throwForce = 1;
+        throwing = false;
     }
 
     public bool Damage(Collision collision, bool ceiling)
     {
-        if (!attacking)
-        {
-            return false;
-        }
-
         Rigidbody rb;
         if (collision.transform.TryGetComponent<Rigidbody>(out rb))
         {
-            rb.AddForce(transform.forward * knockback, ForceMode.Impulse);
+            rb.AddForce(transform.forward * knockback * throwForce, ForceMode.Impulse);
+        } else
+        {
+            return false;
         }
 
         EnemyMovement em;

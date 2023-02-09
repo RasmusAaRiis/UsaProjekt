@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
 
+    [Header("Basics")]
     public float speed = 10.0f;
     public float dashForce = 13f;
     public float dashCooldown = 0.1f;
@@ -18,10 +19,14 @@ public class CharacterController : MonoBehaviour {
     bool isGrounded = true;
     bool dashing = false;
 
+    [Header("Stats")]
+    public float throwForce = 1f;
+
     Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
+    [Space]
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -167,18 +172,18 @@ public class CharacterController : MonoBehaviour {
             return;
         }
 
-        heldObject.position = Hand.position;
-        heldObject.parent = null;
-        heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
-        heldObject.GetComponent<Collider>().enabled = true;
-        heldObject = null;
-
         Weapon weapon;
         if (heldObject.TryGetComponent<Weapon>(out weapon))
         {
-            weapon.Throw();
+            weapon.Throw(throwForce);
         }
+
+        heldObject.position = Hand.position;
+        heldObject.parent = null;
+        heldObject.GetComponent<Rigidbody>().isKinematic = false;
+        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
+        heldObject.GetComponent<Collider>().enabled = true;
+        heldObject = null;
     }
 
     void SetObjectOutline(GameObject Object, float width)
