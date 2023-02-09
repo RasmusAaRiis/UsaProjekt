@@ -21,7 +21,7 @@ public class Stapler : Weapon
         Animator animator = transform.parent.GetComponent<Animator>();
         animator.SetTrigger("Shoot");
 
-        GameObject proj_m = Instantiate(Projectile, transform.position + transform.forward * 0.3f, Quaternion.LookRotation(transform.forward));
+        GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.2f) + (-transform.right * 0.2f) + (transform.up * 0.2f), Quaternion.LookRotation(transform.forward));
         proj_m.GetComponent<Rigidbody>().velocity = transform.forward * attackSpeed;
         Projectile proj = proj_m.GetComponent<Projectile>();
         proj.origin = this;

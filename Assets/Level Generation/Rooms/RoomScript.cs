@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class RoomScript : MonoBehaviour
 {
     [HideInInspector] public float width; // The middle is centered, so xWidth 12 = boundry from -6 to 6
     [HideInInspector] public float height; // The same as above
 
-    public bool lastSpawnUpValue;
-    public bool spawnUpValue;
+    [HideInInspector] public bool lastSpawnUpValue;
+    [HideInInspector] public bool spawnUpValue;
+
+    [HideInInspector] public Transform doorParent;
 
     [HideInInspector] public Door northDoor;
     [HideInInspector] public Door southDoor;
@@ -17,21 +20,23 @@ public class RoomScript : MonoBehaviour
 
     private void Awake()
     {
-        if (GameObject.Find("North Door"))
+        doorParent = transform.Find("Doors");
+
+        if (doorParent.transform.Find("North Door"))
         {
-            northDoor = GameObject.Find("North Door").GetComponent<Door>();
+            northDoor = doorParent.transform.Find("North Door").GetComponent<Door>();
         }
-        if (GameObject.Find("South Door"))
+        if (doorParent.transform.Find("South Door"))
         {
-            southDoor = GameObject.Find("South Door").GetComponent<Door>();
+            southDoor = doorParent.transform.Find("South Door").GetComponent<Door>();
         }
-        if (GameObject.Find("East Door"))
+        if (doorParent.transform.Find("East Door"))
         {
-            eastDoor = GameObject.Find("East Door").GetComponent<Door>();
+            eastDoor = doorParent.transform.Find("East Door").GetComponent<Door>();
         }
-        if (GameObject.Find("West Door"))
+        if (doorParent.transform.Find("West Door"))
         {
-            westDoor = GameObject.Find("West Door").GetComponent<Door>();
+            westDoor = doorParent.transform.Find("West Door").GetComponent<Door>();
         }   
 
         Vector3 bound = GetBounds(gameObject);
@@ -56,5 +61,14 @@ public class RoomScript : MonoBehaviour
         for (var i = 1; i < renderers.Length; ++i)
             bounds.Encapsulate(renderers[i].bounds);
         return bounds;
+    }
+
+    public void DestroyDoor(Door doorToDestroy)
+    {
+        Object wall = Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Models/OfficeWall.fbx", typeof(Object)), doorToDestroy.transform.position, doorToDestroy.transform.rotation);
+        GameObject wallGameObject = (GameObject)wall;
+        wallGameObject.transform.SetParent(doorToDestroy.transform.parent);
+
+        Destroy(doorToDestroy.gameObject);
     }
 }

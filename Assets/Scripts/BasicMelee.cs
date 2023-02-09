@@ -45,8 +45,14 @@ public class BasicMelee : Weapon
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(Collision collision)
     {
+        base.OnCollisionEnter(collision);
+
+        if (!attacking)
+        {
+            return;
+        }
 
         if (!Damage(collision, false))
         {

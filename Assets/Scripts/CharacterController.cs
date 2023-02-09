@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
 
+    [Header("Basics")]
     public float speed = 10.0f;
     public float dashForce = 13f;
     public float dashCooldown = 0.1f;
@@ -18,10 +19,14 @@ public class CharacterController : MonoBehaviour {
     bool isGrounded = true;
     bool dashing = false;
 
+    [Header("Stats")]
+    public float throwForce = 1f;
+
     Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
+    [Space]
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -89,9 +94,10 @@ public class CharacterController : MonoBehaviour {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
             //Bare ikke pild
+            //Jeg pillede💀
             if (lookedAtObject != hit.transform.gameObject)
             {
-                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Weapon"))
+                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Door"))
                 {
                     SetObjectOutline(0);
                 }
@@ -99,7 +105,7 @@ public class CharacterController : MonoBehaviour {
 
             lookedAtObject = hit.transform.gameObject;
 
-            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Weapon"))
+            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Door"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
@@ -109,14 +115,17 @@ public class CharacterController : MonoBehaviour {
             //Objektet spilleren kigger på ER throwable eller weapon
             SetObjectOutline(lookedAtObject, 10);
 
-            if (!Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Throwable"))
             {
-                return;
+                //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
+                //Denne kode får spilleren til at samle objektet op
+                PickupObject(hit.transform);
             }
 
-            //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
-            //Denne kode får spilleren til at samle objektet op
-            PickupObject(hit.transform);
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
+            {
+                lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+            }
 
         } else
         {
@@ -127,9 +136,13 @@ public class CharacterController : MonoBehaviour {
         #endregion
 
         //Lav om på et tidspunkt btw
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked) {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -153,21 +166,26 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        //heldObject.GetComponent<Collider>().enabled = false;
     }
 
     void ThrowObject()
     {
-        if(heldObject == null)
+        if (heldObject == null)
         {
             Debug.LogWarning("Cant throw object, since object is null");
             return;
         }
 
+        Weapon weapon;
+        if (heldObject.TryGetComponent<Weapon>(out weapon))
+        {
+            weapon.Throw(throwForce);
+        }
+
         heldObject.position = Hand.position;
         heldObject.parent = null;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
+        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
         heldObject.GetComponent<Collider>().enabled = true;
         heldObject = null;
     }
