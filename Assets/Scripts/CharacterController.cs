@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
 
+    [Header("Basics")]
     public float speed = 10.0f;
     public float dashForce = 13f;
     public float dashCooldown = 0.1f;
@@ -18,10 +19,14 @@ public class CharacterController : MonoBehaviour {
     bool isGrounded = true;
     bool dashing = false;
 
+    [Header("Stats")]
+    public float throwForce = 1f;
+
     Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
+    [Space]
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -127,9 +132,13 @@ public class CharacterController : MonoBehaviour {
         #endregion
 
         //Lav om på et tidspunkt btw
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked) {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -153,21 +162,26 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        //heldObject.GetComponent<Collider>().enabled = false;
     }
 
     void ThrowObject()
     {
-        if(heldObject == null)
+        if (heldObject == null)
         {
             Debug.LogWarning("Cant throw object, since object is null");
             return;
         }
 
+        Weapon weapon;
+        if (heldObject.TryGetComponent<Weapon>(out weapon))
+        {
+            weapon.Throw(throwForce);
+        }
+
         heldObject.position = Hand.position;
         heldObject.parent = null;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
+        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
         heldObject.GetComponent<Collider>().enabled = true;
         heldObject = null;
     }

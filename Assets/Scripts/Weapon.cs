@@ -13,23 +13,48 @@ public class Weapon : MonoBehaviour
     public bool cooldown = false;
     [HideInInspector]
     public bool attacking = false;
+    [HideInInspector]
+    public bool throwing = false;
+
+    private void Start()
+    {
+        transform.tag = "Throwable";
+    }
 
     virtual public void Attack()
     {
 
     }
 
-    public bool Damage(Collision collision, bool ceiling)
+    float throwForce = 1;
+    public void Throw(float throwForce)
     {
-        if (!attacking)
+        this.throwForce = throwForce;
+        throwing = true;
+    }
+
+    public virtual void OnCollisionEnter(Collision collision)
+    {
+        if(!throwing)
         {
-            return false;
+            throwForce = 1;
+            return;
         }
 
+        Damage(collision, false);
+        throwForce = 1;
+        throwing = false;
+    }
+
+    public bool Damage(Collision collision, bool ceiling)
+    {
         Rigidbody rb;
         if (collision.transform.TryGetComponent<Rigidbody>(out rb))
         {
-            rb.AddForce(transform.forward * knockback, ForceMode.Impulse);
+            rb.AddForce(transform.forward * knockback * throwForce, ForceMode.Impulse);
+        } else
+        {
+            return false;
         }
 
         EnemyMovement em;
