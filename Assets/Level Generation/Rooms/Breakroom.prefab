@@ -64,8 +64,6 @@ Transform:
   - {fileID: 258222210388739875}
   - {fileID: 258222209299243974}
   - {fileID: 258222208725945521}
-  - {fileID: 4202168051907470444}
-  - {fileID: 992356799135647586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -929,7 +927,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 6b3c480f24ad4954b88d05f726e45356, type: 2}
+=======
+  - {fileID: 2100000, guid: b9ce8dac6a2109d48b543101068683fc, type: 2}
+>>>>>>> parent of aac15239 (Breakroom setup)
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1357,6 +1359,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6969022110242950151, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+<<<<<<< HEAD
 --- !u!1001 &742872100105216137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1419,6 +1422,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30d2cc79b936a6b4aa5e45a5b5bf0f00, type: 3}
   m_PrefabInstance: {fileID: 742872100105216137}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of aac15239 (Breakroom setup)
 --- !u!1001 &3551880069333731536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1506,65 +1511,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb29f98ae4edb044be9d5b4ed3c8a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4457333179787625351
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 258222209063706989}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.14
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.52
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-      propertyPath: m_Name
-      value: VendingMashine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
---- !u!4 &4202168051907470444 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: adc9a222cb236464c851560f810ddcb5, type: 3}
-  m_PrefabInstance: {fileID: 4457333179787625351}
-  m_PrefabAsset: {fileID: 0}
