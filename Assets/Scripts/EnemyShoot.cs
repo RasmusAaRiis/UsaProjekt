@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,18 +19,21 @@ public class EnemyShoot : MonoBehaviour
 
     [SerializeField] private float shootDistance;
 
+    [SerializeField] private float shootForce = 100;
+
     [SerializeField] private LayerMask raycastMask;
 
+    [SerializeField] private float shootDifference = 30;
+    
+    [SerializeField] private float timer;
+    [SerializeField] private float timerValue;
+    
     private Transform target;
-
-    private float timer;
-    private float timerValue;
 
     private void Update()
     {
         target = this.GetComponent<EnemyMovement>().target;
-
-        Debug.DrawRay(this.transform.position, target.position - this.transform.position);
+        
         if (Physics.Raycast(this.transform.position, target.position - this.transform.position, out var hit, shootDistance, raycastMask))
         {
 
@@ -37,52 +41,57 @@ public class EnemyShoot : MonoBehaviour
             {
                 var forward = transform.forward;
                 
-                Vector3 differensPositive = new Vector3(Quaternion.LookRotation(forward).x,
-                    Quaternion.LookRotation(forward).eulerAngles.y + 30,
+                Vector3 differencePositive = new Vector3(Quaternion.LookRotation(forward).x,
+                    Quaternion.LookRotation(forward).eulerAngles.y + shootDifference,
                     Quaternion.LookRotation(forward).z);
                 
-                Vector3 differensNegative = new Vector3(Quaternion.LookRotation(forward).x,
-                    Quaternion.LookRotation(forward).eulerAngles.y - 30,
+                Vector3 differenceNegative = new Vector3(Quaternion.LookRotation(forward).x,
+                    Quaternion.LookRotation(forward).eulerAngles.y - shootDifference,
                     Quaternion.LookRotation(forward).z);
                 
-                if (Quaternion.LookRotation(target.position - this.transform.position).eulerAngles.y >= Quaternion.Euler(differensPositive).eulerAngles.y 
-                    || Quaternion.LookRotation(target.position - this.transform.position).eulerAngles.y <= Quaternion.Euler(differensNegative).eulerAngles.y)
+                if (Quaternion.LookRotation(target.position - this.transform.position).eulerAngles.y >= Quaternion.Euler(differencePositive).eulerAngles.y 
+                    || Quaternion.LookRotation(target.position - this.transform.position).eulerAngles.y <= Quaternion.Euler(differenceNegative).eulerAngles.y)
                 {
                     shootTarget = false;
+                    spawnTransform.localEulerAngles = Vector3.zero;
                 }
                 else
                 {
                     shootTarget = true;
+                    spawnTransform.LookAt(target);
                 }
             }
             else
             {
-                shootTarget = true;
+                shootTarget = false;
+                spawnTransform.localEulerAngles = Vector3.zero;
             }
         }
         else
         {
-            shootTarget = true;
+            shootTarget = false;
+            spawnTransform.localEulerAngles = Vector3.zero;
         }
         
         
-        // if (shootTarget)
-        // {
-        //     timerValue += Time.deltaTime;
-        //
-        //     if (timer == 0)
-        //     {
-        //         timer = Random.Range(spawnCooldown.x, spawnCooldown.y);
-        //     }
-        //
-        //     if (timerValue >= timer)
-        //     {
-        //         GameObject spawn = Instantiate(spawnableObject, spawnTransform);
-        //         spawn.GetComponent<EnemyBullet>().target = target;
-        //         
-        //         timer = 0;
-        //         timerValue = 0;
-        //     }
-        // }
+        if (shootTarget)
+        {
+            timerValue += Time.deltaTime;
+        
+            if (timer == 0)
+            {
+                timer = Random.Range(spawnCooldown.x, spawnCooldown.y);
+            }
+        
+            if (timerValue >= timer)
+            {
+                GameObject spawn = Instantiate(spawnableObject, spawnTransform.position, spawnTransform.rotation);
+                spawn.GetComponent<EnemyBullet>().target = target;
+                spawn.GetComponent<EnemyBullet>().forceStrength = shootForce;
+                
+                timer = 0;
+                timerValue = 0;
+            }
+        }
     }
 }

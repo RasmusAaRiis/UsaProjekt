@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692880460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.9, z: 0.662}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0.747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,10 +224,14 @@ MonoBehaviour:
   spawnTransform: {fileID: 692880461}
   spawnCooldown: {x: 1.5, y: 2}
   shootTarget: 0
-  shootDistance: 5
+  shootDistance: 10
+  shootForce: 100
   raycastMask:
     serializedVersion: 2
     m_Bits: 72
+  shootDifference: 50
+  timer: 0
+  timerValue: 0
 --- !u!1 &4749881497794611548
 GameObject:
   m_ObjectHideFlags: 0

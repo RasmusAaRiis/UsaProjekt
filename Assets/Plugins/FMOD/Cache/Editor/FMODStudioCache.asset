@@ -114,6 +114,26 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4994030221278253634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/GloopProject/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638114595921543021
+  FileSizes:
+  - Name: 
+    Value: 866
+  Exists: 1
 --- !u!114 &-4522346275665070301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,16 +372,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 4073763807894619285}
-  - {fileID: -2661023203160919305}
+  - {fileID: -4994030221278253634}
+  - {fileID: 3026190127094837415}
   EditorEvents:
-  - {fileID: 3046940200613036342}
+  - {fileID: 7379863588488258976}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2661023203160919305}
+  - {fileID: 3026190127094837415}
   StringsBanks:
-  - {fileID: 4073763807894619285}
-  cacheTime: 638115510831237016
+  - {fileID: -4994030221278253634}
+  cacheTime: 638114595921543021
   cacheVersion: 131601
 --- !u!114 &989051467615835887
 MonoBehaviour:
@@ -402,6 +422,30 @@ MonoBehaviour:
     data1: 3059310952
     data2: 3799811149
   Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &1179482349044466874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Main Music Loop/Situation
+  m_EditorClassIdentifier: 
+  Name: Situation
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3842115064
+    data2: 2759025150
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -458,6 +502,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 91500
+--- !u!114 &3026190127094837415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/GloopProject/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638114595921413038
+  FileSizes: []
+  Exists: 1
 --- !u!114 &3046940200613036342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +568,30 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 866
+  Exists: 1
+--- !u!114 &3169540601351436288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Main Music Loop/Elevator
+  m_EditorClassIdentifier: 
+  Name: Elevator
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3059310952
+    data2: 3799811149
+  Type: 1
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &4023924239259776557
 MonoBehaviour:
@@ -662,6 +748,35 @@ MonoBehaviour:
   Parameters:
   - {fileID: -6657387803167457609}
   - {fileID: -3836140277440593345}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 91500
+--- !u!114 &7379863588488258976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Main Music Loop
+  m_EditorClassIdentifier: 
+  Path: event:/Main Music Loop
+  Guid:
+    Data1: 1554867839
+    Data2: 1117461724
+    Data3: 1559598510
+    Data4: 863353206
+  Banks:
+  - {fileID: 3026190127094837415}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1179482349044466874}
+  - {fileID: 3169540601351436288}
   MinDistance: 1
   MaxDistance: 20
   Length: 91500
