@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 3742513071235349060}
   - component: {fileID: 3742513071235349063}
   - component: {fileID: 3742513071235349056}
+  - component: {fileID: 664881985172637407}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -644,6 +645,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &664881985172637407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742513071235349062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1554867839
+      Data2: 1117461724
+      Data3: 1559598510
+      Data4: 863353206
+    Path: event:/MainLoop
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: Situation
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3810598012381186947
 GameObject:
   m_ObjectHideFlags: 0
