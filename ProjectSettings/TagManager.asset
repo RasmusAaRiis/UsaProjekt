@@ -9,6 +9,8 @@ TagManager:
   - Weapon
   - Door
   - SpawnPoint
+  - Can
+  - Vending
   layers:
   - Default
   - TransparentFX
