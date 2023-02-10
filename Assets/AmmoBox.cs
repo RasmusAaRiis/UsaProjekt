@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AmmoBox : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Stapler stapler;
-        if (collision.transform.GetComponentInChildren<Stapler>())
+        if (other.transform.GetComponentInChildren<Stapler>())
         {
-            stapler = collision.transform.GetComponentInChildren<Stapler>();
+            stapler = other.transform.GetComponentInChildren<Stapler>();
             stapler.ammo += 10;
             Destroy(gameObject);
         }
