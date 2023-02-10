@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CharacterController : MonoBehaviour {
@@ -40,7 +41,7 @@ public class CharacterController : MonoBehaviour {
     void Start () {
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;		
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y * 2f, Physics.gravity.z);
+        Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
 	}
 
     void Update () {
@@ -158,18 +159,34 @@ public class CharacterController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        EnemyMovement em;
-        if(collision.transform.TryGetComponent<EnemyMovement>(out em))
+        EnemyMovement em = null;
+        EnemyBullet eb = null;
+        if (collision.transform.TryGetComponent<EnemyMovement>(out em) || collision.transform.TryGetComponent<EnemyBullet>(out eb))
         {
-            if (!canTakeDamage || em.health <= 0)
+
+            if (em != null && em.health <= 0)
             {
                 return;
             }
-            
+
+            if (!canTakeDamage)
+            {
+                return;
+            }
+
             Health--;
             Health = Mathf.Max(Health, 0);
+            if(Health <= 0)
+            {
+                Die();
+            }
             StartCoroutine(TakeDamageCooldown());
         }
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator TakeDamageCooldown()

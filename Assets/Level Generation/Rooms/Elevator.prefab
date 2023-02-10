@@ -199,10 +199,16 @@ MonoBehaviour:
   lastSpawnUpValue: 0
   spawnUpValue: 0
   doorParent: {fileID: 0}
+  enemySpawnPoints: []
+  currentlyAliveEnemies: []
+  actualDoor: {fileID: 0}
   northDoor: {fileID: 0}
   southDoor: {fileID: 0}
   eastDoor: {fileID: 0}
   westDoor: {fileID: 0}
+  rawBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &899355537393944077
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +339,10 @@ PrefabInstance:
       value: OfficeWall (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -397,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_Name
       value: OfficeWall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -465,6 +479,10 @@ PrefabInstance:
       value: OfficeWall (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -529,6 +547,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_Name
       value: OfficeWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -597,6 +619,10 @@ PrefabInstance:
       value: OfficeWall (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -663,6 +689,10 @@ PrefabInstance:
       value: OfficeWall (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -727,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_Name
       value: OfficeWall (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -882,6 +916,10 @@ PrefabInstance:
       value: OfficeWall (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -946,6 +984,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_Name
       value: OfficeWall (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1014,6 +1056,10 @@ PrefabInstance:
       value: OfficeWall (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1078,6 +1124,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_Name
       value: OfficeWall (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
       propertyPath: m_StaticEditorFlags

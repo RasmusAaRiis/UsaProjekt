@@ -57,9 +57,15 @@ public class Weapon : MonoBehaviour
             return false;
         }
 
-        EnemyMovement em;
+        EnemyMovement em = null;
+
+        if (collision.transform.GetComponentInParent<EnemyMovement>())
+        {
+            em = collision.transform.GetComponentInParent<EnemyMovement>();
+        }
+
         float velocity = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z);
-        if (collision.transform.TryGetComponent<EnemyMovement>(out em))
+        if (em != null || collision.transform.TryGetComponent<EnemyMovement>(out em))
         {
             float appliedDamage = Mathf.RoundToInt(velocity * damage);
             if(ceiling)

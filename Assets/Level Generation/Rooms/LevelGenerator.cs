@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject doorPrefab;
     [SerializeField] GameObject enemyPrefab;
@@ -27,16 +30,18 @@ public class LevelGenerator : MonoBehaviour
 
     void CreateLevel()
     {
-        Instantiate(playerPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
+        player = Instantiate(playerPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
 
         GameObject elevatorRoomObject = Instantiate(rooms[0], Vector3.zero, Quaternion.identity);
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
         currentRooms.Add(elevatorRoomObject);
+        elevatorRoomScript.rawBounds = GetBoundsRaw(elevatorRoomScript.gameObject);
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
         firstRoomScript.transform.position = elevatorRoomScript.transform.position;
 
+        firstRoomScript.rawBounds = GetBoundsRaw(firstRoomScript.gameObject);
         currentActiveRoom = firstRoomScript;
 
         Vector3 moveAmount = new Vector3(0, 0, elevatorRoomScript.height / 2);
@@ -82,22 +87,38 @@ public class LevelGenerator : MonoBehaviour
 
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
 
-            Debug.Log("Level Complete");
             yield return new WaitForSeconds(waitTime);
             while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
             {
-                Debug.Log("LOOP");
                 yield return new WaitForSeconds(waitTime);
+
+                bool intersects = false;
+
+                if (!intersects && GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+                {
+                    intersects = true;
+                    RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
+                }
+
+                for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
+                {
+                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
+                    {
+                        currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
+                    }
+                    else if (intersects)
+                    {
+                        currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
+                    }
+                }
+
                 if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
                 {
-                    Debug.Log("Room complete!");
                     yield return new WaitForSeconds(waitTime);
                     currentActiveRoom.actualDoor.ActivateDoor();
                     currentActiveRoom = currentRooms[currentRooms.IndexOf(currentActiveRoom.gameObject) + 1].GetComponent<RoomScript>();
                 }
             }
-
-            Debug.Log("Congrats! You beat the level.");
 
             yield return new WaitForSeconds(9999999999);
         }
@@ -124,15 +145,11 @@ public class LevelGenerator : MonoBehaviour
         }
         yield return new WaitForSeconds(waitTime);
 
-        Bounds newRoom = GetBoundsRaw(newRoomScript.gameObject);
-        newRoom.Expand(-0.00001f);
+        newRoomScript.rawBounds = GetBoundsRaw(newRoomScript.gameObject);
 
         for (int i = 0; i < currentRooms.Count; i++)
         {
-            Bounds anyRoom = GetBoundsRaw(currentRooms[i].gameObject);
-            anyRoom.Expand(-0.00001f);
-
-            if (newRoom.Intersects(anyRoom))
+            if (newRoomScript.rawBounds.Intersects(currentRooms[i].GetComponent<RoomScript>().rawBounds))
             {
                 Destroy(newRoomScript.gameObject);
                 StartCoroutine("SpawnRoom");
@@ -172,6 +189,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 Transform spawnPosition = currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints[Random.Range(0, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count)];
                 GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
+                newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
                 currentRooms[i].GetComponent<RoomScript>().currentlyAliveEnemies.Add(newEnemy);
             }
         }

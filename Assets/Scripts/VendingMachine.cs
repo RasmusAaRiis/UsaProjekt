@@ -5,6 +5,9 @@ using UnityEngine;
 public class VendingMachine : MonoBehaviour
 {
     public Camera VendingCamera;
+    public GameObject[] Cans = new GameObject[3];
+    public Transform ejectionPoint;
+
     bool usingMachine = false;
 
     // Update is called once per frame
@@ -14,19 +17,31 @@ public class VendingMachine : MonoBehaviour
         {
             if (item.transform.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
             {
-                usingMachine = !usingMachine;
-                if(usingMachine)
-                {
-                    Cursor.lockState = CursorLockMode.None;
-                    Time.timeScale = 0;
-                } else
-                {
-                    Time.timeScale = 1;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
+                changeView();
             }
         }
         
         VendingCamera.enabled = usingMachine;
+    }
+
+    void changeView()
+    {
+        usingMachine = !usingMachine;
+        if (usingMachine)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void Eject(int canIndex)
+    {
+        Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
+        changeView();
     }
 }
