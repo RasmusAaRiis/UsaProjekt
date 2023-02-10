@@ -75,6 +75,9 @@ public class Weapon : MonoBehaviour
             {
                 appliedDamage = Mathf.Max(appliedDamage, damage);
             }
+
+            appliedDamage = Mathf.RoundToInt(appliedDamage);
+
             em.TakeDamage(appliedDamage);
             Debug.Log(appliedDamage);
             attacking = false;

@@ -36,17 +36,20 @@ public class LevelGenerator : MonoBehaviour
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
         currentRooms.Add(elevatorRoomObject);
         elevatorRoomScript.rawBounds = GetBoundsRaw(elevatorRoomScript.gameObject);
+        elevatorRoomScript.rawBounds.Expand(-1f);
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
         firstRoomScript.transform.position = elevatorRoomScript.transform.position;
 
-        firstRoomScript.rawBounds = GetBoundsRaw(firstRoomScript.gameObject);
         currentActiveRoom = firstRoomScript;
 
         Vector3 moveAmount = new Vector3(0, 0, elevatorRoomScript.height / 2);
         moveAmount += new Vector3(0, 0, firstRoomScript.height / 2);
         firstRoomScript.transform.position += moveAmount;
+
+        firstRoomScript.rawBounds = GetBoundsRaw(firstRoomScript.gameObject);
+        firstRoomScript.rawBounds.Expand(-1f);
 
         firstRoomScript.spawnUpValue = true;
 
@@ -77,14 +80,12 @@ public class LevelGenerator : MonoBehaviour
             currentRooms.Add(newRoomScript.gameObject);
             currentRooms.Add(breakRoomObject);
 
-            SetAllDoors();
+            SetActualDoors();
             SpawnDoor(breakRoomScript.southDoor.gameObject);
             RemoveExcessDoors();
             SpawnEnemies();
 
-            doors[0].transform.SetParent(currentRooms[0].GetComponent<RoomScript>().actualDoor.transform);
             doors[doors.Count - 1].transform.SetParent(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor.transform);
-
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
 
             yield return new WaitForSeconds(waitTime);
@@ -94,10 +95,15 @@ public class LevelGenerator : MonoBehaviour
 
                 bool intersects = false;
 
-                if (!intersects && GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+                if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
                 {
+                    Debug.Log("Intersect");
                     intersects = true;
                     RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
                 }
 
                 for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
@@ -146,6 +152,7 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         newRoomScript.rawBounds = GetBoundsRaw(newRoomScript.gameObject);
+        newRoomScript.rawBounds.Expand(-1f);
 
         for (int i = 0; i < currentRooms.Count; i++)
         {
@@ -168,7 +175,6 @@ public class LevelGenerator : MonoBehaviour
         lastRoomScript = newRoomScript;
         StartCoroutine("SpawnRoom");
     }
-
     GameObject SpawnDoor(GameObject door)
     {
         Vector3 rot = door.transform.rotation.eulerAngles + doorPrefab.transform.rotation.eulerAngles;
@@ -195,9 +201,29 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void SetAllDoors()
+    void MoveDoorParents()
     {
+        List<Door> acutalDoors = new List<Door>();
+
+        for (int i = 1; i < currentRooms.Count; i++)
+        {
+            acutalDoors.Add(currentRooms[i].GetComponent<RoomScript>().actualDoor);
+        }
+
         for (int i = 1; i < currentRooms.Count - 1; i++)
+        {
+            currentRooms[i].GetComponent<RoomScript>().actualDoor = acutalDoors[i];
+        }
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
+        }
+    }
+
+    void SetActualDoors()
+    {
+        for (int i = 0; i < currentRooms.Count - 1; i++)
         {
             if (currentRooms[i].GetComponent<RoomScript>() && currentRooms[i].transform.Find("Doors"))
             {
@@ -238,20 +264,23 @@ public class LevelGenerator : MonoBehaviour
 
         currentRooms[0].GetComponent<RoomScript>().actualDoor = currentRooms[1].GetComponent<RoomScript>().southDoor;
         currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor = currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().southDoor;
+        MoveDoorParents();
     }
 
     void RemoveExcessDoors()
-    {
-        for (int i = 1; i < currentRooms.Count - 1; i++)
+    {   
+        for (int i = 0; i < currentRooms.Count - 1; i++)
         {
             if (currentRooms[i].GetComponent<RoomScript>() && currentRooms[i].transform.Find("Doors"))
             {
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
-                    if (doors.Count > i + 1 && currentRooms[i].GetComponent<RoomScript>().southDoor)
+                    if (currentRooms.Count > i + 2 && currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
-                        currentRooms[i].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
-                        doors[i + 1].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
+                        //Debug.Log(i);
+
+                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
+                        //doors[i].transform.SetParent(currentRooms[i - 1].GetComponent<RoomScript>().actualDoor.transform);
                     }
 
                     if (currentRooms[i].GetComponent<RoomScript>().eastDoor)
@@ -267,8 +296,9 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
-                        currentRooms[i].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
-                        doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
+                        //Debug.Log(i);
+                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
+                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
                     }
 
                     if (currentRooms[i].GetComponent<RoomScript>().northDoor)
@@ -284,8 +314,9 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (currentRooms[i].GetComponent<RoomScript>().westDoor)
                     {
-                        currentRooms[i].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
-                        doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
+                        //Debug.Log(i);
+                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
+                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
                     }
 
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
@@ -301,8 +332,9 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (currentRooms[i].GetComponent<RoomScript>().westDoor)
                     {
-                        currentRooms[i].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
-                        doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
+                        //Debug.Log(i);
+                        //currentRooms[i + 2].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
+                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
                     }
 
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
@@ -348,5 +380,17 @@ public class LevelGenerator : MonoBehaviour
         for (var i = 1; i < renderers.Length; ++i)
             bounds.Encapsulate(renderers[i].bounds);
         return bounds;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(GetBoundsRaw(player).center, GetBoundsRaw(player).extents * 2);
+
+        for (int i = 0; i < currentRooms.Count; i++)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireCube(currentRooms[i].GetComponent<RoomScript>().rawBounds.center, currentRooms[i].GetComponent<RoomScript>().rawBounds.extents * 2);
+        }
     }
 }
