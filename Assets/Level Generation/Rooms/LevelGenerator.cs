@@ -1,13 +1,16 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] GameObject doorPrefab;
 
     public int maxLevelLength;
     public GameObject[] rooms;
     public List<GameObject> currentRooms;
+    public List<GameObject> doors;
 
 
     bool spawnUp = true;
@@ -42,14 +45,17 @@ public class LevelGenerator : MonoBehaviour
         lastRoomObject = firstRoomObject;
         lastRoomScript = firstRoomScript;
 
-        SpawnRoom();
+        StartCoroutine("SpawnRoom");
     }
 
     GameObject newRoomObject;
     RoomScript newRoomScript;
 
-    void SpawnRoom()
+    float waitTime = 0.01f;
+
+    IEnumerator SpawnRoom()
     {
+        yield return new WaitForSeconds(waitTime);
         if (currentRooms.Count > maxLevelLength) //Count being over the max lenght due to the fact that the first room is always the starter room
         {
             GameObject finalRoomObject = Instantiate(rooms[1], Vector3.zero, Quaternion.identity);
@@ -59,18 +65,18 @@ public class LevelGenerator : MonoBehaviour
             moveAmount += new Vector3(0, 0, finalRoomScript.height / 2);
             finalRoomScript.transform.position += moveAmount;
             finalRoomScript.spawnUpValue = true;
-            if (finalRoomScript.GetBoundsRaw(finalRoomObject).Intersects(lastRoomScript.GetBoundsRaw(lastRoomObject)))
+            if (GetBoundsRaw(finalRoomObject).Intersects(GetBoundsRaw(lastRoomObject)))
             {
                 Destroy(finalRoomScript.gameObject);
-                SpawnRoom();
-                return;
+                StartCoroutine("SpawnRoom");
+                yield return new WaitForSeconds(9999999999);
             }
             currentRooms.Add(newRoomScript.gameObject);
             currentRooms.Add(finalRoomObject);
 
             RemoveExcessDoors();
-
-            return;
+            Debug.Log("Level Complete");
+            yield return new WaitForSeconds(9999999999);
         }
 
         lastSpawnUp = spawnUp;
@@ -78,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
 
         newRoomObject = rooms[Random.Range(2, rooms.Length)];
         newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
-
+        yield return new WaitForSeconds(waitTime);
         if (spawnUp)
         {
             newRoomScript.transform.position = lastRoomScript.transform.position;
@@ -93,14 +99,14 @@ public class LevelGenerator : MonoBehaviour
             moveAmount += new Vector3(newRoomScript.width / 2, 0, 0);
             newRoomScript.transform.position += moveAmount;
         }
-
-        if (newRoomScript.GetBoundsRaw(newRoomObject).Intersects(lastRoomScript.GetBoundsRaw(lastRoomObject)))
+        yield return new WaitForSeconds(waitTime);
+        if (GetBoundsRaw(newRoomScript.gameObject).Intersects(GetBoundsRaw(lastRoomObject)))
         {
             Destroy(newRoomScript.gameObject);
-            SpawnRoom();
-            return;
+            StartCoroutine("SpawnRoom");
+            yield return new WaitForSeconds(9999999999);
         }
-
+        yield return new WaitForSeconds(waitTime);
         newRoomScript.spawnUpValue = spawnUp;
         newRoomScript.lastSpawnUpValue = lastRoomScript.spawnUpValue;
 
@@ -109,7 +115,15 @@ public class LevelGenerator : MonoBehaviour
         currentRooms.Add(lastRoomScript.gameObject);
         lastRoomObject = newRoomObject;
         lastRoomScript = newRoomScript;
-        SpawnRoom();
+        StartCoroutine("SpawnRoom");
+    }
+
+    void SpawnDoor(Transform doorScript)
+    {
+        Vector3 rot = doorScript.rotation.eulerAngles + doorPrefab.transform.rotation.eulerAngles;
+
+        GameObject newDoor = Instantiate(doorPrefab, doorScript.position, Quaternion.Euler(rot));
+        doors.Add(newDoor);
     }
 
     void RemoveExcessDoors()
@@ -120,6 +134,11 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().southDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().southDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().eastDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().eastDoor);
@@ -131,6 +150,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().southDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().southDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().northDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().northDoor);
@@ -142,6 +166,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().westDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);
@@ -153,6 +182,11 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
+                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
+                    {
+                        SpawnDoor(currentRooms[i].GetComponent<RoomScript>().westDoor.transform);
+                    }
+
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);
@@ -187,5 +221,14 @@ public class LevelGenerator : MonoBehaviour
                 currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().DestroyDoor(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().southDoor);
             }
         }
+    }
+
+    public Bounds GetBoundsRaw(GameObject obj)
+    {
+        var renderers = obj.GetComponentsInChildren<Renderer>();
+        Bounds bounds = renderers[0].bounds;
+        for (var i = 1; i < renderers.Length; ++i)
+            bounds.Encapsulate(renderers[i].bounds);
+        return bounds;
     }
 }

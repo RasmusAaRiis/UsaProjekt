@@ -13,22 +13,24 @@ public class EnemyMovement : MonoBehaviour
     
     [SerializeField] private Rigidbody rb;
 
-    [SerializeField] private Transform target;
+    public Transform target;
     
-    [SerializeField] private float health = 100;
+    public float health = 100;
 
     [Range(0f, 1f)][SerializeField] private float rotationStrength;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
     [SerializeField] private float targetLookOffset;
+    [SerializeField] private Vector2 jumpCooldown = new Vector2(0.8f, 1f);
 
     [SerializeField] private bool resetVel;
     [SerializeField] private bool chaseTarget;
     [SerializeField] private bool stabilize;
 
-    private bool onGround;
+    [SerializeField] private bool onGround;
     
     private Quaternion startRot;
+    private float timerValue;
     private float timer;
 
     private void Start()
@@ -40,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
         
         startRot = transform.rotation;
-        print(startRot);
+        //print(startRot);
     }
 
     private void Update()
@@ -65,12 +67,14 @@ public class EnemyMovement : MonoBehaviour
         
             //Debug.Log(direction);
         
-            timer += Time.deltaTime;
-        
-            float value = 0;
-            value = Random.Range(0.8f, 1f);
-        
-            if (timer >= value)
+            timerValue += Time.deltaTime;
+            
+            if (timer == 0)
+            {
+                timer = Random.Range(jumpCooldown.x, jumpCooldown.y);
+            }
+
+            if (timerValue >= timer)
             {
                 if (resetVel)
                 {
@@ -80,6 +84,7 @@ public class EnemyMovement : MonoBehaviour
                 rb.AddForce(force * 5);
 
                 force = Vector3.zero;
+                timerValue = 0;
                 timer = 0;
             }
         }
@@ -119,9 +124,12 @@ public class EnemyMovement : MonoBehaviour
             if (!tarIsMissing)
             {
                 Vector3 direction = target!.position - position;
+                Vector3 lookDirection = new Vector3(target!.position.x, target!.position.y + targetLookOffset, target!.position.z) - this.transform.position;
                 //Debug.Log(direction);
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawRay(position, direction);
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawRay(position, lookDirection);
                 Gizmos.color = Color.green;
                 Gizmos.DrawRay(position, -transform.up);
                 Gizmos.DrawRay(position, transform.up);

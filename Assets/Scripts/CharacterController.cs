@@ -8,20 +8,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CharacterController : MonoBehaviour {
 
+    [Header("Basics")]
     public float speed = 10.0f;
     public float dashForce = 13f;
     public float dashCooldown = 0.1f;
     public float jumpForce = 10;
     bool isGrounded = true;
     bool dashing = false;
+    bool canTakeDamage = true;
+
+    [Header("Stats")]
+    public int Health = 5;
+    public float throwForce = 1f;
 
     Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
+    [Space]
+    public TextMeshProUGUI healthText;
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -64,6 +73,8 @@ public class CharacterController : MonoBehaviour {
         }
         #endregion
 
+        healthText.text = Health.ToString();
+
         #region Throwable/weapon logic
         if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -83,15 +94,15 @@ public class CharacterController : MonoBehaviour {
 
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
-        if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4) &&
-           heldObject == null)
+        if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
         {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
             //Bare ikke pild
+            //Jeg pillede💀
             if (lookedAtObject != hit.transform.gameObject)
             {
-                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Weapon"))
+                if (hit.transform.CompareTag("Throwable") || hit.transform.CompareTag("Door"))
                 {
                     SetObjectOutline(0);
                 }
@@ -99,24 +110,32 @@ public class CharacterController : MonoBehaviour {
 
             lookedAtObject = hit.transform.gameObject;
 
-            if (!hit.transform.CompareTag("Throwable") && !hit.transform.CompareTag("Weapon"))
+            if (!lookedAtObject.CompareTag("Throwable") && !lookedAtObject.CompareTag("Door"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
                 return;
             }
 
-            //Objektet spilleren kigger på ER throwable eller weapon
-            SetObjectOutline(lookedAtObject, 10);
-
-            if (!Input.GetKeyDown(KeyCode.Mouse1))
+            if(lookedAtObject.transform == heldObject)
             {
                 return;
             }
 
-            //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
-            //Denne kode får spilleren til at samle objektet op
-            PickupObject(hit.transform);
+            //Objektet spilleren kigger på ER throwable eller weapon
+            SetObjectOutline(lookedAtObject, 10);
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Throwable"))
+            {
+                //Spileren kigger på et throwable object, de holder ikke noget, og de trykker højreklik
+                //Denne kode får spilleren til at samle objektet op
+                PickupObject(hit.transform);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
+            {
+                lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+            }
 
         } else
         {
@@ -127,10 +146,37 @@ public class CharacterController : MonoBehaviour {
         #endregion
 
         //Lav om på et tidspunkt btw
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked) {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        EnemyMovement em;
+        if(collision.transform.TryGetComponent<EnemyMovement>(out em))
+        {
+            if (!canTakeDamage || em.health <= 0)
+            {
+                return;
+            }
+            
+            Health--;
+            Health = Mathf.Max(Health, 0);
+            StartCoroutine(TakeDamageCooldown());
+        }
+    }
+
+    IEnumerator TakeDamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(1);
+        canTakeDamage = true;
     }
 
     IEnumerator DashTimer()
@@ -153,21 +199,26 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        //heldObject.GetComponent<Collider>().enabled = false;
     }
 
     void ThrowObject()
     {
-        if(heldObject == null)
+        if (heldObject == null)
         {
             Debug.LogWarning("Cant throw object, since object is null");
             return;
         }
 
+        Weapon weapon;
+        if (heldObject.TryGetComponent<Weapon>(out weapon))
+        {
+            weapon.Throw(throwForce);
+        }
+
         heldObject.position = Hand.position;
         heldObject.parent = null;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15;
+        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
         heldObject.GetComponent<Collider>().enabled = true;
         heldObject = null;
     }
