@@ -16,12 +16,14 @@ public class EnemyBullet : MonoBehaviour
     
     [SerializeField] private float rotationCalculated;
 
-    [SerializeField] private float lifetime = 1;
+    public float lifetime = 1;
     private float timerValue;
+    private float lifetimeDelete;
     
     private void Start()
     {
         forceStrength *= rb.mass;
+        lifetimeDelete = lifetime * 2;
     }
 
     private void Update()
@@ -31,6 +33,11 @@ public class EnemyBullet : MonoBehaviour
         {
             followTarget = false;
             rb.useGravity = true;
+        }
+
+        if (timerValue >= lifetimeDelete)
+        {
+            Destroy(gameObject);
         }
         
         if (followTarget)

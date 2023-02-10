@@ -21,6 +21,8 @@ public class EnemyShoot : MonoBehaviour
 
     [SerializeField] private float shootForce = 100;
 
+    [SerializeField] private float shootLifetime = 2;
+
     [SerializeField] private LayerMask raycastMask;
 
     [SerializeField] private float shootDifference = 30;
@@ -88,6 +90,7 @@ public class EnemyShoot : MonoBehaviour
                 GameObject spawn = Instantiate(spawnableObject, spawnTransform.position, spawnTransform.rotation);
                 spawn.GetComponent<EnemyBullet>().target = target;
                 spawn.GetComponent<EnemyBullet>().forceStrength = shootForce;
+                spawn.GetComponent<EnemyBullet>().lifetime = shootLifetime;
                 
                 timer = 0;
                 timerValue = 0;

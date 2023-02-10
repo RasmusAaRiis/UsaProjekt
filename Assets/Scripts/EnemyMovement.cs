@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private bool debugMode = false;
+    [SerializeField] private bool debugMode;
     
     [SerializeField] private Rigidbody rb;
 
@@ -17,15 +17,15 @@ public class EnemyMovement : MonoBehaviour
     
     public float health = 100;
 
-    [Range(0f, 1f)][SerializeField] private float rotationStrength;
+    [Range(0f, 1f)][SerializeField] private float rotationStrength = 0.2f;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpStrenght = 20;
     [SerializeField] private float targetLookOffset;
     [SerializeField] private Vector2 jumpCooldown = new Vector2(0.8f, 1f);
 
     [SerializeField] private bool resetVel;
-    [SerializeField] private bool chaseTarget;
-    [SerializeField] private bool stabilize;
+    public bool chaseTarget;
+    [SerializeField] private bool stabilize = true;
 
     [SerializeField] private bool onGround;
     
@@ -35,14 +35,21 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        
+        
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
         if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
 
-        var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
-        if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
+        rb = GetComponent<Rigidbody>();
+        
+        //var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
+        //if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
         
         startRot = transform.rotation;
         //print(startRot);
+
+        jumpStrenght *= rb.mass;
+        speed *= rb.mass;
     }
 
     private void Update()

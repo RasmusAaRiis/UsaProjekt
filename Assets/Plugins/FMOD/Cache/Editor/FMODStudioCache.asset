@@ -221,7 +221,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638114591500855287
+  lastModified: 638114595921413038
   FileSizes: []
   Exists: 1
 --- !u!114 &-1467711800662978651
@@ -361,7 +361,7 @@ MonoBehaviour:
   - {fileID: -2661023203160919305}
   StringsBanks:
   - {fileID: 4073763807894619285}
-  cacheTime: 638114591500975311
+  cacheTime: 638114595921543021
   cacheVersion: 131601
 --- !u!114 &989051467615835887
 MonoBehaviour:
@@ -540,7 +540,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638114591500975311
+  lastModified: 638114595921543021
   FileSizes:
   - Name: 
     Value: 866
