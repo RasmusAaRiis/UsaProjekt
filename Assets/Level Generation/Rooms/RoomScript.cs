@@ -14,14 +14,16 @@ public class RoomScript : MonoBehaviour
     [HideInInspector] public Transform doorParent;
 
     [HideInInspector] public List<Transform> enemySpawnPoints;
-    public List<GameObject> currentlyAliveEnemies;
+    [HideInInspector] public List<GameObject> currentlyAliveEnemies;
 
-    public Door actualDoor;
+    [HideInInspector] public Door actualDoor;
 
     [HideInInspector] public Door northDoor;
     [HideInInspector] public Door southDoor;
     [HideInInspector] public Door eastDoor;
     [HideInInspector] public Door westDoor;
+
+    public Bounds rawBounds;
 
     private void Awake()
     {
