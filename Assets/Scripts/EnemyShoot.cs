@@ -38,7 +38,6 @@ public class EnemyShoot : MonoBehaviour
         
         if (Physics.Raycast(this.transform.position, target.position - this.transform.position, out var hit, shootDistance, raycastMask))
         {
-
             if (hit.transform.gameObject.CompareTag("Player"))
             {
                 var forward = transform.forward;
