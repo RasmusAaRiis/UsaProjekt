@@ -49,12 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   attackRange: 1
-  attackSpeed: 10
-  knockback: 3
+  attackSpeed: 20
+  knockback: 2
   attackCooldown: 0.2
   cooldown: 0
   attacking: 0
-  ammo: 10
+  throwing: 0
+  ammo: 50
   Projectile: {fileID: 1516955070402999921, guid: 796a047ccdfcd62438974628f752c741, type: 3}
 --- !u!65 &6719938817502376435
 BoxCollider:
