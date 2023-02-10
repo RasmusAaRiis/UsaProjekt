@@ -90,33 +90,26 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
             {
+                yield return new WaitForSeconds(waitTime);
+
+                bool intersects = false;
+
+                if (!intersects && GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+                {
+                    intersects = true;
+                    RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
+                }
+
                 for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
                 {
                     if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
                     {
                         currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
                     }
-                    else
+                    else if (intersects)
                     {
                         currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
                     }
-                }
-
-                yield return new WaitForSeconds(waitTime);
-
-                int count = 0;
-
-                for (int i = 1; i < currentRooms.IndexOf(currentActiveRoom.gameObject); i++)
-                {
-                    if (GetBoundsRaw(player).Intersects(currentRooms[i].GetComponent<RoomScript>().rawBounds))
-                    {
-                        count++;
-                    }
-                }
-
-                if (count > 0)
-                {
-                    RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
                 }
 
                 if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
