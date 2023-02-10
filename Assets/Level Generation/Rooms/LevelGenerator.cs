@@ -166,6 +166,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 1; i < currentRooms.Count - 1; i++)
         {
             int spawnAmout = Random.Range(1, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
+            spawnAmout = Mathf.Clamp(spawnAmout, 1, 7);
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
