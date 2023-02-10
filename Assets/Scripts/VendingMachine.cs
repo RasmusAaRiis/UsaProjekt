@@ -8,32 +8,41 @@ public class VendingMachine : MonoBehaviour
     public GameObject[] Cans = new GameObject[3];
     public Transform ejectionPoint;
 
-    bool usingMachine = false;
+    [Space]
+    public bool usingMachine = false;
+    public bool cooldown = false;
 
     // Update is called once per frame
     void Update()
-    {
-        foreach (var item in Physics.OverlapSphere(transform.position, 2))
-        {
-            if (item.transform.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-            {
-                changeView();
-            }
-        }
-        
+    {        
         VendingCamera.enabled = usingMachine;
+
+        if (usingMachine && Input.GetKeyDown(KeyCode.E))
+        {
+            changeView(false);
+        }
     }
 
-    void changeView()
+    IEnumerator Cooldown()
     {
-        usingMachine = !usingMachine;
-        if (usingMachine)
+        cooldown = true;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 0;
+        cooldown = false;
+    }
+
+    public void changeView(bool locked)
+    {
+        //StartCoroutine(Cooldown());
+        if (locked)
         {
+            StartCoroutine(Cooldown());
+            usingMachine = true;
             Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
         }
-        else
+        else if (!cooldown)
         {
+            usingMachine = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -42,6 +51,6 @@ public class VendingMachine : MonoBehaviour
     public void Eject(int canIndex)
     {
         Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
-        changeView();
+        changeView(false);
     }
 }
