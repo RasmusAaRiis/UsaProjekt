@@ -13,6 +13,11 @@ public class RoomScript : MonoBehaviour
 
     [HideInInspector] public Transform doorParent;
 
+    [HideInInspector] public List<Transform> enemySpawnPoints;
+    public List<GameObject> currentlyAliveEnemies;
+
+    public Door actualDoor;
+
     [HideInInspector] public Door northDoor;
     [HideInInspector] public Door southDoor;
     [HideInInspector] public Door eastDoor;
@@ -20,6 +25,16 @@ public class RoomScript : MonoBehaviour
 
     private void Awake()
     {
+        Transform[] children = transform.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < children.Length; i++)
+        {
+            if (children[i].tag == "SpawnPoint")
+            {
+                enemySpawnPoints.Add(children[i]);
+            }
+        }
+
         doorParent = transform.Find("Doors");
 
         if (doorParent.transform.Find("North Door"))
