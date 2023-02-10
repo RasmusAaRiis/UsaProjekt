@@ -14,7 +14,7 @@ public class RoomScript : MonoBehaviour
     [HideInInspector] public Transform doorParent;
 
     [HideInInspector] public List<Transform> enemySpawnPoints;
-    [HideInInspector] public List<GameObject> currentlyAliveEnemies;
+    public List<GameObject> currentlyAliveEnemies;
 
     [HideInInspector] public Door actualDoor;
 
@@ -23,7 +23,7 @@ public class RoomScript : MonoBehaviour
     [HideInInspector] public Door eastDoor;
     [HideInInspector] public Door westDoor;
 
-    public Bounds rawBounds;
+    [HideInInspector] public Bounds rawBounds;
 
     private void Awake()
     {
