@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 
 public class CharacterController : MonoBehaviour {
 
@@ -25,6 +27,7 @@ public class CharacterController : MonoBehaviour {
     [Header("Stats")]
     public int Health = 5;
     public float throwForce = 1f;
+    public float damageModifier = 1f;
 
     Transform heldObject;
     GameObject lookedAtObject;
@@ -158,6 +161,7 @@ public class CharacterController : MonoBehaviour {
             {
                 Can can = lookedAtObject.GetComponent<Can>();
                 Upgrade(can.canIndex);
+                Destroy(can.gameObject);
             }
 
         } else
@@ -212,10 +216,29 @@ public class CharacterController : MonoBehaviour {
         //2) Melee
         //3) Throwing
         //4) Range
+
+        switch (index)
+        {
+            case 0:
+                speed *= 1.2f;
+                dashForce *= 1.2f;
+                break;
+            case 1:
+                damageModifier *= 1.2f;
+                break;
+            case 2:
+                throwForce *= 1.2f;
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 
     public void Die()
     {
+        RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

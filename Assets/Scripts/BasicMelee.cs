@@ -9,6 +9,8 @@ public class BasicMelee : Weapon
     
     public override void Attack()
     {
+        base.Attack();
+
         if (cooldown)
         {
             return;
