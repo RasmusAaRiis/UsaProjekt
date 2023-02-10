@@ -12,6 +12,7 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("Effects")]
     [field: SerializeField] public EventReference test { get; private set; }
+    [field: SerializeField] public EventReference staples { get; private set; }
 
     public static FMODEvents instance { get; private set; }
 
