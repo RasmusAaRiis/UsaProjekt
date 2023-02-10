@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public float damage = 10f;
+    float orgDamage = 10f;
     public float attackRange = 1f;
     public float attackSpeed = 1f;
     public float knockback = 1f;
@@ -18,12 +19,13 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        orgDamage = damage;
         transform.tag = "Throwable";
     }
 
     virtual public void Attack()
     {
-
+        damage = orgDamage * GetComponentInParent<CharacterController>().damageModifier;
     }
 
     float throwForce = 1;
@@ -79,6 +81,10 @@ public class Weapon : MonoBehaviour
             appliedDamage = Mathf.RoundToInt(appliedDamage);
 
             em.TakeDamage(appliedDamage);
+            if(em.health <= 0)
+            {
+                rb.velocity *= 5;
+            }
             Debug.Log(appliedDamage);
             attacking = false;
             return true;
