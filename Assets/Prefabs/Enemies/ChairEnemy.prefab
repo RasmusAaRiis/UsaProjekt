@@ -159,7 +159,7 @@ MonoBehaviour:
   targetLookOffset: 0
   jumpCooldown: {x: 0.8, y: 1}
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
   onGround: 0
 --- !u!1 &8064357094865767532
