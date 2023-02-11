@@ -437,7 +437,7 @@ MonoBehaviour:
   shootTarget: 0
   shootDistance: 10
   shootForce: 100
-  shootLifetime: 2
+  shootLifetime: 1.5
   raycastMask:
     serializedVersion: 2
     m_Bits: 72
