@@ -109,7 +109,8 @@ public class CharacterController : MonoBehaviour {
                 if (hit.transform.CompareTag("Throwable") ||
                     hit.transform.CompareTag("Door") ||
                     hit.transform.CompareTag("Can") ||
-                    hit.transform.CompareTag("Vending"))
+                    hit.transform.CompareTag("Vending") || 
+                    hit.transform.CompareTag("EndLevelTemp"))
                 {
                     SetObjectOutline(0);
                 }
@@ -120,7 +121,8 @@ public class CharacterController : MonoBehaviour {
             if (!lookedAtObject.CompareTag("Throwable") &&
                 !lookedAtObject.CompareTag("Door") &&
                 !lookedAtObject.CompareTag("Can") &&
-                !lookedAtObject.CompareTag("Vending"))
+                !lookedAtObject.CompareTag("Vending") &&
+                !lookedAtObject.CompareTag("EndLevelTemp"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
@@ -145,6 +147,12 @@ public class CharacterController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
                 lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+            }
+
+            //TEMP kode til at lave nye levels
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
+            {
+                GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().createNewRoom = true;
             }
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Vending"))

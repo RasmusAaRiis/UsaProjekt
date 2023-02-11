@@ -624,8 +624,9 @@ MonoBehaviour:
   dashForce: 20
   dashCooldown: 1
   jumpForce: 6
-  Health: 5
+  Health: 25
   throwForce: 1
+  damageModifier: 1
   healthText: {fileID: 9099491638400048381}
   rb: {fileID: 3742513071235349056}
   Hand: {fileID: 534402982}

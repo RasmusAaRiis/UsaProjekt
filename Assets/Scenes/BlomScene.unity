@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &117243556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2592886088349998577, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998583, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
 --- !u!1 &480589609
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,11 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6719938817502376447, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
       propertyPath: ammo
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719938817502376447, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
-      propertyPath: damage
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
@@ -370,6 +423,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: maxLevelLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
     - target: {fileID: 7502872912598346926, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
       propertyPath: m_Name
       value: LevelGenerator

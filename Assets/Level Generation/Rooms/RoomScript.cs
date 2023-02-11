@@ -12,11 +12,12 @@ public class RoomScript : MonoBehaviour
     [HideInInspector] public bool spawnUpValue;
 
     [HideInInspector] public Transform doorParent;
+    [HideInInspector] public GameObject officeWallPrefab;
 
     [HideInInspector] public List<Transform> enemySpawnPoints;
     [HideInInspector] public List<GameObject> currentlyAliveEnemies;
 
-    public Door actualDoor;
+    [HideInInspector] public Door actualDoor;
 
     [HideInInspector] public Door northDoor;
     [HideInInspector] public Door southDoor;
@@ -27,6 +28,7 @@ public class RoomScript : MonoBehaviour
 
     private void Awake()
     {
+        officeWallPrefab = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().officeWallPrefab;
         Transform[] children = transform.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < children.Length; i++)
@@ -73,9 +75,8 @@ public class RoomScript : MonoBehaviour
 
     public void DestroyDoor(Door doorToDestroy)
     {
-        Object wall = Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Models/OfficeWall.fbx", typeof(Object)), doorToDestroy.transform.position, doorToDestroy.transform.rotation);
-        GameObject wallGameObject = (GameObject)wall;
-        wallGameObject.transform.SetParent(doorToDestroy.transform.parent);
+        GameObject wall = Instantiate(officeWallPrefab, doorToDestroy.transform.position, doorToDestroy.transform.rotation);
+        wall.transform.SetParent(doorToDestroy.transform.parent);
 
         Destroy(doorToDestroy.gameObject);
     }

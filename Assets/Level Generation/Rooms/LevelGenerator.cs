@@ -6,21 +6,54 @@ using FMOD.Studio;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] GameObject player;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject doorPrefab;
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject starterWeaponPrefab;
+    public GameObject officeWallPrefab;
+    [SerializeField] GameObject[] enemyPrefabs;
 
+    [Header("Variables")]
     public int maxLevelLength;
+    public RoomScript currentActiveRoom;
+    public bool createNewRoom = false;
+
+    [Header("Object Tracking")]
     public GameObject[] rooms;
     public List<GameObject> currentRooms;
     public List<GameObject> doors;
+    public List<GameObject> deadEnemies;
 
-    public RoomScript currentActiveRoom;
+    [Space()]
+    [Header("Stat Tracking")]
+    [Header("Data virker ikke, hvis scene reloades", order = 0)]
+    [Space()]
+    [Header("Levels")]
+    public int levelsCleared = 0; //Done
+    public float fastestLevelClearTime = 0; //Done
+    public float slowestLevelClearTime = 0; //Done
+    public float averageLevelClearTime = 0; //Done
+
+    [Space()]
+    [Header("Rooms")]
+    public int roomsCleared = 0; //Done
+    public float fastestRoomClearTime = 0; //Done
+    public float slowestRoomClearTime = 0; //Done
+    public float averageRoomClearTime = 0; //Done
+
+    [Space()]
+    [Header("Enemies")]
+    public int enemiesKilled = 0; //Done
+    public int chairsKilled = 0; //Done
+    public int cabinetsKilled = 0; //Done
+
+    [Space()]
+    [Header("Other")]
+    public int objectsThrown = 0;
+    public int deaths = 0;
 
     bool spawnUp = true;
-    bool lastSpawnUp = true;
-    GameObject lastRoomObject;
     RoomScript lastRoomScript;
 
     private void Start()
@@ -30,7 +63,41 @@ public class LevelGenerator : MonoBehaviour
 
     void CreateLevel()
     {
-        player = Instantiate(playerPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
+        for (int i = 0; i < currentRooms.Count; i++)
+        {
+            Destroy(currentRooms[i]);
+        }
+        currentRooms.Clear();
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            Destroy(doors[i]);
+        }
+        doors.Clear();
+
+        for (int i = 0; i < deadEnemies.Count; i++)
+        {
+            Destroy(deadEnemies[i]);
+        }
+        deadEnemies.Clear();
+
+        GameObject[] throwableObjects = GameObject.FindGameObjectsWithTag("Throwable");
+
+        for (int i = 0; i < throwableObjects.Length; i++)
+        {
+            Destroy(throwableObjects[i]);
+        }
+
+        if (!player)
+        {
+            player = Instantiate(playerPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            player.transform.position = Vector3.zero + Vector3.up;
+        }
+
+        Instantiate(starterWeaponPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
 
         GameObject elevatorRoomObject = Instantiate(rooms[0], Vector3.zero, Quaternion.identity);
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
@@ -53,20 +120,120 @@ public class LevelGenerator : MonoBehaviour
 
         firstRoomScript.spawnUpValue = true;
 
-        lastRoomObject = firstRoomObject;
         lastRoomScript = firstRoomScript;
 
-        StartCoroutine("SpawnRoom");
+        SpawnRoom();
     }
 
     GameObject newRoomObject;
     RoomScript newRoomScript;
 
-    float waitTime = 0f;
+    bool intersects = false;
 
-    IEnumerator SpawnRoom()
+    float startLevelTime;
+    float startRoomTime;
+
+    float totalLevelClearTime;
+    float totalRoomClearTime;
+
+    IEnumerator GameLoop()
     {
-        yield return new WaitForSeconds(waitTime);
+        startLevelTime = Time.time;
+        startRoomTime = Time.time;
+        while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
+        {
+            yield return new WaitForSeconds(0);
+            intersects = false;
+
+            if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+            {
+                intersects = true;
+                RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
+            }
+            else
+            {
+                RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
+            }
+
+            for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
+            {
+                if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
+                {
+                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyShoot>())
+                    {
+                        cabinetsKilled++;
+                    }
+                    else
+                    {
+                        chairsKilled++;
+                    }
+
+                    enemiesKilled++;
+
+                    deadEnemies.Add(currentActiveRoom.currentlyAliveEnemies[i]);
+                    currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
+                }
+                else if (intersects)
+                {
+                    currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
+                }
+            }
+
+            if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
+            {
+                roomsCleared++;
+                float newRoomClearTime = Time.time - startRoomTime;
+                totalRoomClearTime += newRoomClearTime;
+                averageRoomClearTime = totalRoomClearTime / roomsCleared;
+
+                if (newRoomClearTime > slowestRoomClearTime)
+                {
+                    slowestRoomClearTime = newRoomClearTime;
+                }
+
+                if (fastestRoomClearTime == 0 || newRoomClearTime < fastestRoomClearTime)
+                {
+                    fastestRoomClearTime = newRoomClearTime;
+                }
+
+                startRoomTime = Time.time;
+
+                currentActiveRoom.actualDoor.ActivateDoor();
+                currentActiveRoom = currentRooms[currentRooms.IndexOf(currentActiveRoom.gameObject) + 1].GetComponent<RoomScript>();
+            }
+        }
+
+        RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
+
+        levelsCleared++;
+        float newLevelClearTime = Time.time - startLevelTime;
+        totalLevelClearTime += newLevelClearTime;
+        averageLevelClearTime = totalLevelClearTime / levelsCleared;
+
+        if (newLevelClearTime > slowestLevelClearTime)
+        {
+            slowestLevelClearTime = newLevelClearTime;
+        }
+
+        if (fastestLevelClearTime == 0 || newLevelClearTime < fastestLevelClearTime)
+        {
+            fastestLevelClearTime = newLevelClearTime;
+        }
+
+        while (true)
+        {
+            yield return new WaitForSeconds(0);
+
+            if (createNewRoom)
+            {
+                createNewRoom = false;
+                CreateLevel();
+            }
+        }
+    }
+
+    void SpawnRoom()
+    {
         if (currentRooms.Count >= maxLevelLength) //Count being over the max lenght due to the fact that the first room is always the starter room
         {
             GameObject breakRoomObject = Instantiate(rooms[1], Vector3.zero, Quaternion.identity);
@@ -88,53 +255,15 @@ public class LevelGenerator : MonoBehaviour
             doors[doors.Count - 1].transform.SetParent(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor.transform);
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
 
-            yield return new WaitForSeconds(waitTime);
-            while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
-            {
-                yield return new WaitForSeconds(waitTime);
-
-                bool intersects = false;
-
-                if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
-                {
-                    Debug.Log("Intersect");
-                    intersects = true;
-                    RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
-                }
-                else
-                {
-                    RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
-                }
-
-                for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
-                {
-                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
-                    {
-                        currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
-                    }
-                    else if (intersects)
-                    {
-                        currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
-                    }
-                }
-
-                if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
-                {
-                    yield return new WaitForSeconds(waitTime);
-                    currentActiveRoom.actualDoor.ActivateDoor();
-                    currentActiveRoom = currentRooms[currentRooms.IndexOf(currentActiveRoom.gameObject) + 1].GetComponent<RoomScript>();
-                }
-            }
-
-            yield return new WaitForSeconds(9999999999);
+            StartCoroutine("GameLoop");
+            return;
         }
 
-        lastSpawnUp = spawnUp;
         spawnUp = (Random.value > 0.5f);
 
         newRoomObject = rooms[Random.Range(2, rooms.Length)];
         newRoomScript = Instantiate(newRoomObject, Vector3.zero, Quaternion.identity).GetComponent<RoomScript>();
-        yield return new WaitForSeconds(waitTime);
+
         if (spawnUp)
         {
             newRoomScript.transform.position = lastRoomScript.transform.position;
@@ -149,7 +278,6 @@ public class LevelGenerator : MonoBehaviour
             moveAmount += new Vector3(newRoomScript.width / 2, 0, 0);
             newRoomScript.transform.position += moveAmount;
         }
-        yield return new WaitForSeconds(waitTime);
 
         newRoomScript.rawBounds = GetBoundsRaw(newRoomScript.gameObject);
         newRoomScript.rawBounds.Expand(-1f);
@@ -159,21 +287,17 @@ public class LevelGenerator : MonoBehaviour
             if (newRoomScript.rawBounds.Intersects(currentRooms[i].GetComponent<RoomScript>().rawBounds))
             {
                 Destroy(newRoomScript.gameObject);
-                StartCoroutine("SpawnRoom");
-                yield return new WaitForSeconds(9999999999);
+                SpawnRoom();
+                return;
             }
         }
 
-        yield return new WaitForSeconds(waitTime);
         newRoomScript.spawnUpValue = spawnUp;
         newRoomScript.lastSpawnUpValue = lastRoomScript.spawnUpValue;
 
-        //newRoomScript.gameObject.SetActive(false);
-
         currentRooms.Add(lastRoomScript.gameObject);
-        lastRoomObject = newRoomObject;
         lastRoomScript = newRoomScript;
-        StartCoroutine("SpawnRoom");
+        SpawnRoom();
     }
     GameObject SpawnDoor(GameObject door)
     {
@@ -194,7 +318,7 @@ public class LevelGenerator : MonoBehaviour
             for (int ii = 0; ii < spawnAmout; ii++)
             {
                 Transform spawnPosition = currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints[Random.Range(0, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count)];
-                GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
+                GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition.position, Quaternion.identity);
                 newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
                 currentRooms[i].GetComponent<RoomScript>().currentlyAliveEnemies.Add(newEnemy);
             }
@@ -275,14 +399,6 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
-                    if (currentRooms.Count > i + 2 && currentRooms[i].GetComponent<RoomScript>().southDoor)
-                    {
-                        //Debug.Log(i);
-
-                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
-                        //doors[i].transform.SetParent(currentRooms[i - 1].GetComponent<RoomScript>().actualDoor.transform);
-                    }
-
                     if (currentRooms[i].GetComponent<RoomScript>().eastDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().eastDoor);
@@ -294,13 +410,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
-                    if (currentRooms[i].GetComponent<RoomScript>().southDoor)
-                    {
-                        //Debug.Log(i);
-                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
-                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
-                    }
-
                     if (currentRooms[i].GetComponent<RoomScript>().northDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().northDoor);
@@ -312,13 +421,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
-                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
-                    {
-                        //Debug.Log(i);
-                        //currentRooms[i + 1].GetComponent<RoomScript>().actualDoor = currentRooms[i + 2].GetComponent<RoomScript>().actualDoor;
-                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
-                    }
-
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);
@@ -330,13 +432,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (!currentRooms[i + 1].GetComponent<RoomScript>().spawnUpValue && !currentRooms[i].GetComponent<RoomScript>().spawnUpValue)
                 {
-                    if (currentRooms[i].GetComponent<RoomScript>().westDoor)
-                    {
-                        //Debug.Log(i);
-                        //currentRooms[i + 2].GetComponent<RoomScript>().actualDoor = currentRooms[i + 1].GetComponent<RoomScript>().actualDoor;
-                        //doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
-                    }
-
                     if (currentRooms[i].GetComponent<RoomScript>().southDoor)
                     {
                         currentRooms[i].GetComponent<RoomScript>().DestroyDoor(currentRooms[i].GetComponent<RoomScript>().southDoor);
@@ -384,8 +479,11 @@ public class LevelGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(GetBoundsRaw(player).center, GetBoundsRaw(player).extents * 2);
+        if (player)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(GetBoundsRaw(player).center, GetBoundsRaw(player).extents * 2);
+        }
 
         for (int i = 0; i < currentRooms.Count; i++)
         {

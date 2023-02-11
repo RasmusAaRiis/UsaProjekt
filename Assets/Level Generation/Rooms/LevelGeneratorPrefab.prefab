@@ -245,8 +245,14 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPrefab: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
   doorPrefab: {fileID: 200305001620900287, guid: 7a487b74334cdfe4e88fb920024233b5, type: 3}
-  enemyPrefab: {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
+  starterWeaponPrefab: {fileID: 6719938817502376433, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
+  officeWallPrefab: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+  enemyPrefabs:
+  - {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
+  - {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
   maxLevelLength: 4
+  currentActiveRoom: {fileID: 0}
+  createNewRoom: 0
   rooms:
   - {fileID: 899355537060424665, guid: 770fcc03360715949a40800705a263ec, type: 3}
   - {fileID: 8022319923429987445, guid: 191cebb4c732bac4687715783a6c63e9, type: 3}
@@ -256,4 +262,17 @@ MonoBehaviour:
   - {fileID: 8641902567909072546, guid: 961ebeffa3690db498b039f26e31ab70, type: 3}
   currentRooms: []
   doors: []
-  currentActiveRoom: {fileID: 0}
+  deadEnemies: []
+  levelsCleared: 0
+  fastestLevelClearTime: 0
+  slowestLevelClearTime: 0
+  averageLevelClearTime: 0
+  roomsCleared: 0
+  fastestRoomClearTime: 0
+  slowestRoomClearTime: 0
+  averageRoomClearTime: 0
+  enemiesKilled: 0
+  chairsKilled: 0
+  cabinetsKilled: 0
+  objectsThrown: 0
+  deaths: 0
