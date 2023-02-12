@@ -111,6 +111,8 @@ public class EnemyMovement : MonoBehaviour
             Quaternion newRot = Quaternion.Lerp(this.transform.rotation, lookRotation, rotationStrength);
             rb.MoveRotation(newRot);
         }
+
+        if (this.transform.position.y < -1) { health = 0;  }
     }
 
     private void OnCollisionStay(Collision collisionInfo)

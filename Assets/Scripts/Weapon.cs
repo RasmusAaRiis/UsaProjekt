@@ -46,6 +46,7 @@ public class Weapon : MonoBehaviour
         Damage(collision, false);
         throwForce = 1;
         throwing = false;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.genericHit, this.transform.position);
     }
 
     public bool Damage(Collision collision, bool ceiling)
