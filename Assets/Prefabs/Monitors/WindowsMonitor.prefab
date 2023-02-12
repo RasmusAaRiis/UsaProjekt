@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 641f4d821f6a77a4487aa699b614de5c, type: 2}
+  - {fileID: 2100000, guid: 64ccde78d0ea08b41aefe5299773c9cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3161034966025334875}
   - component: {fileID: 3161034966025334868}
   m_Layer: 7
-  m_Name: Monitor
+  m_Name: WindowsMonitor
   m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

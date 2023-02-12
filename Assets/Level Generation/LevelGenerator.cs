@@ -254,6 +254,17 @@ public class LevelGenerator : MonoBehaviour
             doors[doors.Count - 1].transform.SetParent(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor.transform);
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
 
+            for (int i = 0; i < currentRooms.Count; i++)
+            {
+                ROSP[] rosps = currentRooms[i].GetComponentsInChildren<ROSP>();
+
+                for (int ii = 0; ii < rosps.Length; ii++)
+                {
+                    Debug.Log("Room: " + i + " - ROSP: " + ii);
+                    rosps[ii].SpawnObject();
+                }
+            }
+
             StartCoroutine("GameLoop");
             return;
         }
