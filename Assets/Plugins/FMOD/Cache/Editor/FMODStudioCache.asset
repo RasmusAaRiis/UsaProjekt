@@ -69,9 +69,36 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638118366835281988
+  lastModified: 638118381016137469
   FileSizes: []
   Exists: 1
+--- !u!114 &-7494231099486070980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/Dash
+  Guid:
+    Data1: -107837437
+    Data2: 1092422599
+    Data3: 1449453224
+    Data4: -1946530714
+  Banks:
+  - {fileID: -7825304743942824416}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4548858609806421848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +189,36 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638118366835930417
+  lastModified: 638118381016642979
   FileSizes: []
   Exists: 1
+--- !u!114 &-2281828161472045042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/OpenDoor
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/OpenDoor
+  Guid:
+    Data1: 1542147560
+    Data2: 1261462779
+    Data3: -917172080
+    Data4: -820351953
+  Banks:
+  - {fileID: -7825304743942824416}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1763239542843599727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +288,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638118366835337120
+  lastModified: 638118381016192483
   FileSizes: []
   Exists: 1
 --- !u!114 &-619911419148503817
@@ -286,6 +340,8 @@ MonoBehaviour:
   - {fileID: 3864840444779077237}
   - {fileID: -1763239542843599727}
   - {fileID: -2618236436458050070}
+  - {fileID: -2281828161472045042}
+  - {fileID: -7494231099486070980}
   EditorParameters:
   - {fileID: 1403152271267373567}
   - {fileID: -8509162523676764672}
@@ -294,7 +350,7 @@ MonoBehaviour:
   - {fileID: -1383745454064559659}
   StringsBanks:
   - {fileID: 6661882875707897584}
-  cacheTime: 638118366835930417
+  cacheTime: 638118381016642979
   cacheVersion: 131601
 --- !u!114 &35786957369068855
 MonoBehaviour:
@@ -440,8 +496,8 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638118366835377032
+  lastModified: 638118381016212486
   FileSizes:
   - Name: 
-    Value: 1266
+    Value: 1350
   Exists: 1

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -282,7 +282,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966694764}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
       Data2: 1251778799
       Data3: -409032514
       Data4: -1852214120
-    Path: event:/Staples
+    Path: event:/Sfx/Staples
   <pickup>k__BackingField:
     Guid:
       Data1: -995556938
@@ -450,6 +450,20 @@ MonoBehaviour:
       Data3: 611157128
       Data4: -1041321689
     Path: event:/Sfx/EnemyDead
+  <openDoor>k__BackingField:
+    Guid:
+      Data1: 1542147560
+      Data2: 1261462779
+      Data3: -917172080
+      Data4: -820351953
+    Path: event:/Sfx/OpenDoor
+  <dash>k__BackingField:
+    Guid:
+      Data1: -107837437
+      Data2: 1092422599
+      Data3: 1449453224
+      Data4: -1946530714
+    Path: event:/Sfx/Dash
 --- !u!1001 &1623387421
 PrefabInstance:
   m_ObjectHideFlags: 0

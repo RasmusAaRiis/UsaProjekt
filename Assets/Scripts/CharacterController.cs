@@ -147,6 +147,8 @@ public class CharacterController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
                 lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
+
             }
 
             //TEMP kode til at lave nye levels
@@ -261,6 +263,8 @@ public class CharacterController : MonoBehaviour {
     IEnumerator DashTimer()
     {
         dashing = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, this.transform.position);
+
         Vector3 originalVelocity = rb.velocity;
         originalVelocity.y = 0;
         rb.velocity = transform.forward * Input.GetAxis("Vertical") * dashForce;
