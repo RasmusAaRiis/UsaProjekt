@@ -28,7 +28,7 @@ public class RoomScript : MonoBehaviour
 
     private void Awake()
     {
-        officeWallPrefab = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().officeWallPrefab;
+        officeWallPrefab = GameObject.FindObjectOfType<LevelGenerator>().officeWallPrefab;
         Transform[] children = transform.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < children.Length; i++)
