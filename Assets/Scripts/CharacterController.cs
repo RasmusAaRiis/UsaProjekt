@@ -210,6 +210,7 @@ public class CharacterController : MonoBehaviour {
 
             Health--;
             Health = Mathf.Max(Health, 0);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHit, this.transform.position);
             if(Health <= 0)
             {
                 Die();
@@ -277,6 +278,8 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.pickup, this.transform.position);
     }
 
     void ThrowObject()
