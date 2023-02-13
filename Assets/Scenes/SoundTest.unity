@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,30 +269,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <moneyPickup>k__BackingField.Path
-      value: event:/Sfx/MoneyPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <moneyPickup>k__BackingField.Guid.Data1
-      value: -640498636
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <moneyPickup>k__BackingField.Guid.Data2
-      value: 1110142479
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <moneyPickup>k__BackingField.Guid.Data3
-      value: -1159634250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <moneyPickup>k__BackingField.Guid.Data4
-      value: -220860550
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886088349998576, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: musicVolume
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 2592886088349998577, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
       propertyPath: m_Name
       value: AudioManager

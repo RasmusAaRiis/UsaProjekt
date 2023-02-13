@@ -160,7 +160,6 @@ public class CharacterController : MonoBehaviour {
             {
                 lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
-
             }
 
             //TEMP kode til at lave nye levels
@@ -179,14 +178,14 @@ public class CharacterController : MonoBehaviour {
                 vending.changeView(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Can"))
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Can"))
             {
                 Can can = lookedAtObject.GetComponent<Can>();
                 Upgrade(can.canIndex);
                 Destroy(can.gameObject);
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Money"))
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
             {
                 Money += 5;
                 PickupText("+5 Dollars");

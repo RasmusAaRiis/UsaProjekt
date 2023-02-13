@@ -107,6 +107,20 @@ MonoBehaviour:
       Data3: 1449453224
       Data4: -1946530714
     Path: event:/Sfx/Dash
+  <moneyPickup>k__BackingField:
+    Guid:
+      Data1: -640498636
+      Data2: 1110142479
+      Data3: -1159634250
+      Data4: -220860550
+    Path: event:/Sfx/MoneyPickup
+  <dashCooldown>k__BackingField:
+    Guid:
+      Data1: -1216891287
+      Data2: 1234955151
+      Data3: -1796003938
+      Data4: 1495902216
+    Path: event:/Sfx/DashCooldown
 --- !u!1 &2592886088349998577
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2592886088349998577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -152,3 +166,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91be0c76adf99124baedfa55d4e6452c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolume: 0.8
+  sfxVolume: 1
