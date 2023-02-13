@@ -27,6 +27,8 @@ MonoBehaviour:
   - {fileID: 5118161891984858651}
   - {fileID: -4548858609806421848}
   - {fileID: -619911419148503817}
+  - {fileID: -6094314680623668523}
+  - {fileID: -3913405729788400455}
   MinDistance: 1
   MaxDistance: 20
   Length: 195593
@@ -96,7 +98,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638119154196491016
+  lastModified: 638119174697481836
   FileSizes: []
   Exists: 1
 --- !u!114 &-7494231099486070980
@@ -126,6 +128,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6094314680623668523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainLoop/EffectsVolume
+  m_EditorClassIdentifier: 
+  Name: EffectsVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 789289642
+    data2: 794744794
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-4548858609806421848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +173,30 @@ MonoBehaviour:
     data1: 3059310952
     data2: 3799811149
   Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3913405729788400455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainLoop/MusicVolume
+  m_EditorClassIdentifier: 
+  Name: MusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1379421020
+    data2: 1241640699
+  Type: 0
   IsGlobal: 1
   Labels: []
   Exists: 1
@@ -216,7 +266,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638119154196834144
+  lastModified: 638119174697867835
   FileSizes: []
   Exists: 1
 --- !u!114 &-2281828161472045042
@@ -315,8 +365,32 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638119154196530911
+  lastModified: 638119174697541408
   FileSizes: []
+  Exists: 1
+--- !u!114 &-677682246764798024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EffectsVolume
+  m_EditorClassIdentifier: 
+  Name: EffectsVolume
+  StudioPath: parameter:/EffectsVolume
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 789289642
+    data2: 794744794
+  Type: 0
+  IsGlobal: 1
+  Labels: []
   Exists: 1
 --- !u!114 &-619911419148503817
 MonoBehaviour:
@@ -374,11 +448,13 @@ MonoBehaviour:
   - {fileID: 1403152271267373567}
   - {fileID: -8509162523676764672}
   - {fileID: -3376368617623093102}
+  - {fileID: -677682246764798024}
+  - {fileID: 3494785306915143478}
   MasterBanks:
   - {fileID: -1383745454064559659}
   StringsBanks:
   - {fileID: 6661882875707897584}
-  cacheTime: 638119154196834144
+  cacheTime: 638119174697867835
   cacheVersion: 131601
 --- !u!114 &35786957369068855
 MonoBehaviour:
@@ -458,6 +534,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &3494785306915143478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MusicVolume
+  m_EditorClassIdentifier: 
+  Name: MusicVolume
+  StudioPath: parameter:/MusicVolume
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1379421020
+    data2: 1241640699
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &3864840444779077237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,8 +624,8 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638119154196554140
+  lastModified: 638119174697566684
   FileSizes:
   - Name: 
-    Value: 1392
+    Value: 1564
   Exists: 1
