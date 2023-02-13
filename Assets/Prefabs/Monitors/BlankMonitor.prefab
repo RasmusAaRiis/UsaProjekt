@@ -131,8 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+  orgDamage: 10
   attackRange: 4
-  attackSpeed: 1
+  attackSpeed: 0.8
   knockback: 5
   attackCooldown: 0.3
   cooldown: 0
