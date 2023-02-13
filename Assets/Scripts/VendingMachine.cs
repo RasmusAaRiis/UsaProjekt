@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class VendingMachine : MonoBehaviour
 {
     public int Cost = 25;
     [Space]
+    public TextMeshProUGUI MoneyText;
     public Camera VendingCamera;
     public GameObject[] Cans = new GameObject[3];
     public Transform ejectionPoint;
+    CharacterController cc = null;
 
     [Space]
     public bool usingMachine = false;
@@ -16,7 +19,15 @@ public class VendingMachine : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {   
+        if(cc == null)
+        {
+            cc = FindObjectOfType<CharacterController>();
+        } else
+        {
+            MoneyText.text = $"Money: {cc.Money}";
+        }
+
         VendingCamera.enabled = usingMachine;
 
         if (usingMachine && Input.GetKeyDown(KeyCode.E))
@@ -37,6 +48,11 @@ public class VendingMachine : MonoBehaviour
     {
         if (locked)
         {
+            if(usingMachine)
+            {
+                changeView(false);
+                return;
+            }
             StartCoroutine(Cooldown());
             usingMachine = true;
             Cursor.lockState = CursorLockMode.None;
