@@ -7,8 +7,16 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum EnemyType
+{
+    Melee,
+    Ranged
+}
+
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemyType enemyType = EnemyType.Melee;
+    
     [SerializeField] private bool debugMode;
     
     [SerializeField] private Rigidbody rb;
@@ -22,6 +30,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float jumpStrenght = 20;
     [SerializeField] private float targetLookOffset;
     [SerializeField] private Vector2 jumpCooldown = new Vector2(0.8f, 1f);
+    
+    [Tooltip("Only applicable if the enemy is of ranged type")]
+    [SerializeField] private float chaseRadius = 3;
 
     [SerializeField] private bool resetVel;
     public bool chaseTarget;
@@ -37,18 +48,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        
-        
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
         if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
 
         rb = GetComponent<Rigidbody>();
-        
-        //var rbIsMissing = !ReferenceEquals(rb, null) && !rb;
-        //if (rbIsMissing) { rb = GetComponent<Rigidbody>(); }
-        
+
         startRot = transform.rotation;
-        //print(startRot);
 
         jumpStrenght *= rb.mass;
         speed *= rb.mass;
@@ -65,14 +70,46 @@ public class EnemyMovement : MonoBehaviour
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyDead, this.transform.position); 
                 justDied = false;  
             }
-            
+
+            switch (enemyType)
+            {
+                case EnemyType.Melee:
+                    Destroy(gameObject.GetComponent<EnemyMovement>());
+                    break;
+                case EnemyType.Ranged:
+                    Destroy(gameObject.GetComponent<EnemyShoot>());
+                    Destroy(gameObject.GetComponent<EnemyMovement>());
+                    break;
+            }
+        }
+
+        Vector3 chasePosition = new Vector3();
+        
+        switch (enemyType)
+        {
+            case EnemyType.Melee:
+                chasePosition = target.position;
+                break;
+            case EnemyType.Ranged:
+                if (target.gameObject.CompareTag("Player"))
+                {
+                    Ray r = new Ray(this.transform.position, target.position - this.transform.position);
+                    var dist = Vector3.Distance(transform.position, target.position);
+                    chasePosition = r.GetPoint(dist - chaseRadius);
+                }
+                else
+                {
+                    chasePosition = target.position;
+                }
+                break;
+                
         }
         
         var tarIsMissing = !ReferenceEquals(target, null) && (!target);
         
         if (chaseTarget && !tarIsMissing)
         {
-            Vector3 direction = target!.position - this.transform.position;
+            Vector3 direction = chasePosition - this.transform.position;
         
             direction.x = Mathf.Clamp(direction.x, -5f, 5f);
             direction.y = Mathf.Clamp(direction.y, -5f, 5f);
@@ -138,8 +175,23 @@ public class EnemyMovement : MonoBehaviour
 
             var position = transform.position;
         
+           
+            
             if (!tarIsMissing)
             {
+                switch (enemyType)
+                {
+                    case EnemyType.Melee:
+                        break;
+                    case EnemyType.Ranged:
+                        Ray r = new Ray(this.transform.position, target.position - this.transform.position);
+                        Gizmos.DrawRay(r);
+                        var dist = Vector3.Distance(transform.position, target.position);
+                        Gizmos.color = Color.magenta;
+                        Gizmos.DrawSphere(r.GetPoint(dist - chaseRadius), 0.1f);
+                        break;
+                }
+                
                 Vector3 direction = target!.position - position;
                 Vector3 lookDirection = new Vector3(target!.position.x, target!.position.y + targetLookOffset, target!.position.z) - this.transform.position;
                 //Debug.Log(direction);

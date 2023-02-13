@@ -406,7 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe06ef26f6eef6499b6cc5f28b0fe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  enemyType: 1
+  debugMode: 0
   rb: {fileID: 8146343737138943048}
   target: {fileID: 0}
   health: 100
@@ -415,8 +416,9 @@ MonoBehaviour:
   jumpStrenght: 70
   targetLookOffset: 0.3
   jumpCooldown: {x: 1, y: 1.2}
+  chaseRadius: 3
   resetVel: 0
-  chaseTarget: 0
+  chaseTarget: 1
   stabilize: 1
   onGround: 0
 --- !u!114 &515074320878635097
