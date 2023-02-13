@@ -915,7 +915,7 @@ MonoBehaviour:
   dashForce: 20
   dashCooldown: 1
   jumpForce: 6
-  Health: 25
+  Health: 10
   Money: 0
   throwForce: 1
   damageModifier: 1

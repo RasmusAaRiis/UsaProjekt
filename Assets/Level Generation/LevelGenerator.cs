@@ -355,7 +355,8 @@ public class LevelGenerator : MonoBehaviour
                 int spawnPointIndex = Random.Range(0, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
                 Transform spawnPosition = currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints[spawnPointIndex];
                 GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition.position, Quaternion.identity);
-                //newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
+                newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
+                newEnemy.GetComponent<EnemyMovement>().target = player.transform;
                 currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.RemoveAt(spawnPointIndex);
                 currentRooms[i].GetComponent<RoomScript>().currentlyAliveEnemies.Add(newEnemy);
             }

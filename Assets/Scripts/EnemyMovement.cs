@@ -66,9 +66,14 @@ public class EnemyMovement : MonoBehaviour
     {
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
         if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+
+        debugText.enabled = debugMode;
         
-        debugText.text = target.name;
-        
+        if (debugMode)
+        {
+            debugText.text = target.name;
+        }
+
         if (health <= 0f)
         {
             chaseTarget = false;
