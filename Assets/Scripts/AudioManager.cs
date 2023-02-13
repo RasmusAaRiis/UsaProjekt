@@ -10,6 +10,11 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance { get; private set; }
 
+    [Range(0f, 1f)]
+    public float musicVolume = 1f;
+    [Range(0f, 1f)]
+    public float sfxVolume = 1f;
+
     private void Awake()
     {
         if (instance != null)
@@ -17,13 +22,20 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Hov du har mere end 1 audio manager >:--(");
         }
         instance = this;
-        RuntimeManager.LoadBank("Music");
+
     }
 
     private void Start()
     {
+        RuntimeManager.LoadBank("Music", true);
+        RuntimeManager.LoadBank("Effects", true);
 
+    }
 
+    public void Update()
+    {
+        SetParameter("EffectsVolume", sfxVolume);
+        SetParameter("MusicVolume", musicVolume);
     }
 
     public void PlayOneShot(EventReference sound)
