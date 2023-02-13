@@ -144,7 +144,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638119208917928604
+  lastModified: 638119260489735736
   FileSizes: []
   Exists: 1
 --- !u!114 &-3525464890506698502
@@ -213,7 +213,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638119208917858650
+  lastModified: 638119260489674436
   FileSizes: []
   Exists: 1
 --- !u!114 &-2534679762180177513
@@ -402,6 +402,7 @@ MonoBehaviour:
   - {fileID: 3020940983224271497}
   - {fileID: -318628790671332046}
   - {fileID: -558981132518047453}
+  - {fileID: 2897047594556252208}
   EditorParameters:
   - {fileID: 7525097276815163784}
   - {fileID: -2534679762180177513}
@@ -412,7 +413,7 @@ MonoBehaviour:
   - {fileID: -5418780296679488223}
   StringsBanks:
   - {fileID: 1100880096991328757}
-  cacheTime: 638119208918158594
+  cacheTime: 638119260490494949
   cacheVersion: 131601
 --- !u!114 &472433694913376152
 MonoBehaviour:
@@ -456,11 +457,38 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638119208917988549
+  lastModified: 638119260489766318
   FileSizes:
   - Name: 
-    Value: 1564
+    Value: 1614
   Exists: 1
+--- !u!114 &2897047594556252208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/DashCooldown
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/DashCooldown
+  Guid:
+    Data1: -1216891287
+    Data2: 1234955151
+    Data3: -1796003938
+    Data4: 1495902216
+  Banks:
+  - {fileID: -2838079577545102467}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3020940983224271497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +555,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638119208918158594
+  lastModified: 638119260490494949
   FileSizes: []
   Exists: 1
 --- !u!114 &5319963809753060688
