@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public enum EnemyType
 {
@@ -39,6 +40,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool stabilize = true;
 
     [SerializeField] private bool onGround;
+
+    [SerializeField] private TextMeshProUGUI debugText;
     
     private Quaternion startRot;
     private float timerValue;
@@ -61,10 +64,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        debugText.text = target.name;
+        
         if (health <= 0f)
         {
             chaseTarget = false;
             stabilize = false;
+            debugText.text = "";
             if (justDied == true ) 
             { 
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyDead, this.transform.position); 
