@@ -64,6 +64,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        var tarIsMissing = !ReferenceEquals(target, null) && !target;
+        if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+        
         debugText.text = target.name;
         
         if (health <= 0f)
@@ -110,9 +113,7 @@ public class EnemyMovement : MonoBehaviour
                 break;
                 
         }
-        
-        var tarIsMissing = !ReferenceEquals(target, null) && (!target);
-        
+
         if (chaseTarget && !tarIsMissing)
         {
             Vector3 direction = chasePosition - this.transform.position;
