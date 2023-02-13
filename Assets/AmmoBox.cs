@@ -10,7 +10,10 @@ public class AmmoBox : MonoBehaviour
         if (other.transform.GetComponentInChildren<Stapler>())
         {
             stapler = other.transform.GetComponentInChildren<Stapler>();
-            stapler.ammo += 10 * other.transform.GetComponent<CharacterController>().ammoModifier;
+            CharacterController cc = other.transform.GetComponent<CharacterController>();
+            int appliedAmmo = 10 * cc.ammoModifier;
+            stapler.ammo += appliedAmmo;
+            cc.PickupText("+" + appliedAmmo + " Ammo");
             Destroy(gameObject);
         }
     }

@@ -10,9 +10,11 @@ public class Stapler : Weapon
     
     public GameObject Projectile;
 
-    private void Start()
+    public override void Start()
     {
-        rangedDamage = damage;
+        base.Start();
+
+        rangedDamage = orgDamage;
         rangedSpeed = attackSpeed;
     }
 
