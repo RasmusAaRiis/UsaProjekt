@@ -148,6 +148,12 @@ public class LevelGenerator : MonoBehaviour
                 intersects = true;
                 AudioManager.instance.SetParameter("Situation", 1);
             }
+            else if (GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
+            {
+                AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+                AudioManager.instance.SetParameter("Elevator", 0);
+                AudioManager.instance.SetParameter("Situation", 2);
+            }
             else
             {
                 AudioManager.instance.SetParameter("Situation", 0);
@@ -225,7 +231,27 @@ public class LevelGenerator : MonoBehaviour
             if (createNewRoom)
             {
                 createNewRoom = false;
+                //Fade to black
+
+                //Teleport player
                 CreateLevel();
+                for (int i = 0; i < 1000; i++)
+                {
+                    Debug.Log("TEST");
+                }
+                //Generate nyt rum
+
+                //Elevatorload mod 0
+
+                //Når elevatorload er 0, så sig ding, vent lidt og så åben døre og sæt
+                /*
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
+                AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+
+                AudioManager.instance.SetParameter("Elevator", 1);
+                AudioManager.instance.SetParameter("Situation", 0);
+
+                CreateLevel();*/
             }
         }
     }
@@ -329,7 +355,7 @@ public class LevelGenerator : MonoBehaviour
                 int spawnPointIndex = Random.Range(0, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
                 Transform spawnPosition = currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints[spawnPointIndex];
                 GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition.position, Quaternion.identity);
-                newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
+                //newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
                 currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.RemoveAt(spawnPointIndex);
                 currentRooms[i].GetComponent<RoomScript>().currentlyAliveEnemies.Add(newEnemy);
             }
