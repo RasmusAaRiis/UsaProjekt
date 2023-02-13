@@ -162,7 +162,7 @@ MonoBehaviour:
   jumpCooldown: {x: 0.8, y: 1}
   chaseRadius: 0
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
   onGround: 0
   debugText: {fileID: 2212362537307369542}
@@ -469,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8024494556485565107
 RectTransform:
   m_ObjectHideFlags: 0

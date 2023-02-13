@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &179910886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
-  debugMode: 1
+  debugMode: 0
   rb: {fileID: 8146343737138943048}
   target: {fileID: 0}
   health: 100
@@ -655,7 +655,7 @@ MonoBehaviour:
   jumpCooldown: {x: 1, y: 1.2}
   chaseRadius: 3
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
   onGround: 0
   debugText: {fileID: 179910884}
