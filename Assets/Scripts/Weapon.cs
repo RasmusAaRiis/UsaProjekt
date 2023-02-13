@@ -5,10 +5,12 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public float damage = 10f;
-    float orgDamage = 10f;
+    [HideInInspector]
+    public float orgDamage = 10f;
     public float attackRange = 1f;
     public float attackSpeed = 1f;
     public float knockback = 1f;
+    float orgKnockback = 1f;
     public float attackCooldown = 1f;
     [HideInInspector]
     public bool cooldown = false;
@@ -17,15 +19,20 @@ public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool throwing = false;
 
+
     private void Start()
     {
         orgDamage = damage;
+        orgKnockback = knockback;
         transform.tag = "Throwable";
     }
 
     virtual public void Attack()
     {
-        damage = orgDamage * GetComponentInParent<CharacterController>().damageModifier;
+        CharacterController cc = GetComponentInParent<CharacterController>();
+
+        damage = orgDamage * cc.damageModifier;
+        knockback = orgKnockback * cc.knockbackModifier;
     }
 
     float throwForce = 1;

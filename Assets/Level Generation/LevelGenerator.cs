@@ -1,4 +1,3 @@
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -147,11 +146,11 @@ public class LevelGenerator : MonoBehaviour
             if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
-                RuntimeManager.StudioSystem.setParameterByName("Situation", 1);
+                AudioManager.instance.SetParameter("Situation", 1);
             }
             else
             {
-                RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
+                AudioManager.instance.SetParameter("Situation", 0);
             }
 
             for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
@@ -202,7 +201,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
+        AudioManager.instance.SetParameter("Situation", 0);
 
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;

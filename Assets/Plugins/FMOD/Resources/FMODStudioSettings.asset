@@ -152,7 +152,7 @@ MonoBehaviour:
   sourceProjectPath: 
   sourceBankPath: Assets/GloopProject/Desktop
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -642,11 +642,11 @@ MonoBehaviour:
       Value: 3
       HasValue: 1
     VirtualChannelCount:
-      Value: 0
-      HasValue: 0
+      Value: 256
+      HasValue: 1
     RealChannelCount:
-      Value: 0
-      HasValue: 0
+      Value: 64
+      HasValue: 1
     DSPBufferLength:
       Value: 0
       HasValue: 0
