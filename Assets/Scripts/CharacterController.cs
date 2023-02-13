@@ -104,6 +104,7 @@ public class CharacterController : MonoBehaviour {
             //gør det så selection outline virker bedre
             //Bare ikke pild
             //Jeg pillede💀
+            //Åh nej, jeg har også pillede nu
             if (lookedAtObject != hit.transform.gameObject)
             {
                 if (hit.transform.CompareTag("Throwable") ||
@@ -150,6 +151,8 @@ public class CharacterController : MonoBehaviour {
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
 
             }
+
+            
 
             //TEMP kode til at lave nye levels
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
