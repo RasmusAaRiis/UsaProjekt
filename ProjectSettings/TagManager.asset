@@ -12,6 +12,7 @@ TagManager:
   - Can
   - Vending
   - EndLevelTemp
+  - Money
   layers:
   - Default
   - TransparentFX
