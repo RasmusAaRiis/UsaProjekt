@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     public bool throwing = false;
 
 
-    private void Start()
+    public virtual void Start()
     {
         orgDamage = damage;
         orgKnockback = knockback;
@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
     virtual public void Attack()
     {
         CharacterController cc = GetComponentInParent<CharacterController>();
-
+        
         damage = orgDamage * cc.damageModifier;
         knockback = orgKnockback * cc.knockbackModifier;
     }
