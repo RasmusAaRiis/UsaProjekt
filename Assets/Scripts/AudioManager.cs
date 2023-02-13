@@ -22,13 +22,13 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Hov du har mere end 1 audio manager >:--(");
         }
         instance = this;
-        RuntimeManager.LoadBank("Music", true);
-        RuntimeManager.LoadBank("Effects", true);
+
     }
 
     private void Start()
     {
-
+        RuntimeManager.LoadBank("Music", true);
+        RuntimeManager.LoadBank("Effects", true);
 
     }
 
