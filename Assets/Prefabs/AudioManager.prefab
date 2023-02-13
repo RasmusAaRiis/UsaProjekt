@@ -51,20 +51,62 @@ MonoBehaviour:
       Data3: 1559598510
       Data4: 863353206
     Path: event:/MainLoop
-  <test>k__BackingField:
+  <ding>k__BackingField:
     Guid:
       Data1: -390062094
       Data2: 1135457399
       Data3: -1182244686
       Data4: 1556422036
-    Path: event:/Test
+    Path: event:/Sfx/Ding
   <staples>k__BackingField:
     Guid:
       Data1: 785852144
       Data2: 1251778799
       Data3: -409032514
       Data4: -1852214120
-    Path: event:/Staples
+    Path: event:/Sfx/Staples
+  <pickup>k__BackingField:
+    Guid:
+      Data1: -995556938
+      Data2: 1252357295
+      Data3: -303235670
+      Data4: -1536717528
+    Path: event:/Sfx/ItemPickup
+  <genericHit>k__BackingField:
+    Guid:
+      Data1: -1288070246
+      Data2: 1154950115
+      Data3: -1433966441
+      Data4: -1411355276
+    Path: event:/Sfx/GenericHit
+  <playerHit>k__BackingField:
+    Guid:
+      Data1: 151037954
+      Data2: 1253038513
+      Data3: 1860616115
+      Data4: -1636795014
+    Path: event:/Sfx/PlayerHit
+  <enemyDead>k__BackingField:
+    Guid:
+      Data1: 1793611130
+      Data2: 1198679065
+      Data3: 611157128
+      Data4: -1041321689
+    Path: event:/Sfx/EnemyDead
+  <openDoor>k__BackingField:
+    Guid:
+      Data1: 1542147560
+      Data2: 1261462779
+      Data3: -917172080
+      Data4: -820351953
+    Path: event:/Sfx/OpenDoor
+  <dash>k__BackingField:
+    Guid:
+      Data1: -107837437
+      Data2: 1092422599
+      Data3: 1449453224
+      Data4: -1946530714
+    Path: event:/Sfx/Dash
 --- !u!1 &2592886088349998577
 GameObject:
   m_ObjectHideFlags: 0

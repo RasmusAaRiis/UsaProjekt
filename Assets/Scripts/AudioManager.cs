@@ -42,16 +42,10 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
 
-    private void InitMusic(EventReference sound)
-    {
-        musicInstance = CreateInstance(sound);
-        ChangeMusicParameter("Situation", 0f);
-        musicInstance.start();
-        Debug.Log("music started");
-    }
 
-    public void ChangeMusicParameter(string parameterName, float parameterValue)
+
+    public void SetParameter(string parameterName, float parameterValue)
     {
-        musicInstance.setParameterByName(parameterName, parameterValue);
+        RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
     }
 }

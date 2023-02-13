@@ -33,6 +33,8 @@ public class EnemyMovement : MonoBehaviour
     private float timerValue;
     private float timer;
 
+    private bool justDied = true;
+
     private void Start()
     {
         
@@ -58,6 +60,12 @@ public class EnemyMovement : MonoBehaviour
         {
             chaseTarget = false;
             stabilize = false;
+            if (justDied == true ) 
+            { 
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyDead, this.transform.position); 
+                justDied = false;  
+            }
+            
         }
         
         var tarIsMissing = !ReferenceEquals(target, null) && (!target);
@@ -103,6 +111,8 @@ public class EnemyMovement : MonoBehaviour
             Quaternion newRot = Quaternion.Lerp(this.transform.rotation, lookRotation, rotationStrength);
             rb.MoveRotation(newRot);
         }
+
+        if (this.transform.position.y < -1) { health = 0;  }
     }
 
     private void OnCollisionStay(Collision collisionInfo)

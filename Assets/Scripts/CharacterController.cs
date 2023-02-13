@@ -109,7 +109,8 @@ public class CharacterController : MonoBehaviour {
                 if (hit.transform.CompareTag("Throwable") ||
                     hit.transform.CompareTag("Door") ||
                     hit.transform.CompareTag("Can") ||
-                    hit.transform.CompareTag("Vending"))
+                    hit.transform.CompareTag("Vending") || 
+                    hit.transform.CompareTag("EndLevelTemp"))
                 {
                     SetObjectOutline(0);
                 }
@@ -120,7 +121,8 @@ public class CharacterController : MonoBehaviour {
             if (!lookedAtObject.CompareTag("Throwable") &&
                 !lookedAtObject.CompareTag("Door") &&
                 !lookedAtObject.CompareTag("Can") &&
-                !lookedAtObject.CompareTag("Vending"))
+                !lookedAtObject.CompareTag("Vending") &&
+                !lookedAtObject.CompareTag("EndLevelTemp"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 SetObjectOutline(0);
@@ -145,6 +147,14 @@ public class CharacterController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
                 lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
+
+            }
+
+            //TEMP kode til at lave nye levels
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
+            {
+                GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().createNewRoom = true;
             }
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Vending"))
@@ -202,6 +212,7 @@ public class CharacterController : MonoBehaviour {
 
             Health--;
             Health = Mathf.Max(Health, 0);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHit, this.transform.position);
             if(Health <= 0)
             {
                 Die();
@@ -252,6 +263,8 @@ public class CharacterController : MonoBehaviour {
     IEnumerator DashTimer()
     {
         dashing = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, this.transform.position);
+
         Vector3 originalVelocity = rb.velocity;
         originalVelocity.y = 0;
         rb.velocity = transform.forward * Input.GetAxis("Vertical") * dashForce;
@@ -269,6 +282,8 @@ public class CharacterController : MonoBehaviour {
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.pickup, this.transform.position);
     }
 
     void ThrowObject()

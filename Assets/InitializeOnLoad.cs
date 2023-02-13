@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using Microsoft.Win32;
 
-[InitializeOnLoad]
+//[InitializeOnLoad]
 public class UEditorStartup
 {
     /*

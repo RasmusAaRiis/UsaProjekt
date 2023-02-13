@@ -11,9 +11,14 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference music { get; private set; }
 
     [field: Header("Effects")]
-    [field: SerializeField] public EventReference test { get; private set; }
+    [field: SerializeField] public EventReference ding { get; private set; }
     [field: SerializeField] public EventReference staples { get; private set; }
-
+    [field: SerializeField] public EventReference pickup { get; private set; }
+    [field: SerializeField] public EventReference genericHit { get; private set; }
+    [field: SerializeField] public EventReference playerHit { get; private set; }
+    [field: SerializeField] public EventReference enemyDead { get; private set; }
+    [field: SerializeField] public EventReference openDoor { get; private set; }
+    [field: SerializeField] public EventReference dash { get; private set; }
     public static FMODEvents instance { get; private set; }
 
     private void Awake()
