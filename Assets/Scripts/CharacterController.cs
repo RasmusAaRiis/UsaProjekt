@@ -307,6 +307,7 @@ public class CharacterController : MonoBehaviour {
 
         yield return new WaitForSeconds(dashCooldown - 0.1f);
         dashing = false;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dashCooldown, this.transform.position);
     }
 
     void PickupObject(Transform objectToPickup)
