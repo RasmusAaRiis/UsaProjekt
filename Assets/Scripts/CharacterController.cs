@@ -187,18 +187,18 @@ public class CharacterController : MonoBehaviour {
                 Destroy(can.gameObject);
             }
 
+            if (lookedAtObject.CompareTag("Water") && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)))
+            {
+                Health = 10;
+                PickupText("+Health");
+            }
+
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
             {
                 Money += 5;
                 PickupText("+5 Dollars");
                 lookedAtObject.SetActive(false);
                 lookedAtObject = null;
-            }
-
-            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Water"))
-            {
-                Health = 10;
-                PickupText("+Health");
             }
 
         } else

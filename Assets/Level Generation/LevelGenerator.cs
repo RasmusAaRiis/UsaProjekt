@@ -16,6 +16,10 @@ public class LevelGenerator : MonoBehaviour
     public int maxLevelLength;
     public RoomScript currentActiveRoom;
     public bool createNewRoom = false;
+    public int minEnemyCount = 1;
+    public int maxEnemyCount = 1;
+    public int minEnemyCountIncrease = 1;
+    public int maxEnemyCountIncrease = 1;
 
     [Header("Object Tracking")]
     public GameObject[] rooms;
@@ -146,7 +150,6 @@ public class LevelGenerator : MonoBehaviour
             if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
-                AudioManager.instance.SetParameter("Situation", 1);
             }
             else if (GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
             {
@@ -161,6 +164,11 @@ public class LevelGenerator : MonoBehaviour
 
             for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
             {
+                if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget)
+                {
+                    AudioManager.instance.SetParameter("Situation", 1);
+                }
+
                 if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
                 {
                     if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyShoot>())
@@ -234,11 +242,10 @@ public class LevelGenerator : MonoBehaviour
                 //Fade to black
 
                 //Teleport player
+
+                minEnemyCount += minEnemyCountIncrease;
+                maxEnemyCount += maxEnemyCountIncrease;
                 CreateLevel();
-                for (int i = 0; i < 1000; i++)
-                {
-                    Debug.Log("TEST");
-                }
                 //Generate nyt rum
 
                 //Elevatorload mod 0
@@ -347,14 +354,22 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 1; i < currentRooms.Count - 1; i++)
         {
-            int spawnAmout = Random.Range((int)(currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count / 4), currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
-            spawnAmout = Mathf.Clamp(spawnAmout, 1, 7);
+            int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
+            spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
                 int spawnPointIndex = Random.Range(0, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
                 Transform spawnPosition = currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints[spawnPointIndex];
-                GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition.position, Quaternion.identity);
+                GameObject newEnemy;
+                if (levelsCleared == 0)
+                {
+                    newEnemy = Instantiate(enemyPrefabs[0], spawnPosition.position, Quaternion.identity);
+                }
+                else
+                {
+                    newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition.position, Quaternion.identity);
+                }
                 newEnemy.GetComponent<EnemyMovement>().chaseTarget = false;
                 newEnemy.GetComponent<EnemyMovement>().target = player.transform;
                 currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.RemoveAt(spawnPointIndex);

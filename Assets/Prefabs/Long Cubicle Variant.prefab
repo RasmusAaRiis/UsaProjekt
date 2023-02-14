@@ -106,11 +106,11 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0.1, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
     spawnChance: 1
-  - obj: {fileID: 0}
+  - obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
     positionOffset: {x: 0, y: 0, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
-    spawnChance: 0.3
-  - obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
+    spawnChance: 0.75
+  - obj: {fileID: 0}
     positionOffset: {x: 0, y: 0, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
     spawnChance: 0.15

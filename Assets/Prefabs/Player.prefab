@@ -943,7 +943,7 @@ MonoBehaviour:
   reachDistane: 5
   isDragging: 0
   isHolding: 0
-  dragObject: {fileID: 0}
+  dragObject: {fileID: 3742513070766220158}
   hitPos: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 1785346833}
   lineWidth: 0.02
