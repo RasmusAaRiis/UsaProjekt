@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VendingMachine : MonoBehaviour
 {
+    public int Cost = 25;
+    [Space]
     public Camera VendingCamera;
     public GameObject[] Cans = new GameObject[3];
     public Transform ejectionPoint;
@@ -33,7 +35,6 @@ public class VendingMachine : MonoBehaviour
 
     public void changeView(bool locked)
     {
-        //StartCoroutine(Cooldown());
         if (locked)
         {
             StartCoroutine(Cooldown());
@@ -50,7 +51,14 @@ public class VendingMachine : MonoBehaviour
 
     public void Eject(int canIndex)
     {
+        CharacterController cc = FindObjectOfType<CharacterController>();
+        if (cc.Money < Cost)
+        {
+            //Ikke nok penge
+            return;
+        }
         Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
+        cc.Money -= Cost;
         changeView(false);
     }
 }

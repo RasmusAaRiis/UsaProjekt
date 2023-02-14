@@ -5,11 +5,23 @@ using UnityEngine;
 public class Stapler : Weapon
 {
     public int ammo = 10;
+    float rangedDamage = 1;
+    float rangedSpeed = 1;
+    
     public GameObject Projectile;
+
+    private void Start()
+    {
+        rangedDamage = damage;
+        rangedSpeed = attackSpeed;
+    }
 
     public override void Attack()
     {
         base.Attack();
+
+        damage = rangedDamage * GetComponentInParent<CharacterController>().rangedDamageModifier;
+        attackSpeed = rangedSpeed * GetComponentInParent<CharacterController>().rangedSpeedModifier;
 
         if (cooldown || ammo <= 0)
         {

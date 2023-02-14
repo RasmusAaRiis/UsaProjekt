@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: <moneyPickup>k__BackingField.Guid.Data4
       value: -220860550
       objectReference: {fileID: 0}
+    - target: {fileID: 2592886088349998576, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
+      propertyPath: musicVolume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2592886088349998577, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
       propertyPath: m_Name
       value: AudioManager

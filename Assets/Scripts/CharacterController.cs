@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 using FMODUnity;
 using FMOD.Studio;
@@ -26,14 +27,21 @@ public class CharacterController : MonoBehaviour {
 
     [Header("Stats")]
     public int Health = 5;
+    public int Money = 0;
     public float throwForce = 1f;
     public float damageModifier = 1f;
+    public float rangedDamageModifier = 1f;
+    public float rangedSpeedModifier = 1f;
+    public float knockbackModifier = 1f;
+    public int ammoModifier = 1;
 
     Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
     [Space]
+    public Animator dashUI;
+    public Animator pickupAnimator;
     public TextMeshProUGUI healthText;
     public Rigidbody rb;
     public Transform Hand;
@@ -111,7 +119,8 @@ public class CharacterController : MonoBehaviour {
                     hit.transform.CompareTag("Door") ||
                     hit.transform.CompareTag("Can") ||
                     hit.transform.CompareTag("Vending") || 
-                    hit.transform.CompareTag("EndLevelTemp"))
+                    hit.transform.CompareTag("EndLevelTemp") ||
+                    hit.transform.CompareTag("Money"))
                 {
                     SetObjectOutline(0);
                 }
@@ -123,9 +132,11 @@ public class CharacterController : MonoBehaviour {
                 !lookedAtObject.CompareTag("Door") &&
                 !lookedAtObject.CompareTag("Can") &&
                 !lookedAtObject.CompareTag("Vending") &&
-                !lookedAtObject.CompareTag("EndLevelTemp"))
+                !lookedAtObject.CompareTag("EndLevelTemp") &&
+                !lookedAtObject.CompareTag("Money"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
+                //... eller alt muligt andet nu også lol
                 SetObjectOutline(0);
                 return;
             }
@@ -152,8 +163,6 @@ public class CharacterController : MonoBehaviour {
 
             }
 
-            
-
             //TEMP kode til at lave nye levels
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
             {
@@ -175,6 +184,14 @@ public class CharacterController : MonoBehaviour {
                 Can can = lookedAtObject.GetComponent<Can>();
                 Upgrade(can.canIndex);
                 Destroy(can.gameObject);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Money"))
+            {
+                Money += 5;
+                PickupText("+5 Dollars");
+                lookedAtObject.SetActive(false);
+                lookedAtObject = null;
             }
 
         } else
@@ -234,16 +251,25 @@ public class CharacterController : MonoBehaviour {
         switch (index)
         {
             case 0:
+                PickupText("+Speed");
                 speed *= 1.2f;
                 dashForce *= 1.2f;
+                dashCooldown *= 0.8f;
                 break;
             case 1:
+                PickupText("+Melee");
                 damageModifier *= 1.2f;
+                knockbackModifier *= 1.2f;
                 break;
             case 2:
-                throwForce *= 1.2f;
+                PickupText("+Throwing");
+                throwForce *= 1.4f;
                 break;
             case 3:
+                PickupText("+Range");
+                rangedDamageModifier *= 1.2f;
+                rangedSpeedModifier *= 1.2f;
+                ammoModifier = Mathf.RoundToInt(ammoModifier * 1.5f);
                 break;
             default:
                 break;
@@ -268,14 +294,20 @@ public class CharacterController : MonoBehaviour {
         dashing = true;
         AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, this.transform.position);
 
+        dashUI.speed = 1f / dashCooldown;
+        dashUI.SetTrigger("Dash");
+
         Vector3 originalVelocity = rb.velocity;
         originalVelocity.y = 0;
         rb.velocity = transform.forward * Input.GetAxis("Vertical") * dashForce;
         rb.velocity += transform.right * Input.GetAxis("Horizontal") * dashForce;
+
         yield return new WaitForSeconds(0.1f);
         rb.velocity = originalVelocity;
+
         yield return new WaitForSeconds(dashCooldown - 0.1f);
         dashing = false;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dashCooldown, this.transform.position);
     }
 
     void PickupObject(Transform objectToPickup)
@@ -313,17 +345,45 @@ public class CharacterController : MonoBehaviour {
 
     void SetObjectOutline(GameObject Object, float width)
     {
+        if(Object == null)
+        {
+            return;
+        }
         //Få fat i objektets outline script
         if (!Object.TryGetComponent<Outline>(out selectionOutline))
         {
             selectionOutline = Object.AddComponent<Outline>();
         }
+        if(width <= 0)
+        {
+            selectionOutline.enabled = false;
+            return;
+        }
+        selectionOutline.enabled = true;
         selectionOutline.OutlineWidth = width;
     }
 
     void SetObjectOutline(float width)
     {
+        if (selectionOutline == null)
+        {
+            return;
+        }
+        if (width <= 0)
+        {
+            selectionOutline.enabled = false;
+            return;
+        }
+        selectionOutline.enabled = true;
+
         selectionOutline.OutlineWidth = width;
+    }
+
+    public void PickupText(string displayText)
+    {
+        TextMeshProUGUI Text = pickupAnimator.transform.GetComponentInChildren<TextMeshProUGUI>();
+        Text.text = displayText;
+        pickupAnimator.SetTrigger("Pickup");
     }
 
     //Jump sphere visualiser
@@ -331,5 +391,6 @@ public class CharacterController : MonoBehaviour {
     {
         Gizmos.DrawSphere(transform.position + -Vector3.up * 1, 0.1f);
     }
+
 
 }

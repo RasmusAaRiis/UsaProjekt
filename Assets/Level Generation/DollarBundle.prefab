@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7151721061623774990}
   - component: {fileID: 7730806738128942045}
   - component: {fileID: 3341421646584740930}
-  - component: {fileID: 1201734180050330317}
   m_Layer: 0
   m_Name: Quad (4)
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1201734180050330317
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729315845076521385}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5206707348788785347
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +94,6 @@ GameObject:
   - component: {fileID: 2937941522034864938}
   - component: {fileID: 5819193214811189526}
   - component: {fileID: 4989688764904497040}
-  - component: {fileID: 2023990127541919065}
   m_Layer: 0
   m_Name: Quad (3)
   m_TagString: Untagged
@@ -182,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2023990127541919065
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5206707348788785347}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6112249413998835468
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +177,6 @@ GameObject:
   - component: {fileID: 8349079460307522036}
   - component: {fileID: 7327143424660496561}
   - component: {fileID: 3019404327920655492}
-  - component: {fileID: 197954434480116108}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -280,20 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &197954434480116108
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6112249413998835468}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6803833173345357005
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +262,7 @@ GameObject:
   - component: {fileID: 2030326192852378090}
   m_Layer: 0
   m_Name: DollarBundle
-  m_TagString: Untagged
+  m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +328,6 @@ GameObject:
   - component: {fileID: 2146600542897047050}
   - component: {fileID: 3017791369369306535}
   - component: {fileID: 4536337087813399817}
-  - component: {fileID: 6882705930297638073}
   m_Layer: 0
   m_Name: Quad (2)
   m_TagString: Untagged
@@ -446,20 +400,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6882705930297638073
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6826521917822496646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8267375622910440874
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +411,6 @@ GameObject:
   - component: {fileID: 7443473160594640713}
   - component: {fileID: 3315353085481107935}
   - component: {fileID: 6227373984008999335}
-  - component: {fileID: 4784384921745537814}
   m_Layer: 0
   m_Name: Quad (5)
   m_TagString: Untagged
@@ -544,20 +483,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4784384921745537814
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8267375622910440874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8444574555129896207
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +494,6 @@ GameObject:
   - component: {fileID: 8476338967566386344}
   - component: {fileID: 6479325700767725554}
   - component: {fileID: 4547822882130063967}
-  - component: {fileID: 6784982877442464746}
   m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Untagged
@@ -642,17 +566,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6784982877442464746
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8444574555129896207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
