@@ -19,7 +19,7 @@ public class MouseCamLook : MonoBehaviour {
     // the chacter is the capsule
     public GameObject character;
     // get the incremental value of mouse moving
-    private Vector2 mouseLook;
+    public Vector2 mouseLook;
     // smooth the mouse moving
     private Vector2 smoothV;
 

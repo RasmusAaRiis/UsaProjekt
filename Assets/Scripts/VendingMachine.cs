@@ -73,7 +73,8 @@ public class VendingMachine : MonoBehaviour
             //Ikke nok penge
             return;
         }
-        Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
+        var obj = Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
+        cc.LookAt();
         cc.Money -= Cost;
         changeView(false);
     }

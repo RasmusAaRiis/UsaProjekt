@@ -40,9 +40,11 @@ public class CharacterController : MonoBehaviour {
     Outline selectionOutline = new Outline();
 
     [Space]
+    public Transform target;
     public Animator dashUI;
     public Animator pickupAnimator;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI ammoText;
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
@@ -86,6 +88,17 @@ public class CharacterController : MonoBehaviour {
         #endregion
 
         healthText.text = Health.ToString();
+
+        //Ammo display
+        Stapler stapler;
+        if(heldObject != null && heldObject.TryGetComponent<Stapler>(out stapler))
+        {
+            ammoText.transform.parent.gameObject.SetActive(true);
+            ammoText.text = stapler.ammo.ToString();
+        } else
+        {
+            ammoText.transform.parent.gameObject.SetActive(false);
+        }
 
         #region Throwable/weapon logic
         if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
@@ -187,18 +200,19 @@ public class CharacterController : MonoBehaviour {
                 Destroy(can.gameObject);
             }
 
-            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
-            {
-                Money += 5;
-                PickupText("+5 Dollars");
-                lookedAtObject.SetActive(false);
-                lookedAtObject = null;
-            }
-
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Water"))
             {
                 Health = 10;
                 PickupText("+Health");
+            }
+
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
+            {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.moneyPickup, this.transform.position);
+                Money += 5;
+                PickupText("+5 Dollars");
+                lookedAtObject.SetActive(false);
+                lookedAtObject = null;
             }
 
         } else
@@ -208,6 +222,7 @@ public class CharacterController : MonoBehaviour {
             lookedAtObject = null;
         }
         #endregion
+
 
         //Lav om på et tidspunkt btw
         if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked) {
@@ -345,9 +360,16 @@ public class CharacterController : MonoBehaviour {
         heldObject.position = Hand.position;
         heldObject.parent = null;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
+
+        heldObject.GetComponent<Rigidbody>().velocity = (target.position - Hand.position).normalized * 15 * throwForce;
         heldObject.GetComponent<Collider>().enabled = true;
         heldObject = null;
+    }
+
+    public void LookAt()
+    {
+        MouseCamLook MouseCamLook = GetComponentInChildren<MouseCamLook>();
+        MouseCamLook.mouseLook = new Vector2(MouseCamLook.mouseLook.x, -70);
     }
 
     void SetObjectOutline(GameObject Object, float width)
