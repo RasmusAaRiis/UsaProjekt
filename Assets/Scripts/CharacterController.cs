@@ -125,6 +125,8 @@ public class CharacterController : MonoBehaviour
             return;
         }
 
+        ShowControls("");
+
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
         if (Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
@@ -171,6 +173,7 @@ public class CharacterController : MonoBehaviour
 
             //Objektet spilleren kigger på ER throwable eller weapon
             SetObjectOutline(lookedAtObject, 10);
+            ShowControls(lookedAtObject.transform.tag);
 
             if (Input.GetKeyDown(KeyCode.Mouse1) && lookedAtObject.CompareTag("Throwable"))
             {
@@ -203,6 +206,7 @@ public class CharacterController : MonoBehaviour
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Can"))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.drink, this.transform.position);
                 Can can = lookedAtObject.GetComponent<Can>();
                 Upgrade(can.canIndex);
                 Destroy(can.gameObject);
@@ -210,6 +214,7 @@ public class CharacterController : MonoBehaviour
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Water"))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.drink, this.transform.position);
                 Health = 10;
                 PickupText("+Health");
             }
@@ -270,6 +275,38 @@ public class CharacterController : MonoBehaviour
                 Die();
             }
             StartCoroutine(TakeDamageCooldown());
+        }
+    }
+
+    public void ShowControls(string hoverTag)
+    {
+        rcButton.enabled = false;
+        eButton.enabled = false;
+        switch (hoverTag)
+        {
+            case "Throwable":
+                rcButton.enabled = true;
+                break;
+            case "Door":
+                eButton.enabled = true;
+                break;
+            case "Can":
+                eButton.enabled = true;
+                break;
+            case "Vending":
+                eButton.enabled = true;
+                break;
+            case "EndLevelTemp":
+                eButton.enabled = true;
+                break;
+            case "Money":
+                eButton.enabled = true;
+                break;
+            case "Water":
+                eButton.enabled = true;
+                break;
+            default:
+                break;
         }
     }
 
