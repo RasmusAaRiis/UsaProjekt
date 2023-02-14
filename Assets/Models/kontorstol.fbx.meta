@@ -3,7 +3,22 @@ guid: a80eae90437d68a40a82ff519b5510ff
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KontorstolBlack
+    second: {fileID: 2100000, guid: 9338631f445ef6d47b16432c56e51de6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KontorstolConnector
+    second: {fileID: 2100000, guid: 3907b2ad147e4d94280785ca0ccb1ee1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KontorstolCouch
+    second: {fileID: 2100000, guid: 77a75a454a6874f4fbbce37efe252734, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
