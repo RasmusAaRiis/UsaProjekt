@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638118939781538379
+  lastModified: 638119386404903248
   FileSizes: []
   Exists: 1
 --- !u!114 &-8627477130866263141
@@ -111,7 +111,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638118939781628386
+  lastModified: 638119386404978634
   FileSizes: []
   Exists: 1
 --- !u!114 &-6067033900378188320
@@ -153,9 +153,36 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638118927037798385
+  lastModified: 638119386405489731
   FileSizes: []
   Exists: 1
+--- !u!114 &-3015093728508374659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/Drink
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/Drink
+  Guid:
+    Data1: 126204338
+    Data2: 1257220838
+    Data3: 2059665552
+    Data4: -2020191167
+  Banks:
+  - {fileID: -8769071324608425368}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2910734533139444273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +320,7 @@ MonoBehaviour:
   - {fileID: 5455268267340106023}
   - {fileID: 889421719934826955}
   - {fileID: 8404858784666391741}
+  - {fileID: -3015093728508374659}
   EditorParameters:
   - {fileID: 4485848800863916020}
   - {fileID: -7290510678725204723}
@@ -303,7 +331,7 @@ MonoBehaviour:
   - {fileID: -6551603457992968969}
   StringsBanks:
   - {fileID: 983214457399187778}
-  cacheTime: 638118939781688389
+  cacheTime: 638119386405489731
   cacheVersion: 131601
 --- !u!114 &889421719934826955
 MonoBehaviour:
@@ -347,10 +375,10 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638118939781688389
+  lastModified: 638119386405008558
   FileSizes:
   - Name: 
-    Value: 1614
+    Value: 1648
   Exists: 1
 --- !u!114 &1067173471045645099
 MonoBehaviour:
