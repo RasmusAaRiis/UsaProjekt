@@ -36,7 +36,8 @@ public class CharacterController : MonoBehaviour
     public float knockbackModifier = 1f;
     public int ammoModifier = 1;
 
-    Transform heldObject;
+    [HideInInspector]
+    public Transform heldObject;
     GameObject lookedAtObject;
     Outline selectionOutline = new Outline();
 
