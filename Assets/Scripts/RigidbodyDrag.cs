@@ -37,7 +37,7 @@ public class RigidbodyDrag : MonoBehaviour
     {
         isHolding = Input.GetKey(KeyCode.Mouse0);
         
-        if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging)
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging && cc.heldObject == null)
         {
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {

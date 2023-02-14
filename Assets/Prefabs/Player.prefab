@@ -1380,11 +1380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1ce9eeb8aedbe429cd149ba150edf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: 0}
+  cc: {fileID: 3742513071235349063}
   reachDistane: 5
   isDragging: 0
   isHolding: 0
-  dragObject: {fileID: 3742513070766220158}
+  dragObject: {fileID: 0}
   hitPos: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 1785346833}
   lineWidth: 0.02
