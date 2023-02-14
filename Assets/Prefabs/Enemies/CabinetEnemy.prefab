@@ -863,7 +863,7 @@ MonoBehaviour:
   shootLifetime: 1.5
   raycastMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 328
   shootDifference: 50
   timer: 0
   timerValue: 0
