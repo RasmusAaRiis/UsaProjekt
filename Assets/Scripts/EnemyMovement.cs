@@ -42,7 +42,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool onGround;
 
     [SerializeField] private TextMeshProUGUI debugText;
-    
+
+    [SerializeField] private DamagePopup damagePopup;
+    private Transform targetCamera = null;
+
     private Quaternion startRot;
     private float timerValue;
     private float timer;
@@ -52,9 +55,11 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
-        if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+        if (tarIsMissing) { target = FindObjectOfType<CharacterController>().transform; }
 
         rb = GetComponent<Rigidbody>();
+
+        TryGetComponent<DamagePopup>(out damagePopup);
 
         startRot = transform.rotation;
 
@@ -65,13 +70,23 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
-        if (tarIsMissing) { target = GameObject.FindWithTag("Player").transform; }
+        if (tarIsMissing) { target = FindObjectOfType<CharacterController>().transform; }
 
         debugText.enabled = debugMode;
         
         if (debugMode)
         {
+            debugText.transform.LookAt(target);
             debugText.text = target.name;
+        }
+
+        if (damagePopup)
+        {
+            if (!targetCamera)
+            {
+                targetCamera = target.GetComponentInChildren<Camera>().transform;
+            }
+            damagePopup.transform.LookAt(targetCamera);
         }
 
         if (health <= 0f)
@@ -177,6 +192,10 @@ public class EnemyMovement : MonoBehaviour
     public void TakeDamage(float value)
     {
         health -= value;
+        if (damagePopup)
+        {
+            damagePopup.DisplayDamage(value.ToString());
+        }
     }
 
     private void OnDrawGizmosSelected()
