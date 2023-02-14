@@ -120,7 +120,8 @@ public class CharacterController : MonoBehaviour {
                     hit.transform.CompareTag("Can") ||
                     hit.transform.CompareTag("Vending") || 
                     hit.transform.CompareTag("EndLevelTemp") ||
-                    hit.transform.CompareTag("Money"))
+                    hit.transform.CompareTag("Money") ||
+                    hit.transform.CompareTag("Water"))
                 {
                     SetObjectOutline(0);
                 }
@@ -133,7 +134,8 @@ public class CharacterController : MonoBehaviour {
                 !lookedAtObject.CompareTag("Can") &&
                 !lookedAtObject.CompareTag("Vending") &&
                 !lookedAtObject.CompareTag("EndLevelTemp") &&
-                !lookedAtObject.CompareTag("Money"))
+                !lookedAtObject.CompareTag("Money") &&
+                !lookedAtObject.CompareTag("Water"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 //... eller alt muligt andet nu også lol
@@ -183,6 +185,12 @@ public class CharacterController : MonoBehaviour {
                 Can can = lookedAtObject.GetComponent<Can>();
                 Upgrade(can.canIndex);
                 Destroy(can.gameObject);
+            }
+
+            if (lookedAtObject.CompareTag("Water") && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)))
+            {
+                Health = 10;
+                PickupText("+Health");
             }
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))

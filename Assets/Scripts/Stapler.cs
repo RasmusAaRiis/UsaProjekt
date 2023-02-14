@@ -21,9 +21,9 @@ public class Stapler : Weapon
     public override void Attack()
     {
         base.Attack();
-
-        damage = rangedDamage * GetComponentInParent<CharacterController>().rangedDamageModifier;
-        attackSpeed = rangedSpeed * GetComponentInParent<CharacterController>().rangedSpeedModifier;
+        CharacterController cc = GetComponentInParent<CharacterController>();
+        damage = rangedDamage * cc.rangedDamageModifier;
+        attackSpeed = rangedSpeed * cc.rangedSpeedModifier;
 
         if (cooldown || ammo <= 0)
         {
@@ -38,7 +38,7 @@ public class Stapler : Weapon
         animator.SetTrigger("Shoot");
         AudioManager.instance.PlayOneShot(FMODEvents.instance.staples, this.transform.position);
         GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.2f) + (-transform.right * 0.2f) + (transform.up * 0.2f), Quaternion.LookRotation(transform.forward));
-        proj_m.GetComponent<Rigidbody>().velocity = transform.forward * attackSpeed;
+        proj_m.GetComponent<Rigidbody>().velocity = (cc.target.position - cc.Hand.position).normalized * attackSpeed;
         Projectile proj = proj_m.GetComponent<Projectile>();
         proj.origin = this;
         proj.Activate();

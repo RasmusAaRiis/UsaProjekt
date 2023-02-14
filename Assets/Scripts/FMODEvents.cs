@@ -21,6 +21,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference dash { get; private set; }
     [field: SerializeField] public EventReference moneyPickup { get; private set; }
     [field: SerializeField] public EventReference dashCooldown { get; private set; }
+    [field: SerializeField] public EventReference drink { get; private set; }
 
 
     public static FMODEvents instance { get; private set; }
