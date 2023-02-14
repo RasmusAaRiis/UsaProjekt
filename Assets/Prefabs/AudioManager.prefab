@@ -121,6 +121,13 @@ MonoBehaviour:
       Data3: -1796003938
       Data4: 1495902216
     Path: event:/Sfx/DashCooldown
+  <drink>k__BackingField:
+    Guid:
+      Data1: 126204338
+      Data2: 1257220838
+      Data3: 2059665552
+      Data4: -2020191167
+    Path: event:/Sfx/Drink
 --- !u!1 &2592886088349998577
 GameObject:
   m_ObjectHideFlags: 0

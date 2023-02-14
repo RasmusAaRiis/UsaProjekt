@@ -269,26 +269,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <drink>k__BackingField.Path
-      value: event:/Sfx/Drink
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <drink>k__BackingField.Guid.Data1
-      value: 126204338
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <drink>k__BackingField.Guid.Data2
-      value: 1257220838
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <drink>k__BackingField.Guid.Data3
-      value: 2059665552
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592886086777174207, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
-      propertyPath: <drink>k__BackingField.Guid.Data4
-      value: -2020191167
-      objectReference: {fileID: 0}
     - target: {fileID: 2592886088349998577, guid: ab4a62f713ccf2640bf542b2e5cb9a50, type: 3}
       propertyPath: m_Name
       value: AudioManager
