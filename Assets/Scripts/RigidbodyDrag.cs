@@ -51,7 +51,7 @@ public class RigidbodyDrag : MonoBehaviour
             }
         }
 
-        if (!isHolding || Vector3.Distance(dragObject.transform.position, transform.forward * 2 + transform.position) >= reachDistane)
+        if (dragObject && (!isHolding || Vector3.Distance(dragObject.transform.position, transform.forward * 2 + transform.position) >= reachDistane))
         {
             isDragging = false;
         }

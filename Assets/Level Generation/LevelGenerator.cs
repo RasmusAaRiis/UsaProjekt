@@ -216,11 +216,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-        AudioManager.instance.SetParameter("Elevator", 0);
-        AudioManager.instance.SetParameter("Situation", 2);
-        Debug.Log("Mokkel");
-
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;
         totalLevelClearTime += newLevelClearTime;
@@ -238,6 +233,15 @@ public class LevelGenerator : MonoBehaviour
 
         while (true)
         {
+            if (intersects && GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
+            {
+                intersects = false;
+                AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+                AudioManager.instance.SetParameter("Elevator", 0);
+                AudioManager.instance.SetParameter("Situation", 2);
+                Debug.Log("Mokkel");
+            }
+
             yield return new WaitForSeconds(0);
 
             if (createNewRoom)
@@ -245,7 +249,7 @@ public class LevelGenerator : MonoBehaviour
                 createNewRoom = false;
 
                 FadeToBlack(0.3f);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.7f);
                 minEnemyCount += minEnemyCountIncrease;
                 maxEnemyCount += maxEnemyCountIncrease;
                 CreateLevel();
@@ -262,6 +266,7 @@ public class LevelGenerator : MonoBehaviour
 
                 currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
+                break;
             }
         }
     }
