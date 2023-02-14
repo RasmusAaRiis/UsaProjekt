@@ -11,7 +11,7 @@ public class AmmoBox : MonoBehaviour
         {
             stapler = other.transform.GetComponentInChildren<Stapler>();
             CharacterController cc = other.transform.GetComponent<CharacterController>();
-            int appliedAmmo = 10 * cc.ammoModifier;
+            int appliedAmmo = 20 * cc.ammoModifier;
             stapler.ammo += appliedAmmo;
             cc.PickupText("+" + appliedAmmo + " Ammo");
             Destroy(gameObject);
