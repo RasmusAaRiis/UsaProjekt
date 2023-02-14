@@ -135,7 +135,7 @@ MonoBehaviour:
   attackRange: 4
   attackSpeed: 0.8
   knockback: 5
-  attackCooldown: 0.3
+  attackCooldown: 0.5
   cooldown: 0
   attacking: 0
   throwing: 0

@@ -41,6 +41,9 @@ public class CharacterController : MonoBehaviour
     Outline selectionOutline = new Outline();
 
     [Space]
+    public Image rcButton;
+    public Image eButton;
+    public Image BlackFadeScreen;
     public Transform target;
     public Animator dashUI;
     public Animator pickupAnimator;
