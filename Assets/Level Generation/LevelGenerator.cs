@@ -108,7 +108,7 @@ public class LevelGenerator : MonoBehaviour
         currentRooms.Add(elevatorRoomObject);
         elevatorRoomScript.rawBounds = GetBoundsRaw(elevatorRoomScript.gameObject);
         elevatorRoomScript.rawBounds.Expand(-1f);
-        elevatorRoomScript.southDoor.ActivateDoor();
+        //elevatorRoomScript.southDoor.ActivateDoor();
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
