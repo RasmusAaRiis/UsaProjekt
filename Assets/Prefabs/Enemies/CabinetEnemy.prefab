@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 8146343737138943051}
   - component: {fileID: 8146343737138943050}
   - component: {fileID: 515074320878635097}
-  - component: {fileID: 111635038}
+  - component: {fileID: 366556996797630166}
   m_Layer: 0
   m_Name: CabinetEnemy
   m_TagString: Untagged
@@ -661,7 +661,7 @@ MonoBehaviour:
   stabilize: 1
   onGround: 0
   debugText: {fileID: 179910884}
-  damagePopup: {fileID: 111635038}
+  damagePopup: {fileID: 0}
 --- !u!114 &515074320878635097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   shootDifference: 50
   timer: 0
   timerValue: 0
---- !u!114 &111635038
+--- !u!114 &366556996797630166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

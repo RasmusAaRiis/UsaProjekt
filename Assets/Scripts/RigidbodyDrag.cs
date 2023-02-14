@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class RigidbodyDrag : MonoBehaviour
 {
+    [SerializeField] private CharacterController cc;
+    
     [SerializeField] private float reachDistane = 5;
 
     [SerializeField] private bool isDragging;

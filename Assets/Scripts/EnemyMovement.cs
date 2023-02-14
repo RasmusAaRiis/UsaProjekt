@@ -76,7 +76,6 @@ public class EnemyMovement : MonoBehaviour
         
         if (debugMode)
         {
-            debugText.transform.LookAt(target);
             debugText.text = target.name;
         }
 
@@ -86,7 +85,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 targetCamera = target.GetComponentInChildren<Camera>().transform;
             }
-            damagePopup.transform.LookAt(targetCamera);
+            damagePopup.anim.transform.LookAt(targetCamera);
         }
 
         if (health <= 0f)
