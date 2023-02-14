@@ -108,7 +108,11 @@ public class LevelGenerator : MonoBehaviour
         currentRooms.Add(elevatorRoomObject);
         elevatorRoomScript.rawBounds = GetBoundsRaw(elevatorRoomScript.gameObject);
         elevatorRoomScript.rawBounds.Expand(-1f);
-        //elevatorRoomScript.southDoor.ActivateDoor();
+
+        if (levelsCleared == 0)
+        {
+            elevatorRoomScript.southDoor.ActivateDoor();
+        }
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
@@ -153,12 +157,6 @@ public class LevelGenerator : MonoBehaviour
             if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
-            }
-            else if (GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
-            {
-                AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-                AudioManager.instance.SetParameter("Elevator", 0);
-                AudioManager.instance.SetParameter("Situation", 2);
             }
             else
             {
@@ -218,7 +216,10 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        AudioManager.instance.SetParameter("Situation", 0);
+        AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+        AudioManager.instance.SetParameter("Elevator", 0);
+        AudioManager.instance.SetParameter("Situation", 2);
+        Debug.Log("Mokkel");
 
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;
@@ -243,9 +244,8 @@ public class LevelGenerator : MonoBehaviour
             {
                 createNewRoom = false;
 
-                FadeToBlack(0.5f);
+                FadeToBlack(0.3f);
                 yield return new WaitForSeconds(0.5f);
-
                 minEnemyCount += minEnemyCountIncrease;
                 maxEnemyCount += maxEnemyCountIncrease;
                 CreateLevel();
@@ -254,20 +254,24 @@ public class LevelGenerator : MonoBehaviour
                 AudioManager.instance.SetParameter("Elevator", 1);
                 AudioManager.instance.SetParameter("Situation", 0);
 
+                FadeFromBlack(0.3f);
+
                 yield return new WaitForSeconds(3);
 
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
+                AudioManager.instance.SetParameter("ElevatorLoad", 0f);
+
                 currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
             }
         }
     }
 
     public void FadeToBlack(float duration)
     {
-        StartCoroutine(FadeOverTime(duration));
+        StartCoroutine(FadeToBlackOverTime(duration));
     }
 
-    IEnumerator FadeOverTime(float duration)
+    IEnumerator FadeToBlackOverTime(float duration)
     {
         Image fadeImage = player.GetComponent<CharacterController>().BlackFadeScreen;
 
@@ -277,6 +281,27 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSeconds(duration / 25f);
             fadeImage.color = new Color(0f, 0f, 0f, fadeImage.color.a + 1 / 25f);
         }
+
+        fadeImage.color = new Color(0f, 0f, 0f, 1f);
+    }
+
+    public void FadeFromBlack(float duration)
+    {
+        StartCoroutine(FadeFromBlackOverTime(duration));
+    }
+
+    IEnumerator FadeFromBlackOverTime(float duration)
+    {
+        Image fadeImage = player.GetComponent<CharacterController>().BlackFadeScreen;
+
+        while (fadeImage.color.a > 0f)
+        {
+            Debug.Log(fadeImage.color.a - 1 / 25f);
+            yield return new WaitForSeconds(duration / 25f);
+            fadeImage.color = new Color(0f, 0f, 0f, fadeImage.color.a - 1 / 25f);
+        }
+
+        fadeImage.color = new Color(0f, 0f, 0f, 0f);
     }
 
     void SpawnRoom()
@@ -462,7 +487,7 @@ public class LevelGenerator : MonoBehaviour
 
     void RemoveExcessDoors()
     {
-        for (int i = 0; i < currentRooms.Count - 1; i++)
+        for (int i = 1; i < currentRooms.Count - 1; i++)
         {
             if (currentRooms[i].GetComponent<RoomScript>() && currentRooms[i].transform.Find("Doors"))
             {
@@ -558,6 +583,12 @@ public class LevelGenerator : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(currentRooms[i].GetComponent<RoomScript>().rawBounds.center, currentRooms[i].GetComponent<RoomScript>().rawBounds.extents * 2);
+        }
+
+        if (currentRooms.Count > 0)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().rawBounds.center, currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().rawBounds.extents * 2);
         }
     }
 }

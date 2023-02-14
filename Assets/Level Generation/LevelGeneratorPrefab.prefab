@@ -48,17 +48,21 @@ MonoBehaviour:
   playerPrefab: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
   doorPrefab: {fileID: 200305001620900287, guid: 7a487b74334cdfe4e88fb920024233b5, type: 3}
   starterWeaponPrefab: {fileID: 6719938817502376433, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
-  officeWallPrefab: {fileID: 919132149155446097, guid: 3666955aea59df341acfcb2a7a8e46da, type: 3}
+  officeWallPrefab: {fileID: 6934183538698803715, guid: 05ca243502a67fb439be913c099ad897, type: 3}
   enemyPrefabs:
   - {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
   - {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
   maxLevelLength: 50
   currentActiveRoom: {fileID: 0}
   createNewRoom: 0
+  minEnemyCount: 1
+  maxEnemyCount: 1
+  minEnemyCountIncrease: 1
+  maxEnemyCountIncrease: 1
+  fadeSpeed: 0
   rooms:
   - {fileID: 899355537060424665, guid: 770fcc03360715949a40800705a263ec, type: 3}
   - {fileID: 8022319923429987445, guid: 191cebb4c732bac4687715783a6c63e9, type: 3}
-  - {fileID: 8240123199485074787, guid: 967aa9b5b82a9ae4a8534616aebc86e5, type: 3}
   - {fileID: 1101679762610409699, guid: 379914e4ede68b24eb79864170ab62f5, type: 3}
   - {fileID: 5950456558371173657, guid: 100b8d9a1d61beb4ba918d8b2c476b75, type: 3}
   - {fileID: 8641902567909072546, guid: 961ebeffa3690db498b039f26e31ab70, type: 3}
@@ -69,6 +73,11 @@ MonoBehaviour:
   - {fileID: 8240123199485074787, guid: f6d5f7dc65b5d434a8b9fabf8c0a44c4, type: 3}
   - {fileID: 8240123199485074787, guid: 46037c0443a98ae4492395da62d7c77d, type: 3}
   - {fileID: 8240123199485074787, guid: 73f2186ff9f105442acf667273748bdf, type: 3}
+  - {fileID: 8240123199485074787, guid: 10c5b032bf1734a419791da2ac9c88fa, type: 3}
+  - {fileID: 8240123199485074787, guid: fe3ffc65c5d112a47a8fda4fd0cb7dcf, type: 3}
+  - {fileID: 8240123199485074787, guid: 9b3da185cb99f404ca6fb108c0c89813, type: 3}
+  - {fileID: 8240123199485074787, guid: 274c35bbcb579514d9bd0858c7e1cf79, type: 3}
+  - {fileID: 8240123199485074787, guid: 33f6f2e12283db1478aae8bf8613c8da, type: 3}
   currentRooms: []
   doors: []
   deadEnemies: []
