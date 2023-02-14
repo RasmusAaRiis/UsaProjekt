@@ -52,11 +52,11 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
   - {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
-  maxLevelLength: 50
+  maxLevelLength: 5
   currentActiveRoom: {fileID: 0}
   createNewRoom: 0
   minEnemyCount: 1
-  maxEnemyCount: 1
+  maxEnemyCount: 2
   minEnemyCountIncrease: 1
   maxEnemyCountIncrease: 1
   fadeSpeed: 0
