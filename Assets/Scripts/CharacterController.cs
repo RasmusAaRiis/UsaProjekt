@@ -328,6 +328,8 @@ public class CharacterController : MonoBehaviour {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.pickup, this.transform.position);
     }
 
+    //Change
+
     void ThrowObject()
     {
         if (heldObject == null)
