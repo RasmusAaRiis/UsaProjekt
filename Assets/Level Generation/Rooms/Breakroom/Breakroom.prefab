@@ -841,9 +841,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8022319923062331097}
     m_Modifications:
+    - target: {fileID: 1121444243147297460, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408345771906235783, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573448509436499089, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8463969711220248278, guid: c3edc765add118547a76a6d28f019da7, type: 3}
       propertyPath: m_Name
       value: WaterDispenser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463969711220248278, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9096672250215699564, guid: c3edc765add118547a76a6d28f019da7, type: 3}
       propertyPath: m_RootOrder
@@ -888,6 +904,14 @@ PrefabInstance:
     - target: {fileID: 9096672250215699564, guid: c3edc765add118547a76a6d28f019da7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672250215699565, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672250215699565, guid: c3edc765add118547a76a6d28f019da7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3edc765add118547a76a6d28f019da7, type: 3}
@@ -1979,7 +2003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6662594480941870004, guid: 789cb7ea419d26c47b3ed6212202ff13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.684
+      value: -2.587
       objectReference: {fileID: 0}
     - target: {fileID: 6662594480941870004, guid: 789cb7ea419d26c47b3ed6212202ff13, type: 3}
       propertyPath: m_LocalPosition.y

@@ -89,7 +89,10 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < throwableObjects.Length; i++)
         {
-            Destroy(throwableObjects[i]);
+            if (throwableObjects[i].transform != player.GetComponent<CharacterController>().heldObject)
+            {
+                Destroy(throwableObjects[i]);
+            }
         }
 
         if (!player)
@@ -216,6 +219,8 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        AudioManager.instance.SetParameter("Situation", 0);
+
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;
         totalLevelClearTime += newLevelClearTime;
@@ -233,9 +238,8 @@ public class LevelGenerator : MonoBehaviour
 
         while (true)
         {
-            if (intersects && GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
+            if (GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
             {
-                intersects = false;
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
                 AudioManager.instance.SetParameter("Elevator", 0);
                 AudioManager.instance.SetParameter("Situation", 2);
@@ -249,9 +253,11 @@ public class LevelGenerator : MonoBehaviour
                 createNewRoom = false;
 
                 FadeToBlack(0.3f);
-                yield return new WaitForSeconds(0.7f);
+                yield return new WaitForSeconds(1f);
                 minEnemyCount += minEnemyCountIncrease;
                 maxEnemyCount += maxEnemyCountIncrease;
+                Debug.Log("Fade");
+                yield return new WaitForSeconds(1);
                 CreateLevel();
 
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
@@ -402,6 +408,11 @@ public class LevelGenerator : MonoBehaviour
         {
             int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
             spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
+
+            if (minEnemyCount > 3)
+            {
+                minEnemyCount = 3;
+            }
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
