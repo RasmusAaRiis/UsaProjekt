@@ -3099,6 +3099,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -5144766875106746650, guid: e977c41f8fc848f4d84365ed68bd5430, type: 3}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
       value: South Door
@@ -3482,6 +3486,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -5144766875106746650, guid: 9659c22015d6ab24491c62b58b5f5e78, type: 3}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
       value: West Door
@@ -3643,6 +3651,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -5144766875106746650, guid: 9659c22015d6ab24491c62b58b5f5e78, type: 3}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
       value: North Door
@@ -3878,6 +3890,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f4c13293dd1f8e74fbdfc6c2dc658ce8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -5144766875106746650, guid: 9659c22015d6ab24491c62b58b5f5e78, type: 3}
     - target: {fileID: 919132149155446097, guid: 1db151ac2a421174eb0b1eb01cddfd20, type: 3}
       propertyPath: m_Name
       value: East Door
