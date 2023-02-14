@@ -32,6 +32,7 @@ public class VendingMachine : MonoBehaviour
 
         if (usingMachine && Input.GetKeyDown(KeyCode.E))
         {
+            cc.BlackFadeScreen.gameObject.SetActive(true);
             changeView(false);
         }
     }
@@ -50,6 +51,7 @@ public class VendingMachine : MonoBehaviour
         {
             if(usingMachine)
             {
+                cc.BlackFadeScreen.gameObject.SetActive(true);
                 changeView(false);
                 return;
             }
@@ -60,6 +62,7 @@ public class VendingMachine : MonoBehaviour
         }
         else if (!cooldown)
         {
+            cc.BlackFadeScreen.gameObject.SetActive(true);
             usingMachine = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;

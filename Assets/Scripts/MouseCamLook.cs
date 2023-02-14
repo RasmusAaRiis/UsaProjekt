@@ -18,6 +18,7 @@ public class MouseCamLook : MonoBehaviour {
     public float smoothing = 2.0f;
     // the chacter is the capsule
     public GameObject character;
+    public CharacterController cc;
     // get the incremental value of mouse moving
     public Vector2 mouseLook;
     // smooth the mouse moving
@@ -26,10 +27,16 @@ public class MouseCamLook : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         character = this.transform.parent.gameObject;
+        cc = character.GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (cc.paused)
+        {
+            return;
+        }
+
         // md is mosue delta
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
