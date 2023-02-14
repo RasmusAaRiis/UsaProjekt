@@ -75,7 +75,7 @@ public class EnemyShoot : MonoBehaviour
         }
         
         
-        if (shootTarget)
+        if (shootTarget && GetComponent<EnemyMovement>().health > 0)
         {
             timerValue += Time.deltaTime;
         

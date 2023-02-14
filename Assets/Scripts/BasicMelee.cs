@@ -9,6 +9,8 @@ public class BasicMelee : Weapon
     
     public override void Attack()
     {
+        base.Attack();
+
         if (cooldown)
         {
             return;
@@ -48,6 +50,7 @@ public class BasicMelee : Weapon
     public override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.genericHit, this.transform.position);
 
         if (!attacking)
         {

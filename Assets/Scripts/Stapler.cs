@@ -9,6 +9,8 @@ public class Stapler : Weapon
 
     public override void Attack()
     {
+        base.Attack();
+
         if (cooldown || ammo <= 0)
         {
             return;

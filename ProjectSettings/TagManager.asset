@@ -11,6 +11,7 @@ TagManager:
   - SpawnPoint
   - Can
   - Vending
+  - EndLevelTemp
   layers:
   - Default
   - TransparentFX
