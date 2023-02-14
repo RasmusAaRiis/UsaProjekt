@@ -216,6 +216,8 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        AudioManager.instance.SetParameter("Situation", 0);
+
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;
         totalLevelClearTime += newLevelClearTime;
@@ -402,6 +404,11 @@ public class LevelGenerator : MonoBehaviour
         {
             int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
             spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
+
+            if (minEnemyCount > 3)
+            {
+                minEnemyCount = 3;
+            }
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
