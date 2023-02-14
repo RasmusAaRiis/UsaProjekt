@@ -1362,7 +1362,7 @@ MonoBehaviour:
   rangedSpeedModifier: 1
   knockbackModifier: 1
   ammoModifier: 1
-  target: {fileID: 0}
+  target: {fileID: 755032518}
   dashUI: {fileID: 31445721}
   pickupAnimator: {fileID: 1925828390}
   healthText: {fileID: 9099491638400048381}

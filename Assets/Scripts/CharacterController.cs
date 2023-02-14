@@ -14,7 +14,8 @@ using TMPro;
 using FMODUnity;
 using FMOD.Studio;
 
-public class CharacterController : MonoBehaviour {
+public class CharacterController : MonoBehaviour
+{
 
     [Header("Basics")]
     public float speed = 10.0f;
@@ -40,22 +41,26 @@ public class CharacterController : MonoBehaviour {
     Outline selectionOutline = new Outline();
 
     [Space]
+    public Transform target;
     public Animator dashUI;
     public Animator pickupAnimator;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI ammoText;
     public Rigidbody rb;
     public Transform Hand;
     private float translation;
     private float straffe;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // turn off the cursor
-        Cursor.lockState = CursorLockMode.Locked;		
+        Cursor.lockState = CursorLockMode.Locked;
         Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
-	}
+    }
 
-    void Update () {
+    void Update()
+    {
         #region Basic Controls
         //Basic movements
         translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -70,10 +75,11 @@ public class CharacterController : MonoBehaviour {
 
         //Står playeren på jorden?
         //Laver en sphere under spilleren og checker hvis den collider med mere end playeren selv
-        if(Physics.OverlapSphere(transform.position + -Vector3.up * 1, 0.1f).Length >= 2)
+        if (Physics.OverlapSphere(transform.position + -Vector3.up * 1, 0.1f).Length >= 2)
         {
             isGrounded = true;
-        } else
+        }
+        else
         {
             isGrounded = false;
         }
@@ -87,11 +93,23 @@ public class CharacterController : MonoBehaviour {
 
         healthText.text = Health.ToString();
 
+        //Ammo display
+        Stapler stapler;
+        if (heldObject != null && heldObject.TryGetComponent<Stapler>(out stapler))
+        {
+            ammoText.transform.parent.gameObject.SetActive(true);
+            ammoText.text = stapler.ammo.ToString();
+        }
+        else
+        {
+            ammoText.transform.parent.gameObject.SetActive(false);
+        }
+
         #region Throwable/weapon logic
         if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Weapon weapon_m;
-            if(heldObject.TryGetComponent<Weapon>(out weapon_m))
+            if (heldObject.TryGetComponent<Weapon>(out weapon_m))
             {
                 weapon_m.Attack();
             }
@@ -106,7 +124,7 @@ public class CharacterController : MonoBehaviour {
 
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
-        if(Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
+        if (Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
         {
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
@@ -118,7 +136,7 @@ public class CharacterController : MonoBehaviour {
                 if (hit.transform.CompareTag("Throwable") ||
                     hit.transform.CompareTag("Door") ||
                     hit.transform.CompareTag("Can") ||
-                    hit.transform.CompareTag("Vending") || 
+                    hit.transform.CompareTag("Vending") ||
                     hit.transform.CompareTag("EndLevelTemp") ||
                     hit.transform.CompareTag("Money") ||
                     hit.transform.CompareTag("Water"))
@@ -143,7 +161,7 @@ public class CharacterController : MonoBehaviour {
                 return;
             }
 
-            if(lookedAtObject.transform == heldObject)
+            if (lookedAtObject.transform == heldObject)
             {
                 return;
             }
@@ -187,7 +205,7 @@ public class CharacterController : MonoBehaviour {
                 Destroy(can.gameObject);
             }
 
-            if (lookedAtObject.CompareTag("Water") && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)))
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Water"))
             {
                 Health = 10;
                 PickupText("+Health");
@@ -195,22 +213,26 @@ public class CharacterController : MonoBehaviour {
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.moneyPickup, this.transform.position);
                 Money += 5;
                 PickupText("+5 Dollars");
                 lookedAtObject.SetActive(false);
                 lookedAtObject = null;
             }
 
-        } else
+        }
+        else
         {
             //Spilleren kigger ikke på et objekt
-            if(lookedAtObject) { SetObjectOutline(0); }
+            if (lookedAtObject) { SetObjectOutline(0); }
             lookedAtObject = null;
         }
         #endregion
 
+
         //Lav om på et tidspunkt btw
-        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked) {
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked)
+        {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
         }
@@ -240,7 +262,7 @@ public class CharacterController : MonoBehaviour {
             Health--;
             Health = Mathf.Max(Health, 0);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHit, this.transform.position);
-            if(Health <= 0)
+            if (Health <= 0)
             {
                 Die();
             }
@@ -328,8 +350,6 @@ public class CharacterController : MonoBehaviour {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.pickup, this.transform.position);
     }
 
-    //Change
-
     void ThrowObject()
     {
         if (heldObject == null)
@@ -347,14 +367,21 @@ public class CharacterController : MonoBehaviour {
         heldObject.position = Hand.position;
         heldObject.parent = null;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject.GetComponent<Rigidbody>().velocity = Hand.parent.forward * 15 * throwForce;
+
+        heldObject.GetComponent<Rigidbody>().velocity = (target.position - Hand.position).normalized * 15 * throwForce;
         heldObject.GetComponent<Collider>().enabled = true;
         heldObject = null;
     }
 
+    public void LookAt()
+    {
+        MouseCamLook MouseCamLook = GetComponentInChildren<MouseCamLook>();
+        MouseCamLook.mouseLook = new Vector2(MouseCamLook.mouseLook.x, -70);
+    }
+
     void SetObjectOutline(GameObject Object, float width)
     {
-        if(Object == null)
+        if (Object == null)
         {
             return;
         }
@@ -363,7 +390,7 @@ public class CharacterController : MonoBehaviour {
         {
             selectionOutline = Object.AddComponent<Outline>();
         }
-        if(width <= 0)
+        if (width <= 0)
         {
             selectionOutline.enabled = false;
             return;
