@@ -28,7 +28,7 @@ public class RigidbodyDrag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        dragObject = this.gameObject;
     }
     
     void Update()
