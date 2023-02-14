@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class LevelGenerator : MonoBehaviour
     public int maxEnemyCount = 1;
     public int minEnemyCountIncrease = 1;
     public int maxEnemyCountIncrease = 1;
+    public float fadeSpeed;
 
     [Header("Object Tracking")]
     public GameObject[] rooms;
@@ -106,6 +108,7 @@ public class LevelGenerator : MonoBehaviour
         currentRooms.Add(elevatorRoomObject);
         elevatorRoomScript.rawBounds = GetBoundsRaw(elevatorRoomScript.gameObject);
         elevatorRoomScript.rawBounds.Expand(-1f);
+        elevatorRoomScript.southDoor.ActivateDoor();
 
         GameObject firstRoomObject = Instantiate(rooms[Random.Range(2, rooms.Length)], Vector3.zero, Quaternion.identity);
         RoomScript firstRoomScript = firstRoomObject.GetComponent<RoomScript>();
@@ -239,31 +242,40 @@ public class LevelGenerator : MonoBehaviour
             if (createNewRoom)
             {
                 createNewRoom = false;
-                //Fade to black
 
-                //Teleport player
+                FadeToBlack(0.5f);
+                yield return new WaitForSeconds(0.5f);
 
                 minEnemyCount += minEnemyCountIncrease;
                 maxEnemyCount += maxEnemyCountIncrease;
                 CreateLevel();
-                for (int i = 0; i < 1000; i++)
-                {
-                    Debug.Log("TEST: " + i);
-                }
-                //Generate nyt rum
 
-                //Elevatorload mod 0
-
-                //Når elevatorload er 0, så sig ding, vent lidt og så åben døre og sæt
-                /*
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-
                 AudioManager.instance.SetParameter("Elevator", 1);
                 AudioManager.instance.SetParameter("Situation", 0);
 
-                CreateLevel();*/
+                yield return new WaitForSeconds(3);
+
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
+                currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
             }
+        }
+    }
+
+    public void FadeToBlack(float duration)
+    {
+        StartCoroutine(FadeOverTime(duration));
+    }
+
+    IEnumerator FadeOverTime(float duration)
+    {
+        Image fadeImage = player.GetComponent<CharacterController>().BlackFadeScreen;
+
+        while (fadeImage.color.a < 1f)
+        {
+            Debug.Log(fadeImage.color.a + 1 / 25f);
+            yield return new WaitForSeconds(duration / 25f);
+            fadeImage.color = new Color(0f, 0f, 0f, fadeImage.color.a + 1 / 25f);
         }
     }
 

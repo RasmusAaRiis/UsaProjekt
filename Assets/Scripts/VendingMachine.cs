@@ -53,6 +53,7 @@ public class VendingMachine : MonoBehaviour
                 changeView(false);
                 return;
             }
+            cc.BlackFadeScreen.gameObject.SetActive(false);
             StartCoroutine(Cooldown());
             usingMachine = true;
             Cursor.lockState = CursorLockMode.None;
@@ -68,6 +69,7 @@ public class VendingMachine : MonoBehaviour
     public void Eject(int canIndex)
     {
         CharacterController cc = FindObjectOfType<CharacterController>();
+        cc.BlackFadeScreen.gameObject.SetActive(true);
         if (cc.Money < Cost)
         {
             //Ikke nok penge
