@@ -1590,7 +1590,7 @@ MonoBehaviour:
   jumpForce: 6
   paused: 0
   Health: 10
-  Money: 200
+  Money: 0
   throwForce: 1
   damageModifier: 1
   rangedDamageModifier: 1

@@ -274,6 +274,7 @@ public class CharacterController : MonoBehaviour
         if (pause)
         {
             PauseScreen.SetActive(true);
+            BlackFadeScreen.gameObject.SetActive(true);
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             BlackFadeScreen.color = new Color(0, 0, 0, 0.4f);
