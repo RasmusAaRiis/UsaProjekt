@@ -82,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2285645628289516182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.009825, y: 0, z: 14.247428}
+  m_LocalPosition: {x: -14, y: 0, z: 20.6}
   m_LocalScale: {x: 22.940222, y: 22.940222, z: 22.940222}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rospObjects:
-  - obj: {fileID: 1021134144241549557, guid: 487c54c935d9a4444af2e26ddf5a249a, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
+  - obj: {fileID: 4512159976837298932, guid: 046ef52eeb2cb554a9245d2674bba3c0, type: 3}
+    positionOffset: {x: 0, y: 0.1, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
     spawnChance: 1
   - obj: {fileID: 0}
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6216383357596838873, guid: 179283e4d1baf7e4faade4d99c788f01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.537001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6216383357596838873, guid: 179283e4d1baf7e4faade4d99c788f01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6216383357596838873, guid: 179283e4d1baf7e4faade4d99c788f01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.5599957
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6216383357596838873, guid: 179283e4d1baf7e4faade4d99c788f01, type: 3}
       propertyPath: m_LocalRotation.w

@@ -30,6 +30,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 195593
+--- !u!114 &-8569758040156787253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/MoneyPickup
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/MoneyPickup
+  Guid:
+    Data1: -640498636
+    Data2: 1110142479
+    Data3: -1159634250
+    Data4: -220860550
+  Banks:
+  - {fileID: -7825304743942824416}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8509162523676764672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +96,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638118766119301968
+  lastModified: 638119154196491016
   FileSizes: []
   Exists: 1
 --- !u!114 &-7494231099486070980
@@ -189,7 +216,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638118766119431991
+  lastModified: 638119154196834144
   FileSizes: []
   Exists: 1
 --- !u!114 &-2281828161472045042
@@ -288,7 +315,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638116210455794260
+  lastModified: 638119154196530911
   FileSizes: []
   Exists: 1
 --- !u!114 &-619911419148503817
@@ -342,6 +369,7 @@ MonoBehaviour:
   - {fileID: -2618236436458050070}
   - {fileID: -2281828161472045042}
   - {fileID: -7494231099486070980}
+  - {fileID: -8569758040156787253}
   EditorParameters:
   - {fileID: 1403152271267373567}
   - {fileID: -8509162523676764672}
@@ -350,7 +378,7 @@ MonoBehaviour:
   - {fileID: -1383745454064559659}
   StringsBanks:
   - {fileID: 6661882875707897584}
-  cacheTime: 638118766119431991
+  cacheTime: 638119154196834144
   cacheVersion: 131601
 --- !u!114 &35786957369068855
 MonoBehaviour:
@@ -496,8 +524,8 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638118766119311978
+  lastModified: 638119154196554140
   FileSizes:
   - Name: 
-    Value: 1350
+    Value: 1392
   Exists: 1
