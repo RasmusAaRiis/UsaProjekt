@@ -54,17 +54,35 @@ public class CharacterController : MonoBehaviour
     public Transform Hand;
     private float translation;
     private float straffe;
+    int currentFloor = 0;
 
     // Use this for initialization
     void Start()
     {
+        PickupText($"Floor {currentFloor}", 0, 0.3f);
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
     }
 
+    LevelGenerator lg = null;
     void Update()
     {
+        if(lg == null)
+        {
+            if (FindObjectOfType<LevelGenerator>())
+            {
+                lg = FindObjectOfType<LevelGenerator>();
+            }
+        } else
+        {
+            if (currentFloor != lg.levelsCleared)
+            {
+                currentFloor = lg.levelsCleared;
+            }
+        }
+
+
         #region Basic Controls
         //Basic movements
         translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -192,6 +210,7 @@ public class CharacterController : MonoBehaviour
             //TEMP kode til at lave nye levels
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
             {
+                PickupText($"Floor {currentFloor}", 3, 0.3f);
                 GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().createNewRoom = true;
             }
 
@@ -460,6 +479,21 @@ public class CharacterController : MonoBehaviour
     {
         TextMeshProUGUI Text = pickupAnimator.transform.GetComponentInChildren<TextMeshProUGUI>();
         Text.text = displayText;
+        pickupAnimator.speed = 1;
+        pickupAnimator.SetTrigger("Pickup");
+    }
+
+    public void PickupText(string displayText, float delay, float speed)
+    {
+        StartCoroutine(pickupDelay(displayText, delay, speed));
+    }
+
+    IEnumerator pickupDelay(string displayText, float delay, float speed)
+    {
+        yield return new WaitForSeconds(delay);
+        TextMeshProUGUI Text = pickupAnimator.transform.GetComponentInChildren<TextMeshProUGUI>();
+        Text.text = displayText;
+        pickupAnimator.speed = speed;
         pickupAnimator.SetTrigger("Pickup");
     }
 
