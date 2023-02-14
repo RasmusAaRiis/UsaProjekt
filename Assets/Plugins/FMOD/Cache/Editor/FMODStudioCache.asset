@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638119492234954722
+  lastModified: 638119649668472037
   FileSizes: []
   Exists: 1
 --- !u!114 &-8627477130866263141
@@ -111,7 +111,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638119262418482995
+  lastModified: 638118940512461724
   FileSizes: []
   Exists: 1
 --- !u!114 &-6067033900378188320
@@ -153,7 +153,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638119208918158594
+  lastModified: 638118885739422515
   FileSizes: []
   Exists: 1
 --- !u!114 &-2910734533139444273
@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: -6551603457992968969}
   StringsBanks:
   - {fileID: 983214457399187778}
-  cacheTime: 638119492235054553
+  cacheTime: 638119649668482041
   cacheVersion: 131601
 --- !u!114 &889421719934826955
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638119492235054553
+  lastModified: 638119649668482041
   FileSizes:
   - Name: 
     Value: 1648

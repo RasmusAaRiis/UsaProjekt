@@ -246,13 +246,10 @@ public class LevelGenerator : MonoBehaviour
                 minEnemyCount += minEnemyCountIncrease;
                 maxEnemyCount += maxEnemyCountIncrease;
                 CreateLevel();
-<<<<<<< Updated upstream
-=======
                 for (int i = 0; i < 1000; i++)
                 {
                     Debug.Log("TEST: " + i);
                 }
->>>>>>> Stashed changes
                 //Generate nyt rum
 
                 //Elevatorload mod 0
