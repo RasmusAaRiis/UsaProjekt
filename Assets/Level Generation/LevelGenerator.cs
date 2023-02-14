@@ -59,6 +59,7 @@ public class LevelGenerator : MonoBehaviour
 
     bool spawnUp = true;
     RoomScript lastRoomScript;
+    bool test = false;
 
     private void Start()
     {
@@ -103,8 +104,6 @@ public class LevelGenerator : MonoBehaviour
         {
             player.transform.position = Vector3.zero + Vector3.up;
         }
-
-        Instantiate(starterWeaponPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
 
         GameObject elevatorRoomObject = Instantiate(rooms[0], Vector3.zero, Quaternion.identity);
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
@@ -235,11 +234,15 @@ public class LevelGenerator : MonoBehaviour
         {
             fastestLevelClearTime = newLevelClearTime;
         }
-
-        while (true)
+        test = false;
+        while (!createNewRoom)
         {
-            if (GetBoundsRaw(player).Intersects(GetBoundsRaw(currentRooms[currentRooms.Count - 1])))
+            Bounds breakRoomBounds = GetBoundsRaw(currentRooms[currentRooms.Count - 1]);
+            breakRoomBounds.Expand(-2f);
+
+            if (!test && GetBoundsRaw(player).Intersects(breakRoomBounds))
             {
+                test = true;
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
                 AudioManager.instance.SetParameter("Elevator", 0);
                 AudioManager.instance.SetParameter("Situation", 2);
@@ -247,34 +250,30 @@ public class LevelGenerator : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0);
-
-            if (createNewRoom)
-            {
-                createNewRoom = false;
-
-                FadeToBlack(0.3f);
-                yield return new WaitForSeconds(1f);
-                minEnemyCount += minEnemyCountIncrease;
-                maxEnemyCount += maxEnemyCountIncrease;
-                Debug.Log("Fade");
-                yield return new WaitForSeconds(1);
-                CreateLevel();
-
-                AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-                AudioManager.instance.SetParameter("Elevator", 1);
-                AudioManager.instance.SetParameter("Situation", 0);
-
-                FadeFromBlack(0.3f);
-
-                yield return new WaitForSeconds(3);
-
-                AudioManager.instance.SetParameter("ElevatorLoad", 0f);
-
-                currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
-                break;
-            }
         }
+
+        createNewRoom = false;
+
+        FadeToBlack(0.3f);
+        yield return new WaitForSeconds(1f);
+        minEnemyCount += minEnemyCountIncrease;
+        maxEnemyCount += maxEnemyCountIncrease;
+        Debug.Log("Fade");
+        yield return new WaitForSeconds(1);
+        CreateLevel();
+
+        AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+        AudioManager.instance.SetParameter("Elevator", 1);
+        AudioManager.instance.SetParameter("Situation", 0);
+
+        FadeFromBlack(0.3f);
+
+        yield return new WaitForSeconds(3);
+
+        AudioManager.instance.SetParameter("ElevatorLoad", 0f);
+
+        currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
     }
 
     public void FadeToBlack(float duration)
