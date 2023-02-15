@@ -92,7 +92,7 @@ public class CharacterController : MonoBehaviour
         rb.MovePosition(rb.position + transform.forward * translation + straffe * transform.right);
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing && (translation != 0 || straffe != 0))
         {
             StartCoroutine(DashTimer());
         }
@@ -213,7 +213,14 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
-                lookedAtObject.GetComponentInParent<DoorBehavior>().OpenDoor();
+                DoorBehavior db;
+                if (lookedAtObject.transform.parent.TryGetComponent<DoorBehavior>(out db))
+                {
+                    db.OpenDoor();
+                } else
+                {
+                    lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                }
                 lookedAtObject.tag = "Untagged";
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }

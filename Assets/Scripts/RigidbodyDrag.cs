@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class RigidbodyDrag : MonoBehaviour
 {
+    [SerializeField] private KeyCode input;
+
     [SerializeField] private CharacterController cc;
     
     [SerializeField] private float reachDistane = 5;
@@ -37,13 +39,13 @@ public class RigidbodyDrag : MonoBehaviour
     
     void Update()
     {
-        isHolding = Input.GetKey(KeyCode.Mouse0);
+        isHolding = Input.GetKey(input);
         
         if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging && cc.heldObject == null)
         {
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {
-                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(KeyCode.Mouse0) && hit.transform.GetComponent<EnemyMovement>() == null)
+                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) && hit.transform.GetComponent<EnemyMovement>() == null)
                 {
                     //print(hit.transform.name);
                     isDragging = true;
