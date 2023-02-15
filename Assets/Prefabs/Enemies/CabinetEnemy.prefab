@@ -661,7 +661,7 @@ MonoBehaviour:
   stabilize: 1
   onGround: 0
   debugText: {fileID: 179910884}
-  damagePopup: {fileID: 0}
+  damagePopup: {fileID: 366556996797630166}
 --- !u!114 &515074320878635097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,7 +1150,7 @@ RectTransform:
   m_GameObject: {fileID: 8198580162644862705}
   m_LocalRotation: {x: -0, y: 0.00000004470394, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11.56}
-  m_LocalScale: {x: 0.99974, y: 0.99974, z: 0.99974}
+  m_LocalScale: {x: -0.99974, y: 0.99974, z: 0.99974}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1148154873}
