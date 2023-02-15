@@ -417,7 +417,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aaf5a82495e40fa43a1d20083bc5daa5, type: 2}
+  - {fileID: 2100000, guid: 6ade410f15a9193489b0eda0b85bf866, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -841,6 +841,8 @@ MonoBehaviour:
   stabilize: 1
   onGround: 0
   debugText: {fileID: 179910884}
+  goopRenderer: {fileID: 2420063077666157345}
+  goopMaterial: {fileID: 0}
   damagePopup: {fileID: 366556996797630166}
 --- !u!114 &515074320878635097
 MonoBehaviour:

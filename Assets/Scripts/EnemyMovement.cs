@@ -100,8 +100,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (health <= 0f)
         {
-            goopMaterial.SetFloat(MoveSpeed, Mathf.Lerp(goopMaterial.GetFloat(MoveSpeed), 0, 0.01f));
-            goopMaterial.SetFloat(Saturation,Mathf.Lerp(goopMaterial.GetFloat(Saturation), 0.5f, 0.01f));
+            goopMaterial.SetFloat(MoveSpeed, Mathf.Lerp(goopMaterial.GetFloat(MoveSpeed), 0, 0.03f));
+            goopMaterial.SetFloat(Saturation,Mathf.Lerp(goopMaterial.GetFloat(Saturation), 0.3f, 0.03f));
             
             chaseTarget = false;
             stabilize = false;
