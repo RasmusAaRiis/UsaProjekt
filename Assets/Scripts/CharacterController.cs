@@ -49,6 +49,7 @@ public class CharacterController : MonoBehaviour
     public Image BlackFadeScreen;
     public Transform target;
     public Animator dashUI;
+    public Animator damageAnimator;
     public Animator pickupAnimator;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI ammoText;
@@ -83,7 +84,6 @@ public class CharacterController : MonoBehaviour
                 currentFloor = lg.levelsCleared;
             }
         }
-
 
         #region Basic Controls
         //Basic movements
@@ -213,7 +213,8 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
-                lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                lookedAtObject.GetComponentInParent<DoorBehavior>().OpenDoor();
+                lookedAtObject.tag = "Untagged";
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
 
@@ -304,6 +305,7 @@ public class CharacterController : MonoBehaviour
                 return;
             }
 
+            damageAnimator.SetTrigger("Damage");
             Health--;
             Health = Mathf.Max(Health, 0);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHit, this.transform.position);
