@@ -79,16 +79,16 @@ public class RigidbodyDrag : MonoBehaviour
             // {
             //     center = dragObject.GetComponent<Renderer>().bounds.center;
             // }
-
-            lineRenderer.SetPosition(0, dragObjPoint.transform.position);
             var forward = transform.forward;
             var thisPos = transform.position;
-            lineRenderer.SetPosition(1, forward * 2 + thisPos);
             var dragPos = dragObject.transform.position;
+            lineRenderer.SetPosition(0, dragObjPoint.transform.position);
+            lineRenderer.SetPosition(1, forward * 2 + thisPos);
+            
             float lineWidthEnd = lineWidth / Vector3.Distance(dragPos, forward * 2 + thisPos);
             lineWidthEnd = Mathf.Clamp(lineWidthEnd, 0.01f, lineWidth);
-            lineRenderer.startWidth = lineWidthEnd;
-            lineRenderer.endWidth = lineWidth;
+            lineRenderer.startWidth = lineWidth;
+            lineRenderer.endWidth = lineWidthEnd;
 
             forceStrengthDist = forceStrength / Vector3.Distance(dragPos,
                 forward * 2 + thisPos);
