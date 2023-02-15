@@ -43,6 +43,10 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI debugText;
 
+    [SerializeField] private Renderer goopRenderer;
+
+    [SerializeField] private Material goopMaterial;
+
     [SerializeField] private DamagePopup damagePopup;
     private Transform targetCamera = null;
 
@@ -51,9 +55,15 @@ public class EnemyMovement : MonoBehaviour
     private float timer;
 
     private bool justDied = true;
+    
+    private static readonly int MoveSpeed = Shader.PropertyToID("_MoveSpeed");
+    private static readonly int Saturation = Shader.PropertyToID("_Saturation");
 
     private void Start()
     {
+
+        goopMaterial = goopRenderer.material;
+        
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
         if (tarIsMissing) { target = FindObjectOfType<CharacterController>().transform; }
 
@@ -90,6 +100,9 @@ public class EnemyMovement : MonoBehaviour
 
         if (health <= 0f)
         {
+            goopMaterial.SetFloat(MoveSpeed, Mathf.Lerp(goopMaterial.GetFloat(MoveSpeed), 0, 0.01f));
+            goopMaterial.SetFloat(Saturation,Mathf.Lerp(goopMaterial.GetFloat(Saturation), 0.5f, 0.01f));
+            
             chaseTarget = false;
             stabilize = false;
             debugText.text = "";
@@ -102,11 +115,11 @@ public class EnemyMovement : MonoBehaviour
             switch (enemyType)
             {
                 case EnemyType.Melee:
-                    Destroy(gameObject.GetComponent<EnemyMovement>());
+                    Destroy(gameObject.GetComponent<EnemyMovement>(), 2f);
                     break;
                 case EnemyType.Ranged:
-                    Destroy(gameObject.GetComponent<EnemyShoot>());
-                    Destroy(gameObject.GetComponent<EnemyMovement>());
+                    Destroy(gameObject.GetComponent<EnemyShoot>(), 2f);
+                    Destroy(gameObject.GetComponent<EnemyMovement>(), 2f);
                     break;
             }
         }

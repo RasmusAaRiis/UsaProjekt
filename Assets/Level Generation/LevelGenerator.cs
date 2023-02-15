@@ -63,6 +63,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume");
         CreateLevel();
     }
 
@@ -246,7 +248,6 @@ public class LevelGenerator : MonoBehaviour
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
                 AudioManager.instance.SetParameter("Elevator", 0);
                 AudioManager.instance.SetParameter("Situation", 2);
-                Debug.Log("Mokkel");
             }
 
             yield return new WaitForSeconds(0);
@@ -343,7 +344,6 @@ public class LevelGenerator : MonoBehaviour
 
                 for (int ii = 0; ii < rosps.Length; ii++)
                 {
-                    Debug.Log("Room: " + i + " - ROSP: " + ii);
                     rosps[ii].SpawnObject();
                 }
             }

@@ -44,6 +44,8 @@ public class CharacterController : MonoBehaviour
 
     [Space]
     public GameObject PauseScreen;
+    public Image CloudAmmoImage;
+    public Image StapleAmmoImage;
     public Image rcButton;
     public Image eButton;
     public Image BlackFadeScreen;
@@ -117,17 +119,29 @@ public class CharacterController : MonoBehaviour
 
         healthText.text = Health.ToString();
 
+        #region Ammo
         //Ammo display
         Stapler stapler;
+        FireExtinguisher fireExtinguisher;
         if (heldObject != null && heldObject.TryGetComponent<Stapler>(out stapler))
         {
             ammoText.transform.parent.gameObject.SetActive(true);
+            StapleAmmoImage.gameObject.SetActive(true);
             ammoText.text = stapler.ammo.ToString();
+        }
+        else if (heldObject != null && heldObject.TryGetComponent<FireExtinguisher>(out fireExtinguisher))
+        {
+            ammoText.transform.parent.gameObject.SetActive(true);
+            CloudAmmoImage.gameObject.SetActive(true);
+            ammoText.text = fireExtinguisher.ammo.ToString();
         }
         else
         {
             ammoText.transform.parent.gameObject.SetActive(false);
+            StapleAmmoImage.gameObject.SetActive(false);
+            CloudAmmoImage.gameObject.SetActive(false);
         }
+        #endregion
 
         #region Pause
         if (Input.GetKeyDown(KeyCode.Escape))
