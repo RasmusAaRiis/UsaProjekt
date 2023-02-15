@@ -884,7 +884,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066393974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 36fe4bff7caf11f4db61d12c8a296adb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb20324744a99564699262422d89ee3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1380,6 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1ce9eeb8aedbe429cd149ba150edf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: {fileID: 0}
   reachDistane: 5
   isDragging: 0
   isHolding: 0
@@ -1517,8 +1518,9 @@ MonoBehaviour:
   rangedSpeedModifier: 1
   knockbackModifier: 1
   ammoModifier: 1
-  rcButton: {fileID: 0}
-  eButton: {fileID: 0}
+  heldObject: {fileID: 0}
+  rcButton: {fileID: 6500040923402280999}
+  eButton: {fileID: 2066393976}
   BlackFadeScreen: {fileID: 2017786153}
   target: {fileID: 755032518}
   dashUI: {fileID: 31445721}
@@ -1842,7 +1844,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0000035763, y: -189}
-  m_SizeDelta: {x: 34.8019, y: 34.8019}
+  m_SizeDelta: {x: 34.8019, y: 45.9703}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1410704457596332516
 CanvasRenderer:
@@ -1872,7 +1874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2c7d829d4d871b48ba6ad41ed7da58e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8d9ac42b38ce145a176b03bbdcd02d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
