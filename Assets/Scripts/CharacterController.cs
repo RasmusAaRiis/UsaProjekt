@@ -49,6 +49,7 @@ public class CharacterController : MonoBehaviour
     public Image BlackFadeScreen;
     public Transform target;
     public Animator dashUI;
+    public Animator damageAnimator;
     public Animator pickupAnimator;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI ammoText;
@@ -84,7 +85,6 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-
         #region Basic Controls
         //Basic movements
         translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -92,7 +92,7 @@ public class CharacterController : MonoBehaviour
         rb.MovePosition(rb.position + transform.forward * translation + straffe * transform.right);
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing && (translation != 0 || straffe != 0))
         {
             StartCoroutine(DashTimer());
         }
@@ -213,7 +213,15 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
-                lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                DoorBehavior db;
+                if (lookedAtObject.transform.parent.TryGetComponent<DoorBehavior>(out db))
+                {
+                    db.OpenDoor();
+                } else
+                {
+                    lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
+                }
+                lookedAtObject.tag = "Untagged";
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
 
@@ -304,6 +312,7 @@ public class CharacterController : MonoBehaviour
                 return;
             }
 
+            damageAnimator.SetTrigger("Damage");
             Health--;
             Health = Mathf.Max(Health, 0);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHit, this.transform.position);
