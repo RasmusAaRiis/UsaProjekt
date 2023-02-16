@@ -1597,6 +1597,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1571190881, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 95.2196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571190881, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -395.13153
+      objectReference: {fileID: 0}
     - target: {fileID: 1739828737, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 520.3368
@@ -1652,6 +1660,14 @@ PrefabInstance:
     - target: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504382329436735036, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 124.0217
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504382329436735036, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -257.12842
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
@@ -2706,17 +2722,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3423512214804470727, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
-      propertyPath: damage
-      value: 65
-      objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244498, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_Name
       value: Fire Extinguisher
-      objectReference: {fileID: 0}
-    - target: {fileID: 8615170253025244499, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_RootOrder

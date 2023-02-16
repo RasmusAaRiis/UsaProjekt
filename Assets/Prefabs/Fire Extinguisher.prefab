@@ -76,16 +76,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684ec1c603511eb4e93418a480c3e3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 65
+  damage: 10
   orgDamage: 10
   attackRange: 1
   attackSpeed: 10
-  knockback: 0.2
-  attackCooldown: 0.2
+  knockback: 10
+  attackCooldown: 0
   cooldown: 0
   attacking: 0
   throwing: 0
-  ammo: 5
+  ammo: 30
   Projectile: {fileID: 6687689708075989131, guid: 0d64979b656f027478b63d96922f03d2, type: 3}
 --- !u!1 &8885129698696682640
 GameObject:
