@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour
     bool isGrounded = true;
     bool dashing = false;
     bool canTakeDamage = true;
+    public bool paused = false;
 
     [Header("Stats")]
     public int Health = 5;
@@ -42,6 +43,7 @@ public class CharacterController : MonoBehaviour
     Outline selectionOutline = new Outline();
 
     [Space]
+    public GameObject PauseScreen;
     public Image rcButton;
     public Image eButton;
     public Image BlackFadeScreen;
@@ -54,17 +56,35 @@ public class CharacterController : MonoBehaviour
     public Transform Hand;
     private float translation;
     private float straffe;
+    int currentFloor = 0;
 
     // Use this for initialization
     void Start()
     {
+        PickupText($"Floor {currentFloor + 1}", 0, 0.3f);
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
     }
 
+    LevelGenerator lg = null;
     void Update()
     {
+        if(lg == null)
+        {
+            if (FindObjectOfType<LevelGenerator>())
+            {
+                lg = FindObjectOfType<LevelGenerator>();
+            }
+        } else
+        {
+            if (currentFloor != lg.levelsCleared)
+            {
+                currentFloor = lg.levelsCleared;
+            }
+        }
+
+
         #region Basic Controls
         //Basic movements
         translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -108,6 +128,14 @@ public class CharacterController : MonoBehaviour
         {
             ammoText.transform.parent.gameObject.SetActive(false);
         }
+
+        #region Pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+            Pause(paused);
+        }
+        #endregion
 
         #region Throwable/weapon logic
         if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
@@ -192,6 +220,7 @@ public class CharacterController : MonoBehaviour
             //TEMP kode til at lave nye levels
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
             {
+                PickupText($"Floor {currentFloor + 1}", 3, 0.3f);
                 GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().createNewRoom = true;
             }
 
@@ -238,16 +267,23 @@ public class CharacterController : MonoBehaviour
         }
         #endregion
 
+    }
 
-        //Lav om på et tidspunkt btw
-        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.Locked)
+    public void Pause(bool pause)
+    {
+        if (pause)
         {
-            // turn on the cursor
+            PauseScreen.SetActive(true);
+            BlackFadeScreen.gameObject.SetActive(true);
+            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+            BlackFadeScreen.color = new Color(0, 0, 0, 0.4f);
+        } else
         {
+            PauseScreen.SetActive(false);
+            Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
+            BlackFadeScreen.color = new Color(0, 0, 0, 0f);
         }
     }
 
@@ -460,6 +496,21 @@ public class CharacterController : MonoBehaviour
     {
         TextMeshProUGUI Text = pickupAnimator.transform.GetComponentInChildren<TextMeshProUGUI>();
         Text.text = displayText;
+        pickupAnimator.speed = 1;
+        pickupAnimator.SetTrigger("Pickup");
+    }
+
+    public void PickupText(string displayText, float delay, float speed)
+    {
+        StartCoroutine(pickupDelay(displayText, delay, speed));
+    }
+
+    IEnumerator pickupDelay(string displayText, float delay, float speed)
+    {
+        yield return new WaitForSeconds(delay);
+        TextMeshProUGUI Text = pickupAnimator.transform.GetComponentInChildren<TextMeshProUGUI>();
+        Text.text = displayText;
+        pickupAnimator.speed = speed;
         pickupAnimator.SetTrigger("Pickup");
     }
 

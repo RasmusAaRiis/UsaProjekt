@@ -59,6 +59,7 @@ public class LevelGenerator : MonoBehaviour
 
     bool spawnUp = true;
     RoomScript lastRoomScript;
+    bool test = false;
 
     private void Start()
     {
@@ -89,7 +90,10 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < throwableObjects.Length; i++)
         {
-            Destroy(throwableObjects[i]);
+            if (throwableObjects[i].transform != player.GetComponent<CharacterController>().heldObject)
+            {
+                Destroy(throwableObjects[i]);
+            }
         }
 
         if (!player)
@@ -100,8 +104,6 @@ public class LevelGenerator : MonoBehaviour
         {
             player.transform.position = Vector3.zero + Vector3.up;
         }
-
-        Instantiate(starterWeaponPrefab, Vector3.zero + Vector3.up, Quaternion.identity);
 
         GameObject elevatorRoomObject = Instantiate(rooms[0], Vector3.zero, Quaternion.identity);
         RoomScript elevatorRoomScript = elevatorRoomObject.GetComponent<RoomScript>();
@@ -216,10 +218,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-        AudioManager.instance.SetParameter("Elevator", 0);
-        AudioManager.instance.SetParameter("Situation", 2);
-        Debug.Log("Mokkel");
+        AudioManager.instance.SetParameter("Situation", 0);
 
         levelsCleared++;
         float newLevelClearTime = Time.time - startLevelTime;
@@ -235,35 +234,46 @@ public class LevelGenerator : MonoBehaviour
         {
             fastestLevelClearTime = newLevelClearTime;
         }
-
-        while (true)
+        test = false;
+        while (!createNewRoom)
         {
-            yield return new WaitForSeconds(0);
+            Bounds breakRoomBounds = GetBoundsRaw(currentRooms[currentRooms.Count - 1]);
+            breakRoomBounds.Expand(-2f);
 
-            if (createNewRoom)
+            if (!test && GetBoundsRaw(player).Intersects(breakRoomBounds))
             {
-                createNewRoom = false;
-
-                FadeToBlack(0.3f);
-                yield return new WaitForSeconds(0.5f);
-                minEnemyCount += minEnemyCountIncrease;
-                maxEnemyCount += maxEnemyCountIncrease;
-                CreateLevel();
-
+                test = true;
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
-                AudioManager.instance.SetParameter("Elevator", 1);
-                AudioManager.instance.SetParameter("Situation", 0);
-
-                FadeFromBlack(0.3f);
-
-                yield return new WaitForSeconds(3);
-
-                AudioManager.instance.SetParameter("ElevatorLoad", 0f);
-
-                currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
+                AudioManager.instance.SetParameter("Elevator", 0);
+                AudioManager.instance.SetParameter("Situation", 2);
+                Debug.Log("Mokkel");
             }
+
+            yield return new WaitForSeconds(0);
         }
+
+        createNewRoom = false;
+
+        FadeToBlack(0.3f);
+        yield return new WaitForSeconds(1f);
+        minEnemyCount += minEnemyCountIncrease;
+        maxEnemyCount += maxEnemyCountIncrease;
+        Debug.Log("Fade");
+        yield return new WaitForSeconds(1);
+        CreateLevel();
+
+        AudioManager.instance.SetParameter("ElevatorLoad", 1f);
+        AudioManager.instance.SetParameter("Elevator", 1);
+        AudioManager.instance.SetParameter("Situation", 0);
+
+        FadeFromBlack(0.3f);
+
+        yield return new WaitForSeconds(3);
+
+        AudioManager.instance.SetParameter("ElevatorLoad", 0f);
+
+        currentRooms[0].GetComponent<RoomScript>().southDoor.ActivateDoor();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ding, this.transform.position);
     }
 
     public void FadeToBlack(float duration)
@@ -397,6 +407,11 @@ public class LevelGenerator : MonoBehaviour
         {
             int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
             spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
+
+            if (minEnemyCount > 3)
+            {
+                minEnemyCount = 3;
+            }
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {

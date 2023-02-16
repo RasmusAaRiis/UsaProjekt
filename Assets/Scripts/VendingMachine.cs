@@ -32,6 +32,7 @@ public class VendingMachine : MonoBehaviour
 
         if (usingMachine && Input.GetKeyDown(KeyCode.E))
         {
+            cc.BlackFadeScreen.gameObject.SetActive(false);
             changeView(false);
         }
     }
@@ -50,6 +51,7 @@ public class VendingMachine : MonoBehaviour
         {
             if(usingMachine)
             {
+                cc.BlackFadeScreen.gameObject.SetActive(false);
                 changeView(false);
                 return;
             }
@@ -60,6 +62,7 @@ public class VendingMachine : MonoBehaviour
         }
         else if (!cooldown)
         {
+            cc.BlackFadeScreen.gameObject.SetActive(true);
             usingMachine = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
@@ -69,12 +72,12 @@ public class VendingMachine : MonoBehaviour
     public void Eject(int canIndex)
     {
         CharacterController cc = FindObjectOfType<CharacterController>();
-        cc.BlackFadeScreen.gameObject.SetActive(true);
         if (cc.Money < Cost)
         {
             //Ikke nok penge
             return;
         }
+        cc.BlackFadeScreen.gameObject.SetActive(true);
         var obj = Instantiate(Cans[canIndex], ejectionPoint.position, Quaternion.identity);
         cc.LookAt();
         cc.Money -= Cost;
