@@ -6,8 +6,18 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum GrabType
+{
+    WhenEquipped,
+    WhenUnequipped,
+    Both
+    
+}
+
 public class RigidbodyDrag : MonoBehaviour
 {
+    [SerializeField] private GrabType grabType;
+    
     [SerializeField] private KeyCode input;
 
     [SerializeField] private CharacterController cc;
@@ -42,9 +52,40 @@ public class RigidbodyDrag : MonoBehaviour
     {
         isHolding = Input.GetKey(input);
         
-        if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging && cc.heldObject == null)
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging)
         {
-            //print(hit.transform.name);
+            switch (grabType)
+            {
+                case GrabType.Both:
+                    
+                    break;
+                
+                case GrabType.WhenEquipped:
+                    
+                    if (cc.heldObject != null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                
+                case GrabType.WhenUnequipped:
+                    
+                    if (cc.heldObject == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {
