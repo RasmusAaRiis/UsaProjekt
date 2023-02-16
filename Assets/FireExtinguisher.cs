@@ -34,6 +34,7 @@ public class FireExtinguisher : Weapon
 
         ammo--;
 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.spray, this.transform.position);
         for (int i = 0; i < 8; i++)
         {
             GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.4f), Quaternion.LookRotation(transform.forward));
