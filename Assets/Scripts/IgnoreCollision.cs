@@ -1,21 +1,64 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum DetectionType
+{
+    Individual,
+    Layer
+}
 public class IgnoreCollision : MonoBehaviour
 {
-    [SerializeField] private Collider[] colliders1;
+    [SerializeField] private DetectionType detectionType;
+
+    [SerializeField] private string[] ignoreMask;
+
+    [SerializeField] private List<Collider> affectedColliders;
     
-    [SerializeField] private Collider[] colliders2;
-    
-    void Start()
+    [SerializeField] private List<Collider> otherColliders;
+
+    private void Start()
     {
-        foreach (var t in colliders2)
+        switch (detectionType)
         {
-            foreach (var t1 in colliders1)
-            {
-                Physics.IgnoreCollision(t1, t);
-            }
+            case DetectionType.Individual:
+                
+                foreach (var t in otherColliders)
+                {
+                    foreach (var t1 in affectedColliders)
+                    {
+                        Physics.IgnoreCollision(t1, t);
+                    }
+                }
+                return;
+            
+            case DetectionType.Layer:
+                
+                Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(3,3,3));
+                foreach (var t in colliders)
+                {
+                    foreach (var t1 in ignoreMask)
+                    {
+                        if (t.gameObject.layer == LayerMask.NameToLayer(t1))
+                        {
+                            otherColliders.Add(t); 
+                        }
+                    }
+                }
+                foreach (var t in otherColliders)
+                {
+                    foreach (var t1 in affectedColliders)
+                    {
+                        Physics.IgnoreCollision(t1, t);
+                    }
+                }
+                return;
+
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+        
     }
 }
