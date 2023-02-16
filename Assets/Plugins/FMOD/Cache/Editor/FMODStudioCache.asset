@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638121488897913929
+  lastModified: 638121854617727468
   FileSizes: []
   Exists: 1
 --- !u!114 &-8229248512013269954
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638118939781628386
+  lastModified: 638119262418482995
   FileSizes: []
   Exists: 1
 --- !u!114 &-6999491517164805716
@@ -195,6 +195,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5130612684247684067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/ButtonButton
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/ButtonButton
+  Guid:
+    Data1: 676197750
+    Data2: 1123177793
+    Data3: -42590539
+    Data4: 281388779
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4724270382607149405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/Spray
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/Spray
+  Guid:
+    Data1: 1169363453
+    Data2: 1214370370
+    Data3: 28004504
+    Data4: 1856560072
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3767683174025322364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +264,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 638121488897643908
+  lastModified: 638121872440129327
   FileSizes: []
   Exists: 1
 --- !u!114 &-2554189349619430646
@@ -402,6 +456,8 @@ MonoBehaviour:
   - {fileID: -763045627645589935}
   - {fileID: -2554189349619430646}
   - {fileID: 5590319242617707436}
+  - {fileID: -4724270382607149405}
+  - {fileID: -5130612684247684067}
   EditorParameters:
   - {fileID: -6999491517164805716}
   - {fileID: 5125847461782036862}
@@ -412,7 +468,7 @@ MonoBehaviour:
   - {fileID: -7355249072495885339}
   StringsBanks:
   - {fileID: 1345201035885249}
-  cacheTime: 638121488897913929
+  cacheTime: 638121872440189352
   cacheVersion: 131601
 --- !u!114 &1345201035885249
 MonoBehaviour:
@@ -429,10 +485,10 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638121488897703902
+  lastModified: 638121872440189352
   FileSizes:
   - Name: 
-    Value: 1698
+    Value: 1776
   Exists: 1
 --- !u!114 &466114226361529664
 MonoBehaviour:

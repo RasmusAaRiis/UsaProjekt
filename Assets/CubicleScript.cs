@@ -10,6 +10,11 @@ public class CubicleScript : MonoBehaviour
     [Header("Debug")]
     public bool unlockAfterLoad;
 
+    private void Awake()
+    {
+        ActivateROSPS();
+    }
+
     private void Start()
     {
         if (unlockAfterLoad)
@@ -18,13 +23,30 @@ public class CubicleScript : MonoBehaviour
         }
     }
 
-    public void UnlockDrawers()
+    private void Update()
     {
-        Debug.Log("Test");
         for (int i = 0; i < drawers.Length; i++)
         {
-            drawers[i].GetComponent<ConfigurableJoint>().xMotion = ConfigurableJointMotion.Limited;
-            drawers[i].GetComponent<ConfigurableJoint>().breakForce = 500;
+            if (!drawers[i].GetComponent<ConfigurableJoint>())
+            {
+                Debug.Log("Test");
+                drawers[i].layer = 7;
+                drawers[i].AddComponent<BasicMelee>();
+                BasicMelee newMelee = drawers[i].GetComponent<BasicMelee>();
+                newMelee.attackRange = 2;
+            }
+        }
+    }
+
+    public void UnlockDrawers()
+    {
+        for (int i = 0; i < drawers.Length; i++)
+        {
+            if (drawers[i].GetComponent<ConfigurableJoint>())
+            {
+                drawers[i].GetComponent<ConfigurableJoint>().xMotion = ConfigurableJointMotion.Limited;
+                drawers[i].GetComponent<ConfigurableJoint>().breakForce = 500;
+            }
         }
     }
 
@@ -32,6 +54,7 @@ public class CubicleScript : MonoBehaviour
     {
         for (int i = 0; i < drawerROSPS.Length; i++)
         {
+            Debug.Log("Test");
             drawerROSPS[i].SpawnObject();
         }
     }

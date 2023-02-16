@@ -5,9 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public struct ROSP_Object
 {
+    public Transform parent;
     public GameObject obj;
-    public Vector3 positionOffset;
-    public Vector3 rotationOffset;
     [Range(0f, 1f)]
     public float spawnChance;
 }
@@ -31,9 +30,12 @@ public class ROSP : MonoBehaviour
 
         if (currenObjectToSpawn.obj)
         {
+            GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
+            newObj.transform.SetParent(gameObject.transform);
+            /*
             Vector3 rot = transform.parent.rotation.eulerAngles + currenObjectToSpawn.obj.transform.rotation.eulerAngles + currenObjectToSpawn.rotationOffset;
             GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, Quaternion.Euler(rot));
-            newObj.transform.position += currenObjectToSpawn.positionOffset;
+            newObj.transform.position += currenObjectToSpawn.positionOffset;*/
         }
     }
 }

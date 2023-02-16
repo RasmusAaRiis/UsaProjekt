@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
             em.TakeDamage(appliedDamage);
             if(em.health <= 0)
             {
-                rb.velocity *= 5;
+                //rb.velocity *= 5;
             }
             Debug.Log(appliedDamage);
             attacking = false;

@@ -23,6 +23,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference dashCooldown { get; private set; }
     [field: SerializeField] public EventReference drink { get; private set; }
     [field: SerializeField] public EventReference victory { get; private set; }
+    [field: SerializeField] public EventReference spray { get; private set; }
+    [field: SerializeField] public EventReference buttonButton { get; private set; }
 
 
     public static FMODEvents instance { get; private set; }
