@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,6 +44,8 @@ public class RigidbodyDrag : MonoBehaviour
         
         if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging && cc.heldObject == null)
         {
+            //print(hit.transform.name);
+            
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {
                 if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) && hit.transform.GetComponent<EnemyMovement>() == null)
@@ -50,7 +53,18 @@ public class RigidbodyDrag : MonoBehaviour
                     //print(hit.transform.name);
                     isDragging = true;
                     dragObject = hit.transform.gameObject;
-                    dragObjPoint = Instantiate(new GameObject(), hit.point, Quaternion.identity, hit.transform);
+                    
+                    dragObjPoint = new GameObject
+                    {
+                        transform =
+                        {
+                            position = hit.point,
+                            rotation = quaternion.identity,
+                            parent = hit.transform
+                        },
+                        name = "DragObjPoint " + hit.transform.name
+                    };
+                    
                     hitPos = hit.point;
                 }
             }
@@ -105,6 +119,7 @@ public class RigidbodyDrag : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawRay(transform.position, transform.forward);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(transform.position, transform.forward * reachDistane);
     }
 }
