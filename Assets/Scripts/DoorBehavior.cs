@@ -18,6 +18,6 @@ public class DoorBehavior : MonoBehaviour
     public void OpenDoor()
     {
         cj.angularYMotion = ConfigurableJointMotion.Limited;
-        rb.AddForce(-transform.right * 20000, ForceMode.Impulse);
+        rb.AddForce(-transform.right * 10000, ForceMode.Impulse);
     }
 }
