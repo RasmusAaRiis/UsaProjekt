@@ -79,8 +79,8 @@ MonoBehaviour:
   damage: 10
   orgDamage: 10
   attackRange: 1
-  attackSpeed: 10
-  knockback: 10
+  attackSpeed: 4
+  knockback: 7
   attackCooldown: 0
   cooldown: 0
   attacking: 0

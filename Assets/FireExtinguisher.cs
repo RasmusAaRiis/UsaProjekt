@@ -34,11 +34,16 @@ public class FireExtinguisher : Weapon
 
         ammo--;
 
-        GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.4f), Quaternion.LookRotation(transform.forward));
-        proj_m.GetComponent<Rigidbody>().velocity = (cc.target.position - cc.Hand.position).normalized * attackSpeed;
-        Projectile proj = proj_m.GetComponent<Projectile>();
-        proj.origin = this;
-        proj.Activate();
-        Destroy(proj_m, 5);
+        for (int i = 0; i < 8; i++)
+        {
+            GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.4f), Quaternion.LookRotation(transform.forward));
+            proj_m.GetComponent<Rigidbody>().velocity = (transform.right * Random.Range(-5f, 3f)) + (transform.up * Random.Range(-2f, 7f)) + (transform.forward * 2) * attackSpeed;
+            Projectile proj = proj_m.GetComponent<Projectile>();
+            proj.origin = this;
+            proj.Activate();
+            Destroy(proj_m, 5);
+        }
+
+
     }
 }

@@ -469,7 +469,15 @@ public class CharacterController : MonoBehaviour
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
 
         heldObject.GetComponent<Rigidbody>().velocity = (target.position - Hand.position).normalized * 15 * throwForce;
-        heldObject.GetComponent<Collider>().enabled = true;
+        if (heldObject.GetComponent<Collider>())
+        {
+            heldObject.GetComponent<Collider>().enabled = true;
+        }
+        Collider[] cols = heldObject.GetComponentsInChildren<Collider>();
+        for (int i = 0; i < cols.Length; i++)
+        {
+            cols[i].enabled = true;
+        }
         heldObject = null;
     }
 
