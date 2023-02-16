@@ -237,23 +237,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a487b74334cdfe4e88fb920024233b5, type: 3}
---- !u!1 &79162747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
-  m_PrefabInstance: {fileID: 1541270122}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &79162755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79162747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2e4babd96ec4e41a2f5b448d267d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &79475684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 729718713858082509, guid: 0b4cc86d5adea4945af8902249e55443, type: 3}
@@ -2723,9 +2706,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3423512214804470727, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
+      propertyPath: damage
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244498, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_Name
       value: Fire Extinguisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615170253025244499, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_RootOrder
@@ -2733,15 +2724,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08331604
+      value: -1.752
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.678
+      value: 1.033
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.102
+      value: -0.686
       objectReference: {fileID: 0}
     - target: {fileID: 8615170253025244510, guid: e29fe44cf3853a547b64c628d3b783e7, type: 3}
       propertyPath: m_LocalRotation.w
