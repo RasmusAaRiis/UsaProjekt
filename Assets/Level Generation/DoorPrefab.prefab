@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cj: {fileID: 1388272738}
+  rb: {fileID: 0}
 --- !u!1 &8313031746185440299
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +59,7 @@ GameObject:
   - component: {fileID: 1388272739}
   - component: {fileID: 1388272740}
   - component: {fileID: 1388272738}
+  - component: {fileID: 1859444065}
   m_Layer: 0
   m_Name: DoorParent
   m_TagString: Door
@@ -206,6 +208,24 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1859444065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313031746185440299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed89eac82712724b8fdeae1f2f325df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionType: 1
+  ignoreMask:
+  - Wall
+  affectedColliders:
+  - {fileID: 1388272740}
+  otherColliders: []
 --- !u!1001 &405000624341897449
 PrefabInstance:
   m_ObjectHideFlags: 0
