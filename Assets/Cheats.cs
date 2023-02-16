@@ -7,6 +7,7 @@ public class Cheats : MonoBehaviour
     CharacterController cc;
     char input = 'A';
     bool search = false;
+    float orgSpeed = 1;
 
     private void Start()
     {
@@ -52,7 +53,7 @@ public class Cheats : MonoBehaviour
             {
                 case '1':
                     cc.PickupText("Health Cheat Activated", 0, 0.5f);
-                    cc.Health = 99;
+                    cc.Health = 999;
                     break;
                 case '2':
                     cc.PickupText("Damage Cheat Activated", 0, 0.5f);
@@ -64,14 +65,32 @@ public class Cheats : MonoBehaviour
                     cc.Money = 9999;
                     break;
                 case '4':
+                    cc.PickupText("Ammo Cheat Activated", 0, 0.5f);
+                    Stapler stapler;
+                    FireExtinguisher fireExtinguisher;
+                    if (cc.transform.GetComponentInChildren<Stapler>())
+                    {
+                        stapler = cc.transform.GetComponentInChildren<Stapler>();
+                        stapler.ammo = 999;
+                    }
+                    if (cc.transform.GetComponentInChildren<FireExtinguisher>())
+                    {
+                        fireExtinguisher = cc.transform.GetComponentInChildren<FireExtinguisher>();
+                        fireExtinguisher.ammo = 999;
+                    }
+                    break;
+                case '5':
                     if(cc.gameObject.GetComponent<Collider>().enabled == false)
                     {
                         cc.PickupText("Noclip Cheat Deactivated", 0, 0.5f);
+                        cc.speed = orgSpeed;
                         cc.gameObject.GetComponent<Collider>().enabled = true;
                         cc.gameObject.GetComponent<Rigidbody>().useGravity = true;
                     } else
                     {
                         cc.PickupText("Noclip Cheat Activated", 0, 0.5f);
+                        orgSpeed = cc.speed;
+                        cc.speed = 20;
                         cc.gameObject.GetComponent<Collider>().enabled = false;
                         cc.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     }
