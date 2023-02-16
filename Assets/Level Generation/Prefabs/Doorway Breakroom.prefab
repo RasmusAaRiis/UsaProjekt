@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 289494512822964299}
   - component: {fileID: 4978190171831381831}
   - component: {fileID: 2164195651591887136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Doorway Breakroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

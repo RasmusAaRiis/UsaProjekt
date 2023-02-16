@@ -1,6 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7998196616866879614
+--- !u!114 &-8504963782075725612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/GloopProject/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638118885739422515
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-8229248512013269954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,7 +37,7 @@ MonoBehaviour:
     Data3: 2059665552
     Data4: -2020191167
   Banks:
-  - {fileID: 2896530154474379387}
+  - {fileID: -3767683174025322364}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -27,184 +45,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-7061274412786840583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/DashCooldown
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/DashCooldown
-  Guid:
-    Data1: -1216891287
-    Data2: 1234955151
-    Data3: -1796003938
-    Data4: 1495902216
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-6869559485352544392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/EffectsVolume
-  m_EditorClassIdentifier: 
-  Name: EffectsVolume
-  StudioPath: parameter:/EffectsVolume
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 789289642
-    data2: 794744794
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-5477783346279104021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/Ding
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/Ding
-  Guid:
-    Data1: -390062094
-    Data2: 1135457399
-    Data3: -1182244686
-    Data4: 1556422036
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-5318355429212330118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Elevator
-  m_EditorClassIdentifier: 
-  Name: Elevator
-  StudioPath: parameter:/Elevator
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3059310952
-    data2: 3799811149
-  Type: 1
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-5014846054496561209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/EnemyDead
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/EnemyDead
-  Guid:
-    Data1: 1793611130
-    Data2: 1198679065
-    Data3: 611157128
-    Data4: -1041321689
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-4557704778478860955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MainLoop/Situation
-  m_EditorClassIdentifier: 
-  Name: Situation
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 3842115064
-    data2: 2759025150
-  Type: 1
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-2715832760076581551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MainLoop/ElevatorLoad
-  m_EditorClassIdentifier: 
-  Name: ElevatorLoad
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2724434587
-    data2: 2243716049
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-2701566537515547408
+--- !u!114 &-7593447292009692671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,7 +64,7 @@ MonoBehaviour:
     Data3: 1860616115
     Data4: -1636795014
   Banks:
-  - {fileID: 2896530154474379387}
+  - {fileID: -3767683174025322364}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -231,7 +72,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-2630905463800035440
+--- !u!114 &-7355249072495885339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,66 +82,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/GloopProject/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638119820014508640
+  Path: Assets/GloopProject/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638118940512461724
   FileSizes: []
   Exists: 1
---- !u!114 &-659746087238785928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ElevatorLoad
-  m_EditorClassIdentifier: 
-  Name: ElevatorLoad
-  StudioPath: parameter:/ElevatorLoad
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2724434587
-    data2: 2243716049
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-616321577614549880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/MoneyPickup
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/MoneyPickup
-  Guid:
-    Data1: -640498636
-    Data2: 1110142479
-    Data3: -1159634250
-    Data4: -220860550
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-342288583942446925
+--- !u!114 &-6999491517164805716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,246 +114,7 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 8899806477063663886}
-  - {fileID: 2896530154474379387}
-  - {fileID: 872707536819739662}
-  - {fileID: -2630905463800035440}
-  EditorEvents:
-  - {fileID: -2701566537515547408}
-  - {fileID: 917894267774445518}
-  - {fileID: -616321577614549880}
-  - {fileID: -7061274412786840583}
-  - {fileID: -5014846054496561209}
-  - {fileID: 3979211262505968687}
-  - {fileID: -7998196616866879614}
-  - {fileID: 2913182037849709814}
-  - {fileID: 6034559423409243160}
-  - {fileID: 5905072297274724864}
-  - {fileID: -5477783346279104021}
-  - {fileID: 5865197517464086572}
-  EditorParameters:
-  - {fileID: -342288583942446925}
-  - {fileID: -6869559485352544392}
-  - {fileID: -659746087238785928}
-  - {fileID: -5318355429212330118}
-  - {fileID: 3418622307017754498}
-  MasterBanks:
-  - {fileID: 872707536819739662}
-  StringsBanks:
-  - {fileID: 8899806477063663886}
-  cacheTime: 638120512711722578
-  cacheVersion: 131601
---- !u!114 &872707536819739662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/GloopProject/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638119820014319146
-  FileSizes: []
-  Exists: 1
---- !u!114 &917894267774445518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/Dash
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/Dash
-  Guid:
-    Data1: -107837437
-    Data2: 1092422599
-    Data3: 1449453224
-    Data4: -1946530714
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &2896530154474379387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Effects.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/GloopProject/Desktop/Effects.bank
-  Name: Effects
-  StudioPath: bank:/Effects
-  lastModified: 638120512711692771
-  FileSizes: []
-  Exists: 1
---- !u!114 &2913182037849709814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/ItemPickup
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/ItemPickup
-  Guid:
-    Data1: -995556938
-    Data2: 1252357295
-    Data3: -303235670
-    Data4: -1536717528
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &3418622307017754498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MusicVolume
-  m_EditorClassIdentifier: 
-  Name: MusicVolume
-  StudioPath: parameter:/MusicVolume
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 1379421020
-    data2: 1241640699
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &3979211262505968687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/GenericHit
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/GenericHit
-  Guid:
-    Data1: -1288070246
-    Data2: 1154950115
-    Data3: -1433966441
-    Data4: -1411355276
-  Banks:
-  - {fileID: 2896530154474379387}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &3994604136319893002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MainLoop/EffectsVolume
-  m_EditorClassIdentifier: 
-  Name: EffectsVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 789289642
-    data2: 794744794
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &5865197517464086572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/MainLoop
-  m_EditorClassIdentifier: 
-  Path: event:/MainLoop
-  Guid:
-    Data1: 1554867839
-    Data2: 1117461724
-    Data3: 1559598510
-    Data4: 863353206
-  Banks:
-  - {fileID: -2630905463800035440}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 3994604136319893002}
-  - {fileID: -4557704778478860955}
-  - {fileID: 7902621766152262400}
-  - {fileID: 8933090274156424323}
-  - {fileID: -2715832760076581551}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 195593
---- !u!114 &5905072297274724864
+--- !u!114 &-6663982979487770352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -582,7 +133,7 @@ MonoBehaviour:
     Data3: -409032514
     Data4: -1852214120
   Banks:
-  - {fileID: 2896530154474379387}
+  - {fileID: -3767683174025322364}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -590,7 +141,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &6034559423409243160
+--- !u!114 &-6607192030144828460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -600,16 +151,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/OpenDoor
+  m_Name: event:/Sfx/EnemyDead
   m_EditorClassIdentifier: 
-  Path: event:/Sfx/OpenDoor
+  Path: event:/Sfx/EnemyDead
   Guid:
-    Data1: 1542147560
-    Data2: 1261462779
-    Data3: -917172080
-    Data4: -820351953
+    Data1: 1793611130
+    Data2: 1198679065
+    Data3: 611157128
+    Data4: -1041321689
   Banks:
-  - {fileID: 2896530154474379387}
+  - {fileID: -3767683174025322364}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -617,7 +168,162 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &7902621766152262400
+--- !u!114 &-5651770897920215669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/ItemPickup
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/ItemPickup
+  Guid:
+    Data1: -995556938
+    Data2: 1252357295
+    Data3: -303235670
+    Data4: -1536717528
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3767683174025322364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Effects.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/GloopProject/Desktop/Effects.bank
+  Name: Effects
+  StudioPath: bank:/Effects
+  lastModified: 638119649668472037
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2554189349619430646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainLoop
+  m_EditorClassIdentifier: 
+  Path: event:/MainLoop
+  Guid:
+    Data1: 1554867839
+    Data2: 1117461724
+    Data3: 1559598510
+    Data4: 863353206
+  Banks:
+  - {fileID: -8504963782075725612}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5182406473677882022}
+  - {fileID: -2166520432842683459}
+  - {fileID: -686531820954079856}
+  - {fileID: 5685107889500630597}
+  - {fileID: 8210932212462191270}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 195593
+--- !u!114 &-2166520432842683459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainLoop/Situation
+  m_EditorClassIdentifier: 
+  Name: Situation
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3842115064
+    data2: 2759025150
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-941844853471656889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/GenericHit
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/GenericHit
+  Guid:
+    Data1: -1288070246
+    Data2: 1154950115
+    Data3: -1433966441
+    Data4: -1411355276
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-763045627645589935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/Ding
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/Ding
+  Guid:
+    Data1: -390062094
+    Data2: 1135457399
+    Data3: -1182244686
+    Data4: 1556422036
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-686531820954079856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -641,7 +347,73 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &8899806477063663886
+--- !u!114 &-467142303157728086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MusicVolume
+  m_EditorClassIdentifier: 
+  Name: MusicVolume
+  StudioPath: parameter:/MusicVolume
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1379421020
+    data2: 1241640699
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 1345201035885249}
+  - {fileID: -3767683174025322364}
+  - {fileID: -7355249072495885339}
+  - {fileID: -8504963782075725612}
+  EditorEvents:
+  - {fileID: -7593447292009692671}
+  - {fileID: 7303467409709738746}
+  - {fileID: 7777885260318801634}
+  - {fileID: 7394795409997316514}
+  - {fileID: -6607192030144828460}
+  - {fileID: -941844853471656889}
+  - {fileID: -8229248512013269954}
+  - {fileID: -5651770897920215669}
+  - {fileID: 6014204470608682615}
+  - {fileID: -6663982979487770352}
+  - {fileID: -763045627645589935}
+  - {fileID: -2554189349619430646}
+  EditorParameters:
+  - {fileID: -6999491517164805716}
+  - {fileID: 5125847461782036862}
+  - {fileID: 7003023853610186507}
+  - {fileID: 466114226361529664}
+  - {fileID: -467142303157728086}
+  MasterBanks:
+  - {fileID: -7355249072495885339}
+  StringsBanks:
+  - {fileID: 1345201035885249}
+  cacheTime: 638119649668482041
+  cacheVersion: 131601
+--- !u!114 &1345201035885249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -656,12 +428,84 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638120512711722578
+  lastModified: 638119649668482041
   FileSizes:
   - Name: 
     Value: 1648
   Exists: 1
---- !u!114 &8933090274156424323
+--- !u!114 &466114226361529664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Elevator
+  m_EditorClassIdentifier: 
+  Name: Elevator
+  StudioPath: parameter:/Elevator
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3059310952
+    data2: 3799811149
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &5125847461782036862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EffectsVolume
+  m_EditorClassIdentifier: 
+  Name: EffectsVolume
+  StudioPath: parameter:/EffectsVolume
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 789289642
+    data2: 794744794
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &5182406473677882022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainLoop/EffectsVolume
+  m_EditorClassIdentifier: 
+  Name: EffectsVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 789289642
+    data2: 794744794
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &5685107889500630597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -682,6 +526,162 @@ MonoBehaviour:
     data1: 3059310952
     data2: 3799811149
   Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &6014204470608682615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/OpenDoor
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/OpenDoor
+  Guid:
+    Data1: 1542147560
+    Data2: 1261462779
+    Data3: -917172080
+    Data4: -820351953
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7003023853610186507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ElevatorLoad
+  m_EditorClassIdentifier: 
+  Name: ElevatorLoad
+  StudioPath: parameter:/ElevatorLoad
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2724434587
+    data2: 2243716049
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7303467409709738746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/Dash
+  Guid:
+    Data1: -107837437
+    Data2: 1092422599
+    Data3: 1449453224
+    Data4: -1946530714
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7394795409997316514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/DashCooldown
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/DashCooldown
+  Guid:
+    Data1: -1216891287
+    Data2: 1234955151
+    Data3: -1796003938
+    Data4: 1495902216
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7777885260318801634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/MoneyPickup
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/MoneyPickup
+  Guid:
+    Data1: -640498636
+    Data2: 1110142479
+    Data3: -1159634250
+    Data4: -220860550
+  Banks:
+  - {fileID: -3767683174025322364}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8210932212462191270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainLoop/ElevatorLoad
+  m_EditorClassIdentifier: 
+  Name: ElevatorLoad
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2724434587
+    data2: 2243716049
+  Type: 0
   IsGlobal: 1
   Labels: []
   Exists: 1

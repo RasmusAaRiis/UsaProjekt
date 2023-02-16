@@ -170,7 +170,7 @@ MonoBehaviour:
   - obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
     positionOffset: {x: 0, y: 0, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
-    spawnChance: 0.75
+    spawnChance: 0.45
   - obj: {fileID: 0}
     positionOffset: {x: 0, y: 0, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0}
