@@ -2174,15 +2174,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Movement - W, A, S, D
 
-    Pickup & interact with items & objects - E
+    Attack with item - Left Mouse Button
 
-    Shoot
-    & Punsh - Left Mouse Button
+    Pickup
+    & throw item - Right Mouse Button
 
-    Pickup & Throw - Right Mouse Button
+    Interact with objects - E
 
-    Pull
-    objects, doors, & drawers - F + Drag'
+    Pull objects,
+    doors, & drawers - F + Drag'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad873f2c8c1e2f64092f4a33db6af71b, type: 2}
   m_sharedMaterial: {fileID: -4839572460329921095, guid: ad873f2c8c1e2f64092f4a33db6af71b, type: 2}
@@ -2800,20 +2800,20 @@ MonoBehaviour:
 
     - Asger Nanok
 
-    
+
 
     Enemy Behaviour
 
     -
     Bertram Holmsteen
 
-    
+
 
     Character controller
 
     - Rasmus Riis
 
-    
+
 
     Levelgeneration
 
