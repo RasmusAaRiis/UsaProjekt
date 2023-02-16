@@ -45,25 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rospObjects:
-  - obj: {fileID: 3161034966025334869, guid: 14d193ad0b66bfc45811c083cecf772a, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 1697891263271881606}
+    obj: {fileID: 3161034966025334869, guid: 14d193ad0b66bfc45811c083cecf772a, type: 3}
     spawnChance: 1
-  - obj: {fileID: 3161034966025334869, guid: 0465949be1481424689816a00b227926, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 1697891263271881606}
+    obj: {fileID: 3161034966025334869, guid: 0465949be1481424689816a00b227926, type: 3}
     spawnChance: 0.1
-  - obj: {fileID: 3161034966025334869, guid: 9f6ed3af94517a849a1bebe87d75ff70, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 1697891263271881606}
+    obj: {fileID: 3161034966025334869, guid: 9f6ed3af94517a849a1bebe87d75ff70, type: 3}
     spawnChance: 0.3
-  - obj: {fileID: 3161034966025334869, guid: 51818de8b64e48947888879e444a0eb6, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 1697891263271881606}
+    obj: {fileID: 3161034966025334869, guid: 51818de8b64e48947888879e444a0eb6, type: 3}
     spawnChance: 0.5
-  - obj: {fileID: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 1697891263271881606}
+    obj: {fileID: 0}
     spawnChance: 0.05
 --- !u!1 &3690639624480372736
 GameObject:
@@ -110,13 +105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rospObjects:
-  - obj: {fileID: 1888308423837532561, guid: f2f51347ed4307243a0085764ad0abce, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: -90, z: 0}
+  - parent: {fileID: 5745846518529168857}
+    obj: {fileID: 1888308423837532561, guid: f2f51347ed4307243a0085764ad0abce, type: 3}
     spawnChance: 1
-  - obj: {fileID: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 5745846518529168857}
+    obj: {fileID: 0}
     spawnChance: 0.3
 --- !u!1 &8612480536119631711
 GameObject:
@@ -163,17 +156,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rospObjects:
-  - obj: {fileID: 1021134144241549557, guid: 487c54c935d9a4444af2e26ddf5a249a, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 6627987072735797430}
+    obj: {fileID: 1021134144241549557, guid: 487c54c935d9a4444af2e26ddf5a249a, type: 3}
     spawnChance: 1
-  - obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 6627987072735797430}
+    obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
     spawnChance: 0.45
-  - obj: {fileID: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+  - parent: {fileID: 0}
+    obj: {fileID: 8612480536119631711}
     spawnChance: 0.15
 --- !u!1001 &7273256037678771019
 PrefabInstance:

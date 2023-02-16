@@ -16,7 +16,22 @@ public class MainMenu : MonoBehaviour
     public int minFOV;
     public int maxFOV;
 
+    [Header("Settings Dial References")]
+    public Slider fovSlider;
+    public Slider sfxSlider;
+    public Slider musicSlider;
+    public TMP_Dropdown qualityDropdown;
+
+
     GameObject page;
+
+    private void Awake()
+    {
+        fovSlider.value = PlayerPrefs.GetInt("FOV");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        qualityDropdown.value = QualitySettings.GetQualityLevel();
+    }
 
     public void ChangePage(GameObject newPage)
     {
@@ -25,36 +40,43 @@ public class MainMenu : MonoBehaviour
             page.SetActive(false);
         }
 
-        page = newPage;
-        page.SetActive(true);
+        if (page != newPage)
+        {
+            page = newPage;
+            page.SetActive(true);
+        }
+        else
+        {
+            page = null;
+        }
     }
 
-    public void ChangeFov(Slider slider)
+    public void ChangeFov()
     {
-        Debug.Log("FOV: " + (int)slider.value);
-        PlayerPrefs.SetInt("FOV", (int)slider.value);
+        Debug.Log("FOV: " + (int)fovSlider.value);
+        PlayerPrefs.SetInt("FOV", (int)fovSlider.value);
         PlayerPrefs.Save();
     }
 
-    public void ChangeQuality(TMP_Dropdown dropdown)
+    public void ChangeQuality()
     {
-        Debug.Log("Quality: " + dropdown.value);
-        QualitySettings.SetQualityLevel(dropdown.value);
+        Debug.Log("Quality: " + qualityDropdown.value);
+        QualitySettings.SetQualityLevel(qualityDropdown.value);
     }
 
-    public void changeMusicVolume(Slider slider)
+    public void changeMusicVolume()
     {
-        Debug.Log("Music Volume: " + slider.value);
+        Debug.Log("Music Volume: " + musicSlider.value);
         AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume");
-        PlayerPrefs.SetFloat("MusicVolume", slider.value);
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         PlayerPrefs.Save();
     }
 
-    public void changeSFXVolume(Slider slider)
+    public void changeSFXVolume()
     {
-        Debug.Log("SFX Volume: " + slider.value);
+        Debug.Log("SFX Volume: " + sfxSlider.value);
         AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
-        PlayerPrefs.SetFloat("SFXVolume", slider.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
         PlayerPrefs.Save();
     }
 
@@ -65,7 +87,7 @@ public class MainMenu : MonoBehaviour
 
     public void Tutorial()
     {
-        Debug.Log("Tutorial");
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void KnapKnap()
