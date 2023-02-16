@@ -1679,6 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1ce9eeb8aedbe429cd149ba150edf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabType: 2
   input: 102
   cc: {fileID: 3742513071235349063}
   reachDistane: 5
