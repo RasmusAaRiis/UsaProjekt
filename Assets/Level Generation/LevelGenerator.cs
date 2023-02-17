@@ -462,7 +462,10 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < currentRooms.Count; i++)
         {
-            navBaker.surfaces.Add(currentRooms[i].GetComponentInChildren<NavMeshSurface>());
+            if (currentRooms[i].GetComponentInChildren<NavMeshSurface>())
+            {
+                navBaker.surfaces.Add(currentRooms[i].GetComponentInChildren<NavMeshSurface>());
+            }
         }
 
         navBaker.Build();

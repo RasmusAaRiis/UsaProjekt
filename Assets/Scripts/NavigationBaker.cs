@@ -12,7 +12,7 @@ public class NavigationBaker : MonoBehaviour
     {
         for (int i = 0; i < surfaces.Count; i++) 
         {
-            surfaces [i].BuildNavMesh ();    
+            surfaces[i].BuildNavMesh();
         }  
     }
 }

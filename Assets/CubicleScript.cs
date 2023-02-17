@@ -50,7 +50,6 @@ public class CubicleScript : MonoBehaviour
     {
         for (int i = 0; i < drawerROSPS.Length; i++)
         {
-            Debug.Log("Test");
             drawerROSPS[i].SpawnObject();
         }
     }

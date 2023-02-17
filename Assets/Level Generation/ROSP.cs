@@ -19,7 +19,6 @@ public class ROSP : MonoBehaviour
     {
         float chance = Random.Range(0f, 1f);
         ROSP_Object currenObjectToSpawn = rospObjects[0];
-        Debug.Log("Chance to spawn: " + chance);
         for (int i = 0; i < rospObjects.Length; i++)
         {
             if (rospObjects[i].spawnChance >= chance && rospObjects[i].spawnChance < currenObjectToSpawn.spawnChance)
