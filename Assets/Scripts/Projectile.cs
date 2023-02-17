@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         origin.Damage(collision, true);
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.genericHit, this.transform.position);
+        //AudioManager.instance.PlayOneShot(FMODEvents.instance.genericHit, this.transform.position);
         active = false;
     }
 }
