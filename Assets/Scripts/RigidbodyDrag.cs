@@ -152,6 +152,12 @@ public class RigidbodyDrag : MonoBehaviour
         }
         else
         {
+            
+            for (int i = 0; i < lineRenderer.positionCount; i++)
+            {
+                lineRenderer.SetPosition(i, this.transform.position);
+            }
+            
             lineRenderer.startWidth = 0;
             lineRenderer.endWidth = 0;
         }
