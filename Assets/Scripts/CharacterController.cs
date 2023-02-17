@@ -101,9 +101,24 @@ public class CharacterController : MonoBehaviour
 
         //Står playeren på jorden?
         //Laver en sphere under spilleren og checker hvis den collider med mere end playeren selv
-        if (Physics.OverlapSphere(transform.position + -Vector3.up * 1, 0.1f).Length >= 2)
+        Collider[] overlaps = Physics.OverlapSphere(transform.position + -Vector3.up * 1, 0.1f);
+        if (overlaps.Length >= 2)
         {
-            isGrounded = true;
+            int overlapsL = overlaps.Length;
+            for (int i = 0; i < overlaps.Length; i++)
+            {
+                if(overlaps[i].gameObject.layer == 2)
+                {
+                    overlapsL--;
+                }
+            }
+            if(overlapsL >= 2)
+            {
+                isGrounded = true;
+            } else
+            {
+                isGrounded = false;
+            }
         }
         else
         {
@@ -152,7 +167,7 @@ public class CharacterController : MonoBehaviour
         #endregion
 
         #region Throwable/weapon logic
-        if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
+        if (heldObject != null && Input.GetKeyDown(KeyCode.Mouse0) && !paused)
         {
             Weapon weapon_m;
             if (heldObject.TryGetComponent<Weapon>(out weapon_m))
@@ -442,6 +457,17 @@ public class CharacterController : MonoBehaviour
     void PickupObject(Transform objectToPickup)
     {
         heldObject = objectToPickup;
+
+        heldObject.gameObject.layer = 7;
+        for (int i = 0; i < heldObject.childCount; i++)
+        {
+            heldObject.GetChild(i).gameObject.layer = 7;
+            for (int j = 0; j < heldObject.GetChild(i).childCount; j++)
+            {
+                heldObject.GetChild(i).GetChild(j).gameObject.layer = 7;
+            }
+        }
+
         heldObject.position = Hand.position;
         heldObject.parent = Hand;
         heldObject.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -478,7 +504,24 @@ public class CharacterController : MonoBehaviour
         {
             cols[i].enabled = true;
         }
+
+        StartCoroutine(layerDelay(heldObject));
+
         heldObject = null;
+    }
+
+    IEnumerator layerDelay(Transform heldObject)
+    {
+        yield return new WaitForSeconds(0.5f);
+        heldObject.gameObject.layer = 0;
+        for (int i = 0; i < heldObject.childCount; i++)
+        {
+            heldObject.GetChild(i).gameObject.layer = 0;
+            for (int j = 0; j < heldObject.GetChild(i).childCount; j++)
+            {
+                heldObject.GetChild(i).GetChild(j).gameObject.layer = 0;
+            }
+        }
     }
 
     public void LookAt()

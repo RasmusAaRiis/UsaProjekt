@@ -248,18 +248,9 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         BasicMelee bm = gameObject.AddComponent<BasicMelee>();
-        bm.attackRange = 2;
+        bm.attackRange = 3;
         bm.damage = 15;
         bm.attackCooldown = 0.4f;
-        gameObject.layer = 7;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.layer = 7;
-            for (int j = 0; j < transform.GetChild(i).childCount; j++)
-            {
-                transform.GetChild(i).GetChild(j).gameObject.layer = 7;
-            }
-        }
     }
 
     private void OnDrawGizmosSelected()

@@ -38,7 +38,7 @@ public class FireExtinguisher : Weapon
         for (int i = 0; i < 8; i++)
         {
             GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.4f), Quaternion.LookRotation(transform.forward));
-            proj_m.GetComponent<Rigidbody>().velocity = (transform.right * Random.Range(-5f, 3f)) + (transform.up * Random.Range(-2f, 7f)) + (transform.forward * 2) * attackSpeed;
+            proj_m.GetComponent<Rigidbody>().velocity = (transform.right * Random.Range(-3f, 1f)) + (transform.up * Random.Range(0, 5f)) + (transform.forward * 2) * attackSpeed;
             Projectile proj = proj_m.GetComponent<Projectile>();
             proj.origin = this;
             proj.Activate();
