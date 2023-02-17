@@ -278,7 +278,7 @@ MonoBehaviour:
   Path: Assets/GloopProject/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638122250203108877
+  lastModified: 638122321644214877
   FileSizes: []
   Exists: 1
 --- !u!114 &-601966164166629870
@@ -376,7 +376,7 @@ MonoBehaviour:
   - {fileID: -3272251366408444854}
   StringsBanks:
   - {fileID: -7210144183543114762}
-  cacheTime: 638122250203108877
+  cacheTime: 638122321644214877
   cacheVersion: 131601
 --- !u!114 &61481771218983961
 MonoBehaviour:
