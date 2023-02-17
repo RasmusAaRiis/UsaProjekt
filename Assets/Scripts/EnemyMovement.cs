@@ -231,6 +231,7 @@ public class EnemyMovement : MonoBehaviour
     public void TakeDamage(float value)
     {
         health -= value;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.genericHit, this.transform.position);
         if (damagePopup)
         {
             damagePopup.DisplayDamage(value.ToString());

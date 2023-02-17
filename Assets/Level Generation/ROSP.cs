@@ -19,7 +19,6 @@ public class ROSP : MonoBehaviour
     {
         float chance = Random.Range(0f, 1f);
         ROSP_Object currenObjectToSpawn = rospObjects[0];
-        Debug.Log("Chance to spawn: " + chance);
         for (int i = 0; i < rospObjects.Length; i++)
         {
             if (rospObjects[i].spawnChance >= chance && rospObjects[i].spawnChance < currenObjectToSpawn.spawnChance)
@@ -32,10 +31,6 @@ public class ROSP : MonoBehaviour
         {
             GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
             newObj.transform.SetParent(gameObject.transform);
-            /*
-            Vector3 rot = transform.parent.rotation.eulerAngles + currenObjectToSpawn.obj.transform.rotation.eulerAngles + currenObjectToSpawn.rotationOffset;
-            GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, Quaternion.Euler(rot));
-            newObj.transform.position += currenObjectToSpawn.positionOffset;*/
         }
     }
 }

@@ -4,49 +4,46 @@ using UnityEngine;
 
 public class CubicleScript : MonoBehaviour
 {
-    public GameObject[] drawers;
+    public List<GameObject> drawers;
     public ROSP[] drawerROSPS;
-
-    [Header("Debug")]
-    public bool unlockAfterLoad;
 
     private void Awake()
     {
         ActivateROSPS();
-    }
-
-    private void Start()
-    {
-        if (unlockAfterLoad)
+        for (int i = 0; i < drawers.Count; i++)
         {
-            Invoke("UnlockDrawers", 3);
+            drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
         }
+        Invoke("UnlockDrawers", 1f);
     }
 
     private void Update()
     {
-        for (int i = 0; i < drawers.Length; i++)
+        if (drawers.Count <= 0)
+        {
+            Destroy(this);
+        }
+
+        for (int i = 0; i < drawers.Count; i++)
         {
             if (!drawers[i].GetComponent<ConfigurableJoint>())
             {
-                Debug.Log("Test");
                 drawers[i].layer = 7;
+                drawers[i].transform.GetChild(0).gameObject.layer = 7;
                 drawers[i].AddComponent<BasicMelee>();
                 BasicMelee newMelee = drawers[i].GetComponent<BasicMelee>();
                 newMelee.attackRange = 2;
+                drawers.RemoveAt(i);
             }
         }
     }
 
     public void UnlockDrawers()
     {
-        for (int i = 0; i < drawers.Length; i++)
+        for (int i = 0; i < drawers.Count; i++)
         {
-            if (drawers[i].GetComponent<ConfigurableJoint>())
-            {
-                drawers[i].GetComponent<ConfigurableJoint>().xMotion = ConfigurableJointMotion.Limited;
-                drawers[i].GetComponent<ConfigurableJoint>().breakForce = 500;
-            }
+            drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
+            drawers[i].GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -54,7 +51,6 @@ public class CubicleScript : MonoBehaviour
     {
         for (int i = 0; i < drawerROSPS.Length; i++)
         {
-            Debug.Log("Test");
             drawerROSPS[i].SpawnObject();
         }
     }
