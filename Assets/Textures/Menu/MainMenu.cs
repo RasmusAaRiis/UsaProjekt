@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
         fovSlider.value = PlayerPrefs.GetInt("FOV");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        qualityDropdown.value = QualitySettings.GetQualityLevel();
+        qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
     }
 
     public void ChangePage(GameObject newPage)
@@ -61,6 +61,7 @@ public class MainMenu : MonoBehaviour
     public void ChangeQuality()
     {
         Debug.Log("Quality: " + qualityDropdown.value);
+        PlayerPrefs.SetInt("QualityLevel", qualityDropdown.value);
         QualitySettings.SetQualityLevel(qualityDropdown.value);
     }
 
@@ -82,7 +83,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("BlomScene");
+        SceneManager.LoadSceneAsync("BlomScene", LoadSceneMode.Single);
     }
 
     public void Tutorial()
