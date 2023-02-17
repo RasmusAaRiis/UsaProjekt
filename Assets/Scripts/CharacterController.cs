@@ -259,7 +259,6 @@ public class CharacterController : MonoBehaviour
                     lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
                 }
                 lookedAtObject.tag = "Untagged";
-                lookedAtObject.transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
 
