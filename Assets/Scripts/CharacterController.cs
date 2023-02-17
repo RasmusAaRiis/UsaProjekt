@@ -202,7 +202,8 @@ public class CharacterController : MonoBehaviour
                     hit.transform.CompareTag("Vending") ||
                     hit.transform.CompareTag("EndLevelTemp") ||
                     hit.transform.CompareTag("Money") ||
-                    hit.transform.CompareTag("Water"))
+                    hit.transform.CompareTag("Water") ||
+                    hit.transform.CompareTag("GoToMenu"))
                 {
                     SetObjectOutline(0);
                 }
@@ -216,7 +217,8 @@ public class CharacterController : MonoBehaviour
                 !lookedAtObject.CompareTag("Vending") &&
                 !lookedAtObject.CompareTag("EndLevelTemp") &&
                 !lookedAtObject.CompareTag("Money") &&
-                !lookedAtObject.CompareTag("Water"))
+                !lookedAtObject.CompareTag("Water") &&
+                !lookedAtObject.CompareTag("GoToMenu"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 //... eller alt muligt andet nu også lol
@@ -284,6 +286,11 @@ public class CharacterController : MonoBehaviour
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.drink, this.transform.position);
                 Health = 10;
                 PickupText("+Health");
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("GoToMenu"))
+            {
+                SceneManager.LoadScene("MainMenu");
             }
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
@@ -378,6 +385,9 @@ public class CharacterController : MonoBehaviour
                 eButton.enabled = true;
                 break;
             case "Water":
+                eButton.enabled = true;
+                break;
+            case "GoToMenu":
                 eButton.enabled = true;
                 break;
             default:
