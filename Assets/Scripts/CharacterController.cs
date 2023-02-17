@@ -294,6 +294,7 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("GoToMenu"))
             {
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("MainMenu");
             }
 
