@@ -336,8 +336,8 @@ public class LevelGenerator : MonoBehaviour
             SetActualDoors();
             SpawnDoor(breakRoomScript.southDoor.gameObject);
             RemoveExcessDoors();
-            SpawnEnemies();
             BakeNavigation();
+            SpawnEnemies();
 
             doors[doors.Count - 1].transform.SetParent(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor.transform);
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
