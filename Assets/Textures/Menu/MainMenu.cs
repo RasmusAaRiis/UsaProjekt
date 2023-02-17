@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     GameObject page;
 
-    private void Awake()
+    private void Start()
     {
         if (!PlayerPrefs.HasKey("FOV"))
         {
@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
         }
         if (!PlayerPrefs.HasKey("QualityLevel"))
         {
-            PlayerPrefs.SetInt("QualityLevel", 2);
+            PlayerPrefs.SetInt("QualityLevel", 1);
         }
 
         fovSlider.value = PlayerPrefs.GetInt("FOV");

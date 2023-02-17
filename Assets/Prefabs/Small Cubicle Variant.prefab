@@ -161,7 +161,7 @@ MonoBehaviour:
     spawnChance: 1
   - parent: {fileID: 6627987072735797430}
     obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
-    spawnChance: 0.45
+    spawnChance: 0.2
   - parent: {fileID: 6627987072735797430}
     obj: {fileID: 8612480536119631711}
     spawnChance: 0.15
