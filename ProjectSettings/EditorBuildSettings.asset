@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SoundTest.unity
     guid: 05969fa998bd2e0458136181821ea056
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: db938a1fd7594af40a6d82a304d00d57
+  - enabled: 1
+    path: Assets/Scenes/TutorialLevel.unity
+    guid: 310ceb18c466dc74abffcb941bc32ce1
+  - enabled: 1
     path: Assets/Scenes/BlomScene.unity
     guid: 0d1903460ea05284aafadd74ae2c2dc9
   m_configObjects: {}

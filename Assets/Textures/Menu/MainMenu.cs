@@ -88,7 +88,7 @@ public class MainMenu : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("TutorialLevel");
     }
 
     public void KnapKnap()
