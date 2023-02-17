@@ -476,7 +476,7 @@ MonoBehaviour:
   jumpCooldown: {x: 0.8, y: 1}
   chaseRadius: 0
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
   onGround: 0
   debugText: {fileID: 2212362537307369542}

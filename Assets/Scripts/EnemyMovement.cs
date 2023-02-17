@@ -111,6 +111,7 @@ public class EnemyMovement : MonoBehaviour
             chaseTarget = false;
             stabilize = false;
             debugText.text = "";
+            
             if (justDied == true ) 
             { 
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyDead, this.transform.position); 
@@ -137,7 +138,7 @@ public class EnemyMovement : MonoBehaviour
                 navAgent.destination = target.position;
                 navAgent.transform.localPosition = Vector3.zero;
                 
-                print(navAgent.path.corners.Length + " navmesh corners");
+                //print(navAgent.path.corners.Length + " navmesh corners");
                 
                 if (navAgent.path.corners.Length >= 2)
                 {
@@ -146,7 +147,7 @@ public class EnemyMovement : MonoBehaviour
                 
                 //print(Vector3.Distance(chasePosition, this.transform.position));
                 
-                Debug.DrawLine(chasePosition, transform.position, Color.yellow);
+                //Debug.DrawLine(chasePosition, transform.position, Color.yellow);
                 
                 if (Vector3.Distance(chasePosition, this.transform.position) <= 1 && navAgent.path.corners.Length >= 3)
                 {
