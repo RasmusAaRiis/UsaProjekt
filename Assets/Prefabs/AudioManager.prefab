@@ -88,11 +88,11 @@ MonoBehaviour:
     Path: event:/Sfx/PlayerHit
   <enemyDead>k__BackingField:
     Guid:
-      Data1: 1793611130
-      Data2: 1198679065
-      Data3: 611157128
-      Data4: -1041321689
-    Path: event:/Sfx/EnemyDead
+      Data1: 1546332624
+      Data2: 1218200999
+      Data3: -2084598907
+      Data4: 2136699473
+    Path: event:/Sfx/SlimeHit
   <openDoor>k__BackingField:
     Guid:
       Data1: 1542147560
@@ -128,6 +128,27 @@ MonoBehaviour:
       Data3: 2059665552
       Data4: -2020191167
     Path: event:/Sfx/Drink
+  <victory>k__BackingField:
+    Guid:
+      Data1: 1793611130
+      Data2: 1198679065
+      Data3: 611157128
+      Data4: -1041321689
+    Path: event:/Sfx/EnemyDead
+  <spray>k__BackingField:
+    Guid:
+      Data1: 1169363453
+      Data2: 1214370370
+      Data3: 28004504
+      Data4: 1856560072
+    Path: event:/Sfx/Spray
+  <buttonButton>k__BackingField:
+    Guid:
+      Data1: 676197750
+      Data2: 1123177793
+      Data3: -42590539
+      Data4: 281388779
+    Path: event:/Sfx/ButtonButton
 --- !u!1 &2592886088349998577
 GameObject:
   m_ObjectHideFlags: 0
