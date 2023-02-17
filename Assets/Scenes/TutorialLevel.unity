@@ -8314,6 +8314,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3742513071235349061, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -22967,8 +22971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 39985579}
   type: 1
-  directionsString: "Pickup & throw items with \"RMB\". \nShoot or punch with \"LMB\".\nPractice
-    on these dummy enemies."
+  directionsString: "Pickup & throw items with \"RMB\". \nShoot or punch with \"LMB\"
+    while holding an object or weapon.\nPractice on these dummy enemies."
   showTime: 5
   directionsText: {fileID: 39985578}
   resetPosition: {fileID: 0}
