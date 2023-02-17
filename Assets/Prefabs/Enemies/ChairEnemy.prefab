@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  debugMode: 1
+  debugMode: 0
   rb: {fileID: 4755057408490024636}
   navAgent: {fileID: 1984262003}
   target: {fileID: 0}
