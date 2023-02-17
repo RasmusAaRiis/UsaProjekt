@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
+using UnityEngine.AI;
 
 public enum EnemyType
 {
@@ -21,6 +22,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool debugMode;
     
     [SerializeField] private Rigidbody rb;
+
+    [SerializeField] private NavMeshAgent navAgent;
 
     public Transform target;
     
@@ -53,6 +56,8 @@ public class EnemyMovement : MonoBehaviour
     private Quaternion startRot;
     private float timerValue;
     private float timer;
+
+    private Vector3 navMeshTarget;
 
     private bool justDied = true;
     
@@ -129,8 +134,28 @@ public class EnemyMovement : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Melee:
-                chasePosition = target.position;
+                navAgent.destination = target.position;
+                navAgent.transform.localPosition = Vector3.zero;
+                //print(navAgent.path.corners.Length + " navmesh corners");
+                
+                print(Vector3.Distance(chasePosition, this.transform.position));
+                
+                if (Vector3.Distance(chasePosition, this.transform.position) <= 18 && navAgent.path.corners.Length > 3)
+                {
+                    chasePosition = navAgent.path.corners[2];
+                }
+                if (navAgent.path.corners.Length >= 2)
+                {
+                    chasePosition = navAgent.path.corners[1];
+                }
+                else
+                {
+                    chasePosition = target.position;
+                }
+
+                navMeshTarget = chasePosition;
                 break;
+            
             case EnemyType.Ranged:
                 if (target.gameObject.CompareTag("Player"))
                 {
@@ -143,7 +168,9 @@ public class EnemyMovement : MonoBehaviour
                     chasePosition = target.position;
                 }
                 break;
-                
+
+            default:
+                throw new ArgumentOutOfRangeException();
         }
 
         if (chaseTarget && !tarIsMissing)
@@ -256,7 +283,22 @@ public class EnemyMovement : MonoBehaviour
                 Vector3 lookDirection = new Vector3(target!.position.x, target!.position.y + targetLookOffset, target!.position.z) - this.transform.position;
                 //Debug.Log(direction);
                 Gizmos.color = Color.magenta;
-                Gizmos.DrawRay(position, direction);
+
+                for (int i = 0; i < navAgent.path.corners.Length; i++)
+                {
+                    if (i ==  0)
+                    {
+                        Gizmos.DrawRay(position, navAgent.path.corners[i] - position);
+                    }
+                    else
+                    {
+                        Gizmos.DrawRay(navAgent.path.corners[i-1], navAgent.path.corners[i] - navAgent.path.corners[i-1]);
+                    }
+                    
+                }
+
+                Gizmos.DrawSphere(navMeshTarget, 0.2f);
+
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawRay(position, lookDirection);
                 Gizmos.color = Color.green;
