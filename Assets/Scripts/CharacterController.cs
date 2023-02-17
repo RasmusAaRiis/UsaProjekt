@@ -258,7 +258,7 @@ public class CharacterController : MonoBehaviour
                 {
                     lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
                 }
-                lookedAtObject.tag = "Untagged";
+                lookedAtObject.tag = "Untagged";    
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
 
@@ -537,7 +537,7 @@ public class CharacterController : MonoBehaviour
 
     IEnumerator layerDelay(Transform heldObject)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         heldObject.gameObject.layer = 0;
         for (int i = 0; i < heldObject.childCount; i++)
         {
