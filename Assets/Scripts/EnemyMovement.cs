@@ -247,10 +247,15 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
-        BasicMelee bm = gameObject.AddComponent<BasicMelee>();
-        bm.attackRange = 3;
-        bm.damage = 15;
-        bm.attackCooldown = 0.4f;
+
+        if (rb.mass < 12)
+        {
+            BasicMelee bm = gameObject.AddComponent<BasicMelee>();
+            bm.attackRange = 3;
+            bm.damage = 15;
+            bm.attackCooldown = 0.4f;
+            bm.knockback = 5;
+        }
     }
 
     private void OnDrawGizmosSelected()
