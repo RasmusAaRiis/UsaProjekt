@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class NavigationBaker : MonoBehaviour
 {
-    public NavMeshSurface[] surfaces;
+    public List<NavMeshSurface> surfaces;
 
     public void Build()
     {
-        for (int i = 0; i < surfaces.Length; i++) 
+        for (int i = 0; i < surfaces.Count; i++) 
         {
             surfaces [i].BuildNavMesh ();    
         }  

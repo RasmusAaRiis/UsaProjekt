@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2112077227625505729
+--- !u!1 &6906857111649187543
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4130799744370658056}
-  - component: {fileID: 1973536328617162371}
-  - component: {fileID: 4355334850264489573}
-  - component: {fileID: -1486249625329940479}
-  m_Layer: 8
+  - component: {fileID: 3242178322869808265}
+  - component: {fileID: 5645971158859734920}
+  - component: {fileID: 3425409681517910696}
+  - component: {fileID: 8604460821998157309}
+  - component: {fileID: 4680577189194328235}
+  m_Layer: 0
   m_Name: Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4130799744370658056
+--- !u!4 &3242178322869808265
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112077227625505729}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0007, y: 0.0099, z: 0.0274}
-  m_LocalScale: {x: 1.23, y: 0.009121948, z: 2.099886}
-  m_ConstrainProportionsScale: 1
+  m_GameObject: {fileID: 6906857111649187543}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.44568, y: -6.4151134, z: 43.834713}
+  m_LocalScale: {x: 1.23, y: 2.099886, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1973536328617162371
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &5645971158859734920
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112077227625505729}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4355334850264489573
+  m_GameObject: {fileID: 6906857111649187543}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3425409681517910696
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112077227625505729}
+  m_GameObject: {fileID: 6906857111649187543}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,13 +85,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-1486249625329940479
+--- !u!64 &8604460821998157309
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906857111649187543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4680577189194328235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112077227625505729}
+  m_GameObject: {fileID: 6906857111649187543}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f9c2b7a6e5a85946b76e8fabcc66b17, type: 3}
@@ -100,9 +115,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c074281a4c1edbe4e95e5cd39ba71553, type: 3}
   - {fileID: 2800000, guid: d7f097bc00293164f8e278939a87d566, type: 3}
   - {fileID: 2800000, guid: 7110b46249b398d48b62e7ecae68dd98, type: 3}
+  - {fileID: 2800000, guid: 74b68c38d8d71604ea6faeab0db9edaa, type: 3}
+  - {fileID: 2800000, guid: 4f0d65f296edfd4498a9a491cdaedf21, type: 3}
   - {fileID: 2800000, guid: c8f78c82b1bf2314d942323ccf73ec5a, type: 3}
   - {fileID: 2800000, guid: ca5377ec93d05eb4eba3d324b1829e98, type: 3}
   - {fileID: 2800000, guid: be6c1405040ef534ab81ab30c632a855, type: 3}
-  - {fileID: 2800000, guid: 4f0d65f296edfd4498a9a491cdaedf21, type: 3}
-  - {fileID: 2800000, guid: 74b68c38d8d71604ea6faeab0db9edaa, type: 3}
-  mr: {fileID: 4355334850264489573}
+  mr: {fileID: 3425409681517910696}

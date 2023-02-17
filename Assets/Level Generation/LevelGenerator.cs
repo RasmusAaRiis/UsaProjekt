@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.AI.Navigation;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     [Header("Variables")]
     public int maxLevelLength;
     public RoomScript currentActiveRoom;
+    public NavigationBaker navBaker;
     public bool createNewRoom = false;
     public int minEnemyCount = 1;
     public int maxEnemyCount = 1;
@@ -335,6 +337,7 @@ public class LevelGenerator : MonoBehaviour
             SpawnDoor(breakRoomScript.southDoor.gameObject);
             RemoveExcessDoors();
             SpawnEnemies();
+            BakeNavigation();
 
             doors[doors.Count - 1].transform.SetParent(currentRooms[currentRooms.Count - 1].GetComponent<RoomScript>().actualDoor.transform);
             currentRooms[0].GetComponent<RoomScript>().actualDoor.ActivateDoor();
@@ -453,6 +456,16 @@ public class LevelGenerator : MonoBehaviour
         {
             doors[i].transform.SetParent(currentRooms[i].GetComponent<RoomScript>().actualDoor.transform);
         }
+    }
+
+    void BakeNavigation()
+    {
+        for (int i = 0; i < currentRooms.Count; i++)
+        {
+            navBaker.surfaces.Add(currentRooms[i].GetComponentInChildren<NavMeshSurface>());
+        }
+
+        navBaker.Build();
     }
 
     void SetActualDoors()
