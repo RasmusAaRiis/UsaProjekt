@@ -136,24 +136,30 @@ public class EnemyMovement : MonoBehaviour
             case EnemyType.Melee:
                 navAgent.destination = target.position;
                 navAgent.transform.localPosition = Vector3.zero;
-                //print(navAgent.path.corners.Length + " navmesh corners");
                 
-                print(Vector3.Distance(chasePosition, this.transform.position));
+                print(navAgent.path.corners.Length + " navmesh corners");
                 
-                if (Vector3.Distance(chasePosition, this.transform.position) <= 18 && navAgent.path.corners.Length > 3)
-                {
-                    chasePosition = navAgent.path.corners[2];
-                }
                 if (navAgent.path.corners.Length >= 2)
                 {
                     chasePosition = navAgent.path.corners[1];
                 }
-                else
+                
+                //print(Vector3.Distance(chasePosition, this.transform.position));
+                
+                Debug.DrawLine(chasePosition, transform.position, Color.yellow);
+                
+                if (Vector3.Distance(chasePosition, this.transform.position) <= 1 && navAgent.path.corners.Length >= 3)
+                {
+                    chasePosition = navAgent.path.corners[2];
+                }
+                
+                if (navAgent.path.corners.Length < 3)
                 {
                     chasePosition = target.position;
                 }
-
+                
                 navMeshTarget = chasePosition;
+                
                 break;
             
             case EnemyType.Ranged:
