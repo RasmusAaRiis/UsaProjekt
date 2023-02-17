@@ -1150,6 +1150,7 @@ MonoBehaviour:
   enemyType: 1
   debugMode: 0
   rb: {fileID: 8146343737138943048}
+  navAgent: {fileID: 0}
   target: {fileID: 0}
   health: 100
   rotationStrength: 0.3

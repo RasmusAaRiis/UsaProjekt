@@ -7181,7 +7181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8146343737138943050, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
       propertyPath: stabilize
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146343737138943050, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
+      propertyPath: chaseTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
       propertyPath: m_Name
@@ -7430,10 +7434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
-      propertyPath: chaseTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4755057408490024638, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
       propertyPath: m_RootOrder
       value: 19
