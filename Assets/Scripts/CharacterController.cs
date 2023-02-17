@@ -67,7 +67,7 @@ public class CharacterController : MonoBehaviour
         PickupText($"Floor {currentFloor + 1}", 0, 0.3f);
         if (PlayerPrefs.HasKey("FOV"))
         {
-            GetComponentInChildren<Camera>().fieldOfView = PlayerPrefs.GetFloat("FOV");
+            GetComponentInChildren<Camera>().fieldOfView = PlayerPrefs.GetInt("FOV");
         }
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;
