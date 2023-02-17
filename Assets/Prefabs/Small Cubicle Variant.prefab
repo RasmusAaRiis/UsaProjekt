@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: -2430549141450050574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.043, y: 0.043, z: 0.043}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1697891263271881606}
   - {fileID: 5745846518529168857}
@@ -196,7 +196,7 @@ MonoBehaviour:
     spawnChance: 1
   - parent: {fileID: 6627987072735797430}
     obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
-    spawnChance: 0.2
+    spawnChance: 0.45
   - parent: {fileID: 6627987072735797430}
     obj: {fileID: 8612480536119631711}
     spawnChance: 0.15

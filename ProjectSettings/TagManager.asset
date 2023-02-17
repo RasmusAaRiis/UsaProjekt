@@ -15,6 +15,7 @@ TagManager:
   - Money
   - Water
   - GoToMenu
+  - Drawer
   layers:
   - Default
   - TransparentFX
