@@ -8,6 +8,6 @@ public class Poster : MonoBehaviour
     public MeshRenderer mr;
     void Start()
     {
-        mr.material.SetTexture("_MainTex", textures[Random.Range(0, textures.Count)]);
+        mr.material.SetTexture("_BaseMap", textures[Random.Range(0, textures.Count)]);
     }
 }

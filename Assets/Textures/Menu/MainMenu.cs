@@ -94,6 +94,7 @@ public class MainMenu : MonoBehaviour
     public void KnapKnap()
     {
         Debug.Log("Knap Knap");
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonButton, this.transform.position);
     }
 
     public void Quit()

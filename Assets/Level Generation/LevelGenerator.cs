@@ -198,6 +198,7 @@ public class LevelGenerator : MonoBehaviour
 
             if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.victory, this.transform.position);
                 roomsCleared++;
                 float newRoomClearTime = Time.time - startRoomTime;
                 totalRoomClearTime += newRoomClearTime;
