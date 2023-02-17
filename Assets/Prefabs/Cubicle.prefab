@@ -299,7 +299,7 @@ MonoBehaviour:
     spawnChance: 1
   - parent: {fileID: 7764867966188979477}
     obj: {fileID: 6803833173345357005, guid: 0b4cc86d5adea4945af8902249e55443, type: 3}
-    spawnChance: 0
+    spawnChance: 0.1
 --- !u!1 &2189790805065851124
 GameObject:
   m_ObjectHideFlags: 0
