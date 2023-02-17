@@ -32,10 +32,6 @@ public class ROSP : MonoBehaviour
         {
             GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
             newObj.transform.SetParent(gameObject.transform);
-            /*
-            Vector3 rot = transform.parent.rotation.eulerAngles + currenObjectToSpawn.obj.transform.rotation.eulerAngles + currenObjectToSpawn.rotationOffset;
-            GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, Quaternion.Euler(rot));
-            newObj.transform.position += currenObjectToSpawn.positionOffset;*/
         }
     }
 }
