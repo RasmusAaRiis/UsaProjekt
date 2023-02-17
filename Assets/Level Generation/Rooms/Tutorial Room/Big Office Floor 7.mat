@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Big Office Floor 6
+  m_Name: Big Office Floor 7
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _METALLICSPECGLOSSMAP
@@ -38,7 +38,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: fb4ce58cf8cd21f448636031bebd6dee, type: 3}
-        m_Scale: {x: 9, y: 9}
+        m_Scale: {x: 9, y: 3.5}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 044da6002dc20994e94958f7d5c29041, type: 3}
@@ -62,7 +62,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fb4ce58cf8cd21f448636031bebd6dee, type: 3}
-        m_Scale: {x: 9, y: 9}
+        m_Scale: {x: 9, y: 3.5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 6bc3820ffa74b6c449430a87383c702c, type: 3}
