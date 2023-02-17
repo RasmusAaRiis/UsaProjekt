@@ -65,6 +65,10 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         PickupText($"Floor {currentFloor + 1}", 0, 0.3f);
+        if (PlayerPrefs.HasKey("FOV"))
+        {
+            GetComponentInChildren<Camera>().fieldOfView = PlayerPrefs.GetFloat("FOV");
+        }
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
