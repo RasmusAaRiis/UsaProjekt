@@ -36,27 +36,7 @@ public class TutorialTrigger : MonoBehaviour
         }
         else if (type == ActionType.TriggerText && other.CompareTag("Player"))
         {
-            HideText();
-            Invoke("ShowText", 0.15f);
+            directionsText.SetText(directionsString);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (type == ActionType.TriggerText && other.CompareTag("Player"))
-        {
-            HideText();
-        }
-    }
-
-    public void ShowText()
-    {
-        directionsText.SetText(directionsString);
-        anim.SetTrigger("Show");
-    }
-
-    public void HideText()
-    {
-        anim.SetTrigger("Hide");
     }
 }
