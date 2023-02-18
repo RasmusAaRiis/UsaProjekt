@@ -89,6 +89,7 @@ public class LevelGenerator : MonoBehaviour
             Destroy(deadEnemies[i]);
         }
         deadEnemies.Clear();
+        navBaker.surfaces.Clear();
 
         GameObject[] throwableObjects = GameObject.FindGameObjectsWithTag("Throwable");
 
@@ -259,18 +260,16 @@ public class LevelGenerator : MonoBehaviour
         createNewRoom = false;
 
         FadeToBlack(0.3f);
+        FadeFromBlack(1f, 0.3f);
         yield return new WaitForSeconds(1f);
         minEnemyCount += minEnemyCountIncrease;
         maxEnemyCount += maxEnemyCountIncrease;
         Debug.Log("Fade");
-        yield return new WaitForSeconds(1);
         CreateLevel();
 
         AudioManager.instance.SetParameter("ElevatorLoad", 1f);
         AudioManager.instance.SetParameter("Elevator", 1);
         AudioManager.instance.SetParameter("Situation", 0);
-
-        FadeFromBlack(0.3f);
 
         yield return new WaitForSeconds(3);
 
@@ -299,13 +298,15 @@ public class LevelGenerator : MonoBehaviour
         fadeImage.color = new Color(0f, 0f, 0f, 1f);
     }
 
-    public void FadeFromBlack(float duration)
+    public void FadeFromBlack(float waitTime, float duration)
     {
-        StartCoroutine(FadeFromBlackOverTime(duration));
+        StartCoroutine(FadeFromBlackOverTime(waitTime, duration));
     }
 
-    IEnumerator FadeFromBlackOverTime(float duration)
+    IEnumerator FadeFromBlackOverTime(float waitTime, float duration)
     {
+        yield return new WaitForSeconds(waitTime);
+
         Image fadeImage = player.GetComponent<CharacterController>().BlackFadeScreen;
 
         while (fadeImage.color.a > 0f)
