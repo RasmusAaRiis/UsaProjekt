@@ -179,13 +179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796604834}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.363, y: 0.286, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.026850581, y: -0.013033152, z: -0.42336208, w: 0.9054688}
+  m_LocalPosition: {x: -0.00011, y: 0.00363, z: -0.00102}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1334109149747217858}
-  m_RootOrder: 3
+  m_Father: {fileID: 5645001155689248304}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846635658
 GameObject:
@@ -265,37 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2958ad7e59d484e8c48a0ed84c6876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1945755752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1945755753}
-  m_Layer: 0
-  m_Name: IKPole
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1945755753
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945755752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.462, y: -0.019, z: 0.092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334109149747217858}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984262002
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,8 +382,6 @@ Transform:
   - {fileID: 7940796563430036828}
   - {fileID: 9200444350074681562}
   - {fileID: 846635659}
-  - {fileID: 796604835}
-  - {fileID: 1945755753}
   m_Father: {fileID: 4755057408490024638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -615,13 +582,18 @@ MonoBehaviour:
   jumpCooldown: {x: 0.8, y: 1}
   chaseRadius: 0
   resetVel: 0
-  chaseTarget: 0
+  chaseTarget: 1
   stabilize: 1
   onGround: 0
   debugText: {fileID: 2212362537307369542}
-  goopRenderer: {fileID: 0}
+  goopRenderer: {fileID: 230950068059044153}
   goopMaterial: {fileID: 0}
   damagePopup: {fileID: 364433130}
+  tentacleSpeed: 0.2
+  ikTentas:
+  - {fileID: 5541328268865739777}
+  ikTargets: []
+  ikTargetsGoto: []
 --- !u!114 &364433130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +636,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3644677387624897211}
+  - {fileID: 796604835}
   m_Father: {fileID: 7940796563430036828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -713,10 +686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChainLength: 3
   Target: {fileID: 796604835}
-  Pole: {fileID: 1945755753}
+  Pole: {fileID: 0}
   Iterations: 10
   Delta: 0.001
-  SnapBackStrength: 1
+  SnapBackStrength: 0
 --- !u!1 &5717805810846437676
 GameObject:
   m_ObjectHideFlags: 0
