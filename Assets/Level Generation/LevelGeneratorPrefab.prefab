@@ -49,7 +49,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
   doorPrefab: {fileID: 200305001620900287, guid: 7a487b74334cdfe4e88fb920024233b5, type: 3}
   starterWeaponPrefab: {fileID: 6719938817502376433, guid: 0bb8bf1c21eec5948be55cd5f5d46759, type: 3}
-  officeWallPrefab: {fileID: 6934183538698803715, guid: 05ca243502a67fb439be913c099ad897, type: 3}
+  officeWallPrefab: {fileID: 8194384190646006346, guid: ef301db2070a9304cb7eacf8c4f67ada, type: 3}
   enemyPrefabs:
   - {fileID: 5383643415413224452, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
   - {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}

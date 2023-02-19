@@ -86,7 +86,10 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < deadEnemies.Count; i++)
         {
-            Destroy(deadEnemies[i]);
+            if (deadEnemies[i].transform != player.GetComponent<CharacterController>().heldObject)
+            {
+                Destroy(deadEnemies[i]);
+            }
         }
         deadEnemies.Clear();
         navBaker.surfaces.Clear();
@@ -156,12 +159,17 @@ public class LevelGenerator : MonoBehaviour
     {
         startLevelTime = Time.time;
         startRoomTime = Time.time;
+
+        yield return new WaitForEndOfFrame();
+        BakeNavigation();
+        SpawnEnemies();
+
         while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
         {
             yield return new WaitForSeconds(0);
             intersects = false;
 
-            if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+            if (GetBoundsRawSingle(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
             }
@@ -246,7 +254,7 @@ public class LevelGenerator : MonoBehaviour
             Bounds breakRoomBounds = GetBoundsRaw(currentRooms[currentRooms.Count - 1]);
             breakRoomBounds.Expand(-2f);
 
-            if (!test && GetBoundsRaw(player).Intersects(breakRoomBounds))
+            if (!test && GetBoundsRawSingle(player).Intersects(breakRoomBounds))
             {
                 test = true;
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
@@ -311,7 +319,6 @@ public class LevelGenerator : MonoBehaviour
 
         while (fadeImage.color.a > 0f)
         {
-            Debug.Log(fadeImage.color.a - 1 / 25f);
             yield return new WaitForSeconds(duration / 25f);
             fadeImage.color = new Color(0f, 0f, 0f, fadeImage.color.a - 1 / 25f);
         }
@@ -350,9 +357,6 @@ public class LevelGenerator : MonoBehaviour
                     rosps[ii].SpawnObject();
                 }
             }
-
-            BakeNavigation();
-            SpawnEnemies();
 
             StartCoroutine("GameLoop");
             return;
@@ -398,6 +402,7 @@ public class LevelGenerator : MonoBehaviour
         lastRoomScript = newRoomScript;
         SpawnRoom();
     }
+
     GameObject SpawnDoor(GameObject door)
     {
         Vector3 rot = door.transform.rotation.eulerAngles + doorPrefab.transform.rotation.eulerAngles;
@@ -412,12 +417,13 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 1; i < currentRooms.Count - 1; i++)
         {
             int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
-            spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
 
             if (minEnemyCount > 3)
             {
                 minEnemyCount = 3;
             }
+
+            spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
@@ -605,12 +611,18 @@ public class LevelGenerator : MonoBehaviour
         return bounds;
     }
 
+    public Bounds GetBoundsRawSingle(GameObject obj)
+    {
+        Bounds bounds = obj.GetComponent<Renderer>().bounds;
+        return bounds;
+    }
+
     private void OnDrawGizmos()
     {
         if (player)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(GetBoundsRaw(player).center, GetBoundsRaw(player).extents * 2);
+            Gizmos.DrawWireCube(GetBoundsRawSingle(player).center, GetBoundsRawSingle(player).extents * 2);
         }
 
         for (int i = 0; i < currentRooms.Count; i++)

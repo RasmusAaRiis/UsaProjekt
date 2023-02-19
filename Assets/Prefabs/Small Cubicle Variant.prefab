@@ -120,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3690639624480372736}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5.4234037, y: 18.719734, z: -11.748655}
+  m_LocalPosition: {x: 10.79, y: 18.719734, z: -11.748655}
   m_LocalScale: {x: 22.940222, y: 22.940222, z: 22.940222}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -170,14 +170,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8612480536119631711}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000032782552}
-  m_LocalPosition: {x: -15, y: 0, z: 19.62}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: -15, y: 1, z: 19.62}
   m_LocalScale: {x: 22.94022, y: 22.94022, z: 22.94022}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3650955224773509266}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -180, z: 0}
 --- !u!114 &2087554666615162255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rospObjects:
   - parent: {fileID: 6627987072735797430}
-    obj: {fileID: 1021134144241549557, guid: 487c54c935d9a4444af2e26ddf5a249a, type: 3}
+    obj: {fileID: 4512159976837298932, guid: 046ef52eeb2cb554a9245d2674bba3c0, type: 3}
     spawnChance: 1
   - parent: {fileID: 6627987072735797430}
     obj: {fileID: 4512159976837298932, guid: 27ecf0a54f6422149a7fdc51c207aec8, type: 3}
