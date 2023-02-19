@@ -17,12 +17,35 @@ public class MainMenu : MonoBehaviour
     public Slider sfxSlider;
     public Slider musicSlider;
     public TMP_Dropdown qualityDropdown;
-
+    public TMP_Dropdown resolutionDropdown;
 
     GameObject page;
 
+    Resolution[] resolutions;
+
     private void Start()
     {
+        resolutions = Screen.resolutions;
+
+        resolutionDropdown.ClearOptions();
+        List<string> dropdownOptions = new List<string>();
+
+        int currentOption = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            dropdownOptions.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentOption = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(dropdownOptions);
+        resolutionDropdown.value = currentOption;
+        resolutionDropdown.RefreshShownValue();
+
         if (!PlayerPrefs.HasKey("FOV"))
         {
             PlayerPrefs.SetInt("FOV", 90);
@@ -48,6 +71,20 @@ public class MainMenu : MonoBehaviour
         fovText.SetText(fovSlider.value.ToString());
         sfxText.SetText(Mathf.RoundToInt(sfxSlider.value * 100).ToString());
         musicText.SetText(Mathf.RoundToInt(musicSlider.value * 100).ToString());
+
+        SetFullscreen(true);
+        ChangeResolution();
+    }
+
+    public void ChangeResolution()
+    {
+        Resolution resolution = resolutions[resolutionDropdown.value];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
     }
 
     public void ChangePage(GameObject newPage)

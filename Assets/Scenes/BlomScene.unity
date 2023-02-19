@@ -427,9 +427,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
-      propertyPath: officeWallPrefab
+      propertyPath: rooms.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: rooms.Array.data[2]
       value: 
-      objectReference: {fileID: 8194384190646006346, guid: ef301db2070a9304cb7eacf8c4f67ada, type: 3}
+      objectReference: {fileID: 8240123199485074787, guid: 69ea8951e9f932d419a7d3ae931abade, type: 3}
     - target: {fileID: 7502872912598346926, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
       propertyPath: m_Name
       value: LevelGenerator
