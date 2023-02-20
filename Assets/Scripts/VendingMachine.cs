@@ -35,6 +35,23 @@ public class VendingMachine : MonoBehaviour
             cc.BlackFadeScreen.gameObject.SetActive(false);
             changeView(false);
         }
+
+        if(cc.speedAm >= 3)
+        {
+            transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(false);
+        }
+        if (cc.meleeAm >= 3)
+        {
+            transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(false);
+        }
+        if (cc.throwingAm >= 3)
+        {
+            transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(false);
+        }
+        if (cc.rangeAm >= 3)
+        {
+            transform.GetChild(1).GetChild(2).GetChild(3).gameObject.SetActive(false);
+        }
     }
 
     IEnumerator Cooldown()
@@ -82,5 +99,23 @@ public class VendingMachine : MonoBehaviour
         cc.LookAt();
         cc.Money -= Cost;
         changeView(false);
+
+        switch (canIndex)
+        {
+            case 0:
+                cc.speedAm++;
+                break;
+            case 1:
+                cc.meleeAm++;
+                break;
+            case 2:
+                cc.throwingAm++;
+                break;
+            case 3:
+                cc.rangeAm++;
+                break;
+            default:
+                break;
+        }
     }
 }

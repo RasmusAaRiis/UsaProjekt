@@ -410,6 +410,14 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    [HideInInspector]
+    public int speedAm = 0;
+    [HideInInspector]
+    public int meleeAm = 0;
+    [HideInInspector]
+    public int throwingAm = 0;
+    [HideInInspector]
+    public int rangeAm = 0;
     public void Upgrade(int index)
     {
         //1) Speed
