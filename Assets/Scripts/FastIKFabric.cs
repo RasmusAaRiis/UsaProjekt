@@ -185,8 +185,8 @@ namespace DitzelGames.FastIK // The tutorial guy :DDDD
             else
                 current.rotation = Root.rotation * rotation;
         }
-        /*
-        void OnDrawGizmos()
+        
+        void OnDrawGizmosSelected()
         {
             var current = this.transform;
             for (int i = 0; i < ChainLength && current != null && current.parent != null; i++)
@@ -198,6 +198,6 @@ namespace DitzelGames.FastIK // The tutorial guy :DDDD
                 current = current.parent;
             }
         }
-        */
+        
     }
 }

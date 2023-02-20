@@ -70,6 +70,7 @@ public class EnemyMovement : MonoBehaviour
 
     private static readonly int MoveSpeed = Shader.PropertyToID("_MoveSpeed");
     private static readonly int Saturation = Shader.PropertyToID("_Saturation");
+    private static readonly int Size = Shader.PropertyToID("_Size");
 
     private void Start()
     {
@@ -142,6 +143,7 @@ public class EnemyMovement : MonoBehaviour
         {
             goopMaterial.SetFloat(MoveSpeed, Mathf.Lerp(goopMaterial.GetFloat(MoveSpeed), 0, 0.03f));
             goopMaterial.SetFloat(Saturation,Mathf.Lerp(goopMaterial.GetFloat(Saturation), 0.3f, 0.03f));
+            goopMaterial.SetFloat(Size,Mathf.Lerp(goopMaterial.GetFloat(Size), 0, 0.03f));
             
             chaseTarget = false;
             stabilize = false;

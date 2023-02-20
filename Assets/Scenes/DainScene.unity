@@ -218,6 +218,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1713077375351766263, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713077375351766263, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190685206121142019, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190685206121142019, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190685206121142019, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426256442863666801, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426256442863666801, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469537106018978569, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469537106018978569, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469537106018978569, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474250523154738129, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474250523154738129, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474250523154738129, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3742513071235349059, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -265,6 +317,14 @@ PrefabInstance:
     - target: {fileID: 3742513071235349062, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399607363022156376, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399607363022156376, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
@@ -668,7 +728,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: ea09a51a152cda64aa76fd65953c64f4, type: 2}
   m_BuildHeightMesh: 0
@@ -6410,10 +6470,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8146343737138943050, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
-      propertyPath: stabilize
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
       propertyPath: m_Name
       value: CabinetEnemy
@@ -6722,6 +6778,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
+      propertyPath: chaseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
+      propertyPath: tentacleSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4755057408490024638, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
       propertyPath: m_RootOrder
       value: 12
