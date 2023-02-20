@@ -7,6 +7,8 @@ using FMOD.Studio;
 public class FMODEvents : MonoBehaviour
 {
 
+    //Opret de forskellige lyd events, der kan sættes i editoren
+
     [field: Header("Music")]
     [field: SerializeField] public EventReference music { get; private set; }
 
@@ -31,6 +33,7 @@ public class FMODEvents : MonoBehaviour
 
     private void Awake()
     {
+        //Kast en fejl hvis der er mere end én FMODEvents aktiv i scenen
         if (instance != null)
         {
             Debug.LogError("Hov du har mere end 1 fmod events >:(");
