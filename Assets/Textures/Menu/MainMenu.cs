@@ -23,8 +23,15 @@ public class MainMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    CharacterController player;
+
     private void Start()
     {
+        if (FindObjectOfType<CharacterController>())
+        {
+            player = FindObjectOfType<CharacterController>();
+        }
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -103,6 +110,16 @@ public class MainMenu : MonoBehaviour
         {
             page = null;
         }
+    }
+
+    public void Continue()
+    {
+        player.Pause(false);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ChangeFov()

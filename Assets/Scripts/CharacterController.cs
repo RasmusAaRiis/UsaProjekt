@@ -44,6 +44,7 @@ public class CharacterController : MonoBehaviour
 
     [Space]
     public GameObject PauseScreen;
+    public GameObject UIScreen;
     public Image CloudAmmoImage;
     public Image StapleAmmoImage;
     public Image rcButton;
@@ -330,6 +331,7 @@ public class CharacterController : MonoBehaviour
         if (pause)
         {
             PauseScreen.SetActive(true);
+            UIScreen.SetActive(false);
             BlackFadeScreen.gameObject.SetActive(true);
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
@@ -337,6 +339,7 @@ public class CharacterController : MonoBehaviour
         } else
         {
             PauseScreen.SetActive(false);
+            UIScreen.SetActive(true);
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             BlackFadeScreen.color = new Color(0, 0, 0, 0f);
