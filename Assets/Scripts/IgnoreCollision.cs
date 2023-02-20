@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -21,6 +22,13 @@ public class IgnoreCollision : MonoBehaviour
 
     private void Start()
     {
+        IgnoreColliders();
+    }
+
+    public void IgnoreColliders()
+    {
+        otherColliders.Clear();
+        
         switch (detectionType)
         {
             case DetectionType.Individual:
@@ -59,6 +67,6 @@ public class IgnoreCollision : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        
     }
+    
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -171,6 +172,16 @@ public class LevelGenerator : MonoBehaviour
 
         BakeNavigation();
         SpawnEnemies();
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            if (doors[i].transform.GetComponent<IgnoreCollision>())
+            {
+                doors[i].transform.GetComponent<IgnoreCollision>().IgnoreColliders();
+            }
+        }
+        
+        
         while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
         {
             Light[] lights = currentActiveRoom.GetComponentsInChildren<Light>();
