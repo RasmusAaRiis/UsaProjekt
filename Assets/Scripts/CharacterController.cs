@@ -252,6 +252,13 @@ public class CharacterController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Door"))
             {
                 DoorBehavior db;
+                IgnoreCollision ic;
+                
+                if (lookedAtObject.transform.TryGetComponent<IgnoreCollision>(out ic))
+                {
+                    ic.IgnoreColliders();
+                }
+                
                 if (lookedAtObject.transform.parent.TryGetComponent<DoorBehavior>(out db))
                 {
                     db.OpenDoor();
@@ -259,6 +266,7 @@ public class CharacterController : MonoBehaviour
                 {
                     lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
                 }
+                
                 lookedAtObject.tag = "Untagged";    
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
@@ -576,6 +584,11 @@ public class CharacterController : MonoBehaviour
         if (!Object.TryGetComponent<Outline>(out selectionOutline))
         {
             selectionOutline = Object.AddComponent<Outline>();
+            
+            if (Object.GetComponentInChildren<IgnoreCollision>())
+            {
+                Object.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
+            }
         }
         if (width <= 0)
         {
