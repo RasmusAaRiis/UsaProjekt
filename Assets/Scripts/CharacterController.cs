@@ -267,7 +267,11 @@ public class CharacterController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("EndLevelTemp"))
             {
                 PickupText($"Floor {currentFloor + 1}", 3, 0.3f);
-                GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().createNewRoom = true;
+
+                if (FindObjectOfType<LevelGenerator>())
+                {
+                    FindObjectOfType<LevelGenerator>().createNewRoom = true;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Vending"))
