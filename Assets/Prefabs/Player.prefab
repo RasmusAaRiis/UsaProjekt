@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ChangeResolution
         m_Mode: 1
@@ -3025,7 +3025,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ChangeQuality
         m_Mode: 1
@@ -6036,7 +6036,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: changeMusicVolume
         m_Mode: 1
@@ -6139,7 +6139,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: changeSFXVolume
         m_Mode: 1
@@ -6615,7 +6615,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: SetFullscreen
         m_Mode: 0
@@ -7739,7 +7739,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4330823228466946019}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ChangeFov
         m_Mode: 1
