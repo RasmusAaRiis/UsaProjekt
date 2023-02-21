@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2521237467691017657}
   - component: {fileID: 367548421314187635}
   m_Layer: 0
-  m_Name: ComputerScreen
+  m_Name: ComputerScreenModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2168825339229221030}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.568}
-  m_LocalScale: {x: 98.4, y: 98.4, z: 98.4}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1416730553709051583}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2521237467691017657
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2168825339229221030}
-  m_Mesh: {fileID: -5495902117074765545, guid: 5f205d7226322084f85c8dd9ce61d8cd, type: 3}
+  m_Mesh: {fileID: 7807538432633192378, guid: bc7258c8746807440ba894d9ffa354f6, type: 3}
 --- !u!23 &367548421314187635
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -109,9 +109,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3161034966025334869}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.63517046, y: 0.577, z: -4.0811434}
-  m_LocalScale: {x: 0.55604684, y: 0.062131997, z: 0.32826763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1536545007848122908}
@@ -150,8 +150,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 6.2828484, z: 2.6157973}
-  m_Center: {x: 0, y: 0, z: -0.30789873}
+  m_Size: {x: 1.0340023, y: 0.876104, z: 0.23967552}
+  m_Center: {x: 0.000992775, y: 0.4366359, z: 0.003967285}
 --- !u!54 &3161034966025334868
 Rigidbody:
   m_ObjectHideFlags: 0
