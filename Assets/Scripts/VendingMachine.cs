@@ -72,6 +72,7 @@ public class VendingMachine : MonoBehaviour
                 changeView(false);
                 return;
             }
+            Cursor.visible = true;
             cc.BlackFadeScreen.gameObject.SetActive(false);
             StartCoroutine(Cooldown());
             usingMachine = true;

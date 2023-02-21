@@ -25,6 +25,7 @@ public class LevelGenerator : MonoBehaviour
     public int minEnemyCountIncrease = 1;
     public int maxEnemyCountIncrease = 1;
     public float fadeSpeed;
+    public LayerMask surfaceLayers;
 
     [Header("Object Tracking")]
     public GameObject[] rooms;
@@ -504,6 +505,8 @@ public class LevelGenerator : MonoBehaviour
         {
             if (currentRooms[i].GetComponentInChildren<NavMeshSurface>())
             {
+                currentRooms[i].GetComponentInChildren<NavMeshSurface>().layerMask = surfaceLayers;
+                currentRooms[i].GetComponentInChildren<NavMeshSurface>().gameObject.layer = LayerMask.NameToLayer("Ground");
                 navBaker.surfaces.Add(currentRooms[i].GetComponentInChildren<NavMeshSurface>());
             }
         }
