@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -162,24 +163,20 @@ public class LevelGenerator : MonoBehaviour
         startLevelTime = Time.time;
         startRoomTime = Time.time;
 
-        Light[] elevatorLights = currentRooms[0].GetComponentsInChildren<Light>();
-
-        for (int ii = 0; ii < elevatorLights.Length; ii++)
-        {
-            elevatorLights[ii].enabled = true;
-        }
-
         BakeNavigation();
         SpawnEnemies();
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            if (doors[i].transform.GetComponentInChildren<IgnoreCollision>())
+            {
+                Debug.Log("Ignore");
+                doors[i].transform.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
+            }
+        }
+
         while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
         {
-            Light[] lights = currentActiveRoom.GetComponentsInChildren<Light>();
-
-            for (int ii = 0; ii < lights.Length; ii++)
-            {
-                lights[ii].enabled = true;
-            }
-
             yield return new WaitForSeconds(0);
             intersects = false;
 
@@ -369,13 +366,6 @@ public class LevelGenerator : MonoBehaviour
                 for (int ii = 0; ii < rosps.Length; ii++)
                 {
                     rosps[ii].SpawnObject();
-                }
-
-                Light[] lights = currentRooms[i].GetComponentsInChildren<Light>();
-
-                for (int ii = 0; ii < lights.Length; ii++)
-                {
-                    lights[ii].enabled = false;
                 }
             }
 

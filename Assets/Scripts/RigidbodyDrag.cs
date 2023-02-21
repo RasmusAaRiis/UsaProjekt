@@ -30,8 +30,6 @@ public class RigidbodyDrag : MonoBehaviour
 
     [SerializeField] private GameObject dragObject;
 
-    [SerializeField] private Vector3 hitPos;
-
     [SerializeField] private LineRenderer lineRenderer;
 
     [Range(0f, 1f)] [SerializeField] private float lineWidth = 0.5f;
@@ -42,6 +40,8 @@ public class RigidbodyDrag : MonoBehaviour
 
     [SerializeField] private GameObject dragObjPoint;
 
+    private Vector3 _lineEnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +50,8 @@ public class RigidbodyDrag : MonoBehaviour
     
     void Update()
     {
+        _lineEnd = transform.forward * 2 + transform.position;
+        
         isHolding = Input.GetKey(input);
         
         if (Physics.Raycast(transform.position, transform.forward, out var hit, reachDistane) && !isDragging)
@@ -105,13 +107,11 @@ public class RigidbodyDrag : MonoBehaviour
                         },
                         name = "DragObjPoint " + hit.transform.name
                     };
-                    
-                    hitPos = hit.point;
                 }
             }
         }
 
-        if (dragObject && (!isHolding || Vector3.Distance(dragObject.transform.position, transform.forward * 2 + transform.position) >= reachDistane))
+        if (dragObject && (!isHolding || Vector3.Distance(dragObject.transform.position, _lineEnd) >= reachDistane))
         {
             isDragging = false;
             
@@ -134,21 +134,30 @@ public class RigidbodyDrag : MonoBehaviour
             // {
             //     center = dragObject.GetComponent<Renderer>().bounds.center;
             // }
-            var forward = transform.forward;
-            var thisPos = transform.position;
-            var dragPos = dragObject.transform.position;
-            lineRenderer.SetPosition(0, dragObjPoint.transform.position);
-            lineRenderer.SetPosition(1, forward * 2 + thisPos);
             
-            float lineWidthEnd = lineWidth / Vector3.Distance(dragPos, forward * 2 + thisPos);
+            var position = transform.position;
+
+            var dragPos = dragObject.GetComponent<Renderer>() ? dragObject.GetComponent<Renderer>().bounds.center : dragObject.GetComponentInChildren<Renderer>().bounds.center;
+            
+            lineRenderer.SetPosition(0, dragObjPoint.transform.position);
+            lineRenderer.SetPosition(1, _lineEnd);
+            
+            float lineWidthEnd = lineWidth / Vector3.Distance(dragPos, _lineEnd);
             lineWidthEnd = Mathf.Clamp(lineWidthEnd, 0.01f, lineWidth);
             lineRenderer.startWidth = lineWidth;
             lineRenderer.endWidth = lineWidthEnd;
 
-            forceStrengthDist = forceStrength / Vector3.Distance(dragPos,
-                forward * 2 + thisPos);
+            forceStrengthDist = forceStrength / Vector3.Distance(dragPos,_lineEnd);
             forceStrengthDist = Mathf.Clamp(forceStrengthDist, 0, forceStrength);
-            dragObject.GetComponent<Rigidbody>().AddForce((forward * 2 + thisPos - dragPos) * forceStrengthDist * Time.deltaTime);
+
+            Rigidbody dragRb = dragObject.GetComponent<Rigidbody>();
+
+            dragRb.AddForce((_lineEnd - dragPos) * forceStrengthDist * Time.deltaTime);
+            float distance = Vector3.Distance(dragPos, _lineEnd);
+            distance = Mathf.Clamp(distance, 0, 0.95f);
+            var velocity = dragRb.velocity;
+            velocity = new Vector3(velocity.x * distance, velocity.y * distance,velocity.z * distance);
+            dragRb.velocity = velocity;
         }
         else
         {

@@ -23,8 +23,15 @@ public class MainMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    CharacterController player;
+
     private void Start()
     {
+        if (FindObjectOfType<CharacterController>())
+        {
+            player = FindObjectOfType<CharacterController>();
+        }
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -76,6 +83,25 @@ public class MainMenu : MonoBehaviour
         ChangeResolution();
     }
 
+    private void Update()
+    {
+        fovText.SetText(fovSlider.value.ToString());
+        sfxText.SetText(Mathf.RoundToInt(sfxSlider.value * 100).ToString());
+        musicText.SetText(Mathf.RoundToInt(musicSlider.value * 100).ToString());
+
+        if (player)
+        {
+            player.GetComponentInChildren<Camera>().fieldOfView = fovSlider.value;
+        }
+
+        AudioManager.instance.sfxVolume = sfxSlider.value;
+        AudioManager.instance.musicVolume = musicSlider.value;
+        QualitySettings.SetQualityLevel(qualityDropdown.value);
+
+        Resolution resolution = resolutions[resolutionDropdown.value];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
     public void ChangeResolution()
     {
         Resolution resolution = resolutions[resolutionDropdown.value];
@@ -105,6 +131,17 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void Continue()
+    {
+        player.Pause(false);
+        player.paused = false;
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void ChangeFov()
     {
         fovText.SetText(fovSlider.value.ToString());
@@ -121,22 +158,22 @@ public class MainMenu : MonoBehaviour
     public void changeMusicVolume()
     {
         musicText.SetText(Mathf.RoundToInt((musicSlider.value * 100)).ToString());
-        AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume");
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume");
         PlayerPrefs.Save();
     }
 
     public void changeSFXVolume()
     {
         sfxText.SetText(Mathf.RoundToInt((sfxSlider.value * 100)).ToString());
-        AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+        AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
         PlayerPrefs.Save();
     }
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("BlomScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("BlomScene", LoadSceneMode.Single);
     }
 
     public void Tutorial()
