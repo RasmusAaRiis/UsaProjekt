@@ -168,9 +168,10 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < doors.Count; i++)
         {
-            if (doors[i].transform.GetComponent<IgnoreCollision>())
+            if (doors[i].transform.GetComponentInChildren<IgnoreCollision>())
             {
-                doors[i].transform.GetComponent<IgnoreCollision>().IgnoreColliders();
+                Debug.Log("Ignore");
+                doors[i].transform.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
             }
         }
 
