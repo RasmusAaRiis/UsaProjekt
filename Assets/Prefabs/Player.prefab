@@ -3741,7 +3741,7 @@ MonoBehaviour:
   hitPos: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 1785346833}
   lineWidth: 0
-  forceStrength: 4000
+  forceStrength: 8000
   forceStrengthDist: 0
   dragObjPoint: {fileID: 0}
 --- !u!1 &3742513071235349062

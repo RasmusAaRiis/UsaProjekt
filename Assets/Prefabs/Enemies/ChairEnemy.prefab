@@ -1215,7 +1215,7 @@ MonoBehaviour:
   goopRenderer: {fileID: 3453466454498052951}
   goopMaterial: {fileID: 0}
   damagePopup: {fileID: 364433130}
-  tentacleSpeed: 0.2
+  tentacleSpeed: 0.4
   ikTentas:
   - {fileID: 2887287631704050263}
   - {fileID: 2723053890023040830}

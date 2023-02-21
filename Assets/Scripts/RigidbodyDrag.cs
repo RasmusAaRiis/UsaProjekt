@@ -134,9 +134,13 @@ public class RigidbodyDrag : MonoBehaviour
             // {
             //     center = dragObject.GetComponent<Renderer>().bounds.center;
             // }
+            
             var forward = transform.forward;
-            var thisPos = transform.position;
-            var dragPos = dragObject.transform.position;
+            var position = transform.position;
+            var thisPos = position;
+
+            var dragPos = dragObject.GetComponent<Renderer>() ? dragObject.GetComponent<Renderer>().bounds.center : dragObject.GetComponentInChildren<Renderer>().bounds.center;
+            
             lineRenderer.SetPosition(0, dragObjPoint.transform.position);
             lineRenderer.SetPosition(1, forward * 2 + thisPos);
             
@@ -145,10 +149,17 @@ public class RigidbodyDrag : MonoBehaviour
             lineRenderer.startWidth = lineWidth;
             lineRenderer.endWidth = lineWidthEnd;
 
-            forceStrengthDist = forceStrength / Vector3.Distance(dragPos,
-                forward * 2 + thisPos);
+            forceStrengthDist = forceStrength / Vector3.Distance(dragPos,forward * 2 + thisPos);
             forceStrengthDist = Mathf.Clamp(forceStrengthDist, 0, forceStrength);
-            dragObject.GetComponent<Rigidbody>().AddForce((forward * 2 + thisPos - dragPos) * forceStrengthDist * Time.deltaTime);
+
+            Rigidbody dragRb = dragObject.GetComponent<Rigidbody>();
+
+            dragRb.AddForce((forward * 2 + (thisPos - dragPos)) * forceStrengthDist * Time.deltaTime);
+            float distance = Vector3.Distance(dragPos, forward * 2 + position);
+            distance = Mathf.Clamp(distance, 0, 0.95f);
+            var velocity = dragRb.velocity;
+            velocity = new Vector3(velocity.x * distance, velocity.y * distance,velocity.z * distance);
+            dragRb.velocity = velocity;
         }
         else
         {

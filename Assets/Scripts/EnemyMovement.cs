@@ -155,70 +155,79 @@ public class EnemyMovement : MonoBehaviour
                 justDied = false;  
             }
 
+            Destroy(gameObject.GetComponent<EnemyMovement>(), 2f);
+            if (GetComponentInChildren<ReflectionProbe>())
+            {
+                Destroy(GetComponentInChildren<ReflectionProbe>().gameObject, 2);
+            }
+            
             switch (enemyType)
             {
                 case EnemyType.Melee:
-                    Destroy(gameObject.GetComponent<EnemyMovement>(), 2f);
                     break;
                 case EnemyType.Ranged:
                     Destroy(gameObject.GetComponent<EnemyShoot>(), 2f);
-                    Destroy(gameObject.GetComponent<EnemyMovement>(), 2f);
                     break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
-        Vector3 chasePosition = new Vector3();
         
-        switch (enemyType)
-        {
-            case EnemyType.Melee:
-                navAgent.destination = target.position;
-                navAgent.transform.localPosition = Vector3.zero;
-                
-                //print(navAgent.path.corners.Length + " navmesh corners");
-                
-                if (navAgent.path.corners.Length >= 2)
-                {
-                    chasePosition = navAgent.path.corners[1];
-                }
-                
-                //print(Vector3.Distance(chasePosition, this.transform.position));
-                
-                //Debug.DrawLine(chasePosition, transform.position, Color.yellow);
-                
-                if (Vector3.Distance(chasePosition, this.transform.position) <= 1 && navAgent.path.corners.Length >= 3)
-                {
-                    chasePosition = navAgent.path.corners[2];
-                }
-                
-                if (navAgent.path.corners.Length < 3)
-                {
-                    chasePosition = target.position;
-                }
-                
-                navMeshTarget = chasePosition;
-                
-                break;
-            
-            case EnemyType.Ranged:
-                if (target.gameObject.CompareTag("Player"))
-                {
-                    Ray r = new Ray(this.transform.position, target.position - this.transform.position);
-                    var dist = Vector3.Distance(transform.position, target.position);
-                    chasePosition = r.GetPoint(dist - chaseRadius);
-                }
-                else
-                {
-                    chasePosition = target.position;
-                }
-                break;
-
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
 
         if (chaseTarget && !tarIsMissing)
         {
+            Vector3 chasePosition = new Vector3();
+        
+            switch (enemyType)
+            {
+                case EnemyType.Melee:
+                    navAgent.destination = target.position;
+                    navAgent.transform.localPosition = Vector3.zero;
+                
+                    //print(navAgent.path.corners.Length + " navmesh corners");
+                
+                    if (navAgent.path.corners.Length >= 2)
+                    {
+                        chasePosition = navAgent.path.corners[1];
+                    }
+                
+                    //print(Vector3.Distance(chasePosition, this.transform.position));
+                
+                    //Debug.DrawLine(chasePosition, transform.position, Color.yellow);
+                
+                    if (Vector3.Distance(chasePosition, this.transform.position) <= 1 && navAgent.path.corners.Length >= 3)
+                    {
+                        chasePosition = navAgent.path.corners[2];
+                    }
+                
+                    if (navAgent.path.corners.Length < 3)
+                    {
+                        chasePosition = target.position;
+                    }
+                
+                    navMeshTarget = chasePosition;
+                
+                    break;
+            
+                case EnemyType.Ranged:
+                    if (target.gameObject.CompareTag("Player"))
+                    {
+                        Ray r = new Ray(this.transform.position, target.position - this.transform.position);
+                        var dist = Vector3.Distance(transform.position, target.position);
+                        chasePosition = r.GetPoint(dist - chaseRadius);
+                    }
+                    else
+                    {
+                        chasePosition = target.position;
+                    }
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             Vector3 direction = chasePosition - this.transform.position;
         
             direction.x = Mathf.Clamp(direction.x, -5f, 5f);

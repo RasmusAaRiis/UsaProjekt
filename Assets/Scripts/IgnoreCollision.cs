@@ -22,6 +22,8 @@ public class IgnoreCollision : MonoBehaviour
 
     private void Start()
     {
+        otherColliders.Clear();
+        
         IgnoreColliders();
     }
 

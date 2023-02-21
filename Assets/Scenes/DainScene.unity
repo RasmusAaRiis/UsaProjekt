@@ -218,6 +218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 136602749, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
+      propertyPath: forceStrength
+      value: 8000
+      objectReference: {fileID: 0}
     - target: {fileID: 1713077375351766263, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -248,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305934077247819359, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469537106018978569, guid: 786b3edee8c71b646842362e62134f9f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6263,6 +6267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Big Office 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8240123199485074787, guid: 10c5b032bf1734a419791da2ac9c88fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8240123199485074788, guid: 10c5b032bf1734a419791da2ac9c88fa, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6530,10 +6538,6 @@ PrefabInstance:
     - target: {fileID: 8146343737138943049, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8146343737138943050, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
-      propertyPath: stabilize
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8146343737138943053, guid: 7a5069cbdcbd4d14eb53a22648952415, type: 3}
       propertyPath: m_Name
@@ -6843,22 +6847,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4755057408490024636, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
-      propertyPath: stabilize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
-      propertyPath: chaseTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755057408490024637, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
-      propertyPath: tentacleSpeed
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 4755057408490024638, guid: 34272bacd0b7cc842950058d8330d2a3, type: 3}
       propertyPath: m_RootOrder
       value: 13
