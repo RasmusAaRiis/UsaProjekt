@@ -18,6 +18,20 @@ public class Stapler : Weapon
         rangedSpeed = attackSpeed;
     }
 
+    bool open = false;
+    private void Update()
+    {
+        if(open)
+        {
+            return;
+        }
+        if (GetComponentInParent<CharacterController>())
+        {
+            open = true;
+            GetComponent<Animator>().SetTrigger("Pickup");
+        }
+    }
+
     public override void Attack()
     {
         base.Attack();
