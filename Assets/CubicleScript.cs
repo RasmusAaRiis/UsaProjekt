@@ -14,7 +14,7 @@ public class CubicleScript : MonoBehaviour
         {
             drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
         }
-        UnlockDrawers();
+        Invoke("UnlockDrawers", 1f);
     }
 
     private void Update()
@@ -44,6 +44,22 @@ public class CubicleScript : MonoBehaviour
         {
             drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
             drawers[i].GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
+
+    IEnumerator UnlockDrawersWait()
+    {
+        for (int i = 0; i < drawers.Count; i++)
+        {
+            drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
+            drawers[i].GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        yield return new WaitForEndOfFrame();
+
+        for (int i = 0; i < drawers.Count; i++)
+        {
+            drawers[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 
