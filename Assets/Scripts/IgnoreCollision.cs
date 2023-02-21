@@ -55,11 +55,15 @@ public class IgnoreCollision : MonoBehaviour
                         }
                     }
                 }
-                foreach (var t in otherColliders)
+
+                if (otherColliders.Count > 0)
                 {
-                    foreach (var t1 in affectedColliders)
+                    foreach (var t in otherColliders)
                     {
-                        Physics.IgnoreCollision(t1, t);
+                        foreach (var t1 in affectedColliders)
+                        {
+                            Physics.IgnoreCollision(t1, t);
+                        }
                     }
                 }
                 return;
