@@ -36,19 +36,19 @@ public class VendingMachine : MonoBehaviour
             changeView(false);
         }
 
-        if(cc.speedAm >= 3)
+        if(cc.speedAm >= 5)
         {
             transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(false);
         }
-        if (cc.meleeAm >= 3)
+        if (cc.meleeAm >= 5)
         {
             transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(false);
         }
-        if (cc.throwingAm >= 3)
+        if (cc.throwingAm >= 5)
         {
             transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(false);
         }
-        if (cc.rangeAm >= 3)
+        if (cc.rangeAm >= 5)
         {
             transform.GetChild(1).GetChild(2).GetChild(3).gameObject.SetActive(false);
         }
