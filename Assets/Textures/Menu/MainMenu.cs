@@ -173,7 +173,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("BlomScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("BlomScene", LoadSceneMode.Single);
     }
 
     public void Tutorial()
