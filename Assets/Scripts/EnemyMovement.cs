@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Instrumentation;
+using DitzelGames.FastIK;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -60,13 +61,40 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 navMeshTarget;
 
     private bool justDied = true;
-    
+
+    [Range(0f,1f)][SerializeField] private float tentacleSpeed = 0.2f;
+
+    [SerializeField] private List<FastIKFabric> ikTentas;
+    [SerializeField] private List<Transform> ikTargets;
+    [SerializeField] private List<Transform> ikTargetsGoto;
+
     private static readonly int MoveSpeed = Shader.PropertyToID("_MoveSpeed");
     private static readonly int Saturation = Shader.PropertyToID("_Saturation");
+    private static readonly int Size = Shader.PropertyToID("_Size");
 
     private void Start()
     {
+        ikTargets.Clear();
+        ikTargetsGoto.Clear();
+        
+        for (int i = 0; i < ikTentas.Count; i++)
+        {
+            ikTargets.Add(ikTentas[i].Target);
+            
+            GameObject go = new GameObject
+            {
+                transform =
+                {
+                    position = ikTargets[i].position,
+                    //parent = ikTargets[i].parent,
+                    name = "go" + i+1
+                }
+            };
 
+            ikTargetsGoto.Add(go.transform);
+            ikTentas[i].Target = ikTargetsGoto[i].transform;
+        }
+        
         goopMaterial = goopRenderer.material;
         
         var tarIsMissing = !ReferenceEquals(target, null) && !target;
@@ -80,6 +108,14 @@ public class EnemyMovement : MonoBehaviour
 
         jumpStrenght *= rb.mass;
         speed *= rb.mass;
+    }
+
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < ikTentas.Count; i++)
+        {
+            GoTowards(ikTargetsGoto[i], ikTargets[i], tentacleSpeed);
+        }
     }
 
     private void Update()
@@ -107,6 +143,7 @@ public class EnemyMovement : MonoBehaviour
         {
             goopMaterial.SetFloat(MoveSpeed, Mathf.Lerp(goopMaterial.GetFloat(MoveSpeed), 0, 0.03f));
             goopMaterial.SetFloat(Saturation,Mathf.Lerp(goopMaterial.GetFloat(Saturation), 0.3f, 0.03f));
+            goopMaterial.SetFloat(Size,Mathf.Lerp(goopMaterial.GetFloat(Size), 0, 0.03f));
             
             chaseTarget = false;
             stabilize = false;
@@ -225,16 +262,28 @@ public class EnemyMovement : MonoBehaviour
         if (this.transform.position.y < -1) { health = 0;  }
     }
 
+
+    private void GoTowards(Transform mover, Transform target, float speed)
+    {
+        mover.position = Vector3.Lerp(mover.position, target.position, speed);
+    }   
+    
     private void OnCollisionStay(Collision collisionInfo)
     {
         onGround = collisionInfo.gameObject.layer == LayerMask.NameToLayer("Ground");
     }
 
+    
+    
+    
     private void OnCollisionExit(Collision other)
     {
         onGround = false;
     }
 
+    
+    
+    
     public void TakeDamage(float value)
     {
         health -= value;
@@ -247,11 +296,24 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
-        BasicMelee bm = gameObject.AddComponent<BasicMelee>();
-        bm.attackRange = 3;
-        bm.damage = 15;
-        bm.attackCooldown = 0.4f;
+
+        for (int i = 0; i < ikTentas.Count; i++)
+        {
+            ikTargets[i].position = ikTargetsGoto[i].position; 
+            ikTentas[i].Target = ikTargets[i];
+        }
+        
+        if (rb.mass < 12)
+        {
+            BasicMelee bm = gameObject.AddComponent<BasicMelee>();
+            bm.attackRange = 3;
+            bm.damage = 15;
+            bm.attackCooldown = 0.4f;
+            bm.knockback = 5;
+        }
     }
+
+
 
     private void OnDrawGizmosSelected()
     {

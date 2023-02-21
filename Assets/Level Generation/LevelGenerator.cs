@@ -86,9 +86,13 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < deadEnemies.Count; i++)
         {
-            Destroy(deadEnemies[i]);
+            if (deadEnemies[i].transform != player.GetComponent<CharacterController>().heldObject)
+            {
+                Destroy(deadEnemies[i]);
+            }
         }
         deadEnemies.Clear();
+        navBaker.surfaces.Clear();
 
         GameObject[] throwableObjects = GameObject.FindGameObjectsWithTag("Throwable");
 
@@ -153,14 +157,33 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator GameLoop()
     {
+        yield return new WaitForEndOfFrame();
+
         startLevelTime = Time.time;
         startRoomTime = Time.time;
+
+        Light[] elevatorLights = currentRooms[0].GetComponentsInChildren<Light>();
+
+        for (int ii = 0; ii < elevatorLights.Length; ii++)
+        {
+            elevatorLights[ii].enabled = true;
+        }
+
+        BakeNavigation();
+        SpawnEnemies();
         while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
         {
+            Light[] lights = currentActiveRoom.GetComponentsInChildren<Light>();
+
+            for (int ii = 0; ii < lights.Length; ii++)
+            {
+                lights[ii].enabled = true;
+            }
+
             yield return new WaitForSeconds(0);
             intersects = false;
 
-            if (GetBoundsRaw(player).Intersects(currentActiveRoom.rawBounds))
+            if (GetBoundsRawSingle(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
             }
@@ -200,7 +223,7 @@ public class LevelGenerator : MonoBehaviour
 
             if (currentActiveRoom.currentlyAliveEnemies.Count <= 0)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.victory, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.victory, player.transform.position);
                 roomsCleared++;
                 float newRoomClearTime = Time.time - startRoomTime;
                 totalRoomClearTime += newRoomClearTime;
@@ -245,7 +268,7 @@ public class LevelGenerator : MonoBehaviour
             Bounds breakRoomBounds = GetBoundsRaw(currentRooms[currentRooms.Count - 1]);
             breakRoomBounds.Expand(-2f);
 
-            if (!test && GetBoundsRaw(player).Intersects(breakRoomBounds))
+            if (!test && GetBoundsRawSingle(player).Intersects(breakRoomBounds))
             {
                 test = true;
                 AudioManager.instance.SetParameter("ElevatorLoad", 1f);
@@ -259,18 +282,16 @@ public class LevelGenerator : MonoBehaviour
         createNewRoom = false;
 
         FadeToBlack(0.3f);
+        FadeFromBlack(1f, 0.3f);
         yield return new WaitForSeconds(1f);
         minEnemyCount += minEnemyCountIncrease;
         maxEnemyCount += maxEnemyCountIncrease;
         Debug.Log("Fade");
-        yield return new WaitForSeconds(1);
         CreateLevel();
 
         AudioManager.instance.SetParameter("ElevatorLoad", 1f);
         AudioManager.instance.SetParameter("Elevator", 1);
         AudioManager.instance.SetParameter("Situation", 0);
-
-        FadeFromBlack(0.3f);
 
         yield return new WaitForSeconds(3);
 
@@ -299,18 +320,19 @@ public class LevelGenerator : MonoBehaviour
         fadeImage.color = new Color(0f, 0f, 0f, 1f);
     }
 
-    public void FadeFromBlack(float duration)
+    public void FadeFromBlack(float waitTime, float duration)
     {
-        StartCoroutine(FadeFromBlackOverTime(duration));
+        StartCoroutine(FadeFromBlackOverTime(waitTime, duration));
     }
 
-    IEnumerator FadeFromBlackOverTime(float duration)
+    IEnumerator FadeFromBlackOverTime(float waitTime, float duration)
     {
+        yield return new WaitForSeconds(waitTime);
+
         Image fadeImage = player.GetComponent<CharacterController>().BlackFadeScreen;
 
         while (fadeImage.color.a > 0f)
         {
-            Debug.Log(fadeImage.color.a - 1 / 25f);
             yield return new WaitForSeconds(duration / 25f);
             fadeImage.color = new Color(0f, 0f, 0f, fadeImage.color.a - 1 / 25f);
         }
@@ -348,10 +370,14 @@ public class LevelGenerator : MonoBehaviour
                 {
                     rosps[ii].SpawnObject();
                 }
-            }
 
-            BakeNavigation();
-            SpawnEnemies();
+                Light[] lights = currentRooms[i].GetComponentsInChildren<Light>();
+
+                for (int ii = 0; ii < lights.Length; ii++)
+                {
+                    lights[ii].enabled = false;
+                }
+            }
 
             StartCoroutine("GameLoop");
             return;
@@ -397,6 +423,7 @@ public class LevelGenerator : MonoBehaviour
         lastRoomScript = newRoomScript;
         SpawnRoom();
     }
+
     GameObject SpawnDoor(GameObject door)
     {
         Vector3 rot = door.transform.rotation.eulerAngles + doorPrefab.transform.rotation.eulerAngles;
@@ -411,12 +438,13 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 1; i < currentRooms.Count - 1; i++)
         {
             int spawnAmout = Random.Range(minEnemyCount, currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.Count);
-            spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
 
             if (minEnemyCount > 3)
             {
                 minEnemyCount = 3;
             }
+
+            spawnAmout = Mathf.Clamp(spawnAmout, minEnemyCount, maxEnemyCount);
 
             for (int ii = 0; ii < spawnAmout; ii++)
             {
@@ -435,6 +463,7 @@ public class LevelGenerator : MonoBehaviour
                 newEnemy.GetComponent<EnemyMovement>().target = player.transform;
                 currentRooms[i].GetComponent<RoomScript>().enemySpawnPoints.RemoveAt(spawnPointIndex);
                 currentRooms[i].GetComponent<RoomScript>().currentlyAliveEnemies.Add(newEnemy);
+                newEnemy.transform.SetParent(currentRooms[i].transform);
             }
         }
     }
@@ -604,12 +633,18 @@ public class LevelGenerator : MonoBehaviour
         return bounds;
     }
 
+    public Bounds GetBoundsRawSingle(GameObject obj)
+    {
+        Bounds bounds = obj.GetComponent<Renderer>().bounds;
+        return bounds;
+    }
+
     private void OnDrawGizmos()
     {
         if (player)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(GetBoundsRaw(player).center, GetBoundsRaw(player).extents * 2);
+            Gizmos.DrawWireCube(GetBoundsRawSingle(player).center, GetBoundsRawSingle(player).extents * 2);
         }
 
         for (int i = 0; i < currentRooms.Count; i++)

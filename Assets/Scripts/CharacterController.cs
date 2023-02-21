@@ -207,7 +207,8 @@ public class CharacterController : MonoBehaviour
                     hit.transform.CompareTag("EndLevelTemp") ||
                     hit.transform.CompareTag("Money") ||
                     hit.transform.CompareTag("Water") ||
-                    hit.transform.CompareTag("GoToMenu"))
+                    hit.transform.CompareTag("GoToMenu") ||
+                    hit.transform.CompareTag("Drawer"))
                 {
                     SetObjectOutline(0);
                 }
@@ -222,7 +223,8 @@ public class CharacterController : MonoBehaviour
                 !lookedAtObject.CompareTag("EndLevelTemp") &&
                 !lookedAtObject.CompareTag("Money") &&
                 !lookedAtObject.CompareTag("Water") &&
-                !lookedAtObject.CompareTag("GoToMenu"))
+                !lookedAtObject.CompareTag("GoToMenu") &&
+                !lookedAtObject.CompareTag("Drawer"))
             {
                 //Objektet spilleren kigger på er IKKE throwable eller weapon
                 //... eller alt muligt andet nu også lol
@@ -256,7 +258,7 @@ public class CharacterController : MonoBehaviour
                 {
                     lookedAtObject.GetComponentInParent<Animator>().SetTrigger("Open");
                 }
-                lookedAtObject.tag = "Untagged";
+                lookedAtObject.tag = "Untagged";    
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.openDoor, this.transform.position);
             }
 
@@ -294,7 +296,13 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("GoToMenu"))
             {
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("MainMenu");
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Drawer"))
+            {
+                lookedAtObject.GetComponent<Rigidbody>().AddForce(lookedAtObject.transform.right * 10, ForceMode.Impulse);
             }
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
@@ -392,6 +400,9 @@ public class CharacterController : MonoBehaviour
                 eButton.enabled = true;
                 break;
             case "GoToMenu":
+                eButton.enabled = true;
+                break;
+            case "Drawer":
                 eButton.enabled = true;
                 break;
             default:
@@ -526,7 +537,7 @@ public class CharacterController : MonoBehaviour
 
     IEnumerator layerDelay(Transform heldObject)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         heldObject.gameObject.layer = 0;
         for (int i = 0; i < heldObject.childCount; i++)
         {

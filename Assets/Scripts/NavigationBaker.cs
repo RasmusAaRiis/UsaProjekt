@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class NavigationBaker : MonoBehaviour
@@ -13,6 +14,6 @@ public class NavigationBaker : MonoBehaviour
         for (int i = 0; i < surfaces.Count; i++) 
         {
             surfaces[i].BuildNavMesh();
-        }  
+        }
     }
 }

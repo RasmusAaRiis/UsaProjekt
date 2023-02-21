@@ -869,6 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2958ad7e59d484e8c48a0ed84c6876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetween: 0.5
 --- !u!1 &7985897079390138923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1168,10 @@ MonoBehaviour:
   goopRenderer: {fileID: 2420063077666157345}
   goopMaterial: {fileID: 0}
   damagePopup: {fileID: 366556996797630166}
+  tentacleSpeed: 0.2
+  ikTentas: []
+  ikTargets: []
+  ikTargetsGoto: []
 --- !u!114 &515074320878635097
 MonoBehaviour:
   m_ObjectHideFlags: 0
