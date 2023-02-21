@@ -479,7 +479,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3650,7 +3650,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3738,7 +3738,6 @@ MonoBehaviour:
   isDragging: 0
   isHolding: 0
   dragObject: {fileID: 0}
-  hitPos: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 1785346833}
   lineWidth: 0
   forceStrength: 8000
