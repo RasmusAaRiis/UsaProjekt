@@ -115,6 +115,7 @@ public class MainMenu : MonoBehaviour
     public void Continue()
     {
         player.Pause(false);
+        player.paused = false;
     }
 
     public void LoadMainMenu()

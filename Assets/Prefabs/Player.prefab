@@ -1572,7 +1572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8191388268777262419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2644,7 +2644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8462521787401241167
 Transform:
   m_ObjectHideFlags: 0
@@ -3877,7 +3877,7 @@ MonoBehaviour:
   ammoModifier: 1
   heldObject: {fileID: 0}
   PauseScreen: {fileID: 2357636431057635906}
-  UIScreen: {fileID: 0}
+  UIScreen: {fileID: 637415148739360406}
   CloudAmmoImage: {fileID: 364817695}
   StapleAmmoImage: {fileID: 849263589}
   rcButton: {fileID: 6500040923402280999}
