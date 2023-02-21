@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
-using FMOD.Studio;
 
 public class AudioManager : MonoBehaviour
 {
-    private EventInstance musicInstance; 
 
+    //Declare variabler
     public static AudioManager instance { get; private set; }
-
     [Range(0f, 1f)]
     public float musicVolume = 1f;
     [Range(0f, 1f)]
@@ -17,6 +13,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        //Kast en fejl hvis der er mere end én audiomanager aktiv i scenen
         if (instance != null)
         {
             Debug.LogError("Hov du har mere end 1 audio manager >:--(");
@@ -27,6 +24,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        //Preload de to banks med henholdsvis musik og effekter, så de ikke skal loades hver gang en lyd afspilles
         RuntimeManager.LoadBank("Music", true);
         RuntimeManager.LoadBank("Effects", true);
 
@@ -34,10 +32,12 @@ public class AudioManager : MonoBehaviour
 
     public void Update()
     {
+        //Audiomanagerens volume styrer FMOD's volume, der er knyttet til hver banks lydstyrke
         SetParameter("EffectsVolume", sfxVolume);
         SetParameter("MusicVolume", musicVolume);
     }
 
+    //To forskellige metoder til afspilning af såkaldte "oneshot" lyde, der spilles én gang
     public void PlayOneShot(EventReference sound)
     {
         RuntimeManager.PlayOneShot(sound);
@@ -48,14 +48,8 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 
-    public EventInstance CreateInstance(EventReference eventReference)
-    {
-        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
-        return eventInstance;
-    }
-
-
-
+    
+    //Metode til nemt at sætte parametre, som er FMODs svar på variabler
     public void SetParameter(string parameterName, float parameterValue)
     {
         RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
