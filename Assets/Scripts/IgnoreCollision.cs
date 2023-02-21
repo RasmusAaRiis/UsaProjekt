@@ -68,5 +68,10 @@ public class IgnoreCollision : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-    
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, new Vector3(3,3,3));
+    }
 }

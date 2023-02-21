@@ -14,8 +14,8 @@ public struct ROSP_Object
 public class ROSP : MonoBehaviour
 {
     public ROSP_Object[] rospObjects;
-
-    public void SpawnObject()
+    GameObject obj;
+    public GameObject SpawnObject()
     {
         float chance = Random.Range(0f, 1f);
         ROSP_Object currenObjectToSpawn = rospObjects[0];
@@ -29,7 +29,10 @@ public class ROSP : MonoBehaviour
 
         if (currenObjectToSpawn.obj)
         {
-            GameObject newObj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
+            obj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
+            return obj;
         }
+
+        return null;
     }
 }
