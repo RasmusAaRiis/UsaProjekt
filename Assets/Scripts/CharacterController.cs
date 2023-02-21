@@ -71,6 +71,7 @@ public class CharacterController : MonoBehaviour
             GetComponentInChildren<Camera>().fieldOfView = PlayerPrefs.GetInt("FOV");
         }
         // turn off the cursor
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Physics.gravity = new Vector3(Physics.gravity.x, -9.81f * 2f, Physics.gravity.z);
     }
@@ -168,6 +169,11 @@ public class CharacterController : MonoBehaviour
         {
             paused = !paused;
             Pause(paused);
+        }
+
+        if(paused)
+        {
+            Cursor.visible = true;
         }
         #endregion
 
@@ -357,6 +363,7 @@ public class CharacterController : MonoBehaviour
             PauseScreen.SetActive(false);
             UIScreen.SetActive(true);
             Time.timeScale = 1;
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             BlackFadeScreen.color = new Color(0, 0, 0, 0f);
         }
