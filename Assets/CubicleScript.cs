@@ -14,7 +14,7 @@ public class CubicleScript : MonoBehaviour
         {
             drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
         }
-        Invoke("UnlockDrawers", 1f);
+        UnlockDrawers();
     }
 
     private void Update()
