@@ -28,73 +28,13 @@ Transform:
   m_LocalScale: {x: 0.043, y: 0.043, z: 0.043}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1697891263271881606}
   - {fileID: 5745846518529168857}
   - {fileID: 6627987072735797430}
+  - {fileID: 4110696752154284006}
   - {fileID: 9198976678572766512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1135539768250320538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1697891263271881606}
-  - component: {fileID: 3407058088705689458}
-  m_Layer: 0
-  m_Name: ROSP_Monitor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1697891263271881606
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135539768250320538}
-  m_LocalRotation: {x: -0.68320036, y: 0.18231097, z: 0.18231097, w: 0.68320036}
-  m_LocalPosition: {x: -10.919543, y: 31.48163, z: -12.135373}
-  m_LocalScale: {x: 12.7558365, y: 1.4253217, z: 7.5305314}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3650955224773509266}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3407058088705689458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135539768250320538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rospObjects:
-  - parent: {fileID: 1697891263271881606}
-    obj: {fileID: 3161034966025334869, guid: 14d193ad0b66bfc45811c083cecf772a, type: 3}
-    spawnChance: 1
-  - parent: {fileID: 1697891263271881606}
-    obj: {fileID: 3161034966025334869, guid: 0465949be1481424689816a00b227926, type: 3}
-    spawnChance: 0.1
-  - parent: {fileID: 1697891263271881606}
-    obj: {fileID: 3161034966025334869, guid: 9f6ed3af94517a849a1bebe87d75ff70, type: 3}
-    spawnChance: 0.3
-  - parent: {fileID: 1697891263271881606}
-    obj: {fileID: 3161034966025334869, guid: 51818de8b64e48947888879e444a0eb6, type: 3}
-    spawnChance: 0.5
-  - parent: {fileID: 1697891263271881606}
-    obj: {fileID: 0}
-    spawnChance: 0.05
 --- !u!1 &3690639624480372736
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3650955224773509266}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8471583872840805737
 MonoBehaviour:
@@ -146,6 +86,69 @@ MonoBehaviour:
   - parent: {fileID: 5745846518529168857}
     obj: {fileID: 0}
     spawnChance: 0.3
+--- !u!1 &3891775751283042255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4110696752154284006}
+  - component: {fileID: 1139347821175395047}
+  m_Layer: 0
+  m_Name: ROSP_Monitor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4110696752154284006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891775751283042255}
+  m_LocalRotation: {x: -0, y: 0.31990084, z: -0, w: 0.94745106}
+  m_LocalPosition: {x: -8.610523, y: 18.8, z: -10.6975765}
+  m_LocalScale: {x: 22.94022, y: 22.94022, z: 22.94022}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3650955224773509266}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 37.314, z: 0}
+--- !u!114 &1139347821175395047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891775751283042255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 3161034966025334869, guid: 14d193ad0b66bfc45811c083cecf772a, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 3161034966025334869, guid: 85987a44f872e5243a98de5411a41486, type: 3}
+    spawnChance: 0.45
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 3161034966025334869, guid: 98262badc94a18c4b8e2971a4fc1d7e0, type: 3}
+    spawnChance: 0.35
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 3161034966025334869, guid: 45edf232e76e79b4f98e2c8493bb44ad, type: 3}
+    spawnChance: 0.25
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 3161034966025334869, guid: 6dfece5601988d24fbf935a6410617bc, type: 3}
+    spawnChance: 0.15
+  - parent: {fileID: 4110696752154284006}
+    obj: {fileID: 0}
+    spawnChance: 0.05
 --- !u!1 &8612480536119631711
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3650955224773509266}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: -180, z: 0}
 --- !u!114 &2087554666615162255
 MonoBehaviour:

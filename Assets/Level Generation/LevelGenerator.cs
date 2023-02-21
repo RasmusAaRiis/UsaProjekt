@@ -374,9 +374,17 @@ public class LevelGenerator : MonoBehaviour
                 {
                     GameObject newROSP = rosps[ii].SpawnObject();
 
-                    if (newROSP && newROSP.GetComponent<Poster>())
+                    if (newROSP)
                     {
-                        posters.Add(newROSP);
+                        if (newROSP.GetComponent<Rigidbody>())
+                        {
+                            newROSP.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        }
+
+                        if (newROSP.GetComponent<Poster>())
+                        {
+                            posters.Add(newROSP);
+                        }
                     }
                 }
             }
