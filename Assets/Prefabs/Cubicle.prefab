@@ -243,7 +243,7 @@ ConfigurableJoint:
   m_ProjectionAngle: 180
   m_ConfiguredInWorldSpace: 0
   m_SwapBodies: 0
-  m_BreakForce: 750
+  m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -275,7 +275,7 @@ Transform:
   m_GameObject: {fileID: 1306856527087619361}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0.5999999, y: 0.66199994, z: 0.12999916}
-  m_LocalScale: {x: 0.10000003, y: 0.14999996, z: 0.3525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524577935517661774}
@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2958ad7e59d484e8c48a0ed84c6876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetween: 0
 --- !u!1 &4963863742096103475
 GameObject:
   m_ObjectHideFlags: 0

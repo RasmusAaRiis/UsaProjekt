@@ -177,6 +177,10 @@ public class CharacterController : MonoBehaviour
             Weapon weapon_m;
             if (heldObject.TryGetComponent<Weapon>(out weapon_m))
             {
+                if (!DontThrowCooldown)
+                {
+                StartCoroutine(AttackDontThrowCooldown());
+                }
                 weapon_m.Attack();
             }
         }
@@ -474,6 +478,14 @@ public class CharacterController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    bool DontThrowCooldown = false;
+    IEnumerator AttackDontThrowCooldown()
+    {
+        DontThrowCooldown = true;
+        yield return new WaitForSeconds(0.3f);
+        DontThrowCooldown = false;
+    }
+
     IEnumerator TakeDamageCooldown()
     {
         canTakeDamage = false;
@@ -529,6 +541,11 @@ public class CharacterController : MonoBehaviour
         if (heldObject == null)
         {
             Debug.LogWarning("Cant throw object, since object is null");
+            return;
+        }
+
+        if(DontThrowCooldown)
+        {
             return;
         }
 

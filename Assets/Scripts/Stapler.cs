@@ -50,6 +50,7 @@ public class Stapler : Weapon
 
         Animator animator = transform.parent.GetComponent<Animator>();
         animator.SetTrigger("Shoot");
+        GetComponent<Animator>().SetTrigger("Shoot");
         AudioManager.instance.PlayOneShot(FMODEvents.instance.staples, this.transform.position);
         GameObject proj_m = Instantiate(Projectile, transform.position + (transform.forward * 0.2f) + (-transform.right * 0.2f) + (transform.up * 0.2f), Quaternion.LookRotation(transform.forward));
         proj_m.GetComponent<Rigidbody>().velocity = (cc.target.position - cc.Hand.position).normalized * attackSpeed;

@@ -30,6 +30,7 @@ public class ROSP : MonoBehaviour
         if (currenObjectToSpawn.obj)
         {
             obj = Instantiate(currenObjectToSpawn.obj, transform.position, currenObjectToSpawn.parent.rotation);
+            obj.transform.SetParent(gameObject.transform);
             return obj;
         }
 
