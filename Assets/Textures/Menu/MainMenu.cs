@@ -49,6 +49,12 @@ public class MainMenu : MonoBehaviour
             }
         }
 
+        if (PlayerPrefs.HasKey("ResolutionValue"))
+        {
+            currentOption = PlayerPrefs.GetInt("ResolutionValue");
+        }
+
+        PlayerPrefs.SetInt("ResolutionValue", currentOption);
         resolutionDropdown.AddOptions(dropdownOptions);
         resolutionDropdown.value = currentOption;
         resolutionDropdown.RefreshShownValue();
@@ -105,12 +111,20 @@ public class MainMenu : MonoBehaviour
     public void ChangeResolution()
     {
         Resolution resolution = resolutions[resolutionDropdown.value];
+        PlayerPrefs.SetInt("ResolutionValue", resolutionDropdown.value);
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     public void SetFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        if (isFullscreen)
+        {
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
     }
 
     public void ChangePage(GameObject newPage)
