@@ -91,7 +91,7 @@ public class RigidbodyDrag : MonoBehaviour
             
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {
-                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) && hit.transform.GetComponent<EnemyMovement>() == null)
+                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) /*&& hit.transform.GetComponent<EnemyMovement>() == null*/)
                 {
                     //print(hit.transform.name);
                     isDragging = true;

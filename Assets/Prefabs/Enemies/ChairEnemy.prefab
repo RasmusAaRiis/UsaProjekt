@@ -1202,8 +1202,8 @@ MonoBehaviour:
   target: {fileID: 0}
   health: 100
   rotationStrength: 0.05
-  speed: 8
-  jumpStrenght: 60
+  speed: 20
+  jumpStrenght: 120
   targetLookOffset: 0
   jumpCooldown: {x: 0.8, y: 1}
   chaseRadius: 0

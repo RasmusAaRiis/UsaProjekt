@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Management.Instrumentation;
 using DitzelGames.FastIK;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
@@ -52,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Material goopMaterial;
 
     [SerializeField] private DamagePopup damagePopup;
-    private Transform targetCamera = null;
+    private Transform targetCamera;
 
     private Quaternion startRot;
     private float timerValue;

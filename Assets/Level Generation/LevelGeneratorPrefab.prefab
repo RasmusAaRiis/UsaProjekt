@@ -62,6 +62,9 @@ MonoBehaviour:
   minEnemyCountIncrease: 1
   maxEnemyCountIncrease: 1
   fadeSpeed: 0
+  surfaceLayers:
+    serializedVersion: 2
+    m_Bits: 8
   rooms:
   - {fileID: 899355537060424665, guid: 770fcc03360715949a40800705a263ec, type: 3}
   - {fileID: 8022319923429987445, guid: 191cebb4c732bac4687715783a6c63e9, type: 3}
@@ -86,6 +89,7 @@ MonoBehaviour:
   currentRooms: []
   doors: []
   deadEnemies: []
+  posters: []
   levelsCleared: 0
   fastestLevelClearTime: 0
   slowestLevelClearTime: 0
@@ -97,8 +101,6 @@ MonoBehaviour:
   enemiesKilled: 0
   chairsKilled: 0
   cabinetsKilled: 0
-  objectsThrown: 0
-  deaths: 0
 --- !u!1001 &4863263940492406131
 PrefabInstance:
   m_ObjectHideFlags: 0
