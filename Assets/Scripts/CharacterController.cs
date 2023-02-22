@@ -212,6 +212,10 @@ public class CharacterController : MonoBehaviour
         
         if (Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
         {
+            hitPos = hit.point;
+            Debug.DrawRay(Hand.parent.position, (Hand.parent.forward).normalized * hit.distance, Color.green);
+            Debug.Log(hit.transform.name);
+
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre
             //Bare ikke pild
@@ -463,23 +467,23 @@ public class CharacterController : MonoBehaviour
         {
             case 0:
                 PickupText("+Speed");
-                speed *= 1.2f;
-                dashForce *= 1.2f;
+                speed *= 1.14f;
+                dashForce *= 1.14f;
                 dashCooldown *= 0.8f;
                 break;
             case 1:
                 PickupText("+Melee");
-                damageModifier *= 1.2f;
-                knockbackModifier *= 1.2f;
+                damageModifier *= 1.14f;
+                knockbackModifier *= 1.14f;
                 break;
             case 2:
                 PickupText("+Throwing");
-                throwForce *= 1.4f;
+                throwForce *= 1.3f;
                 break;
             case 3:
                 PickupText("+Range");
-                rangedDamageModifier *= 1.2f;
-                rangedSpeedModifier *= 1.2f;
+                rangedDamageModifier *= 1.14f;
+                rangedSpeedModifier *= 1.14f;
                 ammoModifier = Mathf.RoundToInt(ammoModifier * 1.5f);
                 break;
             default:
@@ -490,7 +494,10 @@ public class CharacterController : MonoBehaviour
     public void Die()
     {
         RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        rb.constraints = RigidbodyConstraints.None;
+        GetComponentInChildren<MouseCamLook>().enabled = false;
+        rb.AddForce(transform.right * 10, ForceMode.Impulse);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     bool DontThrowCooldown = false;
@@ -673,10 +680,12 @@ public class CharacterController : MonoBehaviour
         pickupAnimator.SetTrigger("Pickup");
     }
 
+    Vector3 hitPos = Vector3.zero;
     //Jump sphere visualiser
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position + -Vector3.up * 1, 0.1f);
+        Gizmos.DrawSphere(hitPos, 0.05f);
     }
 
 
