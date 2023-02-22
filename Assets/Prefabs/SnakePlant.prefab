@@ -62,12 +62,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e5c348867a2df419822374ac3275ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 14
   orgDamage: 10
-  attackRange: 1
-  attackSpeed: 1
-  knockback: 1
-  attackCooldown: 1
+  attackRange: 3
+  attackSpeed: 1.2
+  knockback: 2
+  attackCooldown: 0.8
   cooldown: 0
   attacking: 0
   throwing: 0

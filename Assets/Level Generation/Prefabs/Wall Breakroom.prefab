@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2036383418673583058}
   - component: {fileID: 7991415226769510377}
   - component: {fileID: 7077752383318261636}
+  - component: {fileID: 1034810544504252852}
   m_Layer: 2
   m_Name: Wall Breakroom
   m_TagString: Untagged
@@ -113,3 +114,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02855, y: 0.008, z: 0.05000001}
   m_Center: {x: 0, y: 0.009715289, z: 0.025000004}
+--- !u!208 &1034810544504252852
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523072445572674055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.00001, z: 0.025}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.010000001, z: 0.025}
+  m_TimeToStationary: 0.5
