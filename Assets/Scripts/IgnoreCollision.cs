@@ -22,7 +22,7 @@ public class IgnoreCollision : MonoBehaviour
 
     private void Start()
     {
-        IgnoreColliders();
+        //IgnoreColliders();
     }
 
     public void IgnoreColliders()
