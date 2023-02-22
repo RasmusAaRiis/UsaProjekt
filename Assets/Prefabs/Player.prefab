@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 31445723}
   - component: {fileID: 31445722}
   - component: {fileID: 31445721}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: DashUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 364817693}
   - component: {fileID: 364817694}
   - component: {fileID: 364817695}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Cloud icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 849263588}
   - component: {fileID: 849263590}
   - component: {fileID: 849263589}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Staple icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 1571190881}
   - component: {fileID: 1571190880}
   - component: {fileID: 1571190879}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Ammo Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1739828737}
   - component: {fileID: 1739828739}
   - component: {fileID: 1739828738}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1925828389}
   - component: {fileID: 1925828390}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Pickup UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 2017786152}
   - component: {fileID: 2017786154}
   - component: {fileID: 2017786153}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: BlackFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2058105836}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 2066393975}
   - component: {fileID: 2066393977}
   - component: {fileID: 2066393976}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8191388268777262419}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4209903702460741527}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3244,7 +3244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8462927933347100208}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3282,7 +3282,7 @@ GameObject:
   - component: {fileID: 6504382329436735036}
   - component: {fileID: 9033189147762886804}
   - component: {fileID: 9099491638400048381}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4112,7 +4112,7 @@ GameObject:
   - component: {fileID: 5981946228144558246}
   - component: {fileID: 2406181391446157510}
   - component: {fileID: 7789143221066955576}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4188,7 +4188,7 @@ GameObject:
   - component: {fileID: 8918572465157691399}
   - component: {fileID: 1033649985090162686}
   - component: {fileID: 425530172189287476}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Health icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4426,7 +4426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3516217337157815988}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Pickup UI Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5078,7 +5078,7 @@ GameObject:
   - component: {fileID: 6098551668437807798}
   - component: {fileID: 7878509075506600938}
   - component: {fileID: 1892447920}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: DamageVingette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5457,7 +5457,7 @@ GameObject:
   - component: {fileID: 5065346672095508562}
   - component: {fileID: 1669463628580741605}
   - component: {fileID: 3018241190027229208}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Crosshair BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5536,7 +5536,7 @@ GameObject:
   - component: {fileID: 829213176350781606}
   - component: {fileID: 1410704457596332516}
   - component: {fileID: 6500040923402280999}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Right Click
   m_TagString: Untagged
   m_Icon: {fileID: 0}

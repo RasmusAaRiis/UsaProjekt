@@ -47,22 +47,6 @@ public class CubicleScript : MonoBehaviour
         }
     }
 
-    IEnumerator UnlockDrawersWait()
-    {
-        for (int i = 0; i < drawers.Count; i++)
-        {
-            drawers[i].GetComponent<ConfigurableJoint>().anchor = drawers[i].transform.position;
-            drawers[i].GetComponent<Rigidbody>().isKinematic = false;
-        }
-
-        yield return new WaitForEndOfFrame();
-
-        for (int i = 0; i < drawers.Count; i++)
-        {
-            drawers[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-    }
-
     public void ActivateROSPS()
     {
         for (int i = 0; i < drawerROSPS.Length; i++)
