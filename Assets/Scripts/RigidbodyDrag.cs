@@ -91,7 +91,7 @@ public class RigidbodyDrag : MonoBehaviour
             
             if (hit.transform.GetComponent<Rigidbody>() != null)
             {
-                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) && hit.transform.GetComponent<EnemyMovement>() == null)
+                if (hit.transform.GetComponent<Rigidbody>().isKinematic == false && Input.GetKeyDown(input) /*&& hit.transform.GetComponent<EnemyMovement>() == null*/)
                 {
                     //print(hit.transform.name);
                     isDragging = true;
@@ -124,19 +124,6 @@ public class RigidbodyDrag : MonoBehaviour
 
         if (isDragging)
         {
-            // Vector3 center = new Vector3();
-            //
-            // if (dragObject.GetComponent<Renderer>() == null)
-            // {
-            //     center = dragObject.GetComponentInChildren<Renderer>().bounds.center;
-            // }
-            // else
-            // {
-            //     center = dragObject.GetComponent<Renderer>().bounds.center;
-            // }
-            
-            var position = transform.position;
-
             var dragPos = dragObject.GetComponent<Renderer>() ? dragObject.GetComponent<Renderer>().bounds.center : dragObject.GetComponentInChildren<Renderer>().bounds.center;
             
             lineRenderer.SetPosition(0, dragObjPoint.transform.position);
@@ -156,7 +143,7 @@ public class RigidbodyDrag : MonoBehaviour
             float distance = Vector3.Distance(dragPos, _lineEnd);
             distance = Mathf.Clamp(distance, 0, 0.95f);
             var velocity = dragRb.velocity;
-            velocity = new Vector3(velocity.x * distance, velocity.y * distance,velocity.z * distance);
+            velocity = new Vector3(velocity.x, velocity.y,velocity.z) * distance;
             dragRb.velocity = velocity;
         }
         else

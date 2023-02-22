@@ -202,14 +202,6 @@ public class CharacterController : MonoBehaviour
 
         //Hvis spilleren kigger på et objekt, og de ikke holder noget...
         RaycastHit hit;
-        RaycastHit[] hits = Physics.RaycastAll(Hand.parent.position, Hand.parent.forward, 4);
-
-        Debug.Log("--------");
-        for (int i = 0; i < hits.Length; i++)
-        {
-            Debug.Log(hits[i].point);
-        }
-        
         if (Physics.Raycast(Hand.parent.position, Hand.parent.forward, out hit, 4))
         {
             hitPos = hit.point;
