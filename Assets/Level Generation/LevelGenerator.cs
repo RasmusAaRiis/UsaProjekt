@@ -31,6 +31,7 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> currentRooms;
     public List<GameObject> doors;
     public List<GameObject> deadEnemies;
+    public List<GameObject> posters;
 
     [Space()]
     [Header("Stat Tracking")]
@@ -94,6 +95,12 @@ public class LevelGenerator : MonoBehaviour
         }
         deadEnemies.Clear();
         navBaker.surfaces.Clear();
+
+        for (int i = 0; i < posters.Count; i++)
+        {
+            Destroy(posters[i]);
+        }
+        posters.Clear();
 
         GameObject[] throwableObjects = GameObject.FindGameObjectsWithTag("Throwable");
 
@@ -365,7 +372,12 @@ public class LevelGenerator : MonoBehaviour
 
                 for (int ii = 0; ii < rosps.Length; ii++)
                 {
-                    rosps[ii].SpawnObject();
+                    GameObject newROSP = rosps[ii].SpawnObject();
+
+                    if (newROSP && newROSP.GetComponent<Poster>())
+                    {
+                        posters.Add(newROSP);
+                    }
                 }
             }
 
