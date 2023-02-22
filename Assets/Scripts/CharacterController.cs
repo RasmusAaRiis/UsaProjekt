@@ -65,6 +65,7 @@ public class CharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        AudioManager.instance.SetParameter("Death", 0f);
         PickupText($"Floor {currentFloor + 1}", 0, 0.3f);
         if (PlayerPrefs.HasKey("FOV"))
         {
@@ -77,8 +78,17 @@ public class CharacterController : MonoBehaviour
     }
 
     LevelGenerator lg = null;
+    float te = 0;
+    float ld = 2;
     void Update()
     {
+        if(dead)
+        {
+            te += Time.deltaTime;
+            AudioManager.instance.SetParameter("Death", Mathf.Lerp(0f, 1f, te / ld));
+            return;
+        }
+
         if(lg == null)
         {
             if (FindObjectOfType<LevelGenerator>())
@@ -329,7 +339,7 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && lookedAtObject.CompareTag("Drawer"))
             {
-                lookedAtObject.GetComponent<Rigidbody>().AddForce(lookedAtObject.transform.right * 10, ForceMode.Impulse);
+                lookedAtObject.GetComponent<Rigidbody>().AddForce(lookedAtObject.transform.right * 5, ForceMode.Impulse);
             }
 
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse1)) && lookedAtObject.CompareTag("Money"))
@@ -483,13 +493,23 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    bool dead = false;
     public void Die()
     {
+        dead = true;
+        StartCoroutine(DieSequence());
         RuntimeManager.StudioSystem.setParameterByName("Situation", 0);
         rb.constraints = RigidbodyConstraints.None;
         GetComponentInChildren<MouseCamLook>().enabled = false;
         rb.AddForce(transform.right * 10, ForceMode.Impulse);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator DieSequence()
+    {
+        yield return new WaitForSeconds(2);
+        FindObjectOfType<LevelGenerator>().FadeToBlack(0.3f);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     bool DontThrowCooldown = false;
