@@ -622,7 +622,7 @@ public class CharacterController : MonoBehaviour
             
             if (Object.GetComponentInChildren<IgnoreCollision>())
             {
-                //Object.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
+                Object.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
             }
         }
         if (width <= 0)

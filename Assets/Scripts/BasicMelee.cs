@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicMelee : Weapon
 {
-    
     Animator animator;
     Vector3 originalPosition;
-    
     
     public override void Attack()
     {
@@ -33,7 +30,6 @@ public class BasicMelee : Weapon
     }
 
     float i = 0;
-
     private void FixedUpdate()
     {
         if(!attacking)

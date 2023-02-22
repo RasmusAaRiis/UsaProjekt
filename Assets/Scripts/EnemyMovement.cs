@@ -354,20 +354,17 @@ public class EnemyMovement : MonoBehaviour
                 //Debug.Log(direction);
                 Gizmos.color = Color.magenta;
 
-                if (navAgent)
+                for (int i = 0; i < navAgent.path.corners.Length; i++)
                 {
-                    for (int i = 0; i < navAgent.path.corners.Length; i++)
+                    if (i ==  0)
                     {
-                        if (i ==  0)
-                        {
-                            Gizmos.DrawRay(position, navAgent.path.corners[i] - position);
-                        }
-                        else
-                        {
-                            Gizmos.DrawRay(navAgent.path.corners[i-1], navAgent.path.corners[i] - navAgent.path.corners[i-1]);
-                        }
-                    
+                        Gizmos.DrawRay(position, navAgent.path.corners[i] - position);
                     }
+                    else
+                    {
+                        Gizmos.DrawRay(navAgent.path.corners[i-1], navAgent.path.corners[i] - navAgent.path.corners[i-1]);
+                    }
+                    
                 }
 
                 Gizmos.DrawSphere(navMeshTarget, 0.2f);

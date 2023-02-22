@@ -22,7 +22,7 @@ public class IgnoreCollision : MonoBehaviour
 
     private void Start()
     {
-        //IgnoreColliders();
+        IgnoreColliders();
     }
 
     public void IgnoreColliders()
@@ -55,15 +55,11 @@ public class IgnoreCollision : MonoBehaviour
                         }
                     }
                 }
-
-                if (otherColliders.Count > 0)
+                foreach (var t in otherColliders)
                 {
-                    foreach (var t in otherColliders)
+                    foreach (var t1 in affectedColliders)
                     {
-                        foreach (var t1 in affectedColliders)
-                        {
-                            Physics.IgnoreCollision(t1, t);
-                        }
+                        Physics.IgnoreCollision(t1, t);
                     }
                 }
                 return;

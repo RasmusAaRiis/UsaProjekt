@@ -1577,7 +1577,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 50
   m_Drag: 0
-  m_AngularDrag: 0.3
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1600,15 +1600,15 @@ MonoBehaviour:
   rb: {fileID: 8146343737138943048}
   navAgent: {fileID: 0}
   target: {fileID: 0}
-  health: 150
-  rotationStrength: 0.2
+  health: 100
+  rotationStrength: 0.3
   speed: 6
-  jumpStrenght: 80
-  targetLookOffset: 0.5
+  jumpStrenght: 70
+  targetLookOffset: 0.3
   jumpCooldown: {x: 1, y: 1.2}
   chaseRadius: 3
   resetVel: 0
-  chaseTarget: 1
+  chaseTarget: 0
   stabilize: 1
   onGround: 0
   debugText: {fileID: 179910884}
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnableObject: {fileID: 1783607104972685023, guid: ca3fac5f1dea23b47a9e10c088cc7af5, type: 3}
   spawnTransform: {fileID: 3523882512649500291}
-  spawnCooldown: {x: 1, y: 1.5}
+  spawnCooldown: {x: 1.5, y: 2}
   shootTarget: 0
   shootDistance: 10
   shootForce: 100

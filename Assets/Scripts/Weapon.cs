@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool throwing = false;
 
+
     public virtual void Start()
     {
         orgDamage = damage;

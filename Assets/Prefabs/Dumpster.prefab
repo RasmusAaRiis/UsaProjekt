@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  orgDamage: 10
   attackRange: 1
   attackSpeed: 1
   knockback: 1
@@ -111,23 +110,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046ef52eeb2cb554a9245d2674bba3c0, type: 3}
---- !u!1 &318444049122415731 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4512159976837298932, guid: 046ef52eeb2cb554a9245d2674bba3c0, type: 3}
-  m_PrefabInstance: {fileID: 4248370797478440583}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8792617383616732822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318444049122415731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c79a7eaba6ca7444978614f3a7c9500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1090020095636737737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3879210318037999694, guid: 046ef52eeb2cb554a9245d2674bba3c0, type: 3}
