@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 729718713858082509}
   - component: {fileID: 7724935052095713423}
   - component: {fileID: 2030326192852378090}
+  - component: {fileID: 5828622644902460631}
   m_Layer: 7
   m_Name: DollarBundle
   m_TagString: Money
@@ -317,6 +318,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5828622644902460631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803833173345357005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c79a7eaba6ca7444978614f3a7c9500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6826521917822496646
 GameObject:
   m_ObjectHideFlags: 0

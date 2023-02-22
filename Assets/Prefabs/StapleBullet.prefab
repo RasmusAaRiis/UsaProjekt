@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1516955070402999923}
   - component: {fileID: 1516955070402999920}
   - component: {fileID: -3490726427614672372}
+  - component: {fileID: 1072036997985132347}
   m_Layer: 7
   m_Name: StapleBullet
   m_TagString: Throwable
@@ -74,6 +75,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b34ab433d3034c409801c91cb5ba5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 0}
+--- !u!114 &1072036997985132347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516955070402999921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c79a7eaba6ca7444978614f3a7c9500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1516955069855786808

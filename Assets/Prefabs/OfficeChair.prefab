@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119703739712672780}
   - component: {fileID: 8119703739712672782}
+  - component: {fileID: 7441922785630431774}
   m_Layer: 0
   m_Name: OfficeChair
   m_TagString: Untagged
@@ -236,3 +237,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7441922785630431774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927589301698186934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c79a7eaba6ca7444978614f3a7c9500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
