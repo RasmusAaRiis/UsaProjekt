@@ -204,6 +204,11 @@ public class LevelGenerator : MonoBehaviour
                     AudioManager.instance.SetParameter("Situation", 1);
                 }
 
+                if (currentActiveRoom.currentlyAliveEnemies[i].transform.position.y < -100)
+                {
+                    currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health = 0;
+                }
+
                 if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
                 {
                     if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyShoot>())
@@ -267,6 +272,7 @@ public class LevelGenerator : MonoBehaviour
         {
             fastestLevelClearTime = newLevelClearTime;
         }
+
         test = false;
         while (!createNewRoom)
         {
@@ -638,7 +644,7 @@ public class LevelGenerator : MonoBehaviour
     }
 
     public Bounds GetBoundsRaw(GameObject obj)
-    {
+    {   
         var renderers = obj.GetComponentsInChildren<Renderer>();
         Bounds bounds = renderers[0].bounds;
         for (var i = 1; i < renderers.Length; ++i)
