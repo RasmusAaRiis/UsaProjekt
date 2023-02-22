@@ -423,6 +423,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
+      propertyPath: rooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 8022319923429987445, guid: 191cebb4c732bac4687715783a6c63e9, type: 3}
+    - target: {fileID: 7502872912598346915, guid: 20a1bfafe1e820043a456c88f710e3fc, type: 3}
       propertyPath: surfaceLayers.m_Bits
       value: 8
       objectReference: {fileID: 0}
