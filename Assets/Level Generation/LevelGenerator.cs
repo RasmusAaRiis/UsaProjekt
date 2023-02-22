@@ -57,11 +57,6 @@ public class LevelGenerator : MonoBehaviour
     public int chairsKilled = 0; //Done
     public int cabinetsKilled = 0; //Done
 
-    [Space()]
-    [Header("Other")]
-    public int objectsThrown = 0;
-    public int deaths = 0;
-
     bool spawnUp = true;
     RoomScript lastRoomScript;
     bool test = false;
@@ -164,6 +159,23 @@ public class LevelGenerator : MonoBehaviour
     float totalLevelClearTime;
     float totalRoomClearTime;
 
+    public void UpdateStats()
+    {
+        player.GetComponent<CharacterController>().statsText.SetText(
+            "Levels Cleared: " + levelsCleared + "\n" +
+            "Fastest Level Clear Time: " + fastestLevelClearTime.ToString("F1") + "\n" +
+            "Average Level Clear Time: " + averageLevelClearTime.ToString("F1") + "\n" +
+            "Slowest Level Clear Time: " + slowestLevelClearTime.ToString("F1") + "\n" +
+            "Rooms Cleared: " + roomsCleared + "\n" +
+            "Fastest Room Clear Time: " + fastestRoomClearTime.ToString("F1") + "\n" +
+            "Average Room Clear Time: " + averageRoomClearTime.ToString("F1") + "\n" +
+            "Slowest Room Clear Time: " + slowestRoomClearTime.ToString("F1") + "\n" +
+            "Enemies killed: " + enemiesKilled + "\n" +
+            "Chairs killed: " + chairsKilled + "\n" +
+            "Cabinets killed: " + cabinetsKilled + "\n"
+            );
+    }
+
     IEnumerator GameLoop()
     {
         yield return new WaitForEndOfFrame();
@@ -188,6 +200,8 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSeconds(0);
             intersects = false;
 
+            UpdateStats();
+
             if (GetBoundsRawSingle(player).Intersects(currentActiveRoom.rawBounds))
             {
                 intersects = true;
@@ -199,35 +213,38 @@ public class LevelGenerator : MonoBehaviour
 
             for (int i = 0; i < currentActiveRoom.currentlyAliveEnemies.Count; i++)
             {
-                if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget)
+                if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>())
                 {
-                    AudioManager.instance.SetParameter("Situation", 1);
-                }
-
-                if (currentActiveRoom.currentlyAliveEnemies[i].transform.position.y < -100)
-                {
-                    currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health = 0;
-                }
-
-                if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
-                {
-                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyShoot>())
+                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget)
                     {
-                        cabinetsKilled++;
-                    }
-                    else
-                    {
-                        chairsKilled++;
+                        AudioManager.instance.SetParameter("Situation", 1);
                     }
 
-                    enemiesKilled++;
+                    if (currentActiveRoom.currentlyAliveEnemies[i].transform.position.y < -100)
+                    {
+                        currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health = 0;
+                    }
 
-                    deadEnemies.Add(currentActiveRoom.currentlyAliveEnemies[i]);
-                    currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
-                }
-                else if (intersects)
-                {
-                    currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
+                    if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
+                    {
+                        if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyShoot>())
+                        {
+                            cabinetsKilled++;
+                        }
+                        else
+                        {
+                            chairsKilled++;
+                        }
+
+                        enemiesKilled++;
+
+                        deadEnemies.Add(currentActiveRoom.currentlyAliveEnemies[i]);
+                        currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
+                    }
+                    else if (intersects)
+                    {
+                        currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().chaseTarget = true;
+                    }
                 }
             }
 
@@ -278,7 +295,7 @@ public class LevelGenerator : MonoBehaviour
         {
             Bounds breakRoomBounds = GetBoundsRaw(currentRooms[currentRooms.Count - 1]);
             breakRoomBounds.Expand(-2f);
-
+            UpdateStats();
             if (!test && GetBoundsRawSingle(player).Intersects(breakRoomBounds))
             {
                 test = true;

@@ -45,6 +45,7 @@ public class CharacterController : MonoBehaviour
     [Space]
     public GameObject PauseScreen;
     public GameObject UIScreen;
+    public TextMeshProUGUI statsText;
     public Image CloudAmmoImage;
     public Image StapleAmmoImage;
     public Image rcButton;
