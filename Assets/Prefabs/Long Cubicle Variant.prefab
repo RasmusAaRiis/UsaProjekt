@@ -32,11 +32,67 @@ Transform:
   - {fileID: 6963912794545795577}
   - {fileID: 3978284472756341800}
   - {fileID: 1155081430710847217}
+  - {fileID: 5414607070650622115}
   - {fileID: 6978375581205545859}
   - {fileID: 751273010383776804}
+  - {fileID: 6052802801307998862}
+  - {fileID: 708613636112026525}
+  - {fileID: 8712816997212961415}
+  - {fileID: 1775005706019902655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &982827705157997595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708613636112026525}
+  - component: {fileID: 4871641958477468315}
+  m_Layer: 0
+  m_Name: ROSP_Pencil (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708613636112026525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982827705157997595}
+  m_LocalRotation: {x: -0, y: -0.27974525, z: -0, w: 0.9600743}
+  m_LocalPosition: {x: -11.270001, y: 18.693398, z: -10.51}
+  m_LocalScale: {x: 23.255814, y: 23.255814, z: 23.255814}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9162754087950546417}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4871641958477468315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982827705157997595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 708613636112026525}
+    obj: {fileID: 5595641632014103196, guid: 61ec5427778627e42af5f20443dd413a, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 708613636112026525}
+    obj: {fileID: 0}
+    spawnChance: 0.5
 --- !u!1 &1956790874241439455
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +147,108 @@ MonoBehaviour:
   - parent: {fileID: 6963912794545795577}
     obj: {fileID: 0}
     spawnChance: 0.3
+--- !u!1 &2201857349216680858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6052802801307998862}
+  - component: {fileID: 5241159713632892500}
+  m_Layer: 0
+  m_Name: ROSP_Pencil (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6052802801307998862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201857349216680858}
+  m_LocalRotation: {x: -0, y: -0.33076134, z: -0, w: 0.94371444}
+  m_LocalPosition: {x: -10.950001, y: 18.693398, z: -10.840001}
+  m_LocalScale: {x: 23.255814, y: 23.255814, z: 23.255814}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9162754087950546417}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5241159713632892500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201857349216680858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 6052802801307998862}
+    obj: {fileID: 5595641632014103196, guid: 61ec5427778627e42af5f20443dd413a, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 6052802801307998862}
+    obj: {fileID: 0}
+    spawnChance: 0.5
+--- !u!1 &2260150652042133466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8712816997212961415}
+  - component: {fileID: 9066235495959866206}
+  m_Layer: 0
+  m_Name: ROSP_Pencil (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8712816997212961415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260150652042133466}
+  m_LocalRotation: {x: -0, y: -0.45942488, z: -0, w: 0.8882167}
+  m_LocalPosition: {x: -13.48, y: 18.693398, z: -10.610001}
+  m_LocalScale: {x: 23.255812, y: 23.255814, z: 23.255812}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9162754087950546417}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9066235495959866206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260150652042133466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 8712816997212961415}
+    obj: {fileID: 5595641632014103196, guid: 61ec5427778627e42af5f20443dd413a, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 8712816997212961415}
+    obj: {fileID: 0}
+    spawnChance: 0.5
 --- !u!1 &2285645628289516182
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +417,108 @@ MonoBehaviour:
   - parent: {fileID: 7079039411537087418}
     obj: {fileID: 0}
     spawnChance: 0.05
+--- !u!1 &5021758094428388627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5414607070650622115}
+  - component: {fileID: 3800258390777069837}
+  m_Layer: 0
+  m_Name: ROSP_Mouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5414607070650622115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021758094428388627}
+  m_LocalRotation: {x: -0, y: 0.20338535, z: -0.000000007450581, w: 0.97909886}
+  m_LocalPosition: {x: -14.187645, y: 18.850224, z: 6.4416084}
+  m_LocalScale: {x: 23.255804, y: 23.255816, z: 23.25581}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9162754087950546417}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3800258390777069837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021758094428388627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 5414607070650622115}
+    obj: {fileID: 5694000370163087698, guid: d4287a7a4843b2a4eb46f03d097e1277, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 5414607070650622115}
+    obj: {fileID: 0}
+    spawnChance: 0.3
+--- !u!1 &9008891512681323821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1775005706019902655}
+  - component: {fileID: 1574493408635520387}
+  m_Layer: 0
+  m_Name: ROSP_Pencil (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1775005706019902655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008891512681323821}
+  m_LocalRotation: {x: -0, y: -0.12013691, z: -0, w: 0.9927573}
+  m_LocalPosition: {x: -11.17, y: 18.693398, z: -8.69}
+  m_LocalScale: {x: 23.255814, y: 23.255814, z: 23.255814}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9162754087950546417}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574493408635520387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008891512681323821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde8092635977c439679b2b4c30fe22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rospObjects:
+  - parent: {fileID: 1775005706019902655}
+    obj: {fileID: 5595641632014103196, guid: 61ec5427778627e42af5f20443dd413a, type: 3}
+    spawnChance: 1
+  - parent: {fileID: 1775005706019902655}
+    obj: {fileID: 0}
+    spawnChance: 0.5
 --- !u!1001 &2253327433018037866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,7 +528,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1524577935517661774, guid: 531a1a14416122d4e830e2808eec5383, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1524577935517661774, guid: 531a1a14416122d4e830e2808eec5383, type: 3}
       propertyPath: m_LocalScale.x
@@ -354,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1524577935517661774, guid: 531a1a14416122d4e830e2808eec5383, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1524577935517661774, guid: 531a1a14416122d4e830e2808eec5383, type: 3}
       propertyPath: m_LocalScale.x
