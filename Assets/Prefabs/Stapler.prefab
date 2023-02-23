@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6719938817502376435}
   - component: {fileID: 6719938817502376434}
   - component: {fileID: 4219736855087915889}
+  - component: {fileID: -8032096628566448707}
   m_Layer: 7
   m_Name: Stapler
   m_TagString: Throwable
@@ -108,6 +109,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8032096628566448707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719938817502376433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingType: 0
 --- !u!1001 &5134998490148233065
 PrefabInstance:
   m_ObjectHideFlags: 0

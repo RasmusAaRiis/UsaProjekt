@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6066936344490967791}
   - component: {fileID: 1482722832508387951}
   - component: {fileID: 1583626952839847343}
+  - component: {fileID: 3554403473053633083}
   m_Layer: 0
   m_Name: Reflection Probe
   m_TagString: Untagged
@@ -110,6 +111,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetween: 1
+--- !u!114 &3554403473053633083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49975610362887479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingType: 5
 --- !u!1 &358334002207638361
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +454,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0

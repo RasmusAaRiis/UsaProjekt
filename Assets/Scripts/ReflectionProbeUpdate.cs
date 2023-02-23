@@ -14,25 +14,27 @@ public class ReflectionProbeUpdate : MonoBehaviour
 
     private void Start()
     {
-        _reflectionProbe = GetComponent<ReflectionProbe>();
+        TryGetComponent(out _reflectionProbe);
     }
 
     private void FixedUpdate()
     {
-        if (timeBetween == 0)
+        if (!_reflectionProbe)
         {
-            _reflectionProbe.RenderProbe();
-        }
-        else
-        {
-            _timer += Time.deltaTime;
-
-            if (_timer >= timeBetween)
+            if (timeBetween == 0)
             {
                 _reflectionProbe.RenderProbe();
-                _timer = 0;
+            }
+            else
+            {
+                _timer += Time.deltaTime;
+
+                if (_timer >= timeBetween)
+                {
+                    _reflectionProbe.RenderProbe();
+                    _timer = 0;
+                }
             }
         }
-        
     }
 }

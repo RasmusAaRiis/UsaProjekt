@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6086016745848687864}
   - component: {fileID: 6086016745848687865}
   - component: {fileID: 7733885484926654385}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b5970e5d8983864396641875543b13c, type: 2}
+  - {fileID: 2100000, guid: 2d0536ce3804fd44dbec14f3c746083b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4823799071370107401}
   - component: {fileID: 4823799071370107406}
   - component: {fileID: 4823799071370107400}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b5970e5d8983864396641875543b13c, type: 2}
+  - {fileID: 2100000, guid: 2d0536ce3804fd44dbec14f3c746083b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -434,7 +434,9 @@ GameObject:
   - component: {fileID: 6887402653678045633}
   - component: {fileID: 8678453460477213963}
   - component: {fileID: 7165494193457945817}
-  m_Layer: 0
+  - component: {fileID: 3535588712337196201}
+  - component: {fileID: 7710382035375465341}
+  m_Layer: 11
   m_Name: CabinetModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,6 +524,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004353597, y: 0.0045000003, z: 0.011959089}
   m_Center: {x: 0.0003732015, y: -1.1796673e-10, z: 0.005979549}
+--- !u!114 &3535588712337196201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165494193457945822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed89eac82712724b8fdeae1f2f325df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionType: 0
+  ignoreMask: []
+  affectedColliders:
+  - {fileID: 7165494193457945817}
+  otherColliders:
+  - {fileID: 4823799071370107400}
+  - {fileID: 2272188530561308840}
+  - {fileID: 7733885484926654385}
+--- !u!114 &7710382035375465341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165494193457945822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingType: 4
+  go: []
 --- !u!1 &7835653223054453656
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +621,7 @@ GameObject:
   - component: {fileID: 8314751526636342776}
   - component: {fileID: 8314751526636342777}
   - component: {fileID: 2272188530561308840}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +671,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b5970e5d8983864396641875543b13c, type: 2}
+  - {fileID: 2100000, guid: 2d0536ce3804fd44dbec14f3c746083b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

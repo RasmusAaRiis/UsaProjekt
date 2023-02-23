@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8615170253025244508}
   - component: {fileID: 8615170253025244499}
   - component: {fileID: 3423512214804470727}
+  - component: {fileID: 1036100666080238135}
   m_Layer: 7
   m_Name: Fire Extinguisher
   m_TagString: Throwable
@@ -87,6 +88,19 @@ MonoBehaviour:
   throwing: 0
   ammo: 30
   Projectile: {fileID: 6687689708075989131, guid: 0d64979b656f027478b63d96922f03d2, type: 3}
+--- !u!114 &1036100666080238135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615170253025244498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingType: 0
 --- !u!1 &8885129698696682640
 GameObject:
   m_ObjectHideFlags: 0

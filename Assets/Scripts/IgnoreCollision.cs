@@ -71,7 +71,13 @@ public class IgnoreCollision : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, new Vector3(3,3,3));
+        switch (detectionType)
+        {
+            case DetectionType.Layer:
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireCube(transform.position, new Vector3(3,3,3));
+                break;
+        }
+        
     }
 }

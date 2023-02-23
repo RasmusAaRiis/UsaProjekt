@@ -28,8 +28,8 @@ TagManager:
   - Wall
   - TopLayer
   - IgnoreNavMesh
-  - 
-  - 
+  - DrawerParent
+  - Drawer
   - 
   - 
   - 

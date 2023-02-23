@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 7603163907434073490}
   - component: {fileID: 985155726815744503}
   - component: {fileID: 3869680059761762074}
+  - component: {fileID: 2634901847420014097}
   m_Layer: 7
   m_Name: PaperBin
   m_TagString: Untagged
@@ -320,3 +321,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.011464951, y: 0.012911046, z: 0.0018430721}
   m_Center: {x: -0.00004296899, y: -0.0000146105895, z: 0.0009215508}
+--- !u!114 &2634901847420014097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512159976837298932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingType: 0
