@@ -57,6 +57,10 @@ public class LevelGenerator : MonoBehaviour
     public int chairsKilled = 0; //Done
     public int cabinetsKilled = 0; //Done
 
+    [Space()] 
+    [Header("Other")] 
+    public QuantityCulling qc;
+
     bool spawnUp = true;
     RoomScript lastRoomScript;
     bool test = false;
@@ -194,6 +198,9 @@ public class LevelGenerator : MonoBehaviour
                 doors[i].transform.GetComponentInChildren<IgnoreCollision>().IgnoreColliders();
             }
         }
+        
+        //SIDST INDEN GAMELOOP
+        qc.RecalculateList();
 
         while (currentRooms[currentRooms.Count - 2].GetComponent<RoomScript>().currentlyAliveEnemies.Count > 0)
         {

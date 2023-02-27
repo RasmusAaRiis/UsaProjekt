@@ -15,11 +15,15 @@ public enum CullingType
 
 public class DistanceCulling : MonoBehaviour
 {
+    public bool active;
+    
     public CullingType cullingType = CullingType.Rigidbody;
     
     public static float maxDistance = 20;
 
-    private float distance;
+    [SerializeField] private float maxDistanceShown;
+
+    public float distance;
     
     private Transform camera;
 
@@ -81,51 +85,92 @@ public class DistanceCulling : MonoBehaviour
 
     private void Update()
     {
+        maxDistanceShown = maxDistance;
+        
         if (Camera.main != null && !camera) camera = Camera.main.transform;
 
         distance = Vector3.Distance(transform.position, camera.transform.position);
         
-        switch (cullingType)
+        if (active)
         {
-            case CullingType.Rigidbody:
-                if (distance <= maxDistance && !rbTrans.GetComponent<Rigidbody>())
-                {
-                    Rigidbody addedRb = rbTrans.AddComponent<Rigidbody>();
-                    addedRb.mass = rbMassCopy;
-                    rb = addedRb;
-                }
-                else if(distance > maxDistance&& rbTrans.GetComponent<Rigidbody>())
-                {
-                    Destroy(rbTrans.GetComponent<Rigidbody>());
-                }
-                break;
+            switch (cullingType)
+            {
+                case CullingType.Rigidbody:
+                    if (distance <= maxDistance && !rbTrans.GetComponent<Rigidbody>())
+                    {
+                        Rigidbody addedRb = rbTrans.AddComponent<Rigidbody>();
+                        addedRb.mass = rbMassCopy;
+                        rb = addedRb;
+                    }
+                    else if(distance > maxDistance&& rbTrans.GetComponent<Rigidbody>())
+                    {
+                        Destroy(rbTrans.GetComponent<Rigidbody>());
+                    }
+                    break;
             
-            case CullingType.Light:
-                l.enabled = !(distance >= maxDistance);
-                break;
+                case CullingType.Light:
+                    l.enabled = !(distance >= maxDistance);
+                    break;
             
-            case CullingType.Collider:
-                c.enabled = !(distance >= maxDistance);
-                break;
+                case CullingType.Collider:
+                    c.enabled = !(distance >= maxDistance);
+                    break;
             
-            case CullingType.GameObject:
-                go[0].SetActive(!(distance >= maxDistance));
-                break;
+                case CullingType.GameObject:
+                    go[0].SetActive(!(distance >= maxDistance));
+                    break;
             
-            case CullingType.GameObjectChilds:
-                foreach (var t in go)
-                {
-                    t.SetActive(!(distance >= maxDistance));
-                }
-                break;
+                case CullingType.GameObjectChilds:
+                    foreach (var t in go)
+                    {
+                        t.SetActive(!(distance >= maxDistance));
+                    }
+                    break;
             
-            case CullingType.ReflectionProbe:
-                rp.enabled = !(distance >= maxDistance);
-                break;
+                case CullingType.ReflectionProbe:
+                    rp.enabled = !(distance >= maxDistance);
+                    break;
             
-            default:
-                throw new ArgumentOutOfRangeException();
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
+        else
+        {
+            switch (cullingType)
+            {
+                case CullingType.Rigidbody:
+                    Destroy(rbTrans.GetComponent<Rigidbody>());
+                    break;
+            
+                case CullingType.Light:
+                    l.enabled = false;
+                    break;
+            
+                case CullingType.Collider:
+                    c.enabled = false;
+                    break;
+            
+                case CullingType.GameObject:
+                    go[0].SetActive(false);
+                    break;
+            
+                case CullingType.GameObjectChilds:
+                    foreach (var t in go)
+                    {
+                        t.SetActive(false);
+                    }
+                    break;
+            
+                case CullingType.ReflectionProbe:
+                    rp.enabled = false;
+                    break;
+            
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        
         
         
     }
