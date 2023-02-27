@@ -217,7 +217,7 @@ public class CharacterController : MonoBehaviour
         {
             hitPos = hit.point;
             Debug.DrawRay(Hand.parent.position, (Hand.parent.forward).normalized * hit.distance, Color.green);
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             //Ok det her er lidt lorte kode men basically
             //gør det så selection outline virker bedre

@@ -15,7 +15,7 @@ public enum CullingType
 
 public class DistanceCulling : MonoBehaviour
 {
-    public bool active;
+    public bool active = true;
     
     public CullingType cullingType = CullingType.Rigidbody;
     
@@ -43,6 +43,8 @@ public class DistanceCulling : MonoBehaviour
 
     private void Start()
     {
+        active = true;
+        
         switch (cullingType)
         {
             case CullingType.Rigidbody:
