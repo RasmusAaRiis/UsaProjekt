@@ -65,6 +65,10 @@ public class LevelGenerator : MonoBehaviour
     RoomScript lastRoomScript;
     bool test = false;
 
+    char input = 'A';
+    bool search = false;
+    float orgSpeed = 1;
+
     private void Start()
     {
         AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
@@ -206,6 +210,29 @@ public class LevelGenerator : MonoBehaviour
         {
             yield return new WaitForSeconds(0);
             intersects = false;
+
+            if (input == 'D')
+            {
+                input = 'W';
+                search = true;
+            }
+
+            if (search)
+            {
+                search = false;
+                switch (input)
+                {
+                    case '6':
+                        currentActiveRoom.currentlyAliveEnemies.Clear();
+                        break;
+                    case 'W':
+                        search = true;
+                        break;
+                    default:
+                        search = false;
+                        break;
+                }
+            }
 
             UpdateStats();
 
@@ -684,6 +711,26 @@ public class LevelGenerator : MonoBehaviour
         return bounds;
     }
 
+    void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.isKey)
+        {
+
+            if (e.keyCode.ToString() == "None")
+            {
+                return;
+            }
+            if (e.keyCode.ToString().Length > 1 && e.keyCode.ToString()[1] == 'l')
+            {
+                input = e.keyCode.ToString()[5];
+            }
+            else
+            {
+                input = e.keyCode.ToString()[0];
+            }
+        }
+    }
     private void OnDrawGizmos()
     {
         if (player)
