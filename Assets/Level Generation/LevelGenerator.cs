@@ -230,6 +230,8 @@ public class LevelGenerator : MonoBehaviour
                     if (currentActiveRoom.currentlyAliveEnemies[i].transform.position.y < -100)
                     {
                         currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health = 0;
+                        currentActiveRoom.currentlyAliveEnemies.Remove(currentActiveRoom.currentlyAliveEnemies[i]);
+                        Destroy(currentActiveRoom.currentlyAliveEnemies[i]);
                     }
 
                     if (currentActiveRoom.currentlyAliveEnemies[i].GetComponent<EnemyMovement>().health <= 0)
