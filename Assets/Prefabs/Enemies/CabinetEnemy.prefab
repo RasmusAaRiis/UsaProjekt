@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6864021097880544732}
   - component: {fileID: 6864021097880544731}
   - component: {fileID: 6864021097880544733}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 5315842525801018157}
   - component: {fileID: 5315842525801018156}
   - component: {fileID: 8567028189362219108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 7985897079390138925}
   - component: {fileID: 7985897079390138924}
   - component: {fileID: 159906438296758141}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CabinetDrawerMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1859,7 +1859,8 @@ GameObject:
   - component: {fileID: 4766089715109279252}
   - component: {fileID: 7331994411064869598}
   - component: {fileID: 9133447798833046284}
-  m_Layer: 0
+  - component: {fileID: 7584800124098354541}
+  m_Layer: 11
   m_Name: CabinetModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1947,3 +1948,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004353597, y: 0.0045000003, z: 0.011959089}
   m_Center: {x: 0.0003732015, y: -1.1796673e-10, z: 0.005979549}
+--- !u!114 &7584800124098354541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133447798833046283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3025a86e09894f93a7f974db2914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  cullingType: 4
+  maxDistanceShown: 0
+  distance: 0
+  go: []
